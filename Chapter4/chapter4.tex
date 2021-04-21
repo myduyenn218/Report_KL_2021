@@ -6,54 +6,64 @@
 \section{Phân tích, đặc tả yêu cầu}
 
 \subsection{Mô tả chung}
-Viết mô tả
+Sản phẩm là một ứng dụng cho phép người dùng ghi âm giọng nói hoặc nhập văn bản, sau đó tự phân tích giọng nói về văn bản để xác định yêu cầu và hướng dẫn đường đi. Sản phẩm cung cấp giao diện để người dùng có thể ghi âm và nhập văn bản trên ứng dụng di động một cách dễ dàng.
+Mục đích của ứng dụng chatbot chỉ đường là cung cấp một giao diện thân thiện, người dùng có thể dễ dàng hỏi những câu hỏi liên quan đến đường đi bằng văn bản hoặc giọng nói và nhận câu trả lời ngay lập tức.
 \subsection{Yêu cầu chức năng}
 
-Yêu cầu chức năng 1:
+Yêu cầu chức năng chỉ đường từ một điểm đến một điểm bằng văn bản:
 \begin{itemize}
-    \item[--] Dữ liệu vào: 
-    \item[--] Xử lý: 
-    \item[--] Kết quả: 
+    \item[--] Dữ liệu vào: Yêu cầu của người dùng dưới dạng văn bản
+    \item[--] Xử lý: Thiết bị nhận văn bản để biết yêu cầu của người dùng. Nếu yêu cầu được hỗ trợ, hệ thống xử lý yêu cầu đó và phản hồi bằng giọng nói và văn bản cho người dùng. Nếu yêu cầu không được hỗ trợ, thiết bị phản hồi yêu cầu không được hỗ trợ bằng giọng nói và văn bản.
+    \item[--] Kết quả: Phản hồi bằng văn bản hiển thị lên màn hình ứng dụng và giọng nói của thiết bị.
+\end{itemize}
+Yêu cầu chức năng chỉ đường từ một điểm đến một điểm bằng âm thanh (audio):
+\begin{itemize}
+    \item[--] Dữ liệu vào: Yêu cầu của người dùng dưới dạng audio
+    \item[--] Xử lý: Thiết bị biến giọng nói vào thành văn bản để biết yêu cầu của người dùng. Nếu yêu cầu được hỗ trợ, hệ thống xử lý yêu cầu đó và phản hồi bằng giọng nói và văn bản cho người dùng. Nếu yêu cầu không được hỗ trợ, hệ thống phản hồi yêu cầu không được hỗ trợ bằng giọng nói và văn bản.
+    \item[--] Kết quả: Phản hồi bằng văn bản hiển thị lên màn hình ứng dụng và giọng nói của thiết bị.
 \end{itemize}
 
 
 
 \subsection{Yêu cầu giao diện phần mềm}
 
-Yêu cầu giao diện cho chức năng ... : Giao diện đơn giản, dễ sử dụng
+Yêu cầu giao diện cho chức năng cho ứng dụng chỉ đường : Giao diện đơn giản, dễ sử dụng
 
-Yêu cầu giao diện cho chức năng 1:
+Yêu cầu giao diện cho chức năng Chat chỉ đường bằng văn bản:
 \begin{itemize}
     \item[--] Giao diện đơn giản, dễ sử dụng
-    \item[--] yêu cầu 2
+    \item[--] Câu lệnh ngắn gọn, dễ ghi
+    \item[--] Phản hồi ngắn gọn dễ nghe, dễ đọc
+    \item[--] Phản hồi mọi câu lệnh dù câu lệnh đó không được hỗ trợ
 \end{itemize}
 
-Yêu cầu giao diện cho chức năng Tương tác bằng giọng nói với một vài truy vấn đơn giản:
+Yêu cầu giao diện cho chức năng Chat chỉ đường bằng giọng nói:
 \begin{itemize}
+    \item[--] Giao diện đơn giản, dễ sử dụng
     \item[--] Câu lệnh ngắn gọn, dễ đọc
-    \item[--] Phản hồi ngắn gọn, dễ nghe
+    \item[--] Phản hồi ngắn gọn, dễ nghe, dễ đọc
     \item[--] Phản hồi mọi câu lệnh dù câu lệnh đó không được hỗ trợ
-    \item[--] Phải có giao diện đèn để phản hồi trực quan
+    \item[--] Phải có giao diện ghi âm để phản hồi trực quan
 \end{itemize}
 
 \subsection{Yêu cầu hiệu suất}
 \begin{itemize}
     \item[--] Thiết bị phải hoạt động được liên tục trong thời gian dài, từ 12 đến 24 giờ
-    \item[--] Kết quả tạo lập biên bản phải đạt độ chính xác tối thiểu 80\%
-    \item[--] Đối với chức năng tương tác bằng giọng nói, tốc độ phản hồi phải nhỏ hơn 3 giây
+    \item[--] Kết quả chỉ đường phải đạt độ chính xác tối thiểu 80\%
+    \item[--] Tốc độ phản hồi phải nhỏ hơn 5 giây
+    \item[--] Đảm bảo sự kết nối của nhiều ứng dụng cùng một thời điểm lên hệ thống
 \end{itemize}
 
 \subsection{Ràng buộc thiết kế}
 \begin{itemize}
-    \item[--] Sản phẩm phải được thiết kế bằng tiếng Việt, bao gồm giao diện người dùng, các phản hồi bằng giọng nói
-    \item[--] Thiết bị phải nhỏ, gọn, có tính cơ động cao
-    \item[--] Các thành phần của thiết bị phải được kết nối với nhau gọn gàng, đảm bảo tính thẩm mỹ
+    \item[--] Sản phẩm phải được thiết kế bằng tiếng Việt, bao gồm giao diện người dùng, các phản hồi bằng giọng nói và văn bản
+    \item[--] Sản phẩm ứng dụng cần đảm bảo tính thẩm mỹ
 \end{itemize}
 
 \subsection{Ràng buộc thuộc tính}
 \begin{itemize}
-    \item[--] Cơ sở dữ liệu biên bản cuộc họp phải được sao lưu thường xuyên
-    \item[--] Các thành phần của thiết bị khi bị hỏng phải dễ dàng tìm kiếm và thay thế
+    \item[--] Cơ sở dữ liệu phải được sao lưu thường xuyên
+    \item[--] Cần đảm bảo việc kết nối và tương tác nhiều ứng dụng lên hệ thống 
     \item[--] Việc cập nhật phần mềm phải nhanh chóng và không gây ra mất mát dữ liệu
 \end{itemize}
 
