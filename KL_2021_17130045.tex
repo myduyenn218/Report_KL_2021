@@ -1,0 +1,145 @@
+
+% Chú ý: đọc dòng 62 và 121 của file này và chỉnh lại cho phù hợp
+
+\documentclass[oneside,a4paper,14pt]{extreport}
+
+% Font tiếng Việt
+\usepackage[T5]{fontenc}
+\usepackage[utf8]{inputenc}
+\DeclareTextSymbolDefault{\DH}{T1}
+
+% Tài liệu tham khảo
+\usepackage[
+	sorting=nty,
+	backend=bibtex,
+	defernumbers=true]{biblatex}
+\usepackage[unicode]{hyperref} % Bookmark tiếng Việt
+\addbibresource{References/references.bib}
+
+% Chèn hình, các hình trong luận văn được để trong thư mục Images/
+\usepackage{graphicx}
+\graphicspath{ {Images/} }
+
+% Chèn mã nguồn
+\usepackage{listings}
+
+% Bảng biểu
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Đổi tên mặc định
+\renewcommand{\chaptername}{Chương}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\contentsname}{Mục lục}
+\renewcommand{\listfigurename}{Danh sách hình}
+\renewcommand{\listtablename}{Danh sách bảng}
+\renewcommand{\appendixname}{Phụ lục}
+
+% Dãn dòng 1.5
+\usepackage{setspace}
+\onehalfspacing
+
+% Canh lề
+\usepackage[
+  top=35mm,
+  bottom=30mm,
+  left=35mm,
+  right=20mm,
+  includefoot]{geometry}
+  
+% Trang bìa
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\newcommand\HRule{\rule{\textwidth}{1pt}}
+
+% Bảng dài
+\usepackage{longtable}
+
+%Bảng viết tắt
+\usepackage[printonlyused]{acronym}
+
+\usepackage{caption}
+\usepackage{tipa}
+
+\usepackage{pdfpages}
+
+% Thông tin chung về KLTN - sinh viên điền vào đây để tự động update các trang khác
+\newcommand{\tenSVa}{Trần Thị Mỹ Duyên}
+\newcommand{\mssva}{17130045}
+\newcommand{\tenSVb}{Lương Trung Thành}
+\newcommand{\mssvb}{17130216}
+\newcommand{\tenKL}{Xây dựng giải pháp trả lời tự động (Chatbot) bằng tiếng Việt}
+\newcommand{\tenGVHD}{Th.S Nguyễn Đức Công Song}
+\newcommand{\tenGVPB}{}
+\begin{document}
+
+\input{Title/title.tex}
+
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Nhận xét của giáo viên hướng dẫn}
+% \includepdf[page=-]{Appendix/KL_2021_17130045_17130216_NCXDCB} %include file pdf
+
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Nhận xét của giáo viên phản biện}
+% \includepdf[page=-]{Appendix/KL_2021_17130045_17130216_NCXDCB} %include file pdf
+
+\pagenumbering{roman} % Đánh số i, ii, iii, ...
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Lời cảm ơn}
+\include{Appendix/thanks}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Đề cương chi tiết}
+% \include{Appendix/decuong}
+\includepdf[page=-]{Appendix/decuong}
+
+% Mục lục, danh sách hình, danh sách bảng
+\phantomsection
+\addcontentsline{toc}{chapter}{Mục lục}
+\tableofcontents
+\listoffigures
+\listoftables
+\chapter*{Bảng viết tắt}
+\begin{acronym}[AAAAAAAAA]
+  \input{Acronym/acros.tex}
+\end{acronym}
+
+\phantomsection
+\addcontentsline{toc}{chapter}{Tóm tắt}
+\include{Appendix/tomtat}
+
+\clearpage
+
+\pagenumbering{arabic} % Đánh số 1, 2, 3, ...
+
+% Các chương nội dung
+\include{Chapter1/chapter1}
+
+\include{Chapter2/chapter2}
+
+\include{Chapter3/chapter3}
+
+\include{Chapter4/chapter4}
+
+\include{Chapter5/chapter5}
+
+\include{Chapter6/chapter6}
+
+% In tài liệu tham khảo
+\phantomsection
+\addcontentsline{toc}{chapter}{Tài liệu tham khảo}
+\printbibheading[title={Tài liệu tham khảo}]
+
+\printbibliography[heading=subbibliography, title={Tiếng Việt}, keyword=Viet, resetnumbers=true]
+
+\DeclareNameAlias{sortname}{family-given}
+\DeclareNameAlias{default}{family-given}
+
+\printbibliography[heading=subbibliography, title={Tiếng Anh}, notkeyword=Viet, resetnumbers=4]
+
+\end{document}
