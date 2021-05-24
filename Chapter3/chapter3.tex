@@ -66,12 +66,6 @@ thực tế cả cụm từ "kí túc xá" là danh từ và cần được gi�
 
 để xử lý vấn đề này, nhóm sẽ xây dựng một bộ từ điển, bộ từ điển này nằm trong phạm vi hỏi đường nên có thể xây dựng được, từ đó việc dịch sẽ đạt hiệu quả hơn.
 
-	
- 
-
-Từ bộ dữ liệu tiếng Việt, sử dụng thư viện word2word để dịch từng từ sang tiếng Anh. dùng bộ dữ liệu tiếng Anh này huấn luyện và đánh giá mô hình ta được kết quả như sau:
-
-
 Để cải thiện quá trình dịch từ tiếng Việt sang tiếng Anh, nhóm chúng em đã quyết định xây dựng bộ từ điển riêng để có thể dịch được kết quả chính xác hơn.
 Trong phạm vi các câu hỏi về đường đi, chúng em đã lựa chọn dịch khoảng 50 từ và các cụm từ. Các bước để dịch được dữ liệu như sau:
 \begin{itemize}
@@ -79,4 +73,17 @@ Trong phạm vi các câu hỏi về đường đi, chúng em đã lựa chọn 
     \item[--] Bước 2: Tìm từ dài nhất trong câu có trong bộ từ điển.
     \item[--] Bước 3: Lấy nghĩa của từ tương ứng trong từ điển.
 \end{itemize}
-Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước thật sự cần thiết.
+Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước thật sự cần thiết để có thể tìm được từ thích hợp nhất với bộ từ điển để có kết quả tốt nhất. Dưới đây là mô tả quá trình tìm từ dài nhất có trong từ điển mà nhóm chúng em thực hiện (Xem hình Tìm từ dài nhất \ref{fig:longest-word}).
+    
+\end{figure}.
+\begin{itemize}
+    \item[--] Input: "Đường đi từ Đại học Nông Lâm đến Ngã tư Thủ Đức""
+    \item[--] Output: ["Đường đi", "từ", "Đại học Nông Lâm", "đến", "Ngã tư Thủ Đức"]
+\end{itemize}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/Diagram-longest-word.png}
+    \caption{Tìm từ dài nhất}
+    \label{fig:longest-word}
+\end{figure}
+
