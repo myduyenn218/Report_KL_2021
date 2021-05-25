@@ -54,7 +54,7 @@ Về mặt dữ liệu:
 	 \begin{figure}[htp]
               \centering
               \includegraphics[width=10cm]{images/trainingdata_dichtungtu.png} 
-              \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch}
+              \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp dịch từng từ}
               \label{fig:sodohethongchiduong}
 
           \end{figure} 
@@ -93,7 +93,7 @@ Về vấn đề những slot bị dịch thành tiếng Anh làm cho nó không
  \begin{figure}[htp]
               \centering
               \includegraphics[width=10cm]{images/trainingdata-wordsegment.png} 
-              \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch}
+              \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp dùng word segmentation và pos tagging}
               \label{fig:sodohethongchiduong}
 
           \end{figure} 
@@ -140,3 +140,30 @@ Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước t
     \caption{Tìm từ dài nhất}
     \label{fig:longest-word}
 \end{figure}
+
+Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{\url{https://drive.google.com/file/d/1l6TW8QdhZYOC7uhCpIJpsuSwVfrSv5ie/view?usp=sharing}} và bộ dữ liệu kiểm thử \footnote{\url{https://drive.google.com/file/d/1DpIxFSOjwP_djW-V1jpaLH4HTwGgGZkA/view?usp=sharing}}
+	 \begin{figure}[htp]
+              \centering
+              \includegraphics[width=10cm]{images/trainingdata-tudien.png} 
+              \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp xây dựng từ điển}
+              \label{fig:sodohethongchiduong}
+
+          \end{figure} 
+
+
+	Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình 3.8, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1HSe-ri76d8jbF3FZUCrDiFawHI17D18a/view?usp=sharing}}: 
+
+
+   \begin{figure}[htp]
+              \centering
+              \includegraphics[width=15cm]{images/metrics-tudien.png} 
+              \caption{Các chỉ số của mô hình}
+              \label{fig:sodohethongchiduong}
+
+          \end{figure} 
+         Kết quả đạt được sau khi dùng phương pháp dịch bằng cách xây dựng bộ từ điển:
+         \\
+         - Do xây dựng bộ từ điển những từ vựng trong phạm vi nhỏ - hỏi đường nên bộ dịch cho ra kết quả khá khả quan, cải thiện hơn so với 2 phương pháp trước là phương pháp dịch từng từ và phương pháp dịch dùng word segmentation và pos tagging
+         \\
+        - Kế hoạch phát triển là xây dựng thêm dữ liệu, tạo thêm nhiều ý định sau đó thực hiện đánh giá mô hình để xem mô hình có thực sự hiệu quả hay không.
+     
