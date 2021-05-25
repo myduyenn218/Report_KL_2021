@@ -21,7 +21,9 @@ Văn bản đó được gửi tới NLU engine để trích xuất ý định v
 Dựa trên ý định và thực thể nhận được, hệ thống sẽ truy vấn dữ liệu thông qua google API, tạo ra câu trả lời tương ứng và trả về cho người dùng bằng text và audio ( text to speech để chuyển văn bản thành giọng nói)
 
 
-Trong phạm vi bài luận này, nhóm em nghiên cứu sử dụng công cụ có sẵn Snips NLU cho việc trích xuất ý định và các thực thể
+
+Trong phạm vi bài luận này, nhóm em nghiên cứu sử dụng công cụ có sẵn Snips NLU\cite{Snipsnlu} cho việc trích xuất ý định và các thực thể
+
 
 
 Snips NLU là công cụ giúp hiểu ngôn ngữ tự nhiên mạnh mẽ, nhưng hiện tại chưa hỗ trợ tiếng Việt, ý tưởng của nhóm em là sẽ tạo một bộ dữ liệu bằng tiếng Việt rồi dịch sang tiếng Anh, dùng dữ liệu tiếng Anh đó để huấn luyện cho mô hình. Khi người dùng truy vấn thì dịch câu truy vấn đó sang tiếng Anh và đưa vào mô hình để trích xuất ý định và các thực thể.
