@@ -4,7 +4,7 @@
 \emph{Chương này giới thiệu về một số hệ thống tương tự với hệ thống chỉ đường cũng như một số thuật toán xử lí giọng nói.}
 
 \section{Giới thiệu về chatbot}
-Chatbot là một chương trình máy tính được xây dựng để có thể trò chuyện với con người. Một chat-bot đơn giản có thể dùng để thay con người trả lời các câu hỏi lặp đi lặp lại của người dùng như: “Sự kiện X diễn ra khi nào?”, “Vinaphone MAX70 là gì?”, “iPhone X giá bao nhiêu?”,… Chatbot cũng có thể đóng vai trò là một trợ lý ảo, trợ giúp trong các công việc phức tạp hơn như hỗ trợ đặt hàng, đăng ký một sự kiện, hoành thành các biểu mẫu,… hầu hết các công việc/hoặc tác vụ có thể được thực hiện theo các bước.
+	Chatbot là một chương trình máy tính được xây dựng để có thể trò chuyện với con người. Một chat-bot đơn giản có thể dùng để thay con người trả lời các câu hỏi lặp đi lặp lại của người dùng như: “Sự kiện X diễn ra khi nào?”, “Vinaphone MAX70 là gì?”, “iPhone X giá bao nhiêu?”,… Chatbot cũng có thể đóng vai trò là một trợ lý ảo, trợ giúp trong các công việc phức tạp hơn như hỗ trợ đặt hàng, đăng ký một sự kiện, hoành thành các biểu mẫu,… hầu hết các công việc/hoặc tác vụ có thể được thực hiện theo các bước.
 
 Ưu điểm của chatbot
 \begin{itemize}
@@ -25,40 +25,65 @@ Chatbot là một chương trình máy tính được xây dựng để có th�
     \item 4. Nhiều mục đích sử dụng
           \begin{itemize}
               \item Bạn có thể sử dụng chatbot trong nhiều mảng, ví dụ như nhận đơn đặt hàng của khách, dịch vụ khách hàng và quảng cáo sản phẩm.
-              \item Kiến trúc cơ bản của một hệ thống giao tiếp tự động
-              \item k.jpg
+            
           \end{itemize}
+         
+              
 \end{itemize}
-Các hệ thống chatbot giao tiếp với con người bằng giọng nói (như Siri) hoặc bằng văn bản (như các chatbot phát triển trên nền Facebook Messenger). Dù giao tiếp bằng hình thức nào, chatbot cũng cần phải hiểu văn bản để có thể đưa ra những câu trả lời phù hợp cho khách hàng. Thành phần đảm nhiệm công việc này trong hệ thống chatbot được gọi là NLU (Natural Language Understanding), trong đó có rất nhiều các kĩ thuật xử lý ngôn ngữ tự nhiên (Natural Language Processing, viết tắt là NLP) được áp dụng.
-Hai thành phần liên quan đến xử lý ngôn ngữ tự nhiên không thể thiếu của một NLU module là bộ phân loại ý định và nhận diện thực thể (NER). Phân loại ý định giúp chat-bot hiểu ý định của người dùng. Về mặt bản chất phân loại ý định chính là một bài toán phân loại câu với tập nhãn là các ý định có thể có của người dùng (đã được định nghĩa từ trước). NER giúp chat-bot trích xuất các thông tin trong yêu cầu/câu trả lời của người dùng. Các thông tin đó có thể là tên sản phẩm, địa chỉ, số điện thoại, số tài khoản của người dùng,… NER là một bài toán gán nhãn chuỗi cơ bản: cho vào một câu đầu vào, trích xuất tất cả các thực thể định danh trong câu và phân loại chúng vào một trong các nhãn đã được định nghĩa từ trước.
-Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được thêm vào chat-bot là bộ quản lý hội thoại, bộ sinh ngôn ngữ (NLG), và bộ phân tích cảm xúc. Một bộ quản lý hội thoại sẽ lưu trữ, phân tích và tận dụng ngữ cảnh cuộc hội thoại và giúp chat-bot suy luận hành động tiếp theo trong khi NLG giúp sinh câu trả lời đầy đủ, tự nhiên nhất bằng ngôn ngữ tự nhiên cho chat-bot. Một bộ phân tích cảm xúc có thể cần bởi vì cùng một câu có thể mang nhiều nghĩa khác nhau trong các văn cảnh khác nhau, do đó có thể cần được trả lời theo các cách khác nhau phụ thuộc vào cảm xúc của người dùng.
-Bài luận này chủ yếu nghiên cứu thành phân hiểu ngôn ngữ tự nhiên NLU.
+   \begin{figure}[htp]
+              \centering
+              \includegraphics[width=10cm]{images/k.jpg} 
+              \caption{Kiến trúc cơ bản của một hệ thống giao tiếp tự động}
+              \label{fig:system-class-intent}
+          \end{figure}
+
+
+	Các hệ thống chatbot giao tiếp với con người bằng giọng nói (như Siri) hoặc bằng văn bản (như các chatbot phát triển trên nền Facebook Messenger). Dù giao tiếp bằng hình thức nào, chatbot cũng cần phải hiểu văn bản để có thể đưa ra những câu trả lời phù hợp cho khách hàng. Thành phần đảm nhiệm công việc này trong hệ thống chatbot được gọi là NLU (Natural Language Understanding), trong đó có rất nhiều các kĩ thuật xử lý ngôn ngữ tự nhiên (Natural Language Processing, viết tắt là NLP) được áp dụng.
+\\
+	Hai thành phần liên quan đến xử lý ngôn ngữ tự nhiên không thể thiếu của một NLU module là bộ phân loại ý định và nhận diện thực thể (NER). Phân loại ý định giúp chat-bot hiểu ý định của người dùng. Về mặt bản chất phân loại ý định chính là một bài toán phân loại câu với tập nhãn là các ý định có thể có của người dùng (đã được định nghĩa từ trước). NER giúp chat-bot trích xuất các thông tin trong yêu cầu/câu trả lời của người dùng. Các thông tin đó có thể là tên sản phẩm, địa chỉ, số điện thoại, số tài khoản của người dùng,… NER là một bài toán gán nhãn chuỗi cơ bản: cho vào một câu đầu vào, trích xuất tất cả các thực thể định danh trong câu và phân loại chúng vào một trong các nhãn đã được định nghĩa từ trước.
+\\
+	Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được thêm vào chat-bot là bộ quản lý hội thoại, bộ sinh ngôn ngữ (NLG), và bộ phân tích cảm xúc. Một bộ quản lý hội thoại sẽ lưu trữ, phân tích và tận dụng ngữ cảnh cuộc hội thoại và giúp chat-bot suy luận hành động tiếp theo trong khi NLG giúp sinh câu trả lời đầy đủ, tự nhiên nhất bằng ngôn ngữ tự nhiên cho chat-bot. Một bộ phân tích cảm xúc có thể cần bởi vì cùng một câu có thể mang nhiều nghĩa khác nhau trong các văn cảnh khác nhau, do đó có thể cần được trả lời theo các cách khác nhau phụ thuộc vào cảm xúc của người dùng.
+\\
+	Bài luận này chủ yếu nghiên cứu về phát hiện ý định và trích xuất thực thể trong NLU module.
 
 \section{Một số hệ thống hiểu ngôn ngữ tự nhiên}
 
 \subsection{Giới thiệu về hiểu ngôn ngữ tự nhiên}
 
-Hiểu ngôn ngữ tự nhiên là một chủ đề của xử lý ngôn ngữ tự nhiên trong lĩnh vực trí tuệ nhân tạo. Để có thể xây dựng một chatbot hoặc trợ lý giọng nói thì điều không thể thiếu đó chính là hiểu được ngôn ngữ tự nhiên.
+	Hiểu ngôn ngữ tự nhiên là một chủ đề của xử lý ngôn ngữ tự nhiên trong lĩnh vực trí tuệ nhân tạo. Để có thể xây dựng một chatbot hoặc trợ lý giọng nói thì điều không thể thiếu đó chính là hiểu được ngôn ngữ tự nhiên.
 
-Bất cứ khi nào người dùng tương tác với AI bằng ngôn ngữ tự nhiên, các từ của họ cần phải được dịch thành một mô tả mà máy có thể đọc được về ý của họ.
+	Bất cứ khi nào người dùng tương tác với AI bằng ngôn ngữ tự nhiên, các từ của họ cần phải được dịch thành một mô tả mà máy có thể đọc được về ý của họ.
 Công cụ \ac{nlu} trước tiên phát hiện ý định của người dùng là gì (intent), sau đó trích xuất các tham số (slot) của truy vấn. Sau đó, nhà phát triển có thể sử dụng điều này để xác định hành động hoặc phản hồi thích hợp.
 
 Các khái niệm cơ bản:
 \begin{itemize}
     \item 1.Xác định ý định người dùng
+    \\
           Thông thường, người dùng thường truy cập hệ thống chatbot với mong muốn hệ thống sẽ đưa ra những hành động trợ giúp mình về một vấn đề nào đó. Ví dụ, người dùng của hệ thống chatbot hỗ trợ đặt vé máy bay có thể đưa ra yêu cầu đặt vé của mình khi bắt đầu cuộc hội thoại. Để đưa ra hỗ trợ được chính xác, chatbot cần xác định được ý định (intent) đó của người dùng. Việc xác định ý định của người dùng sẽ quyết định hội thoại tiếp theo giữa người và chatbot sẽ diễn ra như thế nào. Vì thế, nếu xác định sai ý định người dùng, chatbot sẽ đưa ra những phản hồi không đúng, không hợp ngữ cảnh. Khi đó, người dùng có thể thấy chán ghét và không quay lại sử dụng hệ thống. Bài toán xác định ý định người dùng vì thế đóng vai trò rất quan trọng trong hệ thống chatbot.
+          \\
           Đối với miền ứng dụng đóng, chúng ta có thể giới hạn rằng số lượng ý định của người dùng nằm trong một tập hữu hạn những intent đã được định nghĩa sẵn, có liên quan đến những nghiệp vụ doanh nghiệp mà chatbot có thể hỗ trợ. Với giới hạn này, bài toán xác định ý định người dùng có thể quy về bài toán phân lớp văn bản. Với đầu vào là một câu giao tiếp của người dùng, hệ thống phân lớp sẽ xác định intent tương ứng với câu đó trong tập các intent đã được định nghĩa.
     \item 2. Trích xuất thông tin
+    \\
           Bên cạnh việc xác định intent trong câu hội thoại của người dùng, chúng ta cần trích xuất các thông tin cần thiết trong đó. Các thông tin cần trích xuất trong một câu hội thoại thường là các thực thể thuộc về một loại nào đó. Ví dụ, khi một khách hàng muốn đặt vé máy bay, hệ thống cần biết địa điểm xuất phát và địa điểm khách muốn đến, ngày giờ khách hàng muốn bay,…Thành phần NLU của các hệ thống chatbot thường hỗ trợ các loại thực thể sau (tham khảo tài liệu [2]):
+          \\
           Vị trí (Location)
-          Thời gian (Datetime)
-          Số (Number)
-          Địa chỉ liên lạc (Contact)
-          Khoảng cách (Distance)
-          Khoảng thời gian (Duration)
+          \\
+          	Thời gian (Datetime)
+          \\
+         	 Số (Number)
+          \\
+         	 Địa chỉ liên lạc (Contact)
+          \\
+         	 Khoảng cách (Distance)
+          \\
+          	Khoảng thời gian (Duration)
+          \\
           Đầu vào của một module trích xuất thông tin là một câu hội thoại. Module trích xuất thông tin cần xác định vị trí của các thực thể trong câu (vị trí bắt đầu và vị trí kết thúc của thực thể). Ví dụ sau minh hoạ một câu hội thoại và các thực thể được trích xuất từ đó.
+          \\
           Câu hội thoại: Tôi muốn đặt vé máy bay đi Phú Quốc từ sân bay Nội Bài lúc 8 giờ tối ngày mai.
+          \\
           Câu có các thực thể được xác định: Tôi muốn đặt vé máy bay đi [Phú Quốc]LOCATION từ sân bay [Nội Bài]LOCATION lúc [8 giờ tối ngày mai]TIME.
+          \\
           Trong câu trên có 3 thực thể (nằm trong các dấu [ ]) với các loại thực thể tương ứng (được viết với font chữ nhỏ hơn ở dưới).
 \end{itemize}
 \subsection{Lựa chọn thuật toán}
