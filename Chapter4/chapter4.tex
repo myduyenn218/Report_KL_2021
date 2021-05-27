@@ -105,7 +105,10 @@ Nhóm đã thực hiện tạo dữ liệu gồm hai intent là findRoute và as
     \label{fig:data-train-json}
 \end{figure}
 
-\subsection{Dịch, huấn luyện dữ liệu và kết quả}
+\subsection{Tiền xử lý dữ liệu, huấn luyện và kết quả}
+
+Với dữ liệu được chuẩn bị để huấn luyện là tiếng Việt, nhưng dữ liệu để đưa vào mô hình huấn luyện là tiếng Anh, chúng em đã tiến hành chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh với các phương pháp khác nhau và thu được kết quả dưới đây.
+
 \begin{enumerate}
     \item Word2word
           
@@ -138,6 +141,10 @@ Nhóm đã thực hiện tạo dữ liệu gồm hai intent là findRoute và as
           \end{itemize}
     \item Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word
           
+          Nhận thấy được vấn đề về các từ ghép và tên riêng sau khi dịch bằng phương pháp word2word không được chính xác và đúng ý nghĩa của câu. Chúng em tiến hành xem xét về vấn đề phân tách các từ. 
+          
+          Tách từ là một quát trình xử lý nhằm mục đích xác định ranh giới của các từ trong câu văn, cũng có thể hiểu đơn giản hơn là tách từ là quá trình xác định các từ đơn, từ ghép, danh từ,... có trong câu.
+          
           Để xử lý vấn đề dịch các tên riêng và không đúng ngữ nghĩa, nhóm em thay đổi phương pháp dịch bằng cách sử dụng thư viện để tách từ (word segmentation) và gán nhãn từ loại (pos tagging).
           
           Trong tiếng Việt, dấu cách (space) không được sử dụng như 1 kí hiệu phân tách từ, nó chỉ có ý nghĩa phân tách các âm tiết với nhau. Do đó việc tách từ sẽ giúp cho việc dịch được chính xác hơn.
@@ -169,10 +176,8 @@ Nhóm đã thực hiện tạo dữ liệu gồm hai intent là findRoute và as
           \end{itemize}
           Tuy nhiên vẫn còn một vài trường hợp dịch còn chưa ổn, ví dụ như "Đại học Khoa học Xã hội và Nhân văn" được dịch thành "Đại học Khoa học Xã hội their Nhân văn"
     \item Xây dựng bộ từ điển
+          Để có thể xử lý tốt hơn về vấn đề ý nghĩa trong câu được dịch sang một cách chính xác hơn. Nhóm chúng em đã quyết định xây dựng mô hình so khớp dài nhất (longest matching), bằng cách xây dựng một bộ từ điển, và tìm từ dài nhất có trong bộ từ điển đó để tiến hành dịch. Bộ từ điển này nằm trong phạm vi hỏi đường nên có thể xây dựng với các từ ngữ cụ thể có trong chủ đề, từ đó việc dịch sẽ đạt hiệu quả hơn.
           
-          Nhóm nhận thấy rằng có thể cải thiện được bộ dịch tốt hơn, nhóm sẽ thay đổi phương pháp dịch bằng cách xây dựng một bộ từ điển, bộ từ điển này nằm trong phạm vi hỏi đường nên có thể xây dựng được, từ đó việc dịch sẽ đạt hiệu quả hơn.
-          
-          Để cải thiện quá trình dịch từ tiếng Việt sang tiếng Anh, nhóm chúng em đã quyết định xây dựng bộ từ điển riêng để có thể dịch được kết quả chính xác hơn.
           Trong phạm vi các câu hỏi về đường đi, chúng em đã lựa chọn dịch khoảng 50 từ và các cụm từ. Các bước để dịch được dữ liệu như sau:
           \begin{itemize}
               \item[--] Bước 1: Xây dựng bộ từ điển riêng biệt về chủ đề hỏi đường đi và chuyển hoá từ ngôn ngữ tiếng Việt sang tiếng Anh.
