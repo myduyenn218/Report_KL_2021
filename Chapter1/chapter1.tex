@@ -23,7 +23,7 @@ Nghiên cứu các thành phần cấu tạo Chatbots. Tìm hiểu các kỹ thu
 
 Luận văn tập trung tìm cách giải quyết các bài toán mà chatbot ứng dụng trong miền đóng (Closes domain: các cuộc hội thoại tập trung vào một miền cụ thể như y tế, du lịch,...) và trả lời theo mô hình truy xuất thông tin (retrieval-based). Mô hình truy xuất thông tin là mô hình trong đó, chatbot đưa ra những phản hồi được chuẩn bị trước hoặc tuân theo những mô thức nhất định. Mô hình này khác với mô hình tự động sinh câu trả lời (generative), trong đó câu trả lời của chatbot được tự động sinh ra bằng việc học từ một tập dữ liệu. Các hệ thống chatbot được triển khai trong thực tế phần lớn tuân theo mô hình truy xuất thông tin và được áp dụng trong những miền ứng dụng nhất định.
 
-Với đề tài này, chúng em sẽ tập trung xây dựng giải pháp trả lời tự động (Chatbots) bằng tiếng Việt trong lĩnh vực hỏi đường dựa nào Snips-NLU và áp dụng những kiến thức tìm hiểu về chatbot để có thể tuỳ chỉnh trên mã nguồn mở này. Đối tượng người dùng chatbot cụ thể ở đây là những người có nhu cầu sử dụng ứng dụng để chỉ đường đi. 
+Với đề tài này, chúng em sẽ tập trung xây dựng giải pháp trả lời tự động (Chatbots) bằng tiếng Việt trong lĩnh vực hỏi đường dựa nào Snips-NLU và áp dụng những kiến thức tìm hiểu về chatbot để có thể tuỳ chỉnh trên mã nguồn mở này. Đối tượng người dùng chatbot cụ thể ở đây là những người có nhu cầu sử dụng ứng dụng để chỉ đường đi.
 
 \section{Kết quả}
 Xây dựng giải pháp trả lời tự động (Chatbots) bằng tiếng Việt với các chức năng sau:
@@ -37,37 +37,35 @@ Xây dựng giải pháp trả lời tự động (Chatbots) bằng tiếng Vi�
 
 
 
-% Cuốn luận được trình bày theo cấu trúc sau:
-% \begin{itemize}
-%     \item Chương 1: Giới thiệu: Sơ lược về đề tài, mục tiêu, cách tiếp cận và kết quả đề tài, cấu trúc cuốn luận
-%     \item Chương 2: Các hệ thống và thuật toán liên quan: Sơ lước về các dự án và thuật toán liên quan đến bài toán
-%           \begin{itemize}
-%               \item Các hệ thống liên quan:
-%               \item Các phương pháp xử lí hệ thống:
-%                     \begin{itemize}
-%                         \item Giới thiệu về chatbot
-%                         \item Giới thiệu sơ lược về hiểu ngôn ngữ tự nhiên
-%                     \end{itemize}
-%           \end{itemize}
-%     \item Chương 3: Nghiên cứu hệ thống chỉ đường: Trình bày các phân tích bài toán và thiết kế hệ thống
-%           \begin{itemize}
-%               \item Giới thiệu về hệ thống và ứng dụng chatbot
-%               \item Các phương pháp dịch từ
-%           \end{itemize}
-%     \item Chương 4: Xây dựng hệ thống chỉ đường: Trình bày các nghiên cứu liên quan đến bài toán
-%           \begin{itemize}
-%               \item Phân tích, đặc tả bài toán: Trình bày các phân tích về bài toán, từ đó đưa ra cái nhìn tổng quan về hệ thống sẽ xây dựng
-%               \item Thiết kế kiến trúc hệ thống: Sơ đồ và diễn giải thiết kế phần cứng và phần mềm của bài toán
-%               \item Thiết kế giao diện ứng dụng
-%           \end{itemize}
-%     \item Chương 5: Kết quả: Trình bày kết quả lựa chọn thuật toán, công nghệ, và các thiết kế chi tiết của hệ thống
-%           \begin{itemize}
-%               \item Kết quả lựa chọn công nghệ
-%               \item Một số chức năng đã cài đặt
-%           \end{itemize}
-%     \item Chương 6: Kết luận và hướng phát triển: Trình bày kết luận đề tài và hướng phát triển về sau
-%           \begin{itemize}
-%               \item Kết luận đề tài
-%               \item Hướng phát triển
-%           \end{itemize}
-% \end{itemize}
+Cuốn luận được trình bày theo cấu trúc sau:
+\begin{itemize}
+    \item Chương 1: Giới thiệu: Sơ lược về đề tài, mục tiêu, cách tiếp cận và kết quả đề tài, cấu trúc cuốn luận
+    \item Chương 2: Khảo sát và các vấn đề liên quan
+          \begin{itemize}
+              \item Khảo sát thực trạng, mối quan tâm về Chatbots
+              \item Giới thiệu Chatbots
+          \end{itemize}
+    \item Chương 3: Giải pháp và phương án thực hiện
+          \begin{itemize}
+              \item Hiểu ngôn ngữ tự nhiên (\ac{nlu})
+              \item Xác định Intent
+              \item Trích xuất thông tin (Filling slots)
+              \item Giải pháp xây dựng ứng dụng
+              \item Kết quả lựa chọn công nghệ
+          \end{itemize}
+    \item Chương 4: Triển khai ứng dụng
+          \begin{itemize}
+              \item Phân tích, đặc tả bài toán: Trình bày các phân tích về bài toán, từ đó đưa ra cái nhìn tổng quan về hệ thống sẽ xây dựng
+              \item Thiết kế kiến trúc hệ thống: Sơ đồ và diễn giải thiết và phần mềm của bài toán
+              \item Thiết kế giao diện ứng dụng
+          \end{itemize}
+    \item Chương 5: Kết quả: Trình bày kết quả lựa chọn thuật toán, công nghệ, và các thiết kế chi tiết của hệ thống
+          \begin{itemize}
+              \item Một số chức năng đã cài đặt
+          \end{itemize}
+    \item Chương 6: Kết luận và hướng phát triển: Trình bày kết luận đề tài và hướng phát triển về sau
+          \begin{itemize}
+              \item Kết luận đề tài
+              \item Hướng phát triển
+          \end{itemize}
+\end{itemize}
