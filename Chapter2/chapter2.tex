@@ -1,13 +1,29 @@
-\chapter{Khảo sát và các vấn đề liên quan}
+\chapter{Các hệ thống và thuật toán liên quan}
 \label{Chapter2}
 
-\emph{Chương này trình bày kết quả khảo sát thực tiễn và các vấn đề liên quan để xây dựng chatbot.}
+\emph{Chương này giới thiệu về một số hệ thống tương tự với hệ thống Chatbot cũng như một số thuật toán xử lí hiểu ngôn ngữ tự nhiên.}
 
-\section{Khảo sát thực trạng}
-\section{Giới thiệu về chatbot}
-Chatbot là một chương trình máy tính được xây dựng để có thể trò chuyện với con người. Một chat-bot đơn giản có thể dùng để thay con người trả lời các câu hỏi lặp đi lặp lại của người dùng như: “Sự kiện X diễn ra khi nào?”, “Vinaphone MAX70 là gì?”, “iPhone X giá bao nhiêu?”,… Chatbot cũng có thể đóng vai trò là một trợ lý ảo, trợ giúp trong các công việc phức tạp hơn như hỗ trợ đặt hàng, đăng ký một sự kiện, hoành thành các biểu mẫu,… hầu hết các công việc/hoặc tác vụ có thể được thực hiện theo các bước.
+\section{Chatbot}
+\subsection{Chatbot là gì?}
 
-Ưu điểm của chatbot
+Chatbot - hay còn được gọi là chatterbot - là một ứng dụng phần mềm được sử dụng để thực hiện một cuộc trò chuyện trực tuyến thông qua văn bản hoặc chuyển văn bản thành giọng nói, thay cho việc cung cấp liên hệ trực tiếp với một nhân viên trực tiếp. Trợ lý ảo Chatbot đang ngày càng được sử dụng để xử lý các tác vụ đơn giản, tra cứu trong cả môi trường doanh nghiệp với người tiêu dùng và doanh nghiệp với doanh nghiệp.
+
+Chatbot có thể có nhiều mức độ phức tạp khác nhau, không trạng thái hoặc trạng thái. Một chatbot không trạng thái tiếp cận mỗi cuộc trò chuyện như thể nó đang tương tác với một người dùng mới. Ngược lại, một chatbot trạng thái có thể xem xét các tương tác trong quá khứ và định khung các phản hồi mới theo ngữ cảnh\cite{chat-bot}.
+
+Chatbot có thể được phân chia thành các loại sau đây:
+\begin{itemize}
+    \item Chatbots có kịch bản hoặc trả lời nhanh - Đây là những chatbots cơ bản nhất; chúng hoạt động như một cây quyết định phân cấp. Các bot này tương tác với người dùng thông qua một tập hợp các câu hỏi được xác định trước sẽ tiến triển cho đến khi chatbot trả lời câu hỏi của người dùng. Tương tự như chatbot này là chatbot dựa trên menu yêu cầu người dùng thực hiện các lựa chọn từ danh sách hoặc menu được xác định trước để cung cấp cho bot hiểu sâu hơn về những gì khách hàng đang tìm kiếm.
+
+    \item Chatbots dựa trên nhận dạng từ khóa - Những chatbot này phức tạp hơn một chút; họ cố gắng lắng nghe những gì người dùng nhập và phản hồi tương ứng bằng cách sử dụng các từ khóa chọn được từ phản hồi của khách hàng. Các từ khóa có thể tùy chỉnh và AI được kết hợp trong bot này để cung cấp phản hồi thích hợp cho người dùng. Thật không may, những chatbot này phải vật lộn khi phải đối mặt với việc sử dụng từ khóa lặp đi lặp lại hoặc các câu hỏi thừa.
+
+    \item Chatbots kết hợp - Những chatbot này kết hợp các yếu tố của bot dựa trên menu và nhận dạng từ khóa. Người dùng có thể chọn để câu hỏi của họ được trả lời trực tiếp, nhưng cũng có thể truy cập menu của chatbot để thực hiện lựa chọn nếu quá trình nhận dạng từ khóa tạo ra kết quả không hiệu quả.
+
+    \item Chatbots theo ngữ cảnh - Những chatbot này phức tạp hơn những chatbot được liệt kê ở trên và yêu cầu tập trung vào dữ liệu. Họ sử dụng ML và AI để ghi nhớ các cuộc trò chuyện và tương tác với người dùng, sau đó sử dụng những ký ức này để phát triển và cải thiện theo thời gian. Thay vì dựa vào từ khóa, những bot này sử dụng những gì khách hàng yêu cầu và cách họ yêu cầu để đưa ra câu trả lời và tự cải thiện.
+
+    \item Chatbot hỗ trợ giọng nói - Loại chatbot này là tương lai của công nghệ chatbot. Các chatbot hỗ trợ giọng nói sử dụng đối thoại bằng giọng nói từ người dùng làm đầu vào nhắc nhở phản hồi hoặc tác vụ sáng tạo. Chúng có thể được tạo bằng cách sử dụng văn bản thành giọng nói (TTS) và giao diện chương trình ứng dụng nhận dạng giọng nói (API) \cite{chat-bot}.
+
+\end{itemize}
+Ưu điểm của chatbot:
 \begin{enumerate}
     \item Cung cấp dịch vụ khách hàng nhanh chóng hơn:
           \begin{itemize}
@@ -28,6 +44,7 @@ Chatbot là một chương trình máy tính được xây dựng để có th�
               \item[--] Bạn có thể sử dụng chatbot trong nhiều mảng, ví dụ như nhận đơn đặt hàng của khách, dịch vụ khách hàng và quảng cáo sản phẩm.
           \end{itemize}
 \end{enumerate}
+\subsection{Kiến trúc cơ bản của Chatbot}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{images/k.jpg}
@@ -43,28 +60,30 @@ Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được th
 \\
 Bài luận này chủ yếu nghiên cứu về phát hiện ý định và trích xuất thực thể trong NLU module.
 
-% \subsection{Một số phương pháp hiểu ngôn ngữ tự nhiên}
+\section{Các hệ thống tương tự}
 
-% \begin{itemize}
-%     \item Rasa \ac{nlu}
-%           \begin{figure}[htp]
-%               \centering
-%               \includegraphics[width=10cm]{images/Rasa-NLU.png}
-%               \caption{Sơ đồ hệ thống Rasa-\ac{nlu}}
-%               \label{fig:rasa-nlu}
-%           \end{figure}
-%     \item Snips \ac{nlu}
-%           \begin{figure}[htp]
-%               \centering
-%               \includegraphics[width=10cm]{images/Snips-NLU.png}
-%               \caption{Sơ đồ hệ thống Snips-\ac{nlu}}
-%               \label{fig:snips-nlu}
-%           \end{figure}
-%           Có thể khái quát các luồng xử lý của snips-NLU \cite{snips-nlu} như sau:
-%           Hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) chứa một thành phần chính, NLU Engine, bản thân nó bao gồm một số thành phần sau:
-%           \begin{itemize}
-%               \item Deterministic intent parser: Mục tiêu của trình phân tích cú pháp xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
-%               \item Probabilistic intent parser: Trình phân tích cú pháp mục đích nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích cú pháp xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
-%               \item Entity resolution:
-%           \end{itemize}
-% \end{itemize}
+\section{Một số phương pháp hiểu ngôn ngữ tự nhiên}
+
+\begin{itemize}
+    \item Rasa \ac{nlu}
+          \begin{figure}[htp]
+              \centering
+              \includegraphics[width=10cm]{images/Rasa-NLU.png}
+              \caption{Sơ đồ hệ thống Rasa-\ac{nlu}}
+              \label{fig:rasa-nlu}
+          \end{figure}
+    \item Snips \ac{nlu}
+          \begin{figure}[htp]
+              \centering
+              \includegraphics[width=10cm]{images/Snips-NLU.png}
+              \caption{Sơ đồ hệ thống Snips-\ac{nlu}}
+              \label{fig:snips-nlu}
+          \end{figure}
+          Có thể khái quát các luồng xử lý của snips-NLU \cite{snips-nlu} như sau:
+          Hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) chứa một thành phần chính, NLU Engine, bản thân nó bao gồm một số thành phần sau:
+          \begin{itemize}
+              \item Deterministic intent parser: Mục tiêu của trình phân tích cú pháp xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
+              \item Probabilistic intent parser: Trình phân tích cú pháp mục đích nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích cú pháp xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
+              \item Entity resolution:
+          \end{itemize}
+\end{itemize}
