@@ -49,7 +49,8 @@ Các khái niệm cơ bản:
     \item[--] Cho mình hỏi, ra ngoài đường hôm nay có phải mang áo mưa không?
 \end{itemize}
 Có thể nói, bước tạo dữ liệu huấn luyện cho bài toán phân lớp intent là một trong những công việc quan trọng nhất khi phát triển hệ thống chatbot và ảnh hưởng lớn tới chất lượng sản phẩm của hệ thống chatbot về sau. Công việc này cũng đòi hỏi thời gian, công sức khá lớn của nhà phát triển chatbot.
-Mô hình học máy cho bài toán phân lớp ý định người dùng.
+
+Mô hình học máy cho bài toán phân lớp ý định người dùng:
 
 Khi đã có dữ liệu huấn luyện cho bài toán phân lớp intent, chúng ta sẽ mô hình bài toán thành bài toán phân lớp văn bản. Bài toán phân lớp văn bản (text categorization) là một bài toán kinh điển trong ngành NLP và khai phá văn bản (Text Mining). Mô hình phân lớp văn bản cho bài toán phân lớp intent được phát biểu một cách hình thức như sau:
 
@@ -78,7 +79,7 @@ Sau khi có một mô hình phân lớp intent, chúng ta có thể sử dụng 
 
 \section{Trích xuất thông tin}
 
-Cách tiếp cận phổ biến cho bài toán trích xuất thông tin là mô hình hoá bài toán thành bài toán gán nhãn chuỗi (sequence labeling). Đầu vào của bài toán gán nhãn chuỗi là một dãy các từ, và đầu ra là một dãy các nhãn tương ứng các các từ trong đầu vào. Chúng ta sẽ sử dụng các mô hình học máy để học một mô hình gán nhãn từ một tập dữ liệu đầu vào bao gồm các cặp (x1…xn, y1…yn), trong đó x1…xn là dãy các từ, y1…ynlà dãy các nhãn. Độ dài của các dãy từ trong tập dữ liệu có thể khác nhau.
+Cách tiếp cận phổ biến cho bài toán trích xuất thông tin là mô hình hoá bài toán thành bài toán gán nhãn chuỗi (sequence labeling). Đầu vào của bài toán gán nhãn chuỗi là một dãy các từ, và đầu ra là một dãy các nhãn tương ứng các các từ trong đầu vào. Chúng ta sẽ sử dụng các mô hình học máy để học một mô hình gán nhãn từ một tập dữ liệu đầu vào bao gồm các cặp (x1…xn, y1…yn), trong đó x1…xn là dãy các từ, y1…yn là dãy các nhãn. Độ dài của các dãy từ trong tập dữ liệu có thể khác nhau.
 
 Trong bài toán trích xuất thông tin, tập nhãn cho các từ trong câu đầu vào thường được tạo ra theo  mô hình BIO, với B là viết tắt của “Beginning”, I là viết tắt của “Inside”, và O là viết tắt của “Outside”. Khi biết vị trí từ bắt đầu của một thực thể và các từ nằm trong thực thể đó, chúng ta có thể xác định vị trí của thực thể trong câu. Trong ví dụ ở trên, dãy các nhãn tương ứng với dãy của các từ trong câu hội thoại đầu vào được minh hoạ ở hình \ref{fig:model-BIO}.
 
@@ -151,7 +152,7 @@ Về mặt dữ liệu:
     \item[--] Dịch từng từ sang tiếng Anh, ta được: ['ways', 'gone', 'word', 'Swordsman', 'learn', 'GrosDs', 'Monk', 'until', 'Swordsman', 'learn', 'Lam', 'Lang']
 \end{itemize}
 
-Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1yoQk3AuViJpkcDQumQI-SbIw_iGyaGoJ/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1i2YNlvZTVsTU2WrzIMBmxl4FcJuAtVyV/view?usp=sharing}}
+Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1nfwUaNtGlk2c5oeK8b6v0lFKC2sb4uAa/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1Lo7Ec5CCPmH0nk3vz1LKXO1iZ2dDP9p1/view?usp=sharing}}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{images/trainingdata_dichtungtu.png}
@@ -159,11 +160,12 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
     \label{fig:sodohethongchiduong}
 \end{figure}
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình 3.3, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1e2Z0g4irQXqeNMzz4rP1UPQ3OKqYsMPI/view?usp=sharing}}:
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình 3.3, xem chi tiết \footnote{\url{https://drive.google.com/file/d/15smz_5u4nV2Wy3yGMAemE8fbdjXFMiPZ/view?usp=sharing}}:
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=15cm]{images/metrics-dich-tung-t.png}
+    \includegraphics[width=15cm]{images/metrics-word2word.png}
+    
     \caption{Các chỉ số của mô hình}
     \label{fig:sodohethongchiduong}
 \end{figure}
@@ -184,7 +186,7 @@ Trong tiếng Việt, dấu cách (space) không được sử dụng như 1 kí
 
 Về vấn đề những slot bị dịch thành tiếng Anh làm cho nó không còn ý nghĩa nữa, nhóm em nhận thấy rằng những slot này chủ yếu là danh từ, nên nhóm sẽ sử dụng pos tagging để gán nhãn từ loại, những từ nào thuộc danh từ thì sẽ không cho dịch thành tiếng Anh.
 
-Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{\url{https://drive.google.com/file/d/1riZLV1dam9U6q5fuutBFZkzpC6IGgvbb/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{\url{https://drive.google.com/file/d/1Jq1x3-owrcL1TN1igPr7HFNRxTk2emW2/view?usp=sharing}}:
+Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}:
 
 \begin{figure}[htp]
     \centering
@@ -193,11 +195,12 @@ Về vấn đề những slot bị dịch thành tiếng Anh làm cho nó không
     \label{fig:sodohethongchiduong}
 \end{figure}
 
-Sau khi huấn luyện mô hình và đem đi đánh giá nhóm nhận được kết quả như  hình 3.4, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1UU7_04Ps6WHZXSujZxNqaZKZhtvYsnrL/view?usp=sharing}}:
+Sau khi huấn luyện mô hình và đem đi đánh giá nhóm nhận được kết quả như  hình 3.4, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1pBegsfVWfMpW-YQHFQvhh1mX49uOESLF/view?usp=sharing}}:
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=15cm]{images/metrics-dich-tung-t.png}
+    \includegraphics[width=15cm]{images/metrics-word2word+postag.png}
+    
     \caption{Các chỉ số của mô hình}
     \label{fig:sodohethongchiduong}
 \end{figure}
@@ -206,8 +209,12 @@ Nhận xét kết quả đạt được:
 \begin{itemize}
     \item[--] Sau khi áp dụng tách từ và phân loại từ vựng, nhóm đã xử lý tương đối được vấn đề dịch những slot làm mất ý nghĩa của chúng: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word đại\_học khoa\_học\_tự\_nhiên until đại\_học bách\_khoa gone như\_thế\_nào"
 \end{itemize}
+Tuy nhiên vẫn còn một vài trường hợp dịch còn chưa ổn, ví dụ:
+ \begin{itemize}
+ \item[--] "Đại học Khoa học Xã hội và Nhân văn" được dịch thành "Đại học Khoa học Xã hội their Nhân văn".
+ \item[--] Một số từ được dịch không đúng ngữ cảnh. Ví dụ như: "từ" => "word"; "đến" => "until".
+ \end{itemize}
 
-Tuy nhiên vẫn còn một vài trường hợp dịch còn chưa ổn, ví dụ như "Đại học Khoa học Xã hội và Nhân văn" được dịch thành "Đại học Khoa học Xã hội their Nhân văn"
 
 \subsection{Xây dựng bộ từ điển}
 Để có thể xử lý tốt hơn về vấn đề ý nghĩa trong câu được dịch sang một cách chính xác hơn. Nhóm chúng em đã quyết định xây dựng mô hình so khớp dài nhất (longest matching), bằng cách xây dựng một bộ từ điển, và tìm từ dài nhất có trong bộ từ điển đó để tiến hành dịch. Bộ từ điển này nằm trong phạm vi hỏi đường nên có thể xây dựng với các từ ngữ cụ thể có trong chủ đề, từ đó việc dịch sẽ đạt hiệu quả hơn.
@@ -230,7 +237,7 @@ Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước t
     \label{fig:longest-word}
 \end{figure}
 
-Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{\url{https://drive.google.com/file/d/1l6TW8QdhZYOC7uhCpIJpsuSwVfrSv5ie/view?usp=sharing}} và bộ dữ liệu kiểm thử \footnote{\url{https://drive.google.com/file/d/1DpIxFSOjwP_djW-V1jpaLH4HTwGgGZkA/view?usp=sharing}}
+Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}} và bộ dữ liệu kiểm thử \footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{images/trainingdata-tudien.png}
@@ -239,11 +246,11 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{\url{https:/
 
 \end{figure}
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình 3.8, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1HSe-ri76d8jbF3FZUCrDiFawHI17D18a/view?usp=sharing}}:
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình 3.8, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1EGU3twPZBkS-zSkmIJ8viifMRkOXstvV/view?usp=sharing}}:
 
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=15cm]{images/metrics-tudien.png}
+    \includegraphics[width=15cm]{images/metrics-dict}
     \caption{Các chỉ số của mô hình}
     \label{fig:sodohethongchiduong}
 \end{figure}
