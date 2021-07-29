@@ -102,3 +102,125 @@ Tính năng chỉ đường của Google Maps cung cấp công cụ lập kế h
               \item Entity resolution:
           \end{itemize}
 \end{itemize}
+\section{So sánh các nền tảng hiểu ngôn ngữ tự nhiên}
+
+ \begin{itemize}
+      \item[--] 	Hầu hết các chatbot và trợ lý giọng nói đều dựa vào các dịch vụ đám mây cho NLU của họ. Những dịch vụ phổ biến nhất bao gồm Dialogflow\footnote{\url{https://dialogflow.com/}}(Google, ex API.ai), Amazon Lex\footnote{\url{https://docs.aws.amazon.com/lex/latest/dg/what-is.html}}, Amazon Alexa\footnote{\url{https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html}}, Luis.ai\footnote{\url{https://www.luis.ai/}} (Microsoft), Wit.ai\footnote{\url{https://wit.ai/}} (Facebook) và IBM Watson\footnote{\url{https://www.ibm.com/watson/services/natural-language-understanding/}}.
+	\item[--] Một điểm chung của tất cả các giải pháp này là chúng hoàn toàn tập trung, chạy trên máy chủ của nhà cung cấp. Điều này có nghĩa là họ có thể truy cập tất cả dữ liệu đang được gửi đến dịch vụ của họ và sử dụng lại nó theo ý muốn.
+	\item[--] Snips NLU\footnote{\url{https://github.com/snipsco/snips-nlu}} là một thư viện Python có thể được sử dụng để dễ dàng đào tạo các mô hình và sử dụng các mô hình được đào tạo để đưa ra dự đoán về các truy vấn mới.
+	
+	\item[--] Snips NLU là mã nguồn mở, chạy offline nên không bao giờ đụng vào, xử lý hoặc thu thập bất kỳ dữ liệu người dùng nào.
+	
+	\item[--] Ngoài ra, chúng ta còn có Snips NLU-rs\footnote{\url{https://github.com/snipsco/snips-nlu-rs}}, một triển khai Rust tập trung vào phần dự đoán (hay còn gọi là suy luận). Thư viện này có thể được sử dụng trên hầu hết các kiến trúc hiện đại: trên các thiết bị nhỏ được kết nối, trên thiết bị di động, trên máy tính để bàn hoặc trên máy chủ. Nó hiện có thể xử lý 5 ngôn ngữ (tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Tây Ban Nha và tiếng Hàn), với nhiều ngôn ngữ được bổ sung thường xuyên.
+	\item[--] Bây giờ chúng ta hãy xem xét tốc độ của Snips NLU , chúng ta sẽ tập trung vào hiệu suất và độ chính xác, cho thấy rằng công nghệ này hoạt động ngang bằng hoặc tốt hơn các giải pháp dựa trên đám mây.
+	 
+	\textbf{Thời gian chạy suy luận} 
+ 
+	\item[--] Đây là thời gian chạy trung bình để xử lý một truy vấn trong một trợ lý điển hình\footnote{\url{https://github.com/sebischair/NLU-Evaluation-Corpora/blob/master/AskUbuntuCorpus.json}}:
+
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/averageTime.png}
+    \caption{Average time to parse a query with Snips NLU-rs}
+    \label{fig:system-class-intent}
+\end{figure}
+
+	\item[--]Trung bình, mất chưa đến 2 mili giây để phân tích cú pháp một truy vấn trên Macbook Pro 2015 với Core i7 2,5 GHz. Vì nền tảng được tối ưu hóa cho hiệu suất và không yêu cầu quyền truy cập mạng, nên thời gian thu được thông thường có thể nhanh gấp 2 lần so với việc sử dụng dịch vụ đám mây!
+	
+	\item[--]Bộ nhớ cũng đã được tối ưu hóa, từ vài trăm KB RAM cho các trường hợp thông thường đến vài MB cho các trợ lý phức tạp nhất. Điều đó cũng có nghĩa là các máy chủ mạnh hơn có thể xử lý hàng trăm trường hợp song song.
+	
+	\textbf{Sự chính xác} 
+	
+	\item[--]Để xác minh rằng công cụ Snips NLU hoạt động tốt, đội ngũ Snips đã so sánh\footnote{\url{https://medium.com/snips-ai/benchmarking-natural-language-understanding-systems-google-facebook-microsoft-and-snips-2b8ddcf9fb19}} nó với các dịch vụ đám mây, bao gồm API.ai (nay là DialogFlow, Google), Wit.ai (Facebook), Luis.ai (Microsoft) và Amazon Alexa. Mọi giải pháp đều được đào tạo bằng cách sử dụng cùng một bộ dữ liệu\footnote{\url{https://github.com/snipsco/nlu-benchmark/tree/master/2017-06-custom-intent-engines}} và được thử nghiệm trên cùng một bộ thử nghiệm. Kết quả cho thấy Snips NLU chính xác bằng hoặc tốt hơn các giải pháp đám mây ở các nhiệm vụ khai thác vị trí, bất kể lượng dữ liệu đào tạo được sử dụng nhiều hay ít.
+
+	\item[--]Bộ dữ liệu chứa 2400 truy vấn cho từng ý định, gồm 7 ý định:
+	
+		\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/7ntents.png}
+    \caption{7 intents covered in this benchmark}
+    \label{fig:system-class-intent}
+\end{figure}
+	Bộ dữ liệu này có sẵn miễn phí trên Github\footnote{\url{https://github.com/snipsco/nlu-benchmark}}.
+	\item[--]Với mọi hệ thống NLU, việc xây dựng mô hình luôn đi qua các bước giống nhau: nhập các ví dụ về các truy vấn có thể mà người dùng sẽ thực hiện và gắn thẻ các phân đoạn câu phù hợp với các thuộc tính mà bạn đang tìm kiếm.
+	
+	\item[--]Đội ngũ Snips đã tính toán hiệu suất của từng dịch vụ. Điều này được thực hiện bằng cách chọn ngẫu nhiên nhiều bộ đào tạo gồm 70 truy vấn cho mỗi mục đích nhất định, sau đó cung cấp cho từng NLU engine. Các hiệu suất được tính toán bằng cách đo lường hiệu suất trên một tập dữ liệu xác thực. Đối với mỗi ý định, đội ngũ Snips tính trung bình điểm số thu được qua nhiều lần lặp lại thử nghiệm. Chi tiết của quy trình được mô tả trên Github\footnote{\url{https://github.com/snipsco/nlu-benchmark}}. Dưới đây là kết quả thu được:
+
+		\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/f1Score70Intents.png}
+    \caption{F1-score (per intent, and averaged) for the different providers trained on 70 queries / intent.}
+    \label{fig:system-class-intent}
+		\end{figure}
+	
+	\item[--]Những kết quả này cho thấy rằng công cụ NLU mà bạn tạo bằng Snips sẽ đáng tin cậy hơn đáng kể so với những gì đạt được với các nền tảng khác. Nếu chúng ta đi sâu vào chi tiết một chút, chúng ta thấy rằng các giải pháp của Microsoft, Facebook và Amazon bị thấp do độ nhạy kém của chúng: recall lần lượt là 53%, 56% và 49%, so với 65% đối với Google và 77% đối với Snips.
+	
+	\textbf{Một AI thực sự đáng tin cậy} 
+	
+	\item[--]Điểm đáng chú ý chính là các hiệu suất đạt được trong bối cảnh này không hoàn hảo. Không có giải pháp nào trong số các giải pháp này đạt hơn 80%.
+	
+	\item[--]Có một lý do cho điều đó: thật khó để xử lý bất kỳ trường hợp nào có thể xảy ra, khi bạn chỉ thấy 70 ví dụ về một mục đích nhất định.
+	
+	\item[--]Nếu công cụ Snips NLU được đào tạo trên 2000 truy vấn thay vì 70, thì hiệu suất sẽ đạt được như sau:
+	
+		\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/f1Score2000Intents.png}
+    \caption{F1-score (per intent, and averaged) for the Snips NLU engine trained on 2000 queries / intent.}
+    \label{fig:system-class-intent}
+		\end{figure}
+		
+	
+	\item[--]Sau khi tăng dữ liệu đào tạo trên 2000 truy vấn trên mỗi mục đích, F1-score trung bình đã đạt 93%. Bên cạnh đó, các thuộc tính được trích xuất chính xác trong 95% trường hợp (precision) và khả năng xác định thuộc tính (recall) là hơn 90%.
+	
+	\item[--]Bằng hình ảnh minh họa cụ thể, hãy xem ba truy vấn được lấy từ bộ xác thực, để hiểu cách các giải pháp khác nhau hoạt động. Trong ví dụ đơn giản sau, tất cả các công cụ NLU hoạt động chính xác:
+	
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/slotfilling1.png}
+    
+    \label{fig:system-class-intent}
+		\end{figure}
+		
+		\item[--]Ở dưới đây, Alexa nhầm lẫn Sacaton với một quốc gia và với ngày giờ bởi API.ai. API.ai cùng với Wit và Alexa hiểu rằng gluten là một loại nhà hàng. Mặt khác, Luis không phát hiện ra bất kỳ thuộc tính nào.
+
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/slotfilling2.png}
+    
+    \label{fig:system-class-intent}
+		\end{figure}
+		
+	\item[--]Trong ví dụ cuối cùng này, chúng ta thấy rằng một lần nữa, Luis không phát hiện ra bất kỳ vị trí nào. API.ai nhầm lẫn the best bistro với tên nhà hàng và Wit.ai diễn giải đại từ “me” là trạng thái mà người dùng muốn đặt chỗ. Mặt khác, Alexa có câu trả lời chính xác.
+
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/slotfilling3.png}
+    
+    \label{fig:system-class-intent}
+		\end{figure}
+		
+	
+	\item[--]Dữ liệu điểm chuẩn, cũng như hiệu suất chi tiết của từng nhà cung cấp có thể được tìm thấy trên Github\footnote{\url{https://github.com/snipsco/nlu-benchmark}}.
+	
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/benchmarking.png}
+    \caption{Benchmarking Natural Language Understanding Systems}
+    \label{fig:system-class-intent}
+		\end{figure}
+
+	\item[--]Đội ngũ Snips cũng tái sản xuất một điểm chuẩn\footnote{\url{http://workshop.colips.org/wochat/@sigdial2017/documents/SIGDIAL22.pdf}} được công bố vào mùa hè năm ngoái. Trong bài viết này, các tác giả đã đánh giá hiệu suất của API.ai (nay là Dialogflow, Google), Luis.ai (Microsoft), IBM Watson và Rasa NLU\footnote{\url{https://nlu.rasa.ai/}}. Để công bằng, đội ngũ Snips đã sử dụng phiên bản mới nhất của Rasa NLU và so sánh nó với phiên bản mới nhất của Snips NLU (cả hai đều có màu xanh lam đậm).
+	
+	\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/ComparisonOfNLU/Reproducing.png}
+    \caption{Reproducing “Evaluating Natural Language Understanding Services for Conversational Question Answering Systems”.}
+    \label{fig:system-class-intent}
+		\end{figure}
+	
+	\item[--]Trên tất cả các điểm chuẩn, Snips NLU xếp hạng cao nhất hoặc cao thứ hai, mặc dù nhanh hơn và nhẹ hơn mọi giải pháp khác. Điều này cho thấy việc lựa chọn giải pháp NLU đám mây - và hy sinh quyền riêng tư và quyền kiểm soát dữ liệu - hoàn toàn không còn cần thiết nữa. Snips NLU là một giải pháp thay thế mạnh mẽ cho các giải pháp hiện có.
+
+
+
+ \end{itemize}
