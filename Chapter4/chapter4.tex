@@ -80,7 +80,7 @@ Phần mềm hệ thống gồm ba nhóm (xem hình Kiến trúc hệ thống \r
 
 Máy chủ (Server) thực hiện chương trình xử lý và phân tích dữ liệu. Chương trình này chịu trách nhiệm xử lý dữ liệu gửi lên (Text) bao gồm thành phần: Phân tích ý định, trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi của người gửi. Khi ứng dụng điện thoại gửi Text lên, chương trình xử lý rồi trả về kết quả trên ứng dụng điện thoại. Máy chủ sẽ cung cấp các API tương ứng. Các API cung cấp giao diện cho phép app di động giao tiếp với chương trình xử lý ở máy chủ.
 
-Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định, trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map\cite{google-map}. 
+Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định, trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map\cite{google-map}.
 
 Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng dụng trên điện thoại di động. Giao diện này cho phép người dùng sử dụng để hỏi các câu hỏi về chỉ đường từ một địa chỉ này đến một địa chỉ khác cụ thể bằng giọng nói (ghi âm câu nói) hoặc là nhập văn bản trên ứng dụng và trả về cho người dùng kết quả phù hợp.
 \begin{itemize}
@@ -92,7 +92,17 @@ Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bả
 
 \section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
 \subsection{Tạo dữ liệu tiếng Việt}
-Nhóm đã thực hiện tạo dữ liệu gồm 4 intent thuộc lĩnh vực đường đi. Mỗi intent gồm 20 câu huấn luyện và 10 câu để kiểm thử.
+Nhóm đã thực hiện tạo dữ liệu cho 4 intent thuộc lĩnh vực đường đi:
+
+\begin{itemize}
+    \item[--] Đường đi từ một địa điểm đến một địa điểm - "findRouteAB"
+    \item[--] Hỏi vị trí hiện tại - "askLocation"
+    \item[--] Hỏi địa chỉ chính xác của một địa danh cụ thể - "askAddress"
+    \item[--] Hỏi khoảng cách từ một địa điểm đến một địa điểm - "askDistance"
+\end{itemize}
+
+Trong đó, mỗi intent gồm 20 câu huấn luyện và 10 câu để kiểm thử.
+
 \begin{itemize}
     \item[--] Tạo dữ liệu trên file txt. Với intent "findRouteAB" ta có câu ví dụ: "Đường đi từ đại học Sài gòn đến Cao đẳng sài gòn"
     \item[--] Chuyển dữ liệu sang dạng json để thuận tiện cho việc huấn luyện (Xem hình dữ liệu dưới dạng file json \ref{fig:data-train-json} ).
@@ -104,24 +114,13 @@ Nhóm đã thực hiện tạo dữ liệu gồm 4 intent thuộc lĩnh vực đ
     \label{fig:data-train-json}
 \end{figure}
 
-\subsection{Huấn luyện dữ liệu và kết quả}
+\subsection{Huấn luyện dữ liệu}
 
 Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh để chuẩn bị dữ liệu cho quá trình huấn luyện mà chúng em đã tiến hành nghiên cứu, chúng em nhận thấy kết quả của việc "Xây dựng bộ từ điển" cho riêng ứng dụng theo các chủ đề, lĩnh vực cụ thể đem lại hiệu quả tốt trong quá trình dịch và không làm sai lệnh ngữ nghĩa của câu. Vì vậy chúng em chọn giải pháp "Xây dựng bộ từ điển" để thực hiện chuyển hoá dữ liệu sang tiếng Anh để tiến hành thực hiện huấn luyện dữ liệu.
 
-Chúng em đã tiến hành dịch toàn bộ dữ liệu huấn luyện sang tiếng Anh với 80 câu và 40 câu test. Trong đó, dữ liệu huấn luyện chi tiết cho mỗi intent như sau: 
+Bài toán phân lớp (Classification) là quá trình phân lớp một đối tượng dữ liệu vào một hay nhiều lớp đã cho trước nhờ một mô hình phân lớp (model). Mô hình này được xây dựng dựa trên một tập dữ liệu được xây dựng trước đó có gán nhãn (hay còn gọi là tập huấn luyện). Quá trình phân lớp là quá trình gán nhãn cho đối tượng dữ liệu.
 
-\begin{itemize}
-    \item[--] Đường đi từ một địa điểm đến một địa điểm - "findRouteAB": Huấn luyện với 20 câu và 10 câu test.
-    \item[--] Hỏi vị trí hiện tại - "askLocation": Huấn luyện với 20 câu và 10 câu test.
-    \item[--] Hỏi địa chỉ chính xác của một địa danh cụ thể - "askAddress": Huấn luyện với 20 câu và 10 câu test.
-    \item[--] Hỏi khoảng cách từ một địa điểm đến một địa điểm - "askDistance": Huấn luyện với 20 câu và 10 câu test.
-\end{itemize}
+Ứng dụng của bài toán này được sử dụng rất nhiều và rộng rãi  trong thực tế ví dụ như bài toán nhận dạng khuôn mặt, nhận diện giọng nói, phát hiện email spam,.. Chúng em lựa chọn bài toán này để thực hiện trong phạm vi đề tài này.
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình \ref{fig:sodohethongchiduong}, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1EGU3twPZBkS-zSkmIJ8viifMRkOXstvV/view?usp=sharing}}:
+Chúng em đã tiến hành dịch toàn bộ dữ liệu huấn luyện từ tiếng Việt sang tiếng Anh với tổng cộng 80 câu và 40 câu kiểm thử. Trong đó, dữ liệu chi tiết cho mỗi intent là huấn luyện 20 câu và 10 câu kiểm thử.
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=15cm]{images/metrics-dict.png}
-    \caption{Các chỉ số của mô hình}
-    \label{fig:sodohethongchiduong}
-\end{figure}
