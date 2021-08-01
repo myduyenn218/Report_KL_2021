@@ -123,7 +123,10 @@ Với mong muốn xây dựng một ứng dụng chatbot sử dụng trong lĩnh
           \begin{itemize}
               \item Deterministic intent parser: Mục tiêu của trình phân tích cú pháp xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
               \item Probabilistic intent parser: Trình phân tích cú pháp mục đích nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích cú pháp xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
-              \item Entity resolution:
+              \item Entity resolution: Phân giải thực thể giúp biến đổi các giá trị thực thể thành định dạng chuẩn ISO. Ví dụ: giá trị thực thể là "tomorrow evening" sẽ được biến đổi thành "2018-04-19 19:00:00 +00:00". Những giá trị thực thể có thể được phân giải là những built-in entities (numbers, ordinals, amounts with unit, date and times, durations, v.v...)
+       
+              
+              
           \end{itemize}
 \end{itemize}
 \section{So sánh các nền tảng hiểu ngôn ngữ tự nhiên}
@@ -205,7 +208,7 @@ Cả hai kho tài liệu đều có sẵn trên GitHub dưới Giấy phép Crea
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/1.png}
             \caption{Các loại thực thể trong kho ngữ liệu chatbot}
-            \label{fig:system-class-intent}
+            \label{fig:entity-types-in-chatbot-corpus}
         \end{figure}
 
 
@@ -233,21 +236,21 @@ Cả hai kho tài liệu đều có sẵn trên GitHub dưới Giấy phép Crea
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/webappdatasets.png}
             \caption{Bộ dữ liệu web applications}
-            \label{fig:system-class-intent}
+            \label{fig:web-apps-dataset}
         \end{figure}
         
               \begin{figure}[htp]
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/askubuntudatasets.png}
             \caption{Bộ dữ liệu ask ubuntu}
-            \label{fig:system-class-intent}
+            \label{fig:ask-ubuntu-dataset}
         \end{figure}
         
               \begin{figure}[htp]
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/entityTypesStackExchange.png}
             \caption{Các loại thực thể trong bộ ngữ liệu StackExchange}
-            \label{fig:system-class-intent}
+            \label{fig:entity-types-in-stackexchange}
         \end{figure}
         
 \textbf{Phần thí nghiệm}
@@ -269,8 +272,8 @@ Kết quả thu được được mô tả dưới hình sau:
       \begin{figure}[htp]
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/FscoresNLUServices.png}
-            \caption{F1-score của các dịch vụ NLU theo bộ ngữ liệu}
-            \label{fig:system-class-intent}
+            \caption{F1-score của các dịch vụ NLU theo các bộ ngữ liệu}
+            \label{fig:F1-score-of-3-corpos}
         \end{figure}
         
    
@@ -317,14 +320,14 @@ Dữ liệu hình 2.13 cho thấy điểm F-score trung bình cho mỗi nền t�
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/overallScores4IntentandEntity.png}
             \caption{Các chỉ số của Intent và Entity}
-            \label{fig:system-class-intent}
+            \label{fig:soverall-scores-for-intent-entity}
         \end{figure}
    
          \begin{figure}[htp]
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/combinedOverallScores.png}
             \caption{Điểm trung bình của cả Intent và Entity}
-            \label{fig:system-class-intent}
+            \label{fig:combined-overall-scores}
         \end{figure}
         
    \begin{itemize}
@@ -358,14 +361,14 @@ Dữ liệu hình 2.13 cho thấy điểm F-score trung bình cho mỗi nền t�
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/benchmark2017and2018.png}
             \caption{Precision, recall và F1-score trên 3 bộ dữ liệu}
-            \label{fig:system-class-intent}
+            \label{fig:benchmark-2017-and-2018}
         \end{figure}
         
       \begin{figure}[htp]
             \centering
             \includegraphics[width=10cm]{images/comparisonimg/averageF1-scores.png}
             \caption{Trung bình F1-score của Intent và Entity trên 3 bộ dữ liệu}
-            \label{fig:system-class-intent}
+            \label{fig:average-f1-scores-snips}
         \end{figure}
         
         \begin{itemize}
