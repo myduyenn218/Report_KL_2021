@@ -157,17 +157,16 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
     \centering
     \includegraphics[width=10cm]{images/trainingdata_dichtungtu.png}
     \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch}
-    \label{fig:sodohethongchiduong}
+    \label{fig:trainingdata_dichtungtu}
 \end{figure}
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình 3.3, xem chi tiết \footnote{\url{https://drive.google.com/file/d/15smz_5u4nV2Wy3yGMAemE8fbdjXFMiPZ/view?usp=sharing}}:
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như \ref{fig:metrics-word2word}), xem chi tiết \footnote{\url{https://drive.google.com/file/d/15smz_5u4nV2Wy3yGMAemE8fbdjXFMiPZ/view?usp=sharing}}:
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/metrics-word2word.png}
-    
     \caption{Các chỉ số của mô hình}
-    \label{fig:sodohethongchiduong}
+    \label{fig:metrics-word2word}
 \end{figure}
 Nhận xét kết quả đạt được:
 \begin{itemize}
@@ -192,17 +191,16 @@ Về vấn đề những slot bị dịch thành tiếng Anh làm cho nó không
     \centering
     \includegraphics[width=10cm]{images/trainingdata-wordsegment.png}
     \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp dùng word segmentation và pos tagging}
-    \label{fig:sodohethongchiduong}
+    \label{fig:trainingdata-wordsegment}
 \end{figure}
 
-Sau khi huấn luyện mô hình và đem đi đánh giá nhóm nhận được kết quả như  hình 3.4, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1pBegsfVWfMpW-YQHFQvhh1mX49uOESLF/view?usp=sharing}}:
+Sau khi huấn luyện mô hình và đem đi đánh giá nhóm nhận được kết quả như \ref{fig:metrics-word2word-postag}, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1pBegsfVWfMpW-YQHFQvhh1mX49uOESLF/view?usp=sharing}}:
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/metrics-word2word+postag.png}
-    
     \caption{Các chỉ số của mô hình}
-    \label{fig:sodohethongchiduong}
+    \label{fig:metrics-word2word-postag}
 \end{figure}
 
 Nhận xét kết quả đạt được:
@@ -210,10 +208,10 @@ Nhận xét kết quả đạt được:
     \item[--] Sau khi áp dụng tách từ và phân loại từ vựng, nhóm đã xử lý tương đối được vấn đề dịch những slot làm mất ý nghĩa của chúng: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word đại\_học khoa\_học\_tự\_nhiên until đại\_học bách\_khoa gone như\_thế\_nào"
 \end{itemize}
 Tuy nhiên vẫn còn một vài trường hợp dịch còn chưa ổn, ví dụ:
- \begin{itemize}
- \item[--] "Đại học Khoa học Xã hội và Nhân văn" được dịch thành "Đại học Khoa học Xã hội their Nhân văn".
- \item[--] Một số từ được dịch không đúng ngữ cảnh. Ví dụ như: "từ" => "word"; "đến" => "until".
- \end{itemize}
+\begin{itemize}
+    \item[--] "Đại học Khoa học Xã hội và Nhân văn" được dịch thành "Đại học Khoa học Xã hội their Nhân văn".
+    \item[--] Một số từ được dịch không đúng ngữ cảnh. Ví dụ như: "từ" => "word"; "đến" => "until".
+\end{itemize}
 
 
 \subsection{Xây dựng bộ từ điển}
@@ -242,17 +240,17 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
     \centering
     \includegraphics[width=10cm]{images/trainingdata-tudien.png}
     \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp xây dựng từ điển}
-    \label{fig:sodohethongchiduong}
+    \label{fig:trainingdata-tudien}
 
 \end{figure}
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình 3.8, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1EGU3twPZBkS-zSkmIJ8viifMRkOXstvV/view?usp=sharing}}:
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như \ref{fig:metrics-dict-ex}, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1EGU3twPZBkS-zSkmIJ8viifMRkOXstvV/view?usp=sharing}}:
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/metrics-dict}
     \caption{Các chỉ số của mô hình}
-    \label{fig:sodohethongchiduong}
+    \label{fig:metrics-dict-ex}
 \end{figure}
 Kết quả đạt được sau khi dùng phương pháp dịch bằng cách xây dựng bộ từ điển:
 \begin{itemize}
