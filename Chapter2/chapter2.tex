@@ -147,9 +147,9 @@ Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn 
 \textbf{Snips NLU:}  là một công cụ hiểu ngôn ngữ tự nhiên cho phép phân tích cú pháp các câu được viết bằng ngôn ngữ tự nhiên và trích xuất thông tin có cấu trúc. Chỉ cần một ít dữ liệu đào tạo là có thể tạo ra một công cụ nhận dạng ý định mạnh mẽ. Snips NLU có thể được tùy chỉnh và hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Ý, v.v...
 
 \subsection{Yêu cầu lựa chọn}
-Do sự tồn tại của nhiều dịch vụ NLU, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em sẽ lựa chọn nền tảng NLU có năng suất cao để có thể đem lại kết quả tốt.
+Do sự tồn tại của nhiều dịch vụ NLU, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em sẽ lựa chọn nền tảng NLU có hiệu năng cao để có thể đem lại kết quả tốt.
 
-Nếu năng suất giữa các nền tảng thương mại và nền tảng mã nguồn mở không có sự chênh lệch nhiều, nhóm sẽ ưu tiên lựa chọn nền tảng NLU mã nguồn mở do những lợi ích sau:
+Nếu hiệu năng giữa các nền tảng thương mại và nền tảng mã nguồn mở không có sự chênh lệch nhiều, nhóm sẽ ưu tiên lựa chọn nền tảng NLU mã nguồn mở do những lợi ích sau:
 \begin{itemize}
     \item[--] Chi phí:  tốn rất ít hoặc không có chi phí trả trước cho mã nguồn mở. chúng ta chỉ cần tải mã xuống từ một nguồn hợp pháp và sử dụng.
     \item[--] Độ tin cậy: Phần mềm nguồn mở có độ tin cậy cao. Thông thường, hàng nghìn chuyên gia phát triển làm việc để tạo ra và không ngừng cải tiến phần mềm nguồn mở. Điều này có nghĩa là có nhiều khả năng ai đó sẽ nhận ra một lỗ hổng hoặc một lỗi và sửa chữa nó ngay lập tức.
@@ -176,13 +176,13 @@ Bài báo so sánh hiệu năng giữa các dịch vụ NLU khác nhau bao gồm
 Dựa trên 2 kho dữ liệu khác nhau:
 \begin{itemize}
     \item[--] The Chatbot Corpus: Dựa trên các câu hỏi được thu thập bởi một Chatbot Telegram trong sử dụng sản xuất, trả lời câu hỏi về kết nối giao thông công cộng.
-    \item[--] The StackExchange Corpus: dựa trên dữ liệu từ hai nền tảng StackExchange\footnote{\url{https://stackexchange.com/}}: ask ubuntu\footnote{\url{https://askubuntu.com/}} và Web Applications\footnote{\url{}https://webapps.stackexchange.com/} Cả hai kho tài liệu đều có sẵn trên GitHub dưới Giấy phép Creative Commons CC BY-SA 3.011: https://github.com/sebischair/NLU-Evaluation-Corpora
+    \item[--] The StackExchange Corpus: dựa trên dữ liệu từ hai nền tảng StackExchange\footnote{\url{https://stackexchange.com/}}: ask ubuntu\footnote{\url{https://askubuntu.com/}} và Web Applications\footnote{\url{https://webapps.stackexchange.com/}} Cả hai kho tài liệu đều có sẵn trên GitHub\footnote{\url{https://github.com/sebischair/NLU-Evaluation-Corpora}}  dưới Giấy phép Creative Commons CC BY-SA 3.011.
 \end{itemize}
 
 Chatbot Corpus:
 
 \begin{itemize}
-    \item[--] Bao gồm 206 câu hỏi, được tác giả gán nhãn thủ công. Có 2 intent (Departure Time, Find Connection) trong kho ngữ liệu và 5 loại entity khác nhau (StationStart, StationDest, Criterion, Vehicle, Line). Ngôn ngữ chủ yếu là tiếng Anh, có lẫn một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện 100 câu và dữ liệu kiểm thử 106 câu.
+    \item[--] Bao gồm 206 câu hỏi, được tác giả gán nhãn thủ công. Có 2 intent (Departure Time, Find Connection) trong kho ngữ liệu và 5 loại entity khác nhau (StationStart, StationDest, Criterion, Vehicle, Line). Ngôn ngữ chủ yếu là tiếng Anh, một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện 100 câu và dữ liệu kiểm thử 106 câu.
 \end{itemize}
 
 \begin{figure}[htp]
@@ -195,7 +195,7 @@ Chatbot Corpus:
 StackExchange Corpus
 
 \begin{itemize}
-    \item[--] Đối với bộ dữ liệu StackExchange Corpus, tác giả chọn ra những câu hỏi có đánh giá cao nhất và nhiều lượt xem nhất từ 2 nền tảng ask ubuntu và web applications,  bởi vì chúng có khả năng là có chất lượng tốt hơn các câu hỏi ít phổ biến hơn.
+    \item[--] Đối với bộ dữ liệu StackExchange, tác giả chọn ra những câu hỏi có đánh giá cao nhất và nhiều lượt xem nhất từ 2 nền tảng ask ubuntu và web applications,  bởi vì chúng có khả năng là có chất lượng tốt hơn các câu hỏi ít phổ biến hơn.
         \item[--]Bộ dữ liệu thu được tổng cộng là 290 câu hỏi, 100 câu từ web applications và 190 câu từ ask ubuntu.
         \item[--]Ý định và thực thể cũng được gán nhãn thủ công:
         \begin{itemize}
@@ -232,12 +232,12 @@ StackExchange Corpus
 \begin{itemize}
     \item[--] Tác giả huấn luyện mô hình trên các nền tảng LUIS, Watson Conversation, API.ai, và RASA. Tất cả đều dùng trên cùng một bộ dữ liệu.
         \item[--]Sau đó bộ dữ liệu kiểm thử đã được gửi đến các dịch vụ NLU để gán nhãn, đem gán nhãn được dự đoán bởi dịch vụ NLU so sánh với nhãn thực tế.
-        \item[--]Để mà đánh giá kết quả, tác giả đã tính toán các độ đo precision và recall cũng như F-score cho từng intents, entity types, và corpora, cũng như kết quả tổng quát. Chúng ta sẽ nói rằng một dịch vụ tốt hơn dịch vụ kia nếu F-score của nó cao hơn.
+        \item[--]Để mà đánh giá kết quả, tác giả đã tính toán các độ đo precision và recall cũng như F-score cho từng intents, entity types, và từng bộ dữ liệu, cũng như kết quả tổng quát. Chúng ta sẽ nói rằng một dịch vụ tốt hơn dịch vụ kia nếu F-score của nó cao hơn.
 \end{itemize}
 
 \textbf{Đánh giá}
 
-Kết quả thu được được mô tả dưới hình sau:
+Kết quả thu được được mô tả dưới hình sau \ref{fig:comparisonimg-FscoresNLUServices}
 
 \begin{figure}[htp]
     \centering
@@ -258,8 +258,8 @@ Tương tự như bài báo trên, bài này cũng so sánh hiệu năng giữa 
 \textbf{Dữ liệu: }
 
 \begin{itemize}
-    \item[--] Dữ liệu được thu từ người dùng thật thông qua Amazon Mechanical Turk (AMT). Các câu hỏi thuộc về cách mọi người tương tác với robot gia đình, trong các tình huống được thiết kế trước, cụ thể là: alarm, audio, audiobook, calendar, cooking, datetime, email, game, general, IoT, lists, music, news, podcasts, general QA, radio, recommendations, social, food takeaway, transport, và weather.
-    \item[--] Dữ liệu cuối cùng bao gồm 25716 câu nói, gồm 64 ý định và 54 loại thực thể.
+    \item[--] Dữ liệu được thu từ người dùng thật thông qua Amazon Mechanical Turk (AMT). Các câu hỏi thuộc về cách mọi người tương tác với robot gia đình trong các tình huống được thiết kế trước, cụ thể là: alarm, audio, audiobook, calendar, cooking, datetime, email, game, general, IoT, lists, music, news, podcasts, general QA, radio, recommendations, social, food takeaway, transport, và weather.
+    \item[--] Sau khi thu thập, gán nhãn và kiểm tra, dữ liệu cuối cùng thu được bao gồm 25716 câu nói, gồm 64 ý định và 54 loại thực thể.
 \end{itemize}
 
 \textbf{Thí nghiệm đánh giá}
@@ -273,9 +273,9 @@ Dữ liệu huấn luyện và kiểm thử
 
 \textbf{Kết quả}
 
-Dữ liệu từ hình 2.12 cho thấy điểm trung bình cho phân lớp ý định và thực thể thông qua 10-fold cross validation.
+Dữ liệu từ hình \ref{fig:overallScores4IntentandEntity} cho thấy điểm trung bình cho phân lớp ý định và thực thể thông qua 10-fold cross validation.
 
-Dữ liệu hình 2.13 cho thấy điểm F-score trung bình cho mỗi nền tảng.
+Dữ liệu hình \ref{fig:combinedOverallScores} cho thấy điểm F-score trung bình cho mỗi nền tảng.
 
 \begin{figure}[htp]
     \centering
@@ -292,21 +292,21 @@ Dữ liệu hình 2.13 cho thấy điểm F-score trung bình cho mỗi nền t�
 \end{figure}
 
 \begin{itemize}
-    \item[--] Dựa vào hình 2.12, đối với intent, không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể, Watson có F1-score thấp do Precision rất thấp.
-    \item[--] hình 2.13 chỉ ra rằng tất cả các dịch vụ có F1-score tương đương nhau ngoại trừ Watson có điểm thấp hơn đáng kể.
+    \item[--] Dựa vào hình \ref{fig:overallScores4IntentandEntity}, đối với intent, không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể, Watson có F1-score thấp do Precision rất thấp.
+    \item[--] Hình \ref{fig:combinedOverallScores} chỉ ra rằng tất cả các dịch vụ có F1-score tương đương nhau ngoại trừ Watson có điểm thấp hơn đáng kể.
     \item[--] Trong bài so sánh này, ta thấy hiệu năng của Watson thấp nhất với F1-score là 0.657. Những nền tảng còn lại là Dialogflow, LUIS và RASA có hiệu năng tương đối cao, trong đó nền tảng mã nguồn mở Rasa có hiệu năng tốt nhất (0.822)
 \end{itemize}
 
 \textbf{III. Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces}
 
 \begin{itemize}
-    \item[--] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems. So sánh giữa các dịch vụ khác nhau của NLU [8]: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google) và nền tảng mã nguồn mở Rasa NLU [7].
-    \item[--] Để biết kết quả thô, hãy xem https://github.com/sonos/nlu-benchmark. Chỉ số chính được sử dụng trong điểm chuẩn này là F1-score trung bình của phân loại ý định và các thực thể.
+    \item[--] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems. So sánh hiệu năng giữa các dịch vụ NLU khác nhau: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google) và nền tảng mã nguồn mở Rasa NLU.
+    \item[--] Để biết kết quả thô, xem ở \url{https://github.com/sonos/nlu-benchmark}. Chỉ số chính được sử dụng trong điểm chuẩn này là F1-score trung bình của phân loại ý định và các thực thể.
 \end{itemize}
 
 \textbf{Dữ liệu}
 \begin{itemize}
-    \item[--] Dữ liệu bao gồm ba kho tài liệu. Hai trong số kho tài liệu được trích xuất từ StackExchange, một từ chatbot Telegram. Kết quả được trình bày trong Bảng 6. Hình 7 trình bày mức trung bình kết quả trên ba kho tài liệu, tương ứng với phần tổng thể của Bảng 6. Đối với Rasa, chúng tôi đã xem xét cả ba phần backend có thể có (Spacy, SKLearn + MITIE, MITIE). Tuy nhiên, chỉ có Spacy được chạy trên cả 3 bộ dữ liệu, vì lý do thời gian huấn luyện.
+    \item[--] Dữ liệu bao gồm ba kho tài liệu. Hai trong đó được trích xuất từ StackExchange, một từ chatbot Telegram. Kết quả được trình bày trong hình \ref{fig:benchmark2017and2018}. Hình \ref{fig:averageF1-scores} trình bày trung bình kết quả trên ba kho tài liệu, tương ứng với phần tổng thể của hình \ref{fig:benchmark2017and2018}. Rasa được xem xét trên cả ba phần backend có thể có (Spacy, SKLearn + MITIE, MITIE). Tuy nhiên vì lý do thời gian huấn luyện, chỉ có Spacy được chạy trên cả 3 bộ dữ liệu.
     \item[--] Để công bằng, phiên bản mới nhất của Rasa NLU cũng được sử dụng. Kết quả cho thấy Snips NLU xếp hạng cao thứ hai về tổng thể.
 \end{itemize}
 
@@ -325,7 +325,7 @@ Dữ liệu hình 2.13 cho thấy điểm F-score trung bình cho mỗi nền t�
 \end{figure}
 
 \begin{itemize}
-    \item[--] Dựa trên dữ liệu này, hiệu suất tốt nhất cũng thuộc về sản phẩm thương mại LUIS (F1-score 0.916), trong khi đó cả vị trí thứ 2 và thứ 3 đều thuộc về sản phẩm nguồn mở Snips (F1-score 0.877) và Rasa  (F1-score 0.861)
+    \item[--] Dựa trên dữ liệu hình \ref{fig:benchmark2017and2018}, hiệu suất tốt nhất cũng thuộc về sản phẩm thương mại LUIS (F1-score 0.916), trong khi đó cả vị trí thứ 2 và thứ 3 đều thuộc về sản phẩm nguồn mở Snips (F1-score 0.877) và Rasa  (F1-score 0.861)
     \item[--] Trong bài này nhóm em quan tâm đến kết quả so sánh giữa Rasa với Snips (đều là 2 nền tảng nguồn mở). Khi cả 2 đều sử dụng phiên bản mới nhất và được đánh giá trên cùng một bộ dữ liệu, cả Rasa và Snips đều thể hiện hiệu năng tốt và không chênh lệch nhau nhiều. Tuy nhiên F1-score của Snips nhỉnh hơn một chút so với Rasa (F1-score của Snips là 0.877 và của Rasa là 0.861)
 \end{itemize}
 
@@ -334,5 +334,5 @@ Dữ liệu hình 2.13 cho thấy điểm F-score trung bình cho mỗi nền t�
 \begin{itemize}
     \item[--] Dựa trên kết quả các bài báo mà nhóm tham khảo. Nhóm em rút ra được rằng giữa các nền tảng NLU khác nhau cho kết quả không giống nhau.
     \item[--] Các nền tảng nguồn mở vẫn có thể cạnh tranh được với các nền tảng thương mại. Mặc dù không có hiệu năng tốt nhất trên bảng so sánh, nhưng cả 2 nền tảng nguồn mở (Rasa và Snips) đều đứng ở vị trí thứ 2 và thứ 3 trong số 5 nền tảng được so sánh.
-    \item[--] Nhóm em xem xét nền 2 tảng mã nguồn mở đó là Rasa và Snips để sử dụng trong nghiên cứu này. Nhóm quyết định sẽ chọn Snips NLU do nó có hiệu năng tốt hơn.
+    \item[--] Nhóm em xem xét 2 nền tảng mã nguồn mở đó là Rasa và Snips để sử dụng trong nghiên cứu này. Nhóm quyết định sẽ chọn Snips NLU do nó có hiệu năng tốt hơn.
 \end{itemize}
