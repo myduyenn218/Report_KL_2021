@@ -128,123 +128,272 @@ Với mong muốn xây dựng một ứng dụng chatbot sử dụng trong lĩnh
 \end{itemize}
 \section{So sánh các nền tảng hiểu ngôn ngữ tự nhiên}
 
+ \subsection{Dẫn dắt}
 \begin{itemize}
-    \item[--] 	Hầu hết các chatbot và trợ lý giọng nói đều dựa vào các dịch vụ đám mây cho NLU của họ. Những dịch vụ phổ biến nhất bao gồm Dialogflow\footnote{\url{https://dialogflow.com/}}(Google, ex API.ai), Amazon Lex\footnote{\url{https://docs.aws.amazon.com/lex/latest/dg/what-is.html}}, Amazon Alexa\footnote{\url{https://developer.amazon.com/docs/ask-overviews/build-skills-with-the-alexa-skills-kit.html}}, Luis.ai\footnote{\url{https://www.luis.ai/}} (Microsoft), Wit.ai\footnote{\url{https://wit.ai/}} (Facebook) và IBM Watson\footnote{\url{https://www.ibm.com/watson/services/natural-language-understanding/}}.
-    \item[--] Một điểm chung của tất cả các giải pháp này là chúng hoàn toàn tập trung, chạy trên máy chủ của nhà cung cấp. Điều này có nghĩa là họ có thể truy cập tất cả dữ liệu đang được gửi đến dịch vụ của họ và sử dụng lại nó theo ý muốn.
-    \item[--] Snips NLU\footnote{\url{https://github.com/snipsco/snips-nlu}} là một thư viện Python có thể được sử dụng để dễ dàng đào tạo các mô hình và sử dụng các mô hình được đào tạo để đưa ra dự đoán về các truy vấn mới.
+	\item[--]Hiểu ngôn ngữ tự nhiên là thành phần rất quan trọng và không thể thiếu trong chatbot cũng như trợ lý ảo. Nó giúp chúng ta nhận diện ý định và các thực thể từ câu nói của người dùng.
+	
+	\item[--]Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn ngữ tự nhiên, trong số đó những dịch vụ NLU phổ biến nhất là: LUIS\footnote{\url{https://www.luis.ai/}}, Watson\footnote{\url{https://www.ibm.com/watson}}, DialogFlow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, Rasa\footnote{\url{https://rasa.com/}} và Snips\footnote{\url{https://snips.ai/}}.
+\end{itemize}
 
-    \item[--] Snips NLU là mã nguồn mở, chạy offline nên không bao giờ đụng vào, xử lý hoặc thu thập bất kỳ dữ liệu người dùng nào.
 
-    \item[--] Ngoài ra, chúng ta còn có Snips NLU-rs\footnote{\url{https://github.com/snipsco/snips-nlu-rs}}, một triển khai Rust tập trung vào phần dự đoán (hay còn gọi là suy luận). Thư viện này có thể được sử dụng trên hầu hết các kiến trúc hiện đại: trên các thiết bị nhỏ được kết nối, trên thiết bị di động, trên máy tính để bàn hoặc trên máy chủ. Nó hiện có thể xử lý 5 ngôn ngữ (tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Tây Ban Nha và tiếng Hàn), với nhiều ngôn ngữ được bổ sung thường xuyên.
-    \item[--] Bây giờ chúng ta hãy xem xét tốc độ của Snips NLU , chúng ta sẽ tập trung vào hiệu suất và độ chính xác, cho thấy rằng công nghệ này hoạt động ngang bằng hoặc tốt hơn các giải pháp dựa trên đám mây.
+  \subsection{Các nền tảng NLU phổ biến}
+\begin{itemize}	
+	\item[--]\textbf{Dialogflow (Google):} Trước đây được gọi là Api.ai, gần đây nó đã đổi tên thành Dialogflow và nó là một nền tảng phát triển trợ lý văn bản ảo và nhanh chóng bổ sung khả năng nói. Framework này tạo ra chatbots thông qua giao diện người dùng dựa trên web hoàn chỉnh hoặc đối với các dự án phức tạp, sử dụng số lượng lớn các API thông qua Rest (cũng có nhiều SDK cho các ngôn ngữ lập trình khác nhau). Các ý định và thực thể khác nhau có thể được tạo ra bằng cách đưa ra các ví dụ. Nó hỗ trợ nhiều ngôn ngữ khác nhau
 
-        \textbf{Thời gian chạy suy luận}
+	\item[--]\textbf{Watson (IBM):} Nền tảng này trở nên nổi tiếng vào năm 2011 vì nó đã giành chiến thắng trong một cuộc thi chống lại các nhà vô địch của con người của trò chơi nguy hiểm. Watson là một NLU framework hoàn chỉnh cho phép phát triển một chatbot bằng cách sử dụng một giao diện người dùng trên nền tảng web hoặc để khai thác các SDK khác nhau, để tạo một trợ lý ảo nhanh chóng và với các chương trình ngôn ngữ khác nhau. Nền tảng này dễ dàng tích hợp với nhiều dịch vụ truyền thông khác nhau và cung cấp hỗ trợ đầy đủ sang công nghệ Text-to-Speech và Speech-to-Text. Watson cho phép nhận ra ý định và thực thể, và một số mô hình liên quan đến chủ đề chung được cung cấp bởi nền tảng, trong khi đối với các miền cụ thể, người dùng phải tạo mô hình đưa ra một tập hợp các ví dụ khá nhỏ để đào tạo động cơ NLU. 
+	
+	\item[--]\textbf{Luis (Microsoft):} Tương tự như các nền tảng trước, Luis là một dịch vụ dựa trên đám mây có sẵn thông qua giao diện web hoặc các yêu cầu API. Luis cung cấp nhiều mô hình miền được tạo sẵn bao gồm ý định, lời nói và thực thể, hơn nữa, nó cho phép xác định các mô hình tùy chỉnh. Việc quản lý luồng đối thoại dẫn đến phức tạp hơn cho các sản phẩm khác. Tuy nhiên, có thể xây dựng một trợ lý ảo hoàn chỉnh với các khả năng tương tự được cung cấp bởi các dịch vụ khác. Các công cụ khác nhau tạo điều kiện phát triển trợ lý ảo được hỗ trợ (chẳng hạn như hỗ trợ kiểm tra, phân tích văn bản thành lời nói và cảm xúc).
+	
+	\item[--]\textbf{Rasa NLU:} là một công cụ để hiểu những gì đang được nói trong các đoạn văn bản ngắn. Rasa NLU chủ yếu được sử dụng để xây dựng chatbot và ứng dụng thoại. Do là mã nguồn mở nên Rasa có thể được tùy chỉnh một cách dễ dàng để phù hợp với nhu cầu của người sử dụng.
+	
+	\item[--]\textbf{Snips NLU:}  là một công cụ hiểu ngôn ngữ tự nhiên cho phép phân tích cú pháp các câu được viết bằng ngôn ngữ tự nhiên và trích xuất thông tin có cấu trúc. Chỉ cần một ít dữ liệu đào tạo là có thể tạo ra một công cụ nhận dạng ý định mạnh mẽ. Snips NLU có thể được tùy chỉnh và hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Ý, v.v...
+\end{itemize}
+	
+	 \subsection{Yêu cầu lựa chọn}
+\begin{itemize}	
+	\item[--]Do sự tồn tại của nhiều dịch vụ NLU, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em sẽ lựa chọn nền tảng NLU có năng suất cao để có thể đem lại kết quả tốt.
+	
+	\item[--]Nếu năng suất giữa các nền tảng thương mại và nền tảng mã nguồn mở không có sự chênh lệch nhiều, nhóm sẽ ưu tiên lựa chọn nền tảng NLU mã nguồn mở do những lợi ích sau:
+	\begin{itemize}
+	 \item[+] Chi phí:  tốn rất ít hoặc không có chi phí trả trước cho mã nguồn mở. chúng ta chỉ cần tải mã xuống từ một nguồn hợp pháp và sử dụng.
+    
+    \item[+] Độ tin cậy: Phần mềm nguồn mở có độ tin cậy cao. Thông thường, hàng nghìn chuyên gia phát triển làm việc để tạo ra và không ngừng cải tiến phần mềm nguồn mở. Điều này có nghĩa là có nhiều khả năng ai đó sẽ nhận ra một lỗ hổng hoặc một lỗi và sửa chữa nó ngay lập tức.
+    
+    \item[+] Bảo mật: Những người ủng hộ mã nguồn mở khẳng định rằng phần mềm nguồn mở về tổng thể an toàn hơn so với phần mềm độc quyền. Các lỗi và các vấn đề khác có xu hướng được xử lý ngay khi các thành viên cộng đồng phát hiện ra chúng.
+    
+    \item[+] Tính linh hoạt: Người dùng phần mềm nguồn mở được hưởng lợi từ quyền tự do sửa đổi phần mềm theo cách phù hợp với nhu cầu của họ. Không giống như phần mềm thương mại, nơi bạn phải tuân thủ các yêu cầu và giới hạn của nhà cung cấp, người dùng nguồn mở có toàn quyền kiểm soát phần mềm của họ. Phần mềm nguồn mở không bị giới hạn bởi thỏa thuận người dùng cứng nhắc liên quan đến phần mềm độc quyền.
+	\end{itemize}
+   
+\end{itemize}
+ \subsection{Tóm tắt các bài so sánh được sử dụng}
+ 
+ - Do thời gian thực hiện nghiên cứu có giới hạn, nhóm em đã sử dụng kết quả của các bài báo so sánh hiệu năng của các nền tảng NLU bao gồm:
+ 	\begin{itemize}
+ 	\item[1.]Evaluating Natural Language Understanding Services for Conversational Question Answering Systems \cite{EvaluatingNLU}.
 
-    \item[--] Đây là thời gian chạy trung bình để xử lý một truy vấn trong một trợ lý điển hình\footnote{\url{https://github.com/sebischair/NLU-Evaluation-Corpora/blob/master/AskUbuntuCorpus.json}}:
+ \item[2.]Benchmarking Natural Language Understanding Services for building Conversational Agents của Xingkun Liu, Arash Eshghi, Pawel Swietojanski and Verena Rieser\cite{BenchmarkingNLU}.
 
-        \begin{figure}[htp]
+ \item[3.]Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces\cite{snips-nlu}.
+ 	\end{itemize}
+ 
+
+
+
+ \textbf{I. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems}
+ 
+ Bài báo so sánh hiệu năng giữa các dịch vụ NLU khác nhau bao gồm: LUIS, Watson, API.ai và RASA
+ 
+\textbf{Dữ liệu:}
+
+- Dựa trên 2 kho dữ liệu khác nhau:
+ \begin{itemize}
+ 	\item[+] The Chatbot Corpus: Dựa trên các câu hỏi được thu thập bởi một Chatbot Telegram trong sử dụng sản xuất, trả lời câu hỏi về kết nối giao thông công cộng.
+
+	\item[+] The StackExchange Corpus: dựa trên dữ liệu từ hai nền tảng StackExchange\footnote{\url{https://stackexchange.com/}}: ask ubuntu\footnote{\url{https://askubuntu.com/}} và Web Applications\footnote{\url{}https://webapps.stackexchange.com/}
+Cả hai kho tài liệu đều có sẵn trên GitHub dưới Giấy phép Creative Commons CC BY-SA 3.011: https://github.com/sebischair/NLU-Evaluation-Corpora
+ \end{itemize}
+
+
+- Chatbot Corpus:
+
+\begin{itemize}
+\item[+] Bao gồm 206 câu hỏi, được tác giả gán nhãn thủ công. Có 2 intent (Departure Time, Find Connection) trong kho ngữ liệu và 5 loại entity khác nhau (StationStart, StationDest, Criterion, Vehicle, Line). Ngôn ngữ chủ yếu là tiếng Anh, có lẫn một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện 100 câu và dữ liệu kiểm thử 106 câu.
+\end{itemize}
+
+
+      \begin{figure}[htp]
             \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/averageTime.png}
-            \caption{Average time to parse a query with Snips NLU-rs}
-            \label{fig:system-class-intent}
-        \end{figure}
-
-        \item[--]Trung bình, mất chưa đến 2 mili giây để phân tích cú pháp một truy vấn trên Macbook Pro 2015 với Core i7 2,5 GHz. Vì nền tảng được tối ưu hóa cho hiệu suất và không yêu cầu quyền truy cập mạng, nên thời gian thu được thông thường có thể nhanh gấp 2 lần so với việc sử dụng dịch vụ đám mây!
-
-        \item[--]Bộ nhớ cũng đã được tối ưu hóa, từ vài trăm KB RAM cho các trường hợp thông thường đến vài MB cho các trợ lý phức tạp nhất. Điều đó cũng có nghĩa là các máy chủ mạnh hơn có thể xử lý hàng trăm trường hợp song song.
-
-        \textbf{Sự chính xác}
-
-        \item[--]Để xác minh rằng công cụ Snips NLU hoạt động tốt, đội ngũ Snips đã so sánh\footnote{\url{https://medium.com/snips-ai/benchmarking-natural-language-understanding-systems-google-facebook-microsoft-and-snips-2b8ddcf9fb19}} nó với các dịch vụ đám mây, bao gồm API.ai (nay là DialogFlow, Google), Wit.ai (Facebook), Luis.ai (Microsoft) và Amazon Alexa. Mọi giải pháp đều được đào tạo bằng cách sử dụng cùng một bộ dữ liệu\footnote{\url{https://github.com/snipsco/nlu-benchmark/tree/master/2017-06-custom-intent-engines}} và được thử nghiệm trên cùng một bộ thử nghiệm. Kết quả cho thấy Snips NLU chính xác bằng hoặc tốt hơn các giải pháp đám mây ở các nhiệm vụ khai thác vị trí, bất kể lượng dữ liệu đào tạo được sử dụng nhiều hay ít.
-
-        \item[--]Bộ dữ liệu chứa 2400 truy vấn cho từng ý định, gồm 7 ý định:
-
-        \begin{figure}[htp]
-            \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/7ntents.png}
-            \caption{7 intents covered in this benchmark}
-            \label{fig:system-class-intent}
-        \end{figure}
-        Bộ dữ liệu này có sẵn miễn phí trên Github\footnote{\url{https://github.com/snipsco/nlu-benchmark}}.
-        \item[--]Với mọi hệ thống NLU, việc xây dựng mô hình luôn đi qua các bước giống nhau: nhập các ví dụ về các truy vấn có thể mà người dùng sẽ thực hiện và gắn thẻ các phân đoạn câu phù hợp với các thuộc tính mà bạn đang tìm kiếm.
-
-        \item[--]Đội ngũ Snips đã tính toán hiệu suất của từng dịch vụ. Điều này được thực hiện bằng cách chọn ngẫu nhiên nhiều bộ đào tạo gồm 70 truy vấn cho mỗi mục đích nhất định, sau đó cung cấp cho từng NLU engine. Các hiệu suất được tính toán bằng cách đo lường hiệu suất trên một tập dữ liệu xác thực. Đối với mỗi ý định, đội ngũ Snips tính trung bình điểm số thu được qua nhiều lần lặp lại thử nghiệm. Chi tiết của quy trình được mô tả trên Github\footnote{\url{https://github.com/snipsco/nlu-benchmark}}. Dưới đây là kết quả thu được:
-
-        \begin{figure}[htp]
-            \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/f1Score70Intents.png}
-            \caption{F1-score (per intent, and averaged) for the different providers trained on 70 queries / intent.}
-            \label{fig:system-class-intent}
-        \end{figure}
-
-        \item[--]Những kết quả này cho thấy rằng công cụ NLU mà bạn tạo bằng Snips sẽ đáng tin cậy hơn đáng kể so với những gì đạt được với các nền tảng khác. Nếu chúng ta đi sâu vào chi tiết một chút, chúng ta thấy rằng các giải pháp của Microsoft, Facebook và Amazon bị thấp do độ nhạy kém của chúng: recall lần lượt là 53%, 56% và 49%, so với 65% đối với Google và 77% đối với Snips.
-
-        \textbf{Một AI thực sự đáng tin cậy}
-
-        \item[--]Điểm đáng chú ý chính là các hiệu suất đạt được trong bối cảnh này không hoàn hảo. Không có giải pháp nào trong số các giải pháp này đạt hơn 80%.
-
-        \item[--]Có một lý do cho điều đó: thật khó để xử lý bất kỳ trường hợp nào có thể xảy ra, khi bạn chỉ thấy 70 ví dụ về một mục đích nhất định.
-
-        \item[--]Nếu công cụ Snips NLU được đào tạo trên 2000 truy vấn thay vì 70, thì hiệu suất sẽ đạt được như sau:
-
-        \begin{figure}[htp]
-            \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/f1Score2000Intents.png}
-            \caption{F1-score (per intent, and averaged) for the Snips NLU engine trained on 2000 queries / intent.}
-            \label{fig:system-class-intent}
-        \end{figure}
-
-
-        \item[--]Sau khi tăng dữ liệu đào tạo trên 2000 truy vấn trên mỗi mục đích, F1-score trung bình đã đạt 93%. Bên cạnh đó, các thuộc tính được trích xuất chính xác trong 95% trường hợp (precision) và khả năng xác định thuộc tính (recall) là hơn 90%.
-
-        \item[--]Bằng hình ảnh minh họa cụ thể, hãy xem ba truy vấn được lấy từ bộ xác thực, để hiểu cách các giải pháp khác nhau hoạt động. Trong ví dụ đơn giản sau, tất cả các công cụ NLU hoạt động chính xác:
-
-        \begin{figure}[htp]
-            \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/slotfilling1.png}
-
-            \label{fig:system-class-intent}
-        \end{figure}
-
-        \item[--]Ở dưới đây, Alexa nhầm lẫn Sacaton với một quốc gia và với ngày giờ bởi API.ai. API.ai cùng với Wit và Alexa hiểu rằng gluten là một loại nhà hàng. Mặt khác, Luis không phát hiện ra bất kỳ thuộc tính nào.
-
-        \begin{figure}[htp]
-            \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/slotfilling2.png}
-
-            \label{fig:system-class-intent}
-        \end{figure}
-
-        \item[--]Trong ví dụ cuối cùng này, chúng ta thấy rằng một lần nữa, Luis không phát hiện ra bất kỳ vị trí nào. API.ai nhầm lẫn the best bistro với tên nhà hàng và Wit.ai diễn giải đại từ “me” là trạng thái mà người dùng muốn đặt chỗ. Mặt khác, Alexa có câu trả lời chính xác.
-
-        \begin{figure}[htp]
-            \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/slotfilling3.png}
-
+            \includegraphics[width=10cm]{images/comparisonimg/1.png}
+            \caption{Các loại thực thể trong kho ngữ liệu chatbot}
             \label{fig:system-class-intent}
         \end{figure}
 
 
-        \item[--]Dữ liệu điểm chuẩn, cũng như hiệu suất chi tiết của từng nhà cung cấp có thể được tìm thấy trên Github\footnote{\url{https://github.com/snipsco/nlu-benchmark}}.
+-StackExchange Corpus
 
-        \begin{figure}[htp]
+\begin{itemize}
+\item[+] Đối với bộ dữ liệu StackExchange Corpus, tác giả chọn ra những câu hỏi có đánh giá cao nhất và nhiều lượt xem nhất từ 2 nền tảng ask ubuntu và web applications,  bởi vì chúng có khả năng là có chất lượng tốt hơn các câu hỏi ít phổ biến hơn.
+
+\item[+]Bộ dữ liệu thu được tổng cộng là 290 câu hỏi, 100 câu từ web applications và 190 câu từ ask ubuntu.
+
+\item[+] Ý định và thực thể cũng được gán nhãn thủ công:
+ Đối với ask ubuntu, những ý định có thể là “Make Update”, “Setup Printer”, “Shutdown Computer”, and “Software Recommendation”. Những entity có thể có là : “SoftwareName”, “Printer”, and “UbuntuVersion”.
+Đối với web applications, những ý định có thể có là “Change Password”, “Delete Account”, “Download Video”, “Export Data”, “Filter Spam”, “Find Alternative”, and “Sync Accounts”. Những entity có thể có là “WebService”, “OperatingSystem” and “Browser”.
+
+\item[+] Sau khi gán nhãn và chọn lọc, bộ dữ liệu cuối cùng bao gồm 251 câu, trong đó 162 câu thuộc ask ubuntu và 89 câu thuộc web application.
+    
+\item[+] Dữ liệu cũng được chia thành dữ liệu huấn luyện và dữ liệu kiểm thử như bảng sau:
+    
+\end{itemize}
+
+    
+  
+   
+      \begin{figure}[htp]
             \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/benchmarking.png}
-            \caption{Benchmarking Natural Language Understanding Systems}
+            \includegraphics[width=10cm]{images/comparisonimg/webappdatasets.png}
+            \caption{Bộ dữ liệu web applications}
             \label{fig:system-class-intent}
         \end{figure}
-
-        \item[--]Đội ngũ Snips cũng tái sản xuất một điểm chuẩn\footnote{\url{http://workshop.colips.org/wochat/@sigdial2017/documents/SIGDIAL22.pdf}} được công bố vào mùa hè năm ngoái. Trong bài viết này, các tác giả đã đánh giá hiệu suất của API.ai (nay là Dialogflow, Google), Luis.ai (Microsoft), IBM Watson và Rasa NLU\footnote{\url{https://nlu.rasa.ai/}}. Để công bằng, đội ngũ Snips đã sử dụng phiên bản mới nhất của Rasa NLU và so sánh nó với phiên bản mới nhất của Snips NLU (cả hai đều có màu xanh lam đậm).
-
-        \begin{figure}[htp]
+        
+              \begin{figure}[htp]
             \centering
-            \includegraphics[width=10cm]{images/ComparisonOfNLU/Reproducing.png}
-            \caption{Reproducing “Evaluating Natural Language Understanding Services for Conversational Question Answering Systems”.}
+            \includegraphics[width=10cm]{images/comparisonimg/askubuntudatasets.png}
+            \caption{Bộ dữ liệu ask ubuntu}
             \label{fig:system-class-intent}
         \end{figure}
+        
+              \begin{figure}[htp]
+            \centering
+            \includegraphics[width=10cm]{images/comparisonimg/entityTypesStackExchange.png}
+            \caption{Các loại thực thể trong bộ ngữ liệu StackExchange}
+            \label{fig:system-class-intent}
+        \end{figure}
+        
+\textbf{Phần thí nghiệm}
 
-        \item[--]Trên tất cả các điểm chuẩn, Snips NLU xếp hạng cao nhất hoặc cao thứ hai, mặc dù nhanh hơn và nhẹ hơn mọi giải pháp khác. Điều này cho thấy việc lựa chọn giải pháp NLU đám mây - và hy sinh quyền riêng tư và quyền kiểm soát dữ liệu - hoàn toàn không còn cần thiết nữa. Snips NLU là một giải pháp thay thế mạnh mẽ cho các giải pháp hiện có.
+\begin{itemize}
+\item[-] Tác giả huấn luyện mô hình trên các nền tảng LUIS, Watson Conversation, API.ai, và RASA. Tất cả đều dùng trên cùng một bộ dữ liệu.
+
+\item[-]Sau đó bộ dữ liệu kiểm thử đã được gửi đến các dịch vụ NLU để gán nhãn, đem gán nhãn được dự đoán bởi dịch vụ NLU so sánh với nhãn thực tế.
+
+\item[-]Để mà đánh giá kết quả, tác giả đã tính toán các độ đo precision và recall cũng như F-score cho từng intents, entity types, và corpora, cũng như kết quả tổng quát. Chúng ta sẽ nói rằng một dịch vụ tốt hơn dịch vụ kia nếu F-score của nó cao hơn.
+\end{itemize}
 
 
+\textbf{Đánh giá}
+
+Kết quả thu được được mô tả dưới hình sau: 
+
+
+      \begin{figure}[htp]
+            \centering
+            \includegraphics[width=10cm]{images/comparisonimg/FscoresNLUServices.png}
+            \caption{F1-score của các dịch vụ NLU theo bộ ngữ liệu}
+            \label{fig:system-class-intent}
+        \end{figure}
+        
+   
+   \begin{itemize}
+  \item[-] Tổng quát LUIS có hiệu năng tốt nhất với F-score là 0.916, tiếp sau đó là là Rasa (0.821), Watson Conversation (0.752), and API.ai (0.687). Trên từng bộ dữ liệu: chatbot, web apps và ask ubuntu, LUIS cũng có hiệu năng cao nhất. Tương tự , API.ai có hiệu năng thấp nhất trên từng bộ dữ liệu, trong khi đó vị trí thứ 2 thay đổi giữa Watson và Rasa.
+
+\item[-] Dựa trên dữ liệu này, hiệu suất tốt nhất thuộc về sản phẩm thương mại LUIS, tuy nhiên phần mềm nguồn mở Rasa hiệu năng cao hơn các sản phẩm thương mại khác.
+\end{itemize}        
+
+
+\textbf{II. Benchmarking Natural Language Understanding Services for building Conversational Agents}
+
+Tương tự như bài báo trên, bài này cũng so sánh hiệu năng giữa các dịch vụ NLU bao gồm các sản phẩm thương mại: Dialogflow, LUIS và Watson, mã nguồn mở gồm Rasa.
+
+\textbf{Dữ liệu: }
+
+\begin{itemize}
+\item[-] Dữ liệu được thu từ người dùng thật thông qua Amazon Mechanical Turk (AMT). Các câu hỏi thuộc về cách mọi người tương tác với robot gia đình, trong các tình huống được thiết kế trước, cụ thể là: alarm, audio, audiobook, calendar, cooking, datetime, email, game, general, IoT, lists, music, news, podcasts, general QA, radio, recommendations, social, food takeaway, transport, và weather.
+
+
+\item[-] Dữ liệu cuối cùng bao gồm 25716 câu nói, gồm 64 ý định và 54 loại thực thể.
+\end{itemize}
+
+
+\textbf{Thí nghiệm đánh giá}
+
+Dữ liệu huấn luyện và kiểm thử
+\begin{itemize}
+\item[-] Vì LUIS giới hạn kích thước dữ liệu huấn luyện, nên mỗi intent trong số 64 intent chọn ra ngẫu nhiên 190 câu nói. Một số intent có ít hơn 190 câu nói một chút.
+
+\item[-] Dữ liệu thu được là 11036 câu nói thuộc 64 ý định và 54 loại thực thể.
+
+\item[-] Đối với thử nghiệm đánh giá, tác giả sử dụng 10 fold cross-validation với 90% dữ liệu huấn luyện và 10% dữ liệu kiểm thử.
+\end{itemize}
+
+
+\textbf{Kết quả}
+
+Dữ liệu từ hình 2.12 cho thấy điểm trung bình cho phân lớp ý định và thực thể thông qua 10-fold cross validation.
+Dữ liệu hình 2.13 cho thấy điểm F-score trung bình cho mỗi nền tảng.
+
+
+      \begin{figure}[htp]
+            \centering
+            \includegraphics[width=10cm]{images/comparisonimg/overallScores4IntentandEntity.png}
+            \caption{Các chỉ số của Intent và Entity}
+            \label{fig:system-class-intent}
+        \end{figure}
+   
+         \begin{figure}[htp]
+            \centering
+            \includegraphics[width=10cm]{images/comparisonimg/combinedOverallScores.png}
+            \caption{Điểm trung bình của cả Intent và Entity}
+            \label{fig:system-class-intent}
+        \end{figure}
+        
+   \begin{itemize}
+  \item[-] Dựa vào hình 2.12, đối với intent, không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể, Watson có F1-score thấp do Precision rất thấp.
+
+\item[-] hình 2.13 chỉ ra rằng tất cả các dịch vụ có F1-score tương đương nhau ngoại trừ Watson có điểm thấp hơn đáng kể. 
+
+\item[-] Trong bài so sánh này, ta thấy hiệu năng của Watson thấp nhất với F1-score là 0.657. Những nền tảng còn lại là Dialogflow, LUIS và RASA có hiệu năng tương đối cao, trong đó nền tảng mã nguồn mở Rasa có hiệu năng tốt nhất (0.822)
+\end{itemize}        
+
+
+
+\textbf{III. Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces}
+
+\begin{itemize}
+\item[-] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems. So sánh giữa các dịch vụ khác nhau của NLU [8]: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google) và nền tảng mã nguồn mở Rasa NLU [7].  
+
+\item[-] Để biết kết quả thô, hãy xem https://github.com/sonos/nlu-benchmark. Chỉ số chính được sử dụng trong điểm chuẩn này là F1-score trung bình của phân loại ý định và các thực thể. 
 
 \end{itemize}
+
+\textbf{Dữ liệu}
+\begin{itemize}
+\item[-] Dữ liệu bao gồm ba kho tài liệu. Hai trong số kho tài liệu được trích xuất từ StackExchange, một từ chatbot Telegram. Kết quả được trình bày trong Bảng 6. Hình 7 trình bày mức trung bình kết quả trên ba kho tài liệu, tương ứng với phần tổng thể của Bảng 6. Đối với Rasa, chúng tôi đã xem xét cả ba phần backend có thể có (Spacy, SKLearn + MITIE, MITIE). Tuy nhiên, chỉ có Spacy được chạy trên cả 3 bộ dữ liệu, vì lý do thời gian huấn luyện.
+
+ \item[-] Để công bằng, phiên bản mới nhất của Rasa NLU cũng được sử dụng. Kết quả cho thấy Snips NLU xếp hạng cao thứ hai về tổng thể.
+\end{itemize}
+ 
+
+      \begin{figure}[htp]
+            \centering
+            \includegraphics[width=10cm]{images/comparisonimg/benchmark2017and2018.png}
+            \caption{Precision, recall và F1-score trên 3 bộ dữ liệu}
+            \label{fig:system-class-intent}
+        \end{figure}
+        
+      \begin{figure}[htp]
+            \centering
+            \includegraphics[width=10cm]{images/comparisonimg/averageF1-scores.png}
+            \caption{Trung bình F1-score của Intent và Entity trên 3 bộ dữ liệu}
+            \label{fig:system-class-intent}
+        \end{figure}
+        
+        \begin{itemize}
+        \item[-] Dựa trên dữ liệu này, hiệu suất tốt nhất cũng thuộc về sản phẩm thương mại LUIS (F1-score 0.916), trong khi đó cả vị trí thứ 2 và thứ 3 đều thuộc về sản phẩm nguồn mở Snips (F1-score 0.877) và Rasa  (F1-score 0.861)
+
+ \item[-] Trong bài này nhóm em quan tâm đến kết quả so sánh giữa Rasa với Snips (đều là 2 nền tảng nguồn mở). Khi cả 2 đều sử dụng phiên bản mới nhất và được đánh giá trên cùng một bộ dữ liệu, cả Rasa và Snips đều thể hiện hiệu năng tốt và không chênh lệch nhau nhiều. Tuy nhiên F1-score của Snips nhỉnh hơn một chút so với Rasa (F1-score của Snips là 0.877 và của Rasa là 0.861)
+        \end{itemize}
+
+
+
+\subsection{Kết luận và lựa chọn nền tảng sử dụng}
+
+ \begin{itemize}
+       \item[-] Dựa trên kết quả các bài báo mà nhóm tham khảo. Nhóm em rút ra được rằng giữa các nền tảng NLU khác nhau cho kết quả không giống nhau. 
+
+ \item[-] Các nền tảng nguồn mở vẫn có thể cạnh tranh được với các nền tảng thương mại. Mặc dù không có hiệu năng tốt nhất trên bảng so sánh, nhưng cả 2 nền tảng nguồn mở (Rasa và Snips) đều đứng ở vị trí thứ 2 và thứ 3 trong số 5 nền tảng được so sánh.
+
+ \item[-] Nhóm em xem xét nền 2 tảng mã nguồn mở đó là Rasa và Snips để sử dụng trong nghiên cứu này. Nhóm quyết định sẽ chọn Snips NLU do nó có hiệu năng tốt hơn.
+        \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
