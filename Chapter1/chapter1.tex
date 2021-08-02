@@ -5,28 +5,28 @@
 
 \section{Đặt vấn đề}
 
-Với sự phát triển mạnh mẽ của cuộc cách mạng công nghiệp 4.0 dẫn đến nhu cầu xã hội đối với những phần mềm thông minh ngày càng cao. Trong thời gian gần đây, việc thiết kế và triển khai Chatbots đã nhận được sự quan tâm rất lớn của các nhà phát triển và các nhà nghiên cứu. Chatbots là hệ thống hội thoại dựa trên \ac{ai} có thể xử lý ngôn ngữ của con người thông qua các kỹ thuật khác nhau bao gồm \ac{nlp} và Mạng thần kinh (NN). Hàng loạt các thuật toán ra đời giúp cho Chatbots ngày càng thông minh và chính xác hơn.
+Với sự phát triển mạnh mẽ của cuộc cách mạng công nghiệp 4.0 dẫn đến nhu cầu xã hội đối với những phần mềm thông minh ngày càng cao. Trong thời gian gần đây, việc thiết kế và triển khai chatbot đã nhận được sự quan tâm rất lớn của các nhà phát triển và các nhà nghiên cứu. Chatbot là hệ thống hội thoại dựa trên \ac{ai} có thể xử lý ngôn ngữ của con người thông qua các kỹ thuật khác nhau bao gồm \ac{nlp} và Mạng thần kinh - Neural Network (NN). Hàng loạt các thuật toán ra đời giúp cho chatbot ngày càng thông minh và chính xác hơn.
 
-Hiện nay, Chatbots đã được áp dụng trên rất nhiều lĩnh vực như:
+Hiện nay, chatbot đã được áp dụng trên rất nhiều lĩnh vực như:
 \begin{itemize}
-    \item[--] Giải trí: Người dùng có thể nói chuyện và tương tác với chúng mọi lúc mọi nơi, nó trả lời câu hỏi của bạn theo cách nhân văn nhất và có thể hiểu được tâm trạng của bạn với ngôn ngữ mà bạn đang sử dụng. Các Chatbots giải trí trực tuyến như là: Mitsuku, Rose, Insomno Bot,...
+    \item[--] Giải trí: Người dùng có thể nói chuyện và tương tác với chúng mọi lúc mọi nơi, nó trả lời câu hỏi của bạn theo cách nhân văn nhất và có thể hiểu được tâm trạng của bạn với ngôn ngữ mà bạn đang sử dụng. Các chatbot giải trí trực tuyến như là: Mitsuku, Rose, Insomno Bot,...
     \item[--] Thời tiết: Được thiết kế như một chuyên gia dự báo thời tiết và cảnh báo thời tiết xấu đối với người dùng như là Chatbot Poncho.
     \item[--] Y tế: Chatbot này sẽ hỏi về các triệu chứng, các thông số cơ bản và lịch sử y tế, sau đó biên soạn ra một danh sách các nguyên nhân gây ra cũng như các loại bệnh có thể mắc phải theo thứ tự nghiêm trọng.
-    \item[--] Khách sạn và du lịch: Đây là một loại Chatbot khá phổ biến và được sử dụng một cách rộng rãi giúp tiết kiệm thời gian và giảm chi phí nhân lực. Chúng được lập trình để có thể trò chuyện cùng khách hàng và nhờ đó có thể biết được các mong muốn và yêu cầu của khách hàng một cách đơn giản hơn.
+    \item[--] Khách sạn và du lịch: Đây là một loại chatbot khá phổ biến và được sử dụng một cách rộng rãi giúp tiết kiệm thời gian và giảm chi phí nhân lực. Chúng được lập trình để có thể trò chuyện cùng khách hàng và nhờ đó có thể biết được các mong muốn và yêu cầu của khách hàng một cách đơn giản hơn.
 \end{itemize}
 
-Các Chatbots hiện nay trên thế giới đã phát triển gần như là con người. Tuy nhiên điều này thường đúng với các Chatbot sử dụng ngôn ngữ khác tiếng Việt. Vì vậy, nhóm chúng em muốn thực hiện đề tài xây dựng Chatbots với ngôn ngữ tiếng Việt bằng giọng nói và văn bản để giao tiếp với con người.
+Các chatbot hiện nay trên thế giới đã phát triển gần như là con người. Tuy nhiên điều này thường đúng với các chatbot sử dụng ngôn ngữ khác tiếng Việt. Vì vậy, nhóm chúng em muốn thực hiện đề tài xây dựng chatbot với ngôn ngữ tiếng Việt bằng giọng nói và văn bản để giao tiếp với con người.
 
 \section{Mục tiêu}
 
-Nghiên cứu các thành phần cấu tạo Chatbots. Tìm hiểu các kỹ thuật xử lý ngôn ngữ trong \ac{nlu} như phân loại ý định (intent classification hay intent detection), trích xuất thông tin (information extraction),.. trong việc xây dựng Chatbots.
+Nghiên cứu các thành phần cấu tạo Chatbots. Tìm hiểu các kỹ thuật xử lý ngôn ngữ trong \ac{nlu} như phân loại ý định (intent classification hay intent detection), trích xuất thông tin (information extraction),.. trong việc xây dựng chatbot.
 
 Luận văn tập trung tìm cách giải quyết các bài toán mà chatbot ứng dụng trong miền đóng (Closes domain: các cuộc hội thoại tập trung vào một miền cụ thể như y tế, du lịch,...) và trả lời theo mô hình truy xuất thông tin (retrieval-based). Mô hình truy xuất thông tin là mô hình trong đó, chatbot đưa ra những phản hồi được chuẩn bị trước hoặc tuân theo những mô thức nhất định. Mô hình này khác với mô hình tự động sinh câu trả lời (generative), trong đó câu trả lời của chatbot được tự động sinh ra bằng việc học từ một tập dữ liệu. Các hệ thống chatbot được triển khai trong thực tế phần lớn tuân theo mô hình truy xuất thông tin và được áp dụng trong những miền ứng dụng nhất định.
 
-Với đề tài này, chúng em sẽ tập trung xây dựng giải pháp trả lời tự động (Chatbots) bằng tiếng Việt trong lĩnh vực hỏi đường dựa vào Snips-NLU và áp dụng những kiến thức tìm hiểu về chatbot để có thể tuỳ chỉnh trên mã nguồn mở này. Đối tượng người dùng chatbot cụ thể ở đây là những người có nhu cầu sử dụng ứng dụng di động để chỉ đường đi.
+Với đề tài này, chúng em sẽ tập trung xây dựng giải pháp trả lời tự động (chatbot) bằng tiếng Việt trong lĩnh vực hỏi đường dựa vào Snips-NLU và áp dụng những kiến thức tìm hiểu về chatbot để có thể tuỳ chỉnh trên mã nguồn mở này. Đối tượng người dùng chatbot cụ thể ở đây là những người có nhu cầu sử dụng ứng dụng di động để chỉ đường đi.
 
 \section{Kết quả}
-Xây dựng giải pháp trả lời tự động (Chatbots) bằng tiếng Việt với các chức năng sau:
+Xây dựng giải pháp trả lời tự động (chatbot) bằng tiếng Việt với các chức năng sau:
 \begin{itemize}
     \item[--] Ứng dụng chatbot (xác định ý định và trích xuất thông tin).
     \item[--] Sử dụng ngôn ngữ trò chuyện chính là Tiếng Việt.
@@ -42,7 +42,7 @@ Cuốn luận được trình bày theo cấu trúc sau:
     \item Chương 1: Giới thiệu: Sơ lược về đề tài, mục tiêu, cách tiếp cận và kết quả đề tài, cấu trúc cuốn luận
     \item Chương 2: Các hệ thống và thuật toán liên quan
           \begin{itemize}
-              \item Giới thiệu Chatbots
+              \item Giới thiệu Chatbot
               \item Các hệ thống tương tự
               \item Một số phương pháp hiểu ngôn ngữ tự nhiên - (\ac{nlu})
           \end{itemize}

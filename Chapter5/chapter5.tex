@@ -5,7 +5,7 @@
 
 \section{Kết quả huấn luyện dữ liệu}
 
-Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào những bài toán khác nhau mà chúng ta sử dụng các phương pháp khác nhau. Các phương pháp thường được sử dụng là: accuracy score, confusion matrix, ROC curve, Area Under the Curve, Precision and Recall, F1 score, Top R error, etc. Chúng em sử dụng đánh giá F1 Score để đánh giá phân lớp các mô hình. Sau đây là khái quát một số khái niệm để chúng ta hiểu rõ hơn về kết quả đánh giá.
+Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào những bài toán khác nhau mà chúng ta sử dụng các phương pháp khác nhau. Các phương pháp thường được sử dụng là: accuracy score, confusion matrix, ROC curve, Area Under the Curve, Precision and Recall, F1 score, Top R error,... Chúng em sử dụng đánh giá F1 Score để đánh giá phân lớp các mô hình. Sau đây là khái quát một số khái niệm để chúng ta hiểu rõ hơn về kết quả đánh giá.
 
 \begin{itemize}
     \item[--] Accuracy là tỉ lệ giữa số điểm được phân loại đúng và tổng số điểm trong dữ liệu kiểm thử. Accuracy chỉ phù hợp với các bài toán mà kích thước các lớp dữ liệu là tương đối như nhau.
@@ -78,7 +78,7 @@ Với input như trên, hệ thống sẽ chuyển hoá từ ngữ từ tiếng 
 Chức năng chỉ đường từ một địa điểm đến một địa điểm xác định cho phép người dùng có thể hỏi đường bằng văn bản và giọng nói.
 \begin{itemize}
     \item[--] Hỏi đường bằng văn bản: Người dùng nhập 1 câu hỏi bằng văn bản vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”. Bấm nút gửi
-    \item[--] Hỏi đường bằng giọng nói: Người dùng ấn giữ icon ghi âm và nói 1 câu vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”
+    \item[--] Hỏi đường bằng giọng nói: Người dùng nhấn icon ghi âm và nói một câu vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”
     \item[--] Ứng dụng hiển thị câu trả lời bằng văn bản lên màn hình, chuyển văn bản thành âm thanh và phát lên.
     \item[--] Button "Xem đường đi" dùng để chuyển sang màn hình chỉ đường của bản đồ giúp người dùng có thể xem đường đi một cách cụ thể hơn.
     \item[--] Ở màn hình bản đồ, bạn có thể xem được đường đi cụ thể mà bạn vừa yêu cầu và khoảng cách sẽ được hiển thị lên bản đồ. Bạn có thể phóng to, thu nhỏ bản đồ và có thể xem vị trí hiện tại của mình.
@@ -153,8 +153,8 @@ Giao diện ứng dụng khi người dùng xem bản đồ đường đi trên 
 
 Giao diện gồm các phần sau đây:
 \begin{itemize}
-    \item[--] "Start": Hiển thị thông tin địa điểm bắt đầu.
-    \item[--] "Destination": Hiển thị thông tin địa điểm kết thúc.
+    \item[--] "Bắt đầu": Hiển thị thông tin địa điểm bắt đầu.
+    \item[--] "Kết thúc": Hiển thị thông tin địa điểm kết thúc.
     \item[--] Hiển thị khoảng cách của hai địa điểm.
     \item[--] Chính giữa màn hình hiển thị bản đồ, điểm đầu và điểm cuối đường đi và đường đi giữa hai điểm được thể hiện bằng dòng kẻ màu đỏ.
     \item[--] Bên trái màn hình có button phóng to và thu nhỏ bản đồ.

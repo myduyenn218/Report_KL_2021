@@ -1,26 +1,26 @@
 \chapter{Các hệ thống và thuật toán liên quan}
 \label{Chapter2}
 
-\emph{Chương này giới thiệu về một số hệ thống tương tự với hệ thống Chatbot cũng như một số thuật toán xử lí hiểu ngôn ngữ tự nhiên.}
+\emph{Chương này giới thiệu về một số hệ thống tương tự với hệ thống chatbot cũng như một số thuật toán xử lí hiểu ngôn ngữ tự nhiên.}
 
 \section{Chatbot}
 \subsection{Chatbot là gì?}
 
-Chatbot - hay còn được gọi là chatterbot - là một ứng dụng phần mềm được sử dụng để thực hiện một cuộc trò chuyện trực tuyến thông qua văn bản hoặc chuyển văn bản thành giọng nói, thay cho việc cung cấp liên hệ trực tiếp với một nhân viên trực tiếp. Trợ lý ảo Chatbot đang ngày càng được sử dụng để xử lý các tác vụ đơn giản, tra cứu trong cả môi trường doanh nghiệp với người tiêu dùng và doanh nghiệp với doanh nghiệp.
+Chatbot - hay còn được gọi là chatterbot - là một ứng dụng phần mềm được sử dụng để thực hiện một cuộc trò chuyện trực tuyến thông qua văn bản hoặc chuyển văn bản thành giọng nói, thay cho việc cung cấp liên hệ trực tiếp với một nhân viên trực tiếp. Trợ lý ảo chatbot đang ngày càng được sử dụng để xử lý các tác vụ đơn giản, tra cứu trong cả môi trường doanh nghiệp với người tiêu dùng và doanh nghiệp với doanh nghiệp.
 
 Chatbot có thể có nhiều mức độ phức tạp khác nhau, không trạng thái hoặc trạng thái. Một chatbot không trạng thái tiếp cận mỗi cuộc trò chuyện như thể nó đang tương tác với một người dùng mới. Ngược lại, một chatbot trạng thái có thể xem xét các tương tác trong quá khứ và định khung các phản hồi mới theo ngữ cảnh\cite{chat-bot}.
 
 Chatbot có thể được phân chia thành các loại sau đây:
 \begin{itemize}
-    \item Chatbots có kịch bản hoặc trả lời nhanh - Đây là những chatbots cơ bản nhất; chúng hoạt động như một cây quyết định phân cấp. Các bot này tương tác với người dùng thông qua một tập hợp các câu hỏi được xác định trước sẽ tiến triển cho đến khi chatbot trả lời câu hỏi của người dùng. Tương tự như chatbot này là chatbot dựa trên menu yêu cầu người dùng thực hiện các lựa chọn từ danh sách hoặc menu được xác định trước để cung cấp cho bot hiểu sâu hơn về những gì khách hàng đang tìm kiếm.
+    \item Chatbot có kịch bản hoặc trả lời nhanh - Đây là những chatbot cơ bản nhất; chúng hoạt động như một cây quyết định phân cấp. Các bot này tương tác với người dùng thông qua một tập hợp các câu hỏi được xác định trước sẽ tiến triển cho đến khi chatbot trả lời câu hỏi của người dùng. Tương tự như chatbot này là chatbot dựa trên menu yêu cầu người dùng thực hiện các lựa chọn từ danh sách hoặc menu được xác định trước để cung cấp cho bot hiểu sâu hơn về những gì khách hàng đang tìm kiếm.
 
-    \item Chatbots dựa trên nhận dạng từ khóa - Những chatbot này phức tạp hơn một chút; họ cố gắng lắng nghe những gì người dùng nhập và phản hồi tương ứng bằng cách sử dụng các từ khóa chọn được từ phản hồi của khách hàng. Các từ khóa có thể tùy chỉnh và AI được kết hợp trong bot này để cung cấp phản hồi thích hợp cho người dùng. Thật không may, những chatbot này phải vật lộn khi phải đối mặt với việc sử dụng từ khóa lặp đi lặp lại hoặc các câu hỏi thừa.
+    \item Chatbot dựa trên nhận dạng từ khóa - Những chatbot này phức tạp hơn một chút; họ cố gắng lắng nghe những gì người dùng nhập và phản hồi tương ứng bằng cách sử dụng các từ khóa chọn được từ phản hồi của khách hàng. Các từ khóa có thể tùy chỉnh và AI được kết hợp trong bot này để cung cấp phản hồi thích hợp cho người dùng. Thật không may, những chatbot này phải vật lộn khi phải đối mặt với việc sử dụng từ khóa lặp đi lặp lại hoặc các câu hỏi thừa.
 
-    \item Chatbots kết hợp - Những chatbot này kết hợp các yếu tố của bot dựa trên menu và nhận dạng từ khóa. Người dùng có thể chọn để câu hỏi của họ được trả lời trực tiếp, nhưng cũng có thể truy cập menu của chatbot để thực hiện lựa chọn nếu quá trình nhận dạng từ khóa tạo ra kết quả không hiệu quả.
+    \item Chatbot kết hợp - Những chatbot này kết hợp các yếu tố của bot dựa trên menu và nhận dạng từ khóa. Người dùng có thể chọn để câu hỏi của họ được trả lời trực tiếp, nhưng cũng có thể truy cập menu của chatbot để thực hiện lựa chọn nếu quá trình nhận dạng từ khóa tạo ra kết quả không hiệu quả.
 
-    \item Chatbots theo ngữ cảnh - Những chatbot này phức tạp hơn những chatbot được liệt kê ở trên và yêu cầu tập trung vào dữ liệu. Họ sử dụng ML và AI để ghi nhớ các cuộc trò chuyện và tương tác với người dùng, sau đó sử dụng những ký ức này để phát triển và cải thiện theo thời gian. Thay vì dựa vào từ khóa, những bot này sử dụng những gì khách hàng yêu cầu và cách họ yêu cầu để đưa ra câu trả lời và tự cải thiện.
+    \item Chatbot theo ngữ cảnh - Những chatbot này phức tạp hơn những chatbot được liệt kê ở trên và yêu cầu tập trung vào dữ liệu. Họ sử dụng ML và AI để ghi nhớ các cuộc trò chuyện và tương tác với người dùng, sau đó sử dụng những ký ức này để phát triển và cải thiện theo thời gian. Thay vì dựa vào từ khóa, những bot này sử dụng những gì khách hàng yêu cầu và cách họ yêu cầu để đưa ra câu trả lời và tự cải thiện.
 
-    \item Chatbot hỗ trợ giọng nói - Loại chatbot này là tương lai của công nghệ chatbot. Các chatbot hỗ trợ giọng nói sử dụng đối thoại bằng giọng nói từ người dùng làm đầu vào nhắc nhở phản hồi hoặc tác vụ sáng tạo. Chúng có thể được tạo bằng cách sử dụng văn bản thành giọng nói (TTS) và giao diện chương trình ứng dụng nhận dạng giọng nói (API) \cite{chat-bot}.
+    \item Chatbot hỗ trợ giọng nói - Loại chatbot này là tương lai của công nghệ chatbot. Các chatbot hỗ trợ giọng nói sử dụng đối thoại bằng giọng nói từ người dùng làm dữ liệu đầu vào. Chúng có thể được tạo bằng cách sử dụng văn bản thành giọng nói (\ac{tts}) và giao diện chương trình ứng dụng nhận dạng giọng nói (\ac{api}) \cite{chat-bot}.
 
 \end{itemize}
 Ưu điểm của chatbot:
@@ -28,11 +28,11 @@ Chatbot có thể được phân chia thành các loại sau đây:
     \item Cung cấp dịch vụ khách hàng nhanh chóng hơn:
           \begin{itemize}
               \item[--] Phần mềm này hỗ trợ doanh nghiệp cung cấp dịch vụ khách hàng 24 giờ/ngày, bất kể cuối tuần hay nghỉ lễ.
-              \item[--] Khi khách hàng trực tuyến có thắc mắc, họ chỉ cần hỏi trong chatbot trên trang web của bạn mà không cần phải chờ đợi lâu để có câu trả lời. Bởi câu trả lời chỉ là một vài tổ hợp được lập trình sẵn.
+              \item[--] Khi khách hàng trực tuyến có thắc mắc, họ chỉ cần hỏi trong chatbot trên trang web của chúng ta mà không cần phải chờ đợi lâu để có câu trả lời. Bởi câu trả lời chỉ là một vài tổ hợp được lập trình sẵn.
           \end{itemize}
     \item Làm tăng sự hài lòng của khách hàng:
           \begin{itemize}
-              \item[--] Khi khách hàng nhận được câu trả lời thỏa đáng với dịch vụ nhanh chóng nhờ chatbot, họ sẽ cảm thấy hài lòng hơn và tiếp tục mua sản phẩm của bạn.
+              \item[--] Khi khách hàng nhận được câu trả lời thỏa đáng với dịch vụ nhanh chóng nhờ chatbot, họ sẽ cảm thấy hài lòng hơn và tiếp tục mua sản phẩm của chúng ta.
           \end{itemize}
     \item Giảm chi phí lao động:
           \begin{itemize}
@@ -52,11 +52,11 @@ Chatbot có thể được phân chia thành các loại sau đây:
     \label{fig:k}
 \end{figure}
 
-Các hệ thống chatbot giao tiếp với con người bằng giọng nói (như Siri) hoặc bằng văn bản (như các chatbot phát triển trên nền Facebook Messenger). Dù giao tiếp bằng hình thức nào, chatbot cũng cần phải hiểu văn bản để có thể đưa ra những câu trả lời phù hợp cho khách hàng. Thành phần đảm nhiệm công việc này trong hệ thống chatbot được gọi là \ac{nlu}, trong đó có rất nhiều các kỹ thuật xử lý ngôn ngữ tự nhiên (\ac{nlp}) được áp dụng.
+Các hệ thống chatbot giao tiếp với con người bằng giọng nói (như Siri \footnote{Xem thêm về Siri tại đây:\url{https://www.apple.com/siri/}}) hoặc bằng văn bản (như các chatbot phát triển trên nền Facebook Messenger \footnote{Xem thêm về Facebook Messenger tại đây:\url{https://www.apple.com/siri/}})). Dù giao tiếp bằng hình thức nào, chatbot cũng cần phải hiểu văn bản để có thể đưa ra những câu trả lời phù hợp cho khách hàng. Thành phần đảm nhiệm công việc này trong hệ thống chatbot được gọi là \ac{nlu}, trong đó có rất nhiều các kỹ thuật xử lý ngôn ngữ tự nhiên (\ac{nlp}) được áp dụng.
 \\
-Hai thành phần liên quan đến xử lý ngôn ngữ tự nhiên không thể thiếu của một \ac{nlu} module là bộ phân loại ý định và nhận diện thực thể (NER). Phân loại ý định giúp chat-bot hiểu ý định của người dùng. Về mặt bản chất phân loại ý định chính là một bài toán phân loại câu với tập nhãn là các ý định có thể có của người dùng (đã được định nghĩa từ trước). NER giúp chat-bot trích xuất các thông tin trong yêu cầu/câu trả lời của người dùng. Các thông tin đó có thể là tên sản phẩm, địa chỉ, số điện thoại, số tài khoản của người dùng,… NER là một bài toán gán nhãn chuỗi cơ bản: cho vào một câu đầu vào, trích xuất tất cả các thực thể định danh trong câu và phân loại chúng vào một trong các nhãn đã được định nghĩa từ trước.
+Hai thành phần liên quan đến xử lý ngôn ngữ tự nhiên không thể thiếu của một \ac{nlu} module là bộ phân loại ý định và nhận diện thực thể (\ac{ner}). Phân loại ý định giúp chatbot hiểu ý định của người dùng. Về mặt bản chất phân loại ý định chính là một bài toán phân loại câu với tập nhãn là các ý định có thể có của người dùng (đã được định nghĩa từ trước). \ac{ner} giúp chatbot trích xuất các thông tin trong yêu cầu/câu trả lời của người dùng. Các thông tin đó có thể là tên sản phẩm, địa chỉ, số điện thoại, số tài khoản của người dùng,… \ac{ner} là một bài toán gán nhãn chuỗi cơ bản: cho vào một câu đầu vào, trích xuất tất cả các thực thể định danh trong câu và phân loại chúng vào một trong các nhãn đã được định nghĩa từ trước.
 \\
-Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được thêm vào chat-bot là bộ quản lý hội thoại, bộ sinh ngôn ngữ (NLG), và bộ phân tích cảm xúc. Một bộ quản lý hội thoại sẽ lưu trữ, phân tích và tận dụng ngữ cảnh cuộc hội thoại và giúp chat-bot suy luận hành động tiếp theo trong khi NLG giúp sinh câu trả lời đầy đủ, tự nhiên nhất bằng ngôn ngữ tự nhiên cho chat-bot. Một bộ phân tích cảm xúc có thể cần bởi vì cùng một câu có thể mang nhiều nghĩa khác nhau trong các văn cảnh khác nhau, do đó có thể cần được trả lời theo các cách khác nhau phụ thuộc vào cảm xúc của người dùng.
+Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được thêm vào chatbot là bộ quản lý hội thoại, bộ sinh ngôn ngữ (\ac{nlg}), và bộ phân tích cảm xúc. Một bộ quản lý hội thoại sẽ lưu trữ, phân tích và tận dụng ngữ cảnh cuộc hội thoại và giúp chatbot suy luận hành động tiếp theo trong khi \ac{nlg} giúp sinh câu trả lời đầy đủ, tự nhiên nhất bằng ngôn ngữ tự nhiên cho chatbot. Một bộ phân tích cảm xúc có thể cần bởi vì cùng một câu có thể mang nhiều nghĩa khác nhau trong các văn cảnh khác nhau, do đó có thể cần được trả lời theo các cách khác nhau phụ thuộc vào cảm xúc của người dùng.
 \\
 Bài luận này chủ yếu nghiên cứu về phát hiện ý định và trích xuất thực thể trong NLU module.
 
@@ -101,33 +101,6 @@ Kết nối điện thoại với màn hình ô tô — ứng dụng Android s�
 
 Với mong muốn xây dựng một ứng dụng chatbot sử dụng trong lĩnh vực chỉ đường, chúng em xây dựng một ứng dụng tiếng Việt, trong đó có sử dụng giọng nói để tương tác với ứng dụng, hỏi đường chỉ bằng một câu nói dễ dàng, sử dụng được mọi lúc, một cách đơn giản mà không làm mất đi sự tập trung của người dùng khi lái xe.
 
-\section{Một số phương pháp hiểu ngôn ngữ tự nhiên}
-
-\begin{itemize}
-    \item Rasa \ac{nlu}
-          \begin{figure}[htp]
-              \centering
-              \includegraphics[width=10cm]{images/Rasa-NLU.png}
-              \caption{Sơ đồ hệ thống Rasa-\ac{nlu}}
-              \label{fig:rasa-nlu}
-          \end{figure}
-    \item Snips \ac{nlu}
-          \begin{figure}[htp]
-              \centering
-              \includegraphics[width=10cm]{images/Snips-NLU.png}
-              \caption{Sơ đồ hệ thống Snips-\ac{nlu}}
-              \label{fig:snips-nlu}
-          \end{figure}
-
-          Có thể khái quát các luồng xử lý của snips-NLU \cite{snips-nlu} như sau:
-
-          Hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) chứa một thành phần chính, NLU Engine, bản thân nó bao gồm một số thành phần sau:
-          \begin{itemize}
-              \item Deterministic intent parser: Mục tiêu của trình phân tích cú pháp xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
-              \item Probabilistic intent parser: Trình phân tích cú pháp mục đích nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích cú pháp xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
-              \item Entity resolution: Phân giải thực thể giúp biến đổi các giá trị thực thể thành định dạng chuẩn ISO. Ví dụ: giá trị thực thể là "tomorrow evening" sẽ được biến đổi thành "2018-04-19 19:00:00 +00:00". Những giá trị thực thể có thể được phân giải là những built-in entities (numbers, ordinals, amounts with unit, date and times, durations, v.v...)
-          \end{itemize}
-\end{itemize}
 \section{Các nền tảng hiểu ngôn ngữ tự nhiên}
 
 Hiểu ngôn ngữ tự nhiên là thành phần rất quan trọng và không thể thiếu trong chatbot cũng như trợ lý ảo. Nó giúp chúng ta nhận diện ý định và các thực thể từ câu nói của người dùng.
@@ -136,7 +109,7 @@ Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn 
 
 \subsection{Các nền tảng NLU phổ biến}
 
-\textbf{Dialogflow (Google):} Trước đây được gọi là Api.ai, gần đây nó đã đổi tên thành Dialogflow và nó là một nền tảng phát triển trợ lý văn bản ảo và nhanh chóng bổ sung khả năng nói. Framework này tạo ra chatbots thông qua giao diện người dùng dựa trên web hoàn chỉnh hoặc đối với các dự án phức tạp, sử dụng số lượng lớn các API thông qua Rest (cũng có nhiều SDK cho các ngôn ngữ lập trình khác nhau). Các ý định và thực thể khác nhau có thể được tạo ra bằng cách đưa ra các ví dụ. Nó hỗ trợ nhiều ngôn ngữ khác nhau.
+\textbf{Dialogflow (Google):} Trước đây được gọi là Api.ai, gần đây nó đã đổi tên thành Dialogflow và nó là một nền tảng phát triển trợ lý văn bản ảo và nhanh chóng bổ sung khả năng nói. Framework này tạo ra chatbot thông qua giao diện người dùng dựa trên web hoàn chỉnh hoặc đối với các dự án phức tạp, sử dụng số lượng lớn các API thông qua Rest (cũng có nhiều SDK cho các ngôn ngữ lập trình khác nhau). Các ý định và thực thể khác nhau có thể được tạo ra bằng cách đưa ra các ví dụ. Nó hỗ trợ nhiều ngôn ngữ khác nhau.
 
 \textbf{Watson (IBM):} Nền tảng này trở nên nổi tiếng vào năm 2011 vì nó đã giành chiến thắng trong một cuộc thi chống lại các nhà vô địch của con người của trò chơi nguy hiểm. Watson là một NLU framework hoàn chỉnh cho phép phát triển một chatbot bằng cách sử dụng một giao diện người dùng trên nền tảng web hoặc để khai thác các SDK khác nhau, để tạo một trợ lý ảo nhanh chóng và với các chương trình ngôn ngữ khác nhau. Nền tảng này dễ dàng tích hợp với nhiều dịch vụ truyền thông khác nhau và cung cấp hỗ trợ đầy đủ sang công nghệ Text-to-Speech và Speech-to-Text. Watson cho phép nhận ra ý định và thực thể, và một số mô hình liên quan đến chủ đề chung được cung cấp bởi nền tảng, trong khi đối với các miền cụ thể, người dùng phải tạo mô hình đưa ra một tập hợp các ví dụ khá nhỏ để đào tạo động cơ NLU.
 

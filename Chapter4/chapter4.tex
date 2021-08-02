@@ -88,7 +88,7 @@ Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng 
     \item[--] Chuyển văn bản thành giọng nói: Chuyển phản hồi của hệ thống thành dạng âm thanh để phát ra qua điện thoại.
 \end{itemize}
 
-Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package SpeechToText \footnote{Xem thêm về SpeechToText \url{https://pub.dev/packages/speech_to_text}} và TextToSpeech\footnote{Xem thêm về TextToSpeech \url{https://pub.dev/packages/flutter_tts}} do Flutter cung cấp.
+Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text \footnote{Xem thêm về SpeechToText \url{https://pub.dev/packages/speech_to_text}} và flutter\_tts \footnote{Xem thêm về TextToSpeech \url{https://pub.dev/packages/flutter_tts}} được cung cấp bởi bộ quản lý thư viện của Flutter.
 
 \section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
 \subsection{Tạo dữ liệu tiếng Việt}
@@ -120,7 +120,7 @@ Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu
 
 Bài toán phân lớp (Classification) là quá trình phân lớp một đối tượng dữ liệu vào một hay nhiều lớp đã cho trước nhờ một mô hình phân lớp (model). Mô hình này được xây dựng dựa trên một tập dữ liệu được xây dựng trước đó có gán nhãn (hay còn gọi là tập huấn luyện). Quá trình phân lớp là quá trình gán nhãn cho đối tượng dữ liệu.
 
-Ứng dụng của bài toán này được sử dụng rất nhiều và rộng rãi  trong thực tế ví dụ như bài toán nhận dạng khuôn mặt, nhận diện giọng nói, phát hiện email spam,.. Chúng em lựa chọn bài toán này để thực hiện trong phạm vi đề tài này.
+Ứng dụng của bài toán này được sử dụng rất nhiều và rộng rãi  trong thực tế ví dụ như bài toán nhận dạng khuôn mặt, nhận diện giọng nói, phát hiện email spam,... Chúng em lựa chọn bài toán này để thực hiện trong phạm vi đề tài này.
 
 Chúng em đã tiến hành dịch toàn bộ dữ liệu huấn luyện từ tiếng Việt sang tiếng Anh với tổng cộng 80 câu và 40 câu kiểm thử. Trong đó, dữ liệu chi tiết cho mỗi intent là huấn luyện 20 câu và 10 câu kiểm thử.
 
