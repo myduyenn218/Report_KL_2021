@@ -8,7 +8,7 @@
 Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào những bài toán khác nhau mà chúng ta sử dụng các phương pháp khác nhau. Các phương pháp thường được sử dụng là: accuracy score, confusion matrix, ROC curve, Area Under the Curve, Precision and Recall, F1 score, Top R error, etc. Chúng em sử dụng đánh giá F1 Score để đánh giá phân lớp các mô hình. Sau đây là khái quát một số khái niệm để chúng ta hiểu rõ hơn về kết quả đánh giá.
 
 \begin{itemize}
-    \item[--] Accuracy là tỉ lệ giữa số điểm được phân loại đúng và tổng số điểm. Accuracy chỉ phù hợp với các bài toán mà kích thước các lớp dữ liệu là tương đối như nhau.
+    \item[--] Accuracy là tỉ lệ giữa số điểm được phân loại đúng và tổng số điểm trong dữ liệu kiểm thử. Accuracy chỉ phù hợp với các bài toán mà kích thước các lớp dữ liệu là tương đối như nhau.
     \item[--] Confusion matrix giúp có cái nhìn rõ hơn về việc các điểm dữ liệu được phân loại đúng/sai như thế nào.
     \item[--] True Positive (TP): số lượng điểm của lớp positive được phân loại đúng là positive.
     \item[--] True Negative (TN): số lượng điểm của lớp negative được phân loại đúng là negative.
@@ -31,18 +31,30 @@ $F_{1}$-score có giá trị nằm trong nửa khoảng (0,1]. F1 càng cao, b�
     $F_{1}=2\frac{1}{\frac{1}{\text{Precision}} + \frac{1}{\text{recall}}}= 2\frac{\text{precision} \times \text{recall}}{\text{precision} + \text{recall}}$
 \end{center}
 
+Chúng em xây dựng mô hình phân loại các câu hỏi chỉ đường. Nhãn dán của của các quan sát sẽ bao gồm: câu hỏi chỉ đường (findRouteAB), câu hỏi khoảng cách (askDistance), câu hỏi vị trí hiện tại (askLocation), câu hỏi địa chỉ của một địa danh (askAddress). Kích thước của tập dữ liệu như sau:
+\begin{itemize}
+    \item[--] Tập train: 80 câu bao gồm mỗi loại 20 câu.
+    \item[--] Tập test: 40 câu bao gồm mỗi loại 10 câu.
+\end{itemize}
+
 Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự liệu để huấn luyện và tiến hành kiểm thử cho từng intent.
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được Confusion matrix như hình \ref{fig:sodohethongchiduong}:
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được Confusion matrix như hình \ref{fig:metrics-dict-end}:
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/metrics-dict.png}
     \caption{Các chỉ số của mô hình}
-    \label{fig:metrics-dict}
+    \label{fig:metrics-dict-end}
 \end{figure}
 
-Các chỉ số được tính cho từng lớp riêng lẻ,  
+Các chỉ số được tính cho từng lớp riêng lẻ, ngoại trừ accuracy (độ chính xác); nó được tính toán trên tất cả các lớp để cung cấp độ chính xác phân loại cho mô hình này.
+
+Đánh giá tổng quan: Accuracy (Độ chính xác của toàn bộ dữ liệu) là 0.925.
+
+Đánh giá chi tiết từng phân loại: Dựa trên kết quả F1-Score cho từng phân loại, dễ dàng nhìn thấy độ chính xác của từng loại sẽ được sắp xếp theo thứ tự sau đây: findRouteAB, askDistance ,askLocation, askAddress.
+
+Như vậy, dựa trên kết quả kiểm thử cho thấy độ chính xác khi phát hiện các intent và slot là cao, điều này giúp cho việc phân loại câu hỏi chính xác giúp ứng dụng có thể đưa ra những câu trả lời phù hợp với từng nhu cầu của người dùng.
 
 \section{Ứng dụng - Một số chức năng chính đã cài đặt}
 \subsection{Chức năng chỉ đường từ một địa điểm đến một địa điểm xác định}
