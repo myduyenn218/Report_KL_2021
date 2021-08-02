@@ -3,7 +3,7 @@
 
 \emph{Chương này sẽ trình bày, mô tả chi tiết về các nghiên cứu sẽ thực hiện để giải quyết bài toán xây dựng chatbot chỉ đường, bao gồm việc xác định ý định và trích xuất thực thể}
 
-\section{Hiểu ngôn ngữ tự nhiên (\ac{nlu})}
+\section{Hiểu ngôn ngữ tự nhiên - \ac{nlu}}
 
 Hiểu ngôn ngữ tự nhiên là một chủ đề của xử lý ngôn ngữ tự nhiên trong lĩnh vực trí tuệ nhân tạo. Đây có thể nói là thành phần quan trong nhất của chatbot. Chatbot có thật sự thông minh hay không thì đây chính là thành phần quyết định. Mục tiêu của thành phần này là phân loại ý định và trích xuất thông tin.
 
@@ -160,15 +160,8 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
     \label{fig:trainingdata_dichtungtu}
 \end{figure}
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như \ref{fig:metrics-word2word}), xem chi tiết \footnote{\url{https://drive.google.com/file/d/15smz_5u4nV2Wy3yGMAemE8fbdjXFMiPZ/view?usp=sharing}}:
+Sau khi tiến hành đem bộ dự liệu thực hiện chuyển đổi từ tiếng Việt sang tiếng Anh, chúng em nhận xét kết quả đạt được như sau:
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=15cm]{images/metrics-word2word.png}
-    \caption{Các chỉ số của mô hình}
-    \label{fig:metrics-word2word}
-\end{figure}
-Nhận xét kết quả đạt được:
 \begin{itemize}
     \item[--] Mặc dù kết quả tương đối tốt nhưng phương pháp dịch từng từ này không khả thi bởi vì sẽ mà mất ý nghĩa của câu nói, ví dụ như câu sau: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word Swordsman learn department learn itself course until Swordsman learn centurion department" Các thực thể địa điểm như "Đại học Khoa học Tự nhiên" được dịch thành "Swordsman learn department learn itself course", "Đại học Bách khoa" dịch thành "Swordsman learn centurion department"
     \item[--] Các thực thể cần được trích xuất đã bị dịch ra và không còn ý nghĩa nữa, không thể dùng để tìm kiếm địa điểm này trên Google map được.
