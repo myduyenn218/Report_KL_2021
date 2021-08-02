@@ -14,7 +14,6 @@ Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào nh�
     \item[--] True Negative (TN): số lượng điểm của lớp negative được phân loại đúng là negative.
     \item[--] False Positive (FP): số lượng điểm của lớp negative bị phân loại nhầm thành positive.
     \item[--] False Negative (FN): số lượng điểm của lớp positiv bị phân loại nhầm thành negative
-    \item[--] True positive rate (TPR), false negative rate (FNR), false positive rate (FPR), true negative rate (TNR)
 \end{itemize}
 
 Precision được định nghĩa là tỉ lệ số điểm true positive trong số những điểm được phân loại là positive (TP + FP).
@@ -34,7 +33,7 @@ $F_{1}$-score có giá trị nằm trong nửa khoảng (0,1]. F1 càng cao, b�
 
 Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự liệu để huấn luyện và tiến hành kiểm thử cho từng intent.
 
-Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như hình \ref{fig:sodohethongchiduong}:
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được Confusion matrix như hình \ref{fig:sodohethongchiduong}:
 
 \begin{figure}[htp]
     \centering
@@ -43,23 +42,33 @@ Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự 
     \label{fig:metrics-dict}
 \end{figure}
 
+Các chỉ số được tính cho từng lớp riêng lẻ,  
+
 \section{Ứng dụng - Một số chức năng chính đã cài đặt}
 \subsection{Chức năng chỉ đường từ một địa điểm đến một địa điểm xác định}
 
 Chức năng chỉ đường từ một địa điểm đến một địa điểm xác định cho phép người dùng có thể hỏi đường bằng văn bản và giọng nói.
 \begin{itemize}
-    \item Hỏi đường bằng văn bản: Người dùng nhập 1 câu hỏi bằng văn bản vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”. Bấm nút gửi
-    \item Hỏi đường bằng giọng nói: Người dùng ấn giữ icon ghi âm và nói 1 câu vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”
-    \item Ứng dụng hiển thị câu trả lời bằng văn bản lên màn hình, chuyển văn bản thành âm thanh và phát lên.
-    \item Button "Xem đường đi" dùng để chuyển sang màn hình chỉ đường của bản đồ giúp người dùng có thể xem đường đi một cách cụ thể hơn.
-    \item Ở màn hình bản đồ, bạn có thể xem được đường đi cụ thể mà bạn vừa yêu cầu và khoảng cách sẽ được hiển thị lên bản đồ. Bạn có thể phóng to, thu nhỏ bản đồ và có thể xem vị trí hiện tại của mình.
+    \item[--] Hỏi đường bằng văn bản: Người dùng nhập 1 câu hỏi bằng văn bản vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”. Bấm nút gửi
+    \item[--] Hỏi đường bằng giọng nói: Người dùng ấn giữ icon ghi âm và nói 1 câu vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”
+    \item[--] Ứng dụng hiển thị câu trả lời bằng văn bản lên màn hình, chuyển văn bản thành âm thanh và phát lên.
+    \item[--] Button "Xem đường đi" dùng để chuyển sang màn hình chỉ đường của bản đồ giúp người dùng có thể xem đường đi một cách cụ thể hơn.
+    \item[--] Ở màn hình bản đồ, bạn có thể xem được đường đi cụ thể mà bạn vừa yêu cầu và khoảng cách sẽ được hiển thị lên bản đồ. Bạn có thể phóng to, thu nhỏ bản đồ và có thể xem vị trí hiện tại của mình.
 \end{itemize}
 \subsection{Giao diện chức năng hội thoại}
 
+Giao diện ứng dụng khi mở lên sẽ hiển thị như sau (hình \ref{fig:home}):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/home.jpg}
+    \caption{Màn hình trò chuyện}
+    \label{fig:home}
+\end{figure}
+Khi nhấn vào button "Nói chuyện", màn hình sẽ chuyển sang màn hình cuộc hội thoại.
 Giao diện ứng dụng khi thực hiện các đoạn hội thoại giữa người và máy sẽ hiển thị như sau (hình \ref{fig:screen-chat}) :
 \begin{figure}[H]
     \centering
-    \includegraphics[width=5cm]{images/Screen-chat.png}
+    \includegraphics[width=5cm]{images/Screen-chat.jpg}
     \caption{Màn hình trò chuyện}
     \label{fig:screen-chat}
 \end{figure}
@@ -73,6 +82,15 @@ Giao diện gồm các phần sau đây:
     \item[--] Khi tìm kiếm kết quả thành công, kết quả hướng dẫn đường đi được trả về, button "Xem đường đi" dùng để chuyển sang màn hình bản đồ chỉ đường.
 \end{itemize}
 
+Khi người dùng bấm vào icon "micro" trên màn hình cuộc hội thoại, nếu đây là lần đầu sử dụng ứng dụng với chức năng này, ứng dụng sẽ xin người dùng cấp quyền cho phép ghi âm từ thiết bị (xem hình \ref{fig: accesss-mic}), khi chọn cho phép, người dùng có thể sử dụng chức năng này để ghi âm giọng nói.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/access_mic.jpg}
+    \caption{Màn hình xin quyền cấp phép ghi âm của thiết bị}
+    \label{fig: accesss-mic}
+\end{figure}
+
 Giao diện ứng dụng khi đang thực hiện ghi âm giọng nói sẽ hiển thị như sau (hình \ref{fig:screen-record}) :
 
 \begin{figure}[H]
@@ -83,9 +101,19 @@ Giao diện ứng dụng khi đang thực hiện ghi âm giọng nói sẽ hiể
 \end{figure}
 
 Bán kính của vòng tròn hiển thị trong khi thực hiện quá trình ghi âm được hiển thị tăng giảm theo cường độ âm thanh thu được.
+
 Sau khi kết thúc yêu cầu bằng giọng nói, ứng dụng tự động chuyển đổi giọng nói thành văn bản gửi lên hệ thống và hiển thị văn bản lên màn hình cuộc hội thoại.
 
 \subsection{Giao diện chức năng hiển thị bản đồ}
+
+Nếu đây là lần đầu sử dụng ứng dụng với chức năng này, ứng dụng sẽ xin người dùng cấp quyền cho phép truy cập vào vị trí của thiết bị (xem hình \ref{fig: accesss-location}). Người dùng cần phải cho phép để ứng dụng có thể biết được vị trí để thuận tiện hơn cho quá trình sử dụng chức năng này của ứng dụng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/access_location.jpg}
+    \caption{Màn hình xin quyền cấp phép truy cập vị trí hiện tại của thiết bị}
+    \label{fig: accesss-location}
+\end{figure}
 
 Giao diện ứng dụng khi người dùng xem bản đồ đường đi trên ứng dụng (hình \ref{fig:screen-map}) :
 \begin{figure}[H]
