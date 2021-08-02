@@ -56,6 +56,22 @@ Các chỉ số được tính cho từng lớp riêng lẻ, ngoại trừ accur
 
 Như vậy, dựa trên kết quả kiểm thử cho thấy độ chính xác khi phát hiện các intent và slot là cao, điều này giúp cho việc phân loại câu hỏi chính xác giúp ứng dụng có thể đưa ra những câu trả lời phù hợp với từng nhu cầu của người dùng.
 
+Dưới đây là kết quả với intput: "Đường đi từ Đại học Nông lâm Thành phố Hồ Chí Minh đến Đại học Kinh tế Luật" (xem hình \ref{fig:detect-intent}).
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{images/detect_intent.jpg}
+    \caption{Các chỉ số của mô hình}
+    \label{fig:detect-intent}
+\end{figure}
+
+Với input như trên, hệ thống sẽ chuyển hoá từ ngữ từ tiếng Việt sang tiếng Anh (ngoại trừ các địa danh), sau đó hệ thống sẽ tiến hành phân tích intent và trích xuất slot thu được kết quả như hình \ref{fig:detect-intent}.
+\begin{itemize}
+    \item[--] Phân loại intent: "findRouteAB"
+    \item[--] Địa điểm bắt đầu: "Đại học Nông lâm Thành phố Hồ Chí Minh"
+    \item[--] Địa điểm kết thúc: "Đại học Kinh tế Luật"
+\end{itemize}
+
 \section{Ứng dụng - Một số chức năng chính đã cài đặt}
 \subsection{Chức năng chỉ đường từ một địa điểm đến một địa điểm xác định}
 
