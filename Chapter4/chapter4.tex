@@ -1,133 +1,227 @@
-\chapter{Triển khai ứng dụng}
+\chapter{Phương án thực hiện}
 \label{Chapter4}
 
-\emph{Chương này sẽ trình bày, mô tả chi tiết về quá trình triển khai ứng dụng, kết quả phân tích bài toán chỉ đường, đưa ra các yêu cầu cụ thể cho bài toán. Đồng thời chương này cũng trình bày bản thế kế kiến trúc hệ thống và các thiết kế chi tiết khác.}
+\emph{Chương này sẽ trình bày, mô tả chi tiết về các phương pháp được sử dụng để triển khai ứng dụng.}
 
-\section{Phân tích, đặc tả yêu cầu}
 
-\subsection{Mô tả chung}
-Sản phẩm là một ứng dụng cho phép người dùng ghi âm giọng nói hoặc nhập văn bản, sau đó tự phân tích giọng nói về văn bản để xác định yêu cầu và hướng dẫn đường đi. Sản phẩm cung cấp giao diện để người dùng có thể ghi âm và nhập văn bản trên ứng dụng di động một cách dễ dàng.
-Mục đích của ứng dụng chatbot chỉ đường là cung cấp một giao diện thân thiện, người dùng có thể dễ dàng hỏi những câu hỏi liên quan đến đường đi bằng văn bản hoặc giọng nói và nhận câu trả lời ngay lập tức.
-\subsection{Yêu cầu chức năng}
+\section{Phương pháp xây dựng ứng dụng}
+Dưới đây là sơ đồ xây dựng ứng dụng chatbot:
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/Structure-description.png}
+    \caption{Sơ đồ của hệ thống chỉ đường}
+    \label{fig:sodohethongchiduong}
 
-Yêu cầu chức năng chỉ đường từ một điểm đến một điểm bằng văn bản:
+\end{figure}
+
+Sơ đồ này thể hiện các bước thực hiện để xây dựng ứng dụng chatbot từ dữ liêụ đầu vào đến kết quả nhận được. Các bước thực hiện được triển khai như sau:
 \begin{itemize}
-    \item[--] Dữ liệu vào: Yêu cầu của người dùng dưới dạng văn bản
-    \item[--] Xử lý: Thiết bị nhận văn bản để biết yêu cầu của người dùng. Nếu yêu cầu được hỗ trợ, hệ thống xử lý yêu cầu đó và phản hồi bằng giọng nói và văn bản cho người dùng. Nếu yêu cầu không được hỗ trợ, thiết bị phản hồi yêu cầu không được hỗ trợ bằng giọng nói và văn bản.
-    \item[--] Kết quả: Phản hồi bằng văn bản hiển thị lên màn hình ứng dụng và giọng nói của thiết bị.
+    \item[--] Bước 1: Khi người dùng sử dụng ứng dụng di động gửi một câu truy vấn bằng audio thì ứng dụng di động sẽ chuyển giọng nói đó thành văn bản (speech to text).
+    \item[--] Bước 2: Văn bản đó được gửi tới NLU engine để trích xuất ý định và các thực thể.
+    \item[--] Bước 3: Dựa trên ý định và thực thể nhận được, hệ thống sẽ tìm kiếm câu trả lời tương ứng và trả về cho người dùng bằng text và audio (text to speech để chuyển văn bản thành giọng nói).
 \end{itemize}
-Yêu cầu chức năng chỉ đường từ một điểm đến một điểm bằng âm thanh (audio):
+Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định,trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map.
+
+Nhóm chúng em quyết định sử dụng Snips \ac{nlu} cho việc xác định intent vì:
 \begin{itemize}
-    \item[--] Dữ liệu vào: Yêu cầu của người dùng dưới dạng audio
-    \item[--] Xử lý: Thiết bị biến giọng nói vào thành văn bản để biết yêu cầu của người dùng. Nếu yêu cầu được hỗ trợ, hệ thống xử lý yêu cầu đó và phản hồi bằng giọng nói và văn bản cho người dùng. Nếu yêu cầu không được hỗ trợ, hệ thống phản hồi yêu cầu không được hỗ trợ bằng giọng nói và văn bản.
-    \item[--] Kết quả: Phản hồi bằng văn bản hiển thị lên màn hình ứng dụng và giọng nói của thiết bị.
-\end{itemize}
-
-\subsection{Yêu cầu giao diện phần mềm}
-
-Yêu cầu giao diện cho chức năng cho ứng dụng chỉ đường : Giao diện đơn giản, dễ sử dụng
-
-Yêu cầu giao diện cho chức năng Chat chỉ đường bằng văn bản:
-\begin{itemize}
-    \item[--] Giao diện đơn giản, dễ sử dụng
-    \item[--] Câu lệnh ngắn gọn, dễ ghi
-    \item[--] Phản hồi ngắn gọn dễ nghe, dễ đọc
-    \item[--] Phản hồi mọi câu lệnh dù câu lệnh đó không được hỗ trợ
+    \item[--] Miễn phí vì nó là opensource
+    \item[--] Gọn nhẹ và dễ dàng sử dụng vì có cộng đồng lớn
+    \item[--] Hiệu suất cao.
 \end{itemize}
 
-Yêu cầu giao diện cho chức năng Chat chỉ đường bằng giọng nói:
+Trong hình dưới đây (Xem hình Bảng so sánh \ref{fig:benchmarks}), điểm F1 của cả phân loại ý định và trích xuất slot đã được tính toán cho một số nhà cung cấp NLU và được tính trung bình trên ba bộ dữ liệu Lights dataset\footnote{Xem thêm về Lights dataset tại đây:\url{https://github.com/snipsco/snips-nlu/blob/master/sample_datasets/lights_dataset.json}}, Beverage dataset\footnote{Xem thêm về Beverage dataset tại đây:\url{https://github.com/snipsco/snips-nlu/blob/master/sample_datasets/beverage_dataset.json}}, Flights dataset\footnote{Xem thêm về Flights dataset tại đây:\url{https://github.com/snipsco/snips-nlu/blob/master/sample_datasets/flights_dataset.json}}.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/benchmarks.png}
+    \caption{Bảng so sánh}
+    \label{fig:benchmarks}
+\end{figure}
+
+Snips NLU là công cụ giúp hiểu ngôn ngữ tự nhiên mạnh mẽ, nhưng hiện tại chưa hỗ trợ tiếng Việt, mục tiêu của chúng em là xây dựng một chatbot bằng tiếng Việt. Vì thế, để có thể sử dụng được Snips-nlu để trích xuất ý định và thực thể, chúng em tiến hành thực hiện các bước sau đây:
 \begin{itemize}
-    \item[--] Giao diện đơn giản, dễ sử dụng
-    \item[--] Câu lệnh ngắn gọn, dễ đọc
-    \item[--] Phản hồi ngắn gọn, dễ nghe, dễ đọc
-    \item[--] Phản hồi mọi câu lệnh dù câu lệnh đó không được hỗ trợ
-    \item[--] Phải có giao diện ghi âm để phản hồi trực quan
+    \item[--] Bước 1: Tạo một bộ dữ liệu bằng tiếng Việt với các câu nói về chủ đề đường đi.
+    \item[--] Bước 2: Chuyển hoá dữ liệu tiếng Việt sang tiếng Anh.
+    \item[--] Bước 3: Dùng dữ liệu tiếng Anh được dịch sang để huấn luyện cho mô hình.
+    \item[--] Bước 4: Chuyển hoá văn bản bằng tiếng Việt nhận vào sang tiếng Anh.
+    \item[--] Bước 5: Đưa câu nói bằng tiếng Anh vào mô hình để trích xuất ý định và các thực thể.
 \end{itemize}
 
-\subsection{Yêu cầu hiệu suất}
+Về mặt dữ liệu:
 \begin{itemize}
-    \item[--] Thiết bị phải hoạt động được liên tục trong thời gian dài, từ 12 đến 24 giờ
-    \item[--] Kết quả chỉ đường phải đạt độ chính xác tối thiểu 80\%
-    \item[--] Tốc độ phản hồi phải nhỏ hơn 5 giây
-    \item[--] Đảm bảo sự kết nối của nhiều ứng dụng cùng một thời điểm lên hệ thống
+    \item[--] Định dạng bộ dữ liệu huấn luyện là ở dạng json.
 \end{itemize}
 
-\subsection{Ràng buộc thiết kế}
+\section{Chuyển hoá dữ liệu tiếng Việt sang tiếng Anh}
+\subsection{Tiền xử lý dữ liệu}
+
+\subsection{Word2word}
+
+Đầu tiên, chúng em dịch bộ dữ liệu từng từ bằng cách tách 1 câu thành từng từ rồi sử dụng thư viện (word2word) để dịch sang tiếng Anh. Ví dụ để dịch câu: "cách đi từ đại học Kinh Tế đến đại học Văn Lang".
 \begin{itemize}
-    \item[--] Sản phẩm phải được thiết kế bằng tiếng Việt, bao gồm giao diện người dùng, các phản hồi bằng giọng nói và văn bản
-    \item[--] Sản phẩm ứng dụng cần đảm bảo tính thẩm mỹ
+    \item[--] Tách câu thành từng từ riêng biệt: ['cách', 'đi', 'từ', 'đại', 'học', 'Kinh' ,'Tế' ,'đến', 'đại', 'học', 'Văn', 'Lang']
+    \item[--] Dịch từng từ sang tiếng Anh, ta được: ['ways', 'gone', 'word', 'Swordsman', 'learn', 'GrosDs', 'Monk', 'until', 'Swordsman', 'learn', 'Lam', 'Lang']
 \end{itemize}
 
-\subsection{Ràng buộc thuộc tính}
+Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1nfwUaNtGlk2c5oeK8b6v0lFKC2sb4uAa/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1Lo7Ec5CCPmH0nk3vz1LKXO1iZ2dDP9p1/view?usp=sharing}}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/trainingdata_dichtungtu.png}
+    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch}
+    \label{fig:trainingdata_dichtungtu}
+\end{figure}
+
+Sau khi tiến hành đem bộ dự liệu thực hiện chuyển đổi từ tiếng Việt sang tiếng Anh, chúng em nhận xét kết quả đạt được như sau:
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{images/metrics-word2word.png}
+    \caption{Các chỉ số của mô hình}
+    \label{fig:metrics-word2word}
+\end{figure}
+Nhận xét kết quả đạt được:
 \begin{itemize}
-    \item[--] Cần đảm bảo việc kết nối và tương tác nhiều ứng dụng lên hệ thống
-    \item[--] Việc cập nhật phần mềm phải nhanh chóng và không gây ra mất mát dữ liệu
+    \item[--] Mặc dù kết quả tương đối tốt nhưng phương pháp dịch từng từ này không khả thi bởi vì sẽ mà mất ý nghĩa của câu nói, ví dụ như câu sau: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word Swordsman learn department learn itself course until Swordsman learn centurion department" Các thực thể địa điểm như "Đại học Khoa học Tự nhiên" được dịch thành "Swordsman learn department learn itself course", "Đại học Bách khoa" dịch thành "Swordsman learn centurion department"
+    \item[--] Các thực thể cần được trích xuất đã bị dịch ra và không còn ý nghĩa nữa, không thể dùng để tìm kiếm địa điểm này trên Google map được.
+\end{itemize}
+\subsection{Kết hợp word segmentation, pos tagging với word2word}
+
+Nhận thấy được vấn đề về các từ ghép và tên riêng sau khi dịch bằng phương pháp word2word không được chính xác và đúng ý nghĩa của câu. Chúng em tiến hành xem xét về vấn đề phân tách các từ.
+
+Tách từ là một quát trình xử lý nhằm mục đích xác định ranh giới của các từ trong câu văn, cũng có thể hiểu đơn giản hơn là tách từ là quá trình xác định các từ đơn, từ ghép, danh từ,... có trong câu.
+
+Để xử lý vấn đề dịch các tên riêng và không đúng ngữ nghĩa, nhóm em thay đổi phương pháp dịch bằng cách sử dụng thư viện để tách từ (word segmentation) và gán nhãn từ loại (pos tagging).
+
+Trong tiếng Việt, dấu cách (space) không được sử dụng như 1 kí hiệu phân tách từ, nó chỉ có ý nghĩa phân tách các âm tiết với nhau. Do đó việc tách từ sẽ giúp cho việc dịch được chính xác hơn.
+
+Về vấn đề những slot bị dịch thành tiếng Anh làm cho nó không còn ý nghĩa nữa, nhóm em nhận thấy rằng những slot này chủ yếu là danh từ riêng, nên nhóm sẽ sử dụng pos tagging để gán nhãn từ loại, những từ nào thuộc danh từ riêng thì sẽ không cho dịch thành tiếng Anh.
+
+Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}:
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/trainingdata-wordsegment.png}
+    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp dùng word segmentation và pos tagging}
+    \label{fig:trainingdata-wordsegment}
+\end{figure}
+
+Sau khi huấn luyện mô hình và đem đi đánh giá nhóm nhận được kết quả như \ref{fig:metrics-word2word-postag}, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1pBegsfVWfMpW-YQHFQvhh1mX49uOESLF/view?usp=sharing}}:
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{images/metrics-word2word+postag.png}
+    \caption{Các chỉ số của mô hình}
+    \label{fig:metrics-word2word-postag}
+\end{figure}
+
+Nhận xét kết quả đạt được:
+\begin{itemize}
+    \item[--] Sau khi áp dụng tách từ và phân loại từ vựng, nhóm đã xử lý tương đối được vấn đề dịch những slot làm mất ý nghĩa của chúng: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word đại\_học khoa\_học\_tự\_nhiên until đại\_học bách\_khoa gone như\_thế\_nào"
+\end{itemize}
+Tuy nhiên vẫn còn một vài trường hợp dịch còn chưa ổn, ví dụ:
+\begin{itemize}
+    \item[--] "Đại học Khoa học Xã hội và Nhân văn" được dịch thành "Đại học Khoa học Xã hội their Nhân văn".
+    \item[--] Một số từ được dịch không đúng ngữ cảnh. Ví dụ như: "từ" => "word"; "đến" => "until".
 \end{itemize}
 
-\section{Thiết kế kiến trúc hệ thống}
-Phần mềm hệ thống gồm ba nhóm (xem hình Kiến trúc hệ thống \ref{fig:kien-truc-he-thong}):
+
+\subsection{Xây dựng bộ từ điển}
+Để có thể xử lý tốt hơn về vấn đề ý nghĩa trong câu được dịch sang một cách chính xác hơn. Nhóm chúng em đã quyết định xây dựng mô hình so khớp dài nhất (longest matching), bằng cách xây dựng một bộ từ điển, và tìm từ dài nhất có trong bộ từ điển đó để tiến hành dịch. Bộ từ điển này nằm trong phạm vi hỏi đường nên có thể xây dựng với các từ ngữ cụ thể có trong chủ đề, từ đó việc dịch sẽ đạt hiệu quả hơn.
+
+Trong phạm vi các câu hỏi về đường đi, chúng em đã lựa chọn dịch khoảng 50 từ và các cụm từ. Các bước để dịch được dữ liệu như sau:
 \begin{itemize}
-    \item[--] Phần mềm chạy trên thiết bị di động
-    \item[--] Máy chủ
-    \item[--] \ac{api}
+    \item[--] Bước 1: Xây dựng bộ từ điển riêng biệt về chủ đề hỏi đường đi và chuyển hoá từ ngôn ngữ tiếng Việt sang tiếng Anh.
+    \item[--] Bước 2: Tìm từ dài nhất trong câu có trong bộ từ điển.
+    \item[--] Bước 3: Lấy nghĩa của từ tương ứng trong từ điển.
+\end{itemize}
+Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước thật sự cần thiết để có thể tìm được từ thích hợp nhất với bộ từ điển để có kết quả tốt nhất. Dưới đây là mô tả quá trình tìm từ dài nhất có trong từ điển mà nhóm chúng em thực hiện (Xem hình Tìm từ dài nhất \ref{fig:longest-word})
+\begin{itemize}
+    \item[--] Input: "Đường đi từ Đại học Nông Lâm đến Ngã tư Thủ Đức""
+    \item[--] Output: ["Đường đi", "từ", "Đại học Nông Lâm", "đến", "Ngã tư Thủ Đức"]
 \end{itemize}
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=10cm]{images/Structure-System.png}
-    \caption{Kiến trúc hệ thống}
-    \label{fig:kien-truc-he-thong}
+    \includegraphics[width=10cm]{images/Diagram-longest-word.png}
+    \caption{Tìm từ dài nhất}
+    \label{fig:longest-word}
 \end{figure}
 
-Máy chủ (Server) thực hiện chương trình xử lý và phân tích dữ liệu. Chương trình này chịu trách nhiệm xử lý dữ liệu gửi lên (Text) bao gồm thành phần: Phân tích ý định, trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi của người gửi. Khi ứng dụng điện thoại gửi Text lên, chương trình xử lý rồi trả về kết quả trên ứng dụng điện thoại. Máy chủ sẽ cung cấp các API tương ứng. Các API cung cấp giao diện cho phép app di động giao tiếp với chương trình xử lý ở máy chủ.
-
-Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định, trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map\cite{google-map}.
-
-Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng dụng trên điện thoại di động. Giao diện này cho phép người dùng sử dụng để hỏi các câu hỏi về chỉ đường từ một địa chỉ này đến một địa chỉ khác cụ thể bằng giọng nói (ghi âm câu nói) hoặc là nhập văn bản trên ứng dụng và trả về cho người dùng kết quả phù hợp.
-\begin{itemize}
-    \item[--] Chuyển giọng nói thành văn bản: Chuyển câu lệnh bằng giọng nói của người dùng thành văn bản để hiển thị lên ứng dụng và gửi lên hệ thống.
-    \item[--] Chuyển văn bản thành giọng nói: Chuyển phản hồi của hệ thống thành dạng âm thanh để phát ra qua điện thoại.
-\end{itemize}
-
-Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text \footnote{Xem thêm về SpeechToText \url{https://pub.dev/packages/speech_to_text}} và flutter\_tts \footnote{Xem thêm về TextToSpeech \url{https://pub.dev/packages/flutter_tts}} được cung cấp bởi bộ quản lý thư viện của Flutter.
-
-\section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
-\subsection{Tạo dữ liệu tiếng Việt}
-Nhóm đã thực hiện tạo dữ liệu cho 4 intent thuộc lĩnh vực đường đi:
-
-\begin{itemize}
-    \item[--] Đường đi từ một địa điểm đến một địa điểm - "findRouteAB"
-    \item[--] Hỏi vị trí hiện tại - "askLocation"
-    \item[--] Hỏi địa chỉ chính xác của một địa danh cụ thể - "askAddress"
-    \item[--] Hỏi khoảng cách từ một địa điểm đến một địa điểm - "askDistance"
-\end{itemize}
-
-Trong đó, mỗi intent gồm 20 câu huấn luyện và 10 câu để kiểm thử.
-
-\begin{itemize}
-    \item[--] Tạo dữ liệu trên file txt. Với intent "findRouteAB" ta có câu ví dụ: "Đường đi từ đại học Sài gòn đến Cao đẳng sài gòn"
-    \item[--] Chuyển dữ liệu sang dạng json để thuận tiện cho việc huấn luyện (Xem hình dữ liệu dưới dạng file json Hình \ref{fig:data-train-json} ).
-\end{itemize}
-\begin{figure}[H]
+Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}} và bộ dữ liệu kiểm thử \footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}
+\begin{figure}[htp]
     \centering
-    \includegraphics[width=10cm]{images/Data-train-json.png}
-    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch}
-    \label{fig:data-train-json}
+    \includegraphics[width=10cm]{images/trainingdata-tudien.png}
+    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp xây dựng từ điển}
+    \label{fig:trainingdata-tudien}
+
 \end{figure}
 
-\subsection{Huấn luyện dữ liệu}
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được kết quả như \ref{fig:metrics-dict-ex}, xem chi tiết \footnote{\url{https://drive.google.com/file/d/1EGU3twPZBkS-zSkmIJ8viifMRkOXstvV/view?usp=sharing}}:
 
-Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh để chuẩn bị dữ liệu cho quá trình huấn luyện mà chúng em đã tiến hành nghiên cứu, chúng em nhận thấy kết quả của việc "Xây dựng bộ từ điển" cho riêng ứng dụng theo các chủ đề, lĩnh vực cụ thể đem lại hiệu quả tốt trong quá trình dịch và không làm sai lệnh ngữ nghĩa của câu. Vì vậy chúng em chọn giải pháp "Xây dựng bộ từ điển" để thực hiện chuyển hoá dữ liệu sang tiếng Anh để tiến hành thực hiện huấn luyện dữ liệu. Hình \ref{fig:data-train-en} hiển thị dữ liệu tiếng Anh dưới dạng json để thực hiện tiếng hành huấn luyện dữ liệu.
-
-\begin{figure}[H]
+\begin{figure}[htp]
     \centering
-    \includegraphics[width=10cm]{images/Data-train-ex.png}
-    \caption{Hình ảnh minh họa dữ liệu sau khi dịch}
-    \label{fig:data-train-en}
+    \includegraphics[width=15cm]{images/metrics-dict}
+    \caption{Các chỉ số của mô hình}
+    \label{fig:metrics-dict-ex}
+\end{figure}
+Kết quả đạt được sau khi dùng phương pháp dịch bằng cách xây dựng bộ từ điển:
+\begin{itemize}
+    \item[--] Do xây dựng bộ từ điển những từ vựng trong phạm vi nhỏ - hỏi đường nên bộ dịch cho ra kết quả khá khả quan, cải thiện hơn so với 2 phương pháp trước là phương pháp dịch từng từ và phương pháp dịch dùng word segmentation và pos tagging
+\end{itemize}
+
+\section{Công nghệ}
+
+\subsection{Flutter}
+Để xây dựng giao diện web cho hệ thống nhóm đã tiến hành tìm hiểu nhiều công nghệ xây dựng mobile như React Native\footnote{Xem thêm về React Native tại đây: \url{https://reactnative.dev/}}, Xamarin\footnote{Xem thêm về Xamarin tại đây: \url{https://docs.microsoft.com/en-us/xamarin/}}, Flutter\footnote{Flutter là một bộ công cụ giao diện người dùng để xây dựng ứng dụng cho nhiều nền tảng khác nhau như web, thiết bị di động, máy tính cá nhân với cùng một mã nguồn. Xem thêm về Flutter tại đây: \url{https://flutter.dev/}}.
+
+Nhóm quyết định chọn Flutter vì các ưu điểm sau:
+\begin{itemize}
+    \item[--] Flutter là công nghệ mới nhưng có cộng đồng sử dụng đông đảo và phát triển nhanh, dễ dàng tìm được hỗ trợ nếu xảy ra lỗi
+    \item[--] Bộ giao diện dựng sẵn của Flutter tuân thủ đầy đủ bộ quy tắc thiết kế giao diện Material Design\footnote{Bộ quy tắc thiết kế giao diện hiện đại và phổ biến của Google. Xem thêm về Material Design tại đây: \url{https://material.io/design}}, mang đến một giao diện hiện đại cho hệ thống
+    \item[--] Flutter mang đến tính năng hot reload\footnote{Tính năng cho phép những thay đổi trong mã nguồn được hiển thị gần như lập tức trên giao diện}, kết hợp với bộ giao diện dựng sẵn và trình kiểm tra lỗi dễ sử dụng giúp quá trình phát triển nhanh chóng
+\end{itemize}
+
+\subsection{Snips NLU}
+Snips-NLU - bộ công cụ trích xuất thông tin có cấu trúc từ các câu được viết bằng ngôn ngữ tự nhiên mã nguồn mở được viết bằng Python.
+Đây là một bộ công cụ được sử dụng rộng rãi để phục vụ những nhà nghiên cứu hiểu ngôn ngữ tự nhiên - NLU (Natural Language Understanding) nhằm xây dựng một hệ thống hiểu được ngôn ngữ mà con người sử dụng. Các bài báo liên quan mà nhóm tìm hiểu được sử dụng trong đề tài được thực hiện trên bộ công cụ này. Mô hình huấn luyện được nhóm tự xây dựng và sử dụng công cụ này để huấn luyện.
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=10cm]{images/Snips-NLU.png}
+    \caption{Sơ đồ hệ thống Snips-NLU}
+    \label{fig:snips-nlu}
 \end{figure}
 
-Bài toán phân lớp (Classification) là quá trình phân lớp một đối tượng dữ liệu vào một hay nhiều lớp đã cho trước nhờ một mô hình phân lớp (model). Mô hình này được xây dựng dựa trên một tập dữ liệu được xây dựng trước đó có gán nhãn (hay còn gọi là tập huấn luyện). Quá trình phân lớp là quá trình gán nhãn cho đối tượng dữ liệu.
+Có thể khái quát các luồng xử lý của snips-NLU \cite{snips-nlu} như sau:
 
-Ứng dụng của bài toán này được sử dụng rất nhiều và rộng rãi  trong thực tế ví dụ như bài toán nhận dạng khuôn mặt, nhận diện giọng nói, phát hiện email spam,... Chúng em lựa chọn bài toán này để thực hiện trong phạm vi đề tài này.
+Hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) chứa một thành phần chính, NLU Engine, bản thân nó bao gồm một số thành phần sau:
+\begin{itemize}
+    \item Deterministic intent parser: Mục tiêu của trình phân tích cú pháp xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
+    \item Probabilistic intent parser: Trình phân tích cú pháp mục đích nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích cú pháp xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
+    \item Entity resolution: Phân giải thực thể giúp biến đổi các giá trị thực thể thành định dạng chuẩn ISO. Ví dụ: giá trị thực thể là "tomorrow evening" sẽ được biến đổi thành "2018-04-19 19:00:00 +00:00". Những giá trị thực thể có thể được phân giải là những built-in entities (numbers, ordinals, amounts with unit, date and times, durations, v.v...)
+\end{itemize}
 
-Chúng em đã tiến hành dịch toàn bộ dữ liệu huấn luyện từ tiếng Việt sang tiếng Anh với tổng cộng 80 câu và 40 câu kiểm thử. Trong đó, dữ liệu chi tiết cho mỗi intent là huấn luyện 20 câu và 10 câu kiểm thử.
+\subsection{Flask Python}
+Python ngày càng chứng minh ưu thế của mình trong việc xây dựng và triển khai nhiều loại ứng dụng khác nhau như web application, desktop application, Machine Leaning, Deep Learning,...
 
+Để xây dựng \ac{api} cho hệ thống và thuận tiện cho việc nghiên cứu, nhóm chúng em đã tiến hành tìm hiểu nhiều framework để xây dựng trên Python như Flask\footnote{Xem thêm về Flask tại đây:\url{https://flask.palletsprojects.com}}, Django\footnote{Xem thêm về Django tại đây:\url{https://docs.djangoproject.com}}, Tornado \footnote{Xem thêm về Tornado tại đây: \url{https://www.tornadoweb.org}}, Pyramid\footnote{Xem thêm về Pyrmaid tại đây: \url{https://docs.pylonsproject.org/}}
+
+Nhóm quyết định chọn Flask Python vì các ưu điểm sau:
+\begin{itemize}
+    \item[--] Đơn giản và dễ dàng sử dụng
+    \item[--] Flask Python là micro web framework, không cần công cụ hoặc thư viện cụ thể, nó mang đến các chức năng tối giản nhưng có thể mở rộng cho các ứng dụng web.
+    \item[--] Hỗ trợ xây dựng các API, web services, các ứng dụng web application cỡ vừa và nhỏ.
+    \item[--] Flask cung cấp rất nhiều tài liệu từ cài đặt đến thực hiện và triển khai, từ hướng dẫn nhanh đến hướng dẫn chi tiết. Nguồn tài liệu tham khảo về Flask rất phong phú giúp dễ dàng tham khảo và tìm hiểu.
+\end{itemize}
+
+Theo đánh giá năm 2020 của JetBrains Python Developers Survey\footnote{Xem thêm tại đây: \url{https://www.jetbrains.com/lp/python-developers-survey-2020/}} thì Flask hiện là framework được sử dụng rộng rãi nhất, chiếm tới 46\% thị phần.
+\subsection{Google Maps API}
+Google Maps API \footnote{Xem thêm về React Native tại đây: \url{https://developers.google.com/maps/documentation}} là một phương pháp cho phép một website, ứng dụng B có thể sử dụng dịch vụ hoặc hiển thị nội dung của một trang web khác, ở đây là website A – Google Maps (thông qua Map API), dịch vụ bản đồ của website A (Map) sẽ được nhúng vào website B (Website cá nhân), tại trang web B có thể sử dụng những dịch vụ mà Google Maps cung cấp thông qua Google Maps API như: đường đi, đánh dấu trên bản đồ, danh sách các địa điểm muốn tìm,...
+
+Hiện nay, các ứng dụng xây dựng trên nền tảng Google Maps như Grab, AndroidAuto,... thường sử dụng Google Maps API để nhúng bản đồ vào trang web hoặc ứng dụng thông qua nhiều cách khác nhau, chính vì vậy mà việc sử dụng API từ Google cũng khá dễ dàng. Đồng thời Map API cũng không chỉ hỗ trợ cho máy tính và website mà còn cả thiết bị di động, giúp ứng dụng hoạt động nhanh hơn và hiệu quả hơn.
+
+Một số ứng dụng của Google Maps API :
+\begin{itemize}
+    \item[–-] Tính năng chỉ đường đến địa điểm cần tìm (tuyến đường tối ưu nhất cho các phương tiện và nhiều lựa chọn khác).
+    \item[–-] Giúp khoanh vùng khu vực như khu đô thị hay các khu vực mà bạn muốn.
+    \item[–-] Có thể theo dõi tình hình giao thông, lưu lượng phương tiện tại các khu vực,... và có giải pháp hợp lý.
+\end{itemize}

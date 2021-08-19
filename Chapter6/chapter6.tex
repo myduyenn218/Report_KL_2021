@@ -1,51 +1,162 @@
-\chapter{Kết luận và Hướng phát triển}
+\chapter{Kết quả}
 \label{Chapter6}
 
-\emph{Chương này trình bày kết luận sau quá trình thực hiện đề tài, bao gồm kỹ năng nghiên cứu, kỹ năng xây dựng một ứng dụng hoàn chỉnh, kết quả tóm tắt, ý nghĩa và khuyết điểm của đề tài. Cuối cùng là hướng phát triển và những định hướng trong tương lai.}
+\emph{Chương này trình bày kết quả đề tài, kết quả phát hiện intent, trích xuất thông tin và các chức năng đã cài đặt được.}
 
-\section{Kết luận}
-\label{sec:ket-luan}
+\section{Kết quả huấn luyện dữ liệu}
 
-\subsection{Tóm tắt kết quả đạt được}
-
-Trong quá trình thực hiện khóa luận, nhóm em đã học hỏi và đạt được một số kết quả. Cụ thể:
+Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào những bài toán khác nhau mà chúng ta sử dụng các phương pháp khác nhau. Các phương pháp thường được sử dụng là: accuracy score, confusion matrix, ROC curve, Area Under the Curve, Precision and Recall, F1 score, Top R error,... Chúng em sử dụng đánh giá F1 Score để đánh giá phân lớp các mô hình. Sau đây là khái quát một số khái niệm để chúng ta hiểu rõ hơn về kết quả đánh giá.
 
 \begin{itemize}
-    \item[--] Về mặt ứng dụng
-        \begin{itemize}
-            \item[\textbullet] Xây dựng thành công ứng dụng chatbot chỉ đường với giao diện đơn giản, dễ dàng sử dụng với ngôn ngữ tiếng Việt. Xử lý giọng nói thành văn bản, văn bản thành giọng nói và hiển thị nội dung lên màn hình, dữ liệu nhận vào và kết quả xuất ra đồng thời bao gồm cả giọng nói và văn bản.
-            \item[\textbullet] Ứng dụng được xây dựng và phát triển trên cả hai nền tảng là Android và iOS.
-        \end{itemize}
-    \item[--] Về mặt kĩ năng mềm
-        \begin{itemize}
-            \item[\textbullet] Kỹ năng đọc tài liệu và phân tích vấn đề.
-            \item[\textbullet] Kỹ năng nghiên cứu dự án.
-            \item[\textbullet] Kĩ năng làm việc nhóm và phân chia công việc.
-            \item[\textbullet] Kĩ năng trình bày và thuyết trình, viết báo cáo.
-        \end{itemize}
+    \item[--] Accuracy là tỉ lệ giữa số điểm được phân loại đúng và tổng số điểm trong dữ liệu kiểm thử. Accuracy chỉ phù hợp với các bài toán mà kích thước các lớp dữ liệu là tương đối như nhau.
+    \item[--] Confusion matrix giúp có cái nhìn rõ hơn về việc các điểm dữ liệu được phân loại đúng/sai như thế nào.
+    \item[--] True Positive (TP): số lượng điểm của lớp positive được phân loại đúng là positive.
+    \item[--] True Negative (TN): số lượng điểm của lớp negative được phân loại đúng là negative.
+    \item[--] False Positive (FP): số lượng điểm của lớp negative bị phân loại nhầm thành positive.
+    \item[--] False Negative (FN): số lượng điểm của lớp positive bị phân loại nhầm thành negative
 \end{itemize}
 
-\subsection{Ý nghĩa}
-Bên cạnh những kết quả, việc hoàn thành đề tài Xây dựng giải pháp trả lời tự động (chatbot) bằng tiếng Việt cũng mang lại những ý nghĩa đáng kể:
+Precision được định nghĩa là tỉ lệ số điểm true positive trong số những điểm được phân loại là positive (TP + FP).
+\begin{center}
+    Precision = $\dfrac{TP}{TP+EP}$
+\end{center}
 
+Recall được định nghĩa là tỉ lệ số điểm true positive trong số những điểm thực sự là positive (TP + FN).
+\begin{center}
+    Recall = $\dfrac{TP}{TP+FN}$
+\end{center}
+
+$F_{1}$-score có giá trị nằm trong nửa khoảng (0,1]. F1 càng cao, bộ phân lớp càng tốt. Khi cả recall và precision đều bằng 1 (tốt nhất có thể), F1=1
+\begin{center}
+    $F_{1}=2\frac{1}{\frac{1}{\text{Precision}} + \frac{1}{\text{recall}}}= 2\frac{\text{precision} \times \text{recall}}{\text{precision} + \text{recall}}$
+\end{center}
+
+Chúng em xây dựng mô hình phân loại các câu hỏi chỉ đường. Nhãn dán của của các quan sát sẽ bao gồm: câu hỏi chỉ đường (findRouteAB), câu hỏi khoảng cách (askDistance), câu hỏi vị trí hiện tại (askLocation), câu hỏi địa chỉ của một địa danh (askAddress). Kích thước của tập dữ liệu như sau:
 \begin{itemize}
-    \item[--] Kết quả của đề tài là minh chứng cho tính khả thi của đề tài.
-    \item[--] Đề tài cũng chứng minh ý nghĩa của một chatbot trong đời sống. Với việc tồn tại một Chatbot có khả năng nghe hiểu và phản hồi bằng giọng nói và văn bản bằng tiếng Việt, rất nhiều vấn đề sẽ trở nên đơn giản, dễ dàng hơn và giúp tiết kiệm thời gian cho người dùng.
+    \item[--] Tập train: 80 câu bao gồm mỗi loại 20 câu.
+    \item[--] Tập test: 40 câu bao gồm mỗi loại 10 câu.
 \end{itemize}
 
-\subsection{Những hạn chế, giới hạn}
-Ứng dụng chatbot giọng nói bằng tiếng Việt hoạt động tương đối tốt. Tuy nhiên, vẫn còn nhiều mặt hạn chế nhất định như sau:
+Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự liệu để huấn luyện và tiến hành kiểm thử cho từng intent.
+
+Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được Confusion matrix như hình \ref{fig:metrics-dict-end}:
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{images/metrics-dict.png}
+    \caption{Các chỉ số của mô hình}
+    \label{fig:metrics-dict-end}
+\end{figure}
+
+Các chỉ số được tính cho từng lớp riêng lẻ, ngoại trừ accuracy (độ chính xác); nó được tính toán trên tất cả các lớp để cung cấp độ chính xác phân loại cho mô hình này.
+
+Đánh giá tổng quan: Accuracy (Độ chính xác của toàn bộ dữ liệu) là 0.925.
+
+Đánh giá chi tiết từng phân loại: Dựa trên kết quả F1-Score cho từng phân loại, dễ dàng nhìn thấy độ chính xác của từng loại sẽ được sắp xếp theo thứ tự sau đây: findRouteAB, askDistance ,askLocation, askAddress.
+
+Như vậy, dựa trên kết quả kiểm thử cho thấy độ chính xác khi phát hiện các intent và slot là cao, điều này giúp cho việc phân loại câu hỏi chính xác giúp ứng dụng có thể đưa ra những câu trả lời phù hợp với từng nhu cầu của người dùng.
+
+Dưới đây là kết quả ví dụ với intput: "Đường đi từ Đại học Nông lâm Thành phố Hồ Chí Minh đến Đại học Kinh tế Luật" (xem hình \ref{fig:detect-intent}).
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{images/detect_intent.jpg}
+    \caption{Các chỉ số của mô hình}
+    \label{fig:detect-intent}
+\end{figure}
+
+Với input như trên, hệ thống sẽ chuyển hoá từ ngữ từ tiếng Việt sang tiếng Anh (ngoại trừ các địa danh), sau đó hệ thống sẽ tiến hành phân tích intent và trích xuất slot thu được kết quả như hình \ref{fig:detect-intent}.
 \begin{itemize}
-    \item[--] Đối với vấn đền phân tích intent và trích xuất slot đôi khi vẫn còn nhầm lẫn và chưa được chính xác.
-    \item[--] Đối với từ điển dịch tự tạo còn ít từ và nhiều hạn chế khi dịch.
-    \item[--] Đối với vấn đề phân tích văn bản thành giọng nói còn hạn chế ngôn ngữ tiếng Việt trên iOS.
+    \item[--] Phân loại intent: "findRouteAB"
+    \item[--] Địa điểm bắt đầu: "Đại học Nông lâm Thành phố Hồ Chí Minh"
+    \item[--] Địa điểm kết thúc: "Đại học Kinh tế Luật"
 \end{itemize}
 
-\section{Hướng phát triển}
+\section{Ứng dụng - Một số chức năng chính đã cài đặt}
+\subsection{Chức năng chỉ đường từ một địa điểm đến một địa điểm xác định}
 
+Chức năng chỉ đường từ một địa điểm đến một địa điểm xác định cho phép người dùng có thể hỏi đường bằng văn bản và giọng nói.
+\begin{itemize}
+    \item[--] Hỏi đường bằng văn bản: Người dùng nhập 1 câu hỏi bằng văn bản vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”. Bấm nút gửi
+    \item[--] Hỏi đường bằng giọng nói: Người dùng nhấn icon ghi âm và nói một câu vào ứng dụng. VD: “Đường đi từ UBND thành phố Thủ Đức đến Công An thành phố Thủ Đức”
+    \item[--] Ứng dụng hiển thị câu trả lời bằng văn bản lên màn hình, chuyển văn bản thành âm thanh và phát lên.
+    \item[--] Button "Xem đường đi" dùng để chuyển sang màn hình chỉ đường của bản đồ giúp người dùng có thể xem đường đi một cách cụ thể hơn.
+    \item[--] Ở màn hình bản đồ, bạn có thể xem được đường đi cụ thể mà bạn vừa yêu cầu và khoảng cách sẽ được hiển thị lên bản đồ. Bạn có thể phóng to, thu nhỏ bản đồ và có thể xem vị trí hiện tại của mình.
+\end{itemize}
+\subsection{Giao diện chức năng hội thoại}
 
-Từ những hạn chế đã được nêu phần Kết luận \ref{sec:ket-luan}, trong tương lai, nhóm có những dự định bao gồm cải tiến thuật toán phân tích intent, trích xuất slot, dịch thuật và bổ sung thêm những chức năng, câu hỏi đa dạng khác ngoài những câu hỏi đơn giản như hiện tại. Cụ thể như:
+Giao diện ứng dụng khi mở lên sẽ hiển thị như sau (hình \ref{fig:home}):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/home.jpg}
+    \caption{Màn hình trò chuyện}
+    \label{fig:home}
+\end{figure}
+Khi nhấn vào button "Nói chuyện", màn hình sẽ chuyển sang màn hình cuộc hội thoại.
+Giao diện ứng dụng khi thực hiện các đoạn hội thoại giữa người và máy sẽ hiển thị như sau (hình \ref{fig:screen-chat}) :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/Screen-chat.jpg}
+    \caption{Màn hình trò chuyện}
+    \label{fig:screen-chat}
+\end{figure}
 
-Đối với vấn đề phân tích intent và trích xuất slot, nhóm sẽ tiếp tục tìm các giải pháp khác nhau để cải thiện độ chính xác khi phân tích dữ liệu. Bằng cách thực hiện huấn luyện mô hình nhiều hơn và đào sâu vào thuật toán để xem xét nguyên nhân cụ thể và đưa ra hướng giải quyết.
+Giao diện gồm các phần sau đây:
+\begin{itemize}
+    \item[--] Thanh nhập dữ liệu để người dùng nhập văn bản, một nút ghi âm dùng để ghi âm giọng nói, một nút bấm để thực hiện gửi yêu cầu từ người dùng đến hệ thống.
+    \item[--] Bên phải khung hình hiển thị dữ liệu người dùng nhập vào.
+    \item[--] Bên trái khung hình hiển thị trả lời từ ứng dụng.
+    \item[--] Thời gian tin nhắn được gửi đi và thời gian nhận được phản hồi.
+    \item[--] Khi tìm kiếm kết quả thành công, kết quả hướng dẫn đường đi được trả về, button "Xem đường đi" dùng để chuyển sang màn hình bản đồ chỉ đường.
+\end{itemize}
 
-Đối với chức năng các câu hỏi chỉ dẫn, bổ sung thêm một số câu hỏi hữu ích khác như tra cứu các địa điểm quán ăn, cây xăng xung quanh vị trí hiện tại hay ở một khu vực nhất định, tìm nhiều đường đi khác nhau, hỏi và phân tích được vấn đề giao thông hiện tại như kẹt xe,... Và nâng cao hơn là áp dụng các mô hình xử lý ngôn ngữ tự nhiên để hệ thống có thể hiểu câu lệnh tốt hơn.
+Khi người dùng bấm vào icon "micro" trên màn hình cuộc hội thoại, nếu đây là lần đầu sử dụng ứng dụng với chức năng này, ứng dụng sẽ xin người dùng cấp quyền cho phép ghi âm từ thiết bị (xem hình \ref{fig: accesss-mic}), khi chọn cho phép, người dùng có thể sử dụng chức năng này để ghi âm giọng nói.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/access_mic.jpg}
+    \caption{Màn hình xin quyền cấp phép ghi âm của thiết bị}
+    \label{fig: accesss-mic}
+\end{figure}
+
+Giao diện ứng dụng khi đang thực hiện ghi âm giọng nói sẽ hiển thị như sau (hình \ref{fig:screen-record}) :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/Screen-record.png}
+    \caption{Màn hình thể hiện đang ghi âm}
+    \label{fig:screen-record}
+\end{figure}
+
+Bán kính của vòng tròn hiển thị trong khi thực hiện quá trình ghi âm được hiển thị tăng giảm theo cường độ âm thanh thu được.
+
+Sau khi kết thúc yêu cầu bằng giọng nói, ứng dụng tự động chuyển đổi giọng nói thành văn bản gửi lên hệ thống và hiển thị văn bản lên màn hình cuộc hội thoại.
+
+\subsection{Giao diện chức năng hiển thị bản đồ}
+
+Nếu đây là lần đầu sử dụng ứng dụng với chức năng này, ứng dụng sẽ xin người dùng cấp quyền cho phép truy cập vào vị trí của thiết bị (xem hình \ref{fig: accesss-location}). Người dùng cần phải cho phép để ứng dụng có thể biết được vị trí để thuận tiện hơn cho quá trình sử dụng chức năng này của ứng dụng.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/access_location.jpg}
+    \caption{Màn hình xin quyền cấp phép truy cập vị trí hiện tại của thiết bị}
+    \label{fig: accesss-location}
+\end{figure}
+
+Giao diện ứng dụng khi người dùng xem bản đồ đường đi trên ứng dụng (hình \ref{fig:screen-map}) :
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{images/Screen-Map.png}
+    \caption{Màn hình chỉ đường}
+    \label{fig:screen-map}
+\end{figure}
+
+Giao diện gồm các phần sau đây:
+\begin{itemize}
+    \item[--] "Bắt đầu": Hiển thị thông tin địa điểm bắt đầu.
+    \item[--] "Kết thúc": Hiển thị thông tin địa điểm kết thúc.
+    \item[--] Hiển thị khoảng cách của hai địa điểm.
+    \item[--] Chính giữa màn hình hiển thị bản đồ, điểm đầu và điểm cuối đường đi và đường đi giữa hai điểm được thể hiện bằng dòng kẻ màu đỏ.
+    \item[--] Bên trái màn hình có button phóng to và thu nhỏ bản đồ.
+    \item[--] Bên góc bên phải phía dưới màn hình có button dùng để xác định vị trí hiện tại của người dùng.
+\end{itemize}
