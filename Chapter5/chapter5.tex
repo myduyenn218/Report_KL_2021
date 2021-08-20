@@ -88,7 +88,25 @@ Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng 
     \item[--] Chuyển văn bản thành giọng nói: Chuyển phản hồi của hệ thống thành dạng âm thanh để phát ra qua điện thoại.
 \end{itemize}
 
-Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text \footnote{Xem thêm về SpeechToText \url{https://pub.dev/packages/speech_to_text}} và flutter\_tts \footnote{Xem thêm về TextToSpeech \url{https://pub.dev/packages/flutter_tts}} được cung cấp bởi bộ quản lý thư viện của Flutter.
+Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text\cite{stt} và flutter\_tts\cite{tts} được cung cấp bởi bộ quản lý thư viện của Flutter.
+
+\section{Thiết kế UC}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/Sequence-Diagram.png}
+    \caption{Sequence Diagram}
+    \label{fig:UC}
+\end{figure}
+
+\section{Xây dựng luồng ứng dụng}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/Sequence-Diagram.png}
+    \caption{Sequence Diagram}
+    \label{fig:Sequence-Diagram}
+\end{figure}
 
 \section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
 \subsection{Tạo dữ liệu tiếng Việt}

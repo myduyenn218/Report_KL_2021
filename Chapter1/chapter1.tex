@@ -26,45 +26,49 @@ Luận văn tập trung tìm cách giải quyết các bài toán mà chatbot �
 Với đề tài này, chúng em sẽ tập trung xây dựng giải pháp trả lời tự động (chatbot) bằng tiếng Việt trong lĩnh vực hỏi đường dựa vào Snips-NLU và áp dụng những kiến thức tìm hiểu về chatbot để có thể tuỳ chỉnh trên mã nguồn mở này. Đối tượng người dùng chatbot cụ thể ở đây là những người có nhu cầu sử dụng ứng dụng di động để chỉ đường đi.
 
 \section{Kết quả}
-Xây dựng giải pháp trả lời tự động (chatbot) bằng tiếng Việt với các chức năng sau:
+Xây dựng thành công giải pháp trả lời tự động (chatbot) bằng tiếng Việt trong lĩnh vực chỉ đường trong phạm vi Thành phố Thủ Đức với các chức năng sau:
 \begin{itemize}
-    \item[--] Ứng dụng chatbot (xác định ý định và trích xuất thông tin).
-    \item[--] Sử dụng ngôn ngữ trò chuyện chính là Tiếng Việt.
-    \item[--] Cho phép người dùng cuối tương tác với chatbot bằng giọng nói và văn bản.
-    \item[--] Bộ dữ liệu dùng để huấn luyện, tài liệu đầu vào mẫu và phương pháp giải quyết các vấn đề về câu trả lời phản hồi.
-    \item[--] Ứng dụng kết hợp với bản đồ hướng dẫn đường đi.
+    \item[--] Xây dựng thành công ứng dụng chatbot. Sử dụng thư viện Snip-NLU\cite{Snipsnlu} để xác định ý định và trích xuất thông tin.
+    \item[--] Xây dựng bộ từ điển để chuyển đổi ngôn ngữ huấn luyện từ tiếng Việt sang tiếng Anh và sử dụng VNCoreNLU\cite{vncorenlu} để quá trình chuyển đổi ngôn ngữ được chính xác hơn. Nhằm mục đích tạo ra chatbot sử dụng ngôn ngữ trò chuyện chính là Tiếng Việt.
+    \item[--] Sử dụng thư viện speech\_to\_text\cite{stt} và flutter\_tts\cite{tts} được cung cấp bởi bộ quản lý thư viện của Flutter để chuyển đổi giọng nói thành văn bản và ngược lại. Nhằm mục đích giúp người dùng tương tác với chatbot bằng giọng nói và văn bản.
+    \item[--] Xây dựng bộ dữ liệu dùng để huấn luyện, tài liệu đầu vào mẫu (Xem dữ liệu tại đây .... (chèn link dữ liệu huấn luyện)) và sử dụng Google Map API\cite{ggmaps} để tìm kiếm và trả về các câu trả lời phù hợp.
+    \item[--] Ứng dụng kết hợp với bản đồ hướng dẫn đường đi để người dùng có thể sử dụng thuận tiện hơn.
 \end{itemize}
 
 
 
 Cuốn luận được trình bày theo cấu trúc sau:
 \begin{itemize}
-    \item Chương 1: Giới thiệu: Sơ lược về đề tài, mục tiêu, cách tiếp cận và kết quả đề tài, cấu trúc cuốn luận
-    \item Chương 2: Các hệ thống và thuật toán liên quan
+    \item Chương 1: Tổng quan: Sơ lược về đề tài, mục tiêu, cách tiếp cận và kết quả đề tài, cấu trúc cuốn luận.
+    \item Chương 2: Khảo sát
           \begin{itemize}
               \item Giới thiệu Chatbot
               \item Các hệ thống tương tự
-              \item Một số phương pháp hiểu ngôn ngữ tự nhiên - (\ac{nlu})
+              \item Một số nền tảng hiểu ngôn ngữ tự nhiên - (\ac{nlu})
           \end{itemize}
-    \item Chương 3: Giải pháp và phương án thực hiện
+    \item Chương 3: Cơ sở lý thuyết
           \begin{itemize}
               \item Hiểu ngôn ngữ tự nhiên (\ac{nlu})
-              \item Xác định Intent
+              \item Xác định ý định (Extract intent)
               \item Trích xuất thông tin (Filling slots)
-              \item Giải pháp xây dựng ứng dụng
-              \item Kết quả lựa chọn công nghệ
           \end{itemize}
-    \item Chương 4: Triển khai ứng dụng
+    \item Chương 4: Phương án thực hiện
+    \begin{itemize}
+        \item Phương pháp xây dựng ứng dụng
+        \item Các phương pháp chuyển hoá dữ liệu tiếng Việt sang tiếng Anh
+        \item Kết quả lựa chọn công nghệ
+    \end{itemize}
+    \item Chương 5: Triển khai ứng dụng
           \begin{itemize}
               \item Phân tích, đặc tả bài toán: Trình bày các phân tích về bài toán, từ đó đưa ra cái nhìn tổng quan về hệ thống sẽ xây dựng
               \item Thiết kế kiến trúc hệ thống: Sơ đồ và diễn giải thiết và phần mềm của bài toán
               \item Xây dựng thành phần xác định ý định và trích xuất thực thể.
           \end{itemize}
-    \item Chương 5: Kết quả: Trình bày kết quả lựa chọn thuật toán, công nghệ, và các thiết kế chi tiết của hệ thống
+    \item Chương 6: Kết quả: Trình bày kết quả lựa chọn thuật toán, công nghệ, và các thiết kế chi tiết của hệ thống
           \begin{itemize}
               \item Một số chức năng đã cài đặt
           \end{itemize}
-    \item Chương 6: Kết luận và hướng phát triển: Trình bày kết luận đề tài và hướng phát triển về sau
+    \item Chương 7: Kết luận và hướng phát triển: Trình bày kết luận đề tài và hướng phát triển về sau
           \begin{itemize}
               \item Kết luận đề tài
               \item Hướng phát triển
