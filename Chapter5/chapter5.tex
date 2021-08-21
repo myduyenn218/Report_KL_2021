@@ -90,24 +90,55 @@ Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng 
 
 Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text\cite{stt} và flutter\_tts\cite{tts} được cung cấp bởi bộ quản lý thư viện của Flutter.
 
-\section{Thiết kế UseCase}
-
+\section{Thiết kế Use Case}
+Hình dưới đây thể hiện các chức năng chính của ứng dụng (Xem hình \ref{fig:UC}). 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/ChatbotSRS-UseCase.png}
+    \includegraphics[width=15cm]{images/ChatbotSRS-UseCase.png}
     \caption{Use Diagram}
     \label{fig:UC}
 \end{figure}
 
-\section{Xây dựng luồng ứng dụng}
+Các chức năng chính của ứng dụng:
+\begin{itemize}
+    \item[--] Hỏi bằng giọng nói. 
+    \item[--] Hỏi bằng văn bản.
+    \item[--] Đường đi từ một địa điểm đến một địa điểm.
+    \item[--] Hỏi vị trí hiện tại.
+    \item[--] Hỏi địa chỉ chính xác của một địa danh cụ thể.
+    \item[--] Hỏi khoảng cách từ một địa điểm đến một địa điểm.
+    \item[--] Hiển thị giao diện bản đồ chỉ đường đi. 
+\end{itemize}
 
+\section{Xây dựng luồng ứng dụng - Flow Diagram}
+Hình dưới đây thể hiện quy trình thực hiện của ứng dụng (Xem hình \ref{fig:Sequence-Diagram}). 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/ChatbotSRS-Sequence.png}
+    \includegraphics[width=15cm]{images/ChatbotSRS-Sequence.png}
     \caption{Flow Diagram}
     \label{fig:Sequence-Diagram}
 \end{figure}
-
+Khi người dùng sử dụng ứng dụng và chọn chức năng trò chuyện, ứng dụng sẽ xuất hiện hộp thoại cuộc trò chuyện. Dưới đây là thiết kế quy trình xử lý dữ liệu và trả về kết quả cho người dùng:
+\begin{itemize}
+    \item[--] Bước 1: Người dùng gửi dữ liệu cho ứng dụng bằng hai cách:
+    \begin{itemize}
+        \item[\textbullet] Bước 1.1: Người dùng thực hiện thu âm giọng nói bằng ứng dụng.
+        \item[\textbullet] Bước 1.2: Người dùng trực tiếp nhập văn bản trên ứng dụng.
+    \end{itemize} 
+    \item[--] Bước 2: Nếu người dùng sử dụng giọng nói (1.1), ứng dụng thực hiện chuyển đổi giọng nói thành văn bản. Hiển thị văn bản lên màn hình cuộc hội thoại.
+    \item[--] Bước 3: Ứng dụng gửi văn bản lên hệ thống. 
+    \item[--] Bước 4: Hệ thống thực hiện xác định ý định và trích xuất thông tin. 
+    \item[--] Bước 5: Dựa vào thông tin vừa phân tích được, tiến hành gọi (call) Google Map API.
+    \item[--] Bước 6: GoogleMaps tiến hành tìm kiếm câu trả lời và trả về.
+    \item[--] Bước 7: Gửi câu trả lời về hệ thống.
+    \item[--] Bước 8: Hệ thống tạo câu trả lời và trả về ứng dụng. 
+    \item[--] Bước 9:  
+    \begin{itemize}
+        \item[\textbullet] Bước 9.1: Câu trả lời được gửi về ứng dụng.
+        \item[\textbullet] Bước 9.2: Thông báo không hiểu gửi về ứng dụng.
+    \end{itemize} 
+    \item[--] Bước 10: Ứng dụng thực hiện chuyển đổi văn bản thành âm thanh. Hiển thị văn bản lên màn hình và phát lên nội dung văn bản đó.
+\end{itemize}
 \section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
 \subsection{Tạo dữ liệu tiếng Việt}
 Nhóm đã thực hiện tạo dữ liệu cho 4 intent thuộc lĩnh vực đường đi:
