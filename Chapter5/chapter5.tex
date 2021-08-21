@@ -90,12 +90,12 @@ Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng 
 
 Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text\cite{stt} và flutter\_tts\cite{tts} được cung cấp bởi bộ quản lý thư viện của Flutter.
 
-\section{Thiết kế UC}
+\section{Thiết kế UseCase}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=10cm]{images/ChatbotSRS-UseCase.png}
-    \caption{Sequence Diagram}
+    \caption{Use Diagram}
     \label{fig:UC}
 \end{figure}
 
@@ -104,7 +104,7 @@ Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bả
 \begin{figure}[H]
     \centering
     \includegraphics[width=10cm]{images/ChatbotSRS-Sequence.png}
-    \caption{Sequence Diagram}
+    \caption{Flow Diagram}
     \label{fig:Sequence-Diagram}
 \end{figure}
 
@@ -140,7 +140,14 @@ Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu
     \centering
     \includegraphics[width=10cm]{images/Data-train-ex.png}
     \caption{Hình ảnh minh họa dữ liệu sau khi dịch}
-    \label{fig:data-train-en}
+    \label{fig:data-train-en} 
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/FlowTrainingData.png}
+    \caption{Hình ảnh minh họa dữ liệu sau khi dịch}
+    \label{fig:FlowTrainingData}
 \end{figure}
 
 Bài toán phân lớp (Classification) là quá trình phân lớp một đối tượng dữ liệu vào một hay nhiều lớp đã cho trước nhờ một mô hình phân lớp (model). Mô hình này được xây dựng dựa trên một tập dữ liệu được xây dựng trước đó có gán nhãn (hay còn gọi là tập huấn luyện). Quá trình phân lớp là quá trình gán nhãn cho đối tượng dữ liệu.

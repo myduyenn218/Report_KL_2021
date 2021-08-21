@@ -38,6 +38,7 @@ Chatbot có thể được phân chia thành các loại sau đây:
           \begin{itemize}
               \item[--] Chatbot giúp bạn giữ chi phí kinh doanh thấp bởi số tiền bạn đầu tư vào chatbot ít hơn số tiền bạn phải trả cho nhân viên.
               \item[--] Bằng cách này, bạn thực sự tiết kiệm được rất nhiều tiền thay vì việc duy trì một trung tâm hỗ trợ khách hàng. Tính năng này sẽ giúp bạn tiết kiệm tài chính, tránh những rắc rối trong quản lý nhân sự, và tiết kiệm thời gian để làm những việc cần thiết khác.
+              \item[--] Làm việc 24/7. Đáp ứng cho giải pháp làm việc toàn cầu (gobal), khác múi giờ. 
           \end{itemize}
     \item Nhiều mục đích sử dụng:
           \begin{itemize}
@@ -58,7 +59,7 @@ Hai thành phần liên quan đến xử lý ngôn ngữ tự nhiên không th�
 \\
 Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được thêm vào chatbot là bộ quản lý hội thoại, bộ sinh ngôn ngữ (\ac{nlg}), và bộ phân tích cảm xúc. Một bộ quản lý hội thoại sẽ lưu trữ, phân tích và tận dụng ngữ cảnh cuộc hội thoại và giúp chatbot suy luận hành động tiếp theo trong khi \ac{nlg} giúp sinh câu trả lời đầy đủ, tự nhiên nhất bằng ngôn ngữ tự nhiên cho chatbot. Một bộ phân tích cảm xúc có thể cần bởi vì cùng một câu có thể mang nhiều nghĩa khác nhau trong các văn cảnh khác nhau, do đó có thể cần được trả lời theo các cách khác nhau phụ thuộc vào cảm xúc của người dùng.
 \\
-Bài luận này chủ yếu nghiên cứu về phát hiện ý định và trích xuất thực thể trong NLU module.
+Bài luận này chủ yếu nghiên cứu về phát hiện ý định và trích xuất thực thể trong \ac{nlu} module.
 
 \section{Các hệ thống tương tự}
 
@@ -105,13 +106,13 @@ Với mong muốn xây dựng một ứng dụng chatbot sử dụng trong lĩnh
 
 Hiểu ngôn ngữ tự nhiên là thành phần rất quan trọng và không thể thiếu trong chatbot cũng như trợ lý ảo. Nó giúp chúng ta nhận diện ý định và các thực thể từ câu nói của người dùng.
 
-Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn ngữ tự nhiên, trong số đó những dịch vụ NLU phổ biến nhất là: LUIS\footnote{\url{https://www.luis.ai/}}, Watson\footnote{\url{https://www.ibm.com/watson}}, DialogFlow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, Rasa\footnote{\url{https://rasa.com/}} và Snips\footnote{\url{https://snips.ai/}}.
+Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn ngữ tự nhiên, trong số đó những dịch vụ \ac{nlu} phổ biến nhất là: LUIS\footnote{\url{https://www.luis.ai/}}, Watson\footnote{\url{https://www.ibm.com/watson}}, DialogFlow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, Rasa\footnote{\url{https://rasa.com/}} và Snips\footnote{\url{https://snips.ai/}}.
 
-\subsection{Các nền tảng NLU phổ biến}
+\subsection{Các nền tảng \ac{nlu} phổ biến}
 
 \textbf{Dialogflow (Google):} Trước đây được gọi là Api.ai, gần đây nó đã đổi tên thành Dialogflow và nó là một nền tảng phát triển trợ lý văn bản ảo và nhanh chóng bổ sung khả năng nói. Framework này tạo ra chatbot thông qua giao diện người dùng dựa trên web hoàn chỉnh hoặc đối với các dự án phức tạp, sử dụng số lượng lớn các API thông qua Rest (cũng có nhiều SDK cho các ngôn ngữ lập trình khác nhau). Các ý định và thực thể khác nhau có thể được tạo ra bằng cách đưa ra các ví dụ. Nó hỗ trợ nhiều ngôn ngữ khác nhau.
 
-\textbf{Watson (IBM):} Nền tảng này trở nên nổi tiếng vào năm 2011 vì nó đã giành chiến thắng trong một cuộc thi chống lại các nhà vô địch của con người của trò chơi nguy hiểm. Watson là một NLU framework hoàn chỉnh cho phép phát triển một chatbot bằng cách sử dụng một giao diện người dùng trên nền tảng web hoặc để khai thác các SDK khác nhau, để tạo một trợ lý ảo nhanh chóng và với các chương trình ngôn ngữ khác nhau. Nền tảng này dễ dàng tích hợp với nhiều dịch vụ truyền thông khác nhau và cung cấp hỗ trợ đầy đủ sang công nghệ Text-to-Speech và Speech-to-Text. Watson cho phép nhận ra ý định và thực thể, và một số mô hình liên quan đến chủ đề chung được cung cấp bởi nền tảng, trong khi đối với các miền cụ thể, người dùng phải tạo mô hình đưa ra một tập hợp các ví dụ khá nhỏ để đào tạo động cơ NLU.
+\textbf{Watson (IBM):} Nền tảng này trở nên nổi tiếng vào năm 2011 vì nó đã giành chiến thắng trong một cuộc thi chống lại các nhà vô địch của con người của trò chơi nguy hiểm. Watson là một \ac{nlu} framework hoàn chỉnh cho phép phát triển một chatbot bằng cách sử dụng một giao diện người dùng trên nền tảng web hoặc để khai thác các SDK khác nhau, để tạo một trợ lý ảo nhanh chóng và với các chương trình ngôn ngữ khác nhau. Nền tảng này dễ dàng tích hợp với nhiều dịch vụ truyền thông khác nhau và cung cấp hỗ trợ đầy đủ sang công nghệ Text-to-Speech và Speech-to-Text. Watson cho phép nhận ra ý định và thực thể, và một số mô hình liên quan đến chủ đề chung được cung cấp bởi nền tảng, trong khi đối với các miền cụ thể, người dùng phải tạo mô hình đưa ra một tập hợp các ví dụ khá nhỏ để đào tạo động cơ \ac{nlu}.
 
 \textbf{Luis (Microsoft):} Tương tự như các nền tảng trước, Luis là một dịch vụ dựa trên đám mây có sẵn thông qua giao diện web hoặc các yêu cầu API. Luis cung cấp nhiều mô hình miền được tạo sẵn bao gồm ý định, lời nói và thực thể, hơn nữa, nó cho phép xác định các mô hình tùy chỉnh. Việc quản lý luồng đối thoại dẫn đến phức tạp hơn cho các sản phẩm khác. Tuy nhiên, có thể xây dựng một trợ lý ảo hoàn chỉnh với các khả năng tương tự được cung cấp bởi các dịch vụ khác. Các công cụ khác nhau tạo điều kiện phát triển trợ lý ảo được hỗ trợ (chẳng hạn như hỗ trợ kiểm tra, phân tích văn bản thành lời nói và cảm xúc).
 
@@ -120,11 +121,12 @@ Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn 
 \textbf{Snips NLU:}  là một công cụ hiểu ngôn ngữ tự nhiên cho phép phân tích cú pháp các câu được viết bằng ngôn ngữ tự nhiên và trích xuất thông tin có cấu trúc. Chỉ cần một ít dữ liệu đào tạo là có thể tạo ra một công cụ nhận dạng ý định mạnh mẽ. Snips NLU có thể được tùy chỉnh và hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Ý, v.v...
 
 \subsection{Yêu cầu lựa chọn}
-Do sự tồn tại của nhiều dịch vụ NLU, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em sẽ lựa chọn nền tảng NLU có hiệu năng cao để có thể đem lại kết quả tốt.
+Do sự tồn tại của nhiều dịch vụ \ac{nlu}, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em lựa chọn nền tảng \ac{nlu} có hiệu năng cao để có thể đem lại kết quả tốt.
 
-Nếu hiệu năng giữa các nền tảng thương mại và nền tảng mã nguồn mở không có sự chênh lệch nhiều, nhóm sẽ ưu tiên lựa chọn nền tảng NLU mã nguồn mở do những lợi ích sau:
+Nếu hiệu năng giữa các nền tảng thương mại và nền tảng mã nguồn mở không có sự chênh lệch nhiều, do đó, nhóm em ưu tiên lựa chọn nền tảng \ac{nlu} mã nguồn mở với các tiêu chí sau đây:
+
 \begin{itemize}
-    \item[--] Chi phí:  tốn rất ít hoặc không có chi phí trả trước cho mã nguồn mở. chúng ta chỉ cần tải mã xuống từ một nguồn hợp pháp và sử dụng.
+    \item[--] Chi phí:  tốn rất ít hoặc không có chi phí trả trước cho mã nguồn mở. Chúng ta chỉ cần tải mã xuống từ một nguồn hợp pháp và sử dụng.
     \item[--] Độ tin cậy: Phần mềm nguồn mở có độ tin cậy cao. Thông thường, hàng nghìn chuyên gia phát triển làm việc để tạo ra và không ngừng cải tiến phần mềm nguồn mở. Điều này có nghĩa là có nhiều khả năng ai đó sẽ nhận ra một lỗ hổng hoặc một lỗi và sửa chữa nó ngay lập tức.
     \item[--] Bảo mật: Những người ủng hộ mã nguồn mở khẳng định rằng phần mềm nguồn mở về tổng thể an toàn hơn so với phần mềm độc quyền. Các lỗi và các vấn đề khác có xu hướng được xử lý ngay khi các thành viên cộng đồng phát hiện ra chúng.
     \item[--] Tính linh hoạt: Người dùng phần mềm nguồn mở được hưởng lợi từ quyền tự do sửa đổi phần mềm theo cách phù hợp với nhu cầu của họ. Không giống như phần mềm thương mại, nơi bạn phải tuân thủ các yêu cầu và giới hạn của nhà cung cấp, người dùng nguồn mở có toàn quyền kiểm soát phần mềm của họ. Phần mềm nguồn mở không bị giới hạn bởi thỏa thuận người dùng cứng nhắc liên quan đến phần mềm độc quyền.
@@ -132,7 +134,7 @@ Nếu hiệu năng giữa các nền tảng thương mại và nền tảng mã 
 
 \subsection{Tóm tắt các bài so sánh được sử dụng}
 
-Do thời gian thực hiện nghiên cứu có giới hạn, nhóm em đã sử dụng kết quả của các bài báo so sánh hiệu năng của các nền tảng NLU bao gồm:
+Do thời gian thực hiện nghiên cứu có giới hạn, nhóm em đã sử dụng kết quả của các bài báo so sánh hiệu năng của các nền tảng \ac{nlu} bao gồm:
 
 \begin{enumerate}
     \item Evaluating Natural Language Understanding Services for Conversational Question Answering Systems \cite{EvaluatingNLU}.
@@ -261,7 +263,7 @@ dataset                                         & Entity Type & \textbf{training
 
 \begin{itemize}
     \item[--] Tác giả huấn luyện mô hình trên các nền tảng LUIS, Watson Conversation, API.ai, và RASA. Tất cả đều dùng trên cùng một bộ dữ liệu.
-        \item[--]Sau đó bộ dữ liệu kiểm thử đã được gửi đến các dịch vụ NLU để gán nhãn, đem gán nhãn được dự đoán bởi dịch vụ NLU so sánh với nhãn thực tế.
+        \item[--]Sau đó bộ dữ liệu kiểm thử đã được gửi đến các dịch vụ \ac{nlu} để gán nhãn, đem gán nhãn được dự đoán bởi dịch vụ \ac{nlu} so sánh với nhãn thực tế.
         \item[--]Để mà đánh giá kết quả, tác giả đã tính toán các độ đo precision và recall cũng như F-score cho từng intents, entity types, và từng bộ dữ liệu, cũng như kết quả tổng quát. Chúng ta sẽ nói rằng một dịch vụ tốt hơn dịch vụ kia nếu F-score của nó cao hơn.
 \end{itemize}
 
@@ -350,7 +352,7 @@ Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
 \textbf{III. Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces}
 
 \begin{itemize}
-    \item[--] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems. So sánh hiệu năng giữa các dịch vụ NLU khác nhau: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google) và nền tảng mã nguồn mở Rasa NLU.
+    \item[--] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems. So sánh hiệu năng giữa các dịch vụ \ac{nlu} khác nhau: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google) và nền tảng mã nguồn mở Rasa NLU.
     \item[--] Để biết kết quả thô, xem ở \url{https://github.com/sonos/nlu-benchmark}. Chỉ số chính được sử dụng trong điểm chuẩn này là F1-score trung bình của phân loại ý định và các thực thể.
 \end{itemize}
 
@@ -392,7 +394,7 @@ overall    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ 
 \subsection{Kết luận và lựa chọn nền tảng sử dụng}
 
 \begin{itemize}
-    \item[--] Dựa trên kết quả các bài báo mà nhóm tham khảo. Nhóm em rút ra được rằng giữa các nền tảng NLU khác nhau cho kết quả không giống nhau.
+    \item[--] Dựa trên kết quả các bài báo mà nhóm tham khảo. Nhóm em rút ra được rằng giữa các nền tảng \ac{nlu} khác nhau cho kết quả không giống nhau.
     \item[--] Các nền tảng nguồn mở vẫn có thể cạnh tranh được với các nền tảng thương mại. Mặc dù không có hiệu năng tốt nhất trên bảng so sánh, nhưng cả 2 nền tảng nguồn mở (Rasa và Snips) đều đứng ở vị trí thứ 2 và thứ 3 trong số 5 nền tảng được so sánh.
     \item[--] Nhóm em xem xét 2 nền tảng mã nguồn mở đó là Rasa và Snips để sử dụng trong nghiên cứu này. Nhóm quyết định sẽ chọn Snips NLU do nó có hiệu năng tốt hơn.
 \end{itemize}
