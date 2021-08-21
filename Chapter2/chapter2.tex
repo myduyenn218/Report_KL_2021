@@ -47,9 +47,9 @@ Chatbot có thể được phân chia thành các loại sau đây:
 \subsection{Kiến trúc cơ bản của Chatbot}
 \begin{figure}[htp]
     \centering
-    \includegraphics[width=10cm]{images/k.jpg}
+    \includegraphics[width=10cm]{images/Kiến trúc cơ bản của hệ thống giao tiếp tự động.png}
     \caption{Kiến trúc cơ bản của một hệ thống giao tiếp tự động}
-    \label{fig:k}
+    \label{fig:Kiến trúc cơ bản của hệ thống giao tiếp tự động}
 \end{figure}
 
 Các hệ thống chatbot giao tiếp với con người bằng giọng nói (như Siri \footnote{Xem thêm về Siri tại đây:\url{https://www.apple.com/siri/}}) hoặc bằng văn bản (như các chatbot phát triển trên nền Facebook Messenger \footnote{Xem thêm về Facebook Messenger tại đây:\url{https://www.apple.com/siri/}})). Dù giao tiếp bằng hình thức nào, chatbot cũng cần phải hiểu văn bản để có thể đưa ra những câu trả lời phù hợp cho khách hàng. Thành phần đảm nhiệm công việc này trong hệ thống chatbot được gọi là \ac{nlu}, trong đó có rất nhiều các kỹ thuật xử lý ngôn ngữ tự nhiên (\ac{nlp}) được áp dụng.
@@ -158,12 +158,22 @@ Chatbot Corpus:
     \item[--] Bao gồm 206 câu hỏi, được tác giả gán nhãn thủ công. Có 2 intent (Departure Time, Find Connection) trong kho ngữ liệu và 5 loại entity khác nhau (StationStart, StationDest, Criterion, Vehicle, Line). Ngôn ngữ chủ yếu là tiếng Anh, một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện 100 câu và dữ liệu kiểm thử 106 câu.
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/comparisonimg/1.png}
-    \caption{Các loại thực thể trong kho ngữ liệu chatbot}
-    \label{fig:comparisonimg-1}
-\end{figure}
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Entity type           & $\textbf{training}$ & $\textbf{test}$ & $\Sigma$   \\ \hline
+$\textbf{StationStart}$ & 91                & 102           & 193 \\ \hline
+$\textbf{StationDest}$  & 57                & 71            & 128 \\ \hline
+$\textbf{Criterion}$    & 48                & 34            & 82  \\ \hline
+$\textbf{Vehicle}$      & 50                & 35            & 85  \\ \hline
+$\textbf{Line}$         & 4                 & 2             & 6   \\ \hline
+$\Sigma$                    & 250               & 244           & 494 \\ \hline
+
+\end{tabular}
+\caption{Các loại thực thể trong kho ngữ liệu chatbot}
+\label{fig:comparisonimg-1}
+\end{table}
 
 StackExchange Corpus
 
@@ -179,26 +189,62 @@ StackExchange Corpus
     \item[--] Dữ liệu cũng được chia thành dữ liệu huấn luyện và dữ liệu kiểm thử như bảng sau:
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/comparisonimg/webappdatasets.png}
-    \caption{Bộ dữ liệu web applications}
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Intent                   & \textbf{training} & \textbf{test} & $\Sigma$  \\ \hline
+\textbf{ChangePassword}  & 2                 & 6             & 8  \\ \hline
+\textbf{DeleteAccount}   & 7                 & 10            & 17 \\ \hline
+\textbf{DownloadVideo}   & 1                 & 0             & 1  \\ \hline
+\textbf{ExportData}      & 2                 & 3             & 5  \\ \hline
+\textbf{FilterSpam}      & 6                 & 14            & 20 \\ \hline
+\textbf{FindAlternative} & 7                 & 16            & 23 \\ \hline
+\textbf{SyncAccounts}    & 3                 & 6             & 9  \\ \hline
+\textbf{None}            & 2                 & 4             & 6  \\ \hline
+$\Sigma$                      & 30                & 54            & 84 \\ \hline
+\end{tabular}
+\caption{Bộ dữ liệu web applications}
     \label{fig:comparisonimg-webappdatasets}
-\end{figure}
+\end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/comparisonimg/askubuntudatasets.png}
-    \caption{Bộ dữ liệu ask ubuntu}
+
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+Intent                    & \textbf{training} & \textbf{test} & $\Sigma$   \\ \hline
+\textbf{MakeUpdate}       & 10                & 37            & 47  \\ \hline
+\textbf{SetupPrinter}     & 10                & 13            & 23  \\ \hline
+\textbf{ShutdownComputer} & 13                & 14            & 27  \\ \hline
+\textbf{S.Recommendation} & 17                & 40            & 57  \\ \hline
+\textbf{None}             & 3                 & 5             & 8   \\ \hline
+$\Sigma$                         & 53                & 109           & 162 \\ \hline
+\end{tabular}
+  \caption{Bộ dữ liệu ask ubuntu}
     \label{fig:comparisonimg-askubuntudatasets}
-\end{figure}
+\end{table}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/comparisonimg/entityTypesStackExchange.png}
-    \caption{Các loại thực thể trong bộ ngữ liệu StackExchange}
+
+
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+dataset                                         & Entity Type & \textbf{training} & \textbf{test} & $\Sigma$   \\ \hline
+\multicolumn{1}{|r|}{\multirow{4}{*}{web apps}} & WebService  & 33                & 64            & 97  \\ \cline{2-5} 
+\multicolumn{1}{|r|}{}                          & OS          & 1                 & 0             & 1   \\ \cline{2-5} 
+\multicolumn{1}{|r|}{}                          & Browser     & 1                 & 0             & 1   \\ \cline{2-5} 
+\multicolumn{1}{|r|}{}                          & $\Sigma$          & 35                & 64            & 99  \\ \hline
+\multirow{4}{*}{ubuntu}                         & Printer     & 8                 & 12            & 20  \\ \cline{2-5} 
+                                                & Software    & 3                 & 4             & 7   \\ \cline{2-5} 
+                                                & Version     & 24                & 78            & 102 \\ \cline{2-5} 
+                                                & $\Sigma$           & 35                & 94            & 129 \\ \hline
+\end{tabular}
+\caption{Các loại thực thể trong bộ ngữ liệu StackExchange}
     \label{fig:comparisonimg-entityTypesStackExchange}
-\end{figure}
+\end{table}
+
 
 \textbf{Phần thí nghiệm}
 
@@ -250,19 +296,35 @@ Dữ liệu từ hình \ref{fig:overallScores4IntentandEntity} cho thấy điể
 
 Dữ liệu hình \ref{fig:combinedOverallScores} cho thấy điểm F-score trung bình cho mỗi nền tảng.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/comparisonimg/overallScores4IntentandEntity.png}
-    \caption{Các chỉ số của Intent và Entity}
-    \label{fig:overallScores4IntentandEntity}
-\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/comparisonimg/combinedOverallScores.png}
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+\textbf{}  & \multicolumn{3}{l|}{Intent}    & \multicolumn{3}{l|}{Entity}    \\ \hline
+\textbf{}  & Prec  & Rec   & F1             & Prec  & Rec   & F1             \\ \hline
+Rasa       & 0.863 & 0.863 & 0.863          & 0.859 & 0.694 & 0.768          \\ \hline
+Dialogflow & 0.870 & 0.859 & 0.864          & 0.782 & 0.709 & 0.743          \\ \hline
+LUIS       & 0.855 & 0.855 & 0.855          & 0.837 & 0.725 & \textbf{0.777} \\ \hline
+Watson     & 0.884 & 0.881 & \textbf{0.882} & 0.354 & 0.787 & \textbf{0.488} \\ \hline
+\end{tabular}
+ \caption{Các chỉ số của Intent và Entity}
+    \label{fig:overallScores4IntentandEntity}
+\end{table}
+
+
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\textbf{}  & Prec  & Rec   & F1             \\ \hline
+Rasa       & 0.862 & 0.787 & 0.822          \\ \hline
+Dialogflow & 0.832 & 0.791 & 0.811          \\ \hline
+LUIS       & 0.848 & 0.796 & 0.821          \\ \hline
+Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
+\end{tabular}
     \caption{Điểm trung bình của cả Intent và Entity}
     \label{fig:combinedOverallScores}
-\end{figure}
+\end{table}
 
 \begin{itemize}
     \item[--] Dựa vào hình \ref{fig:overallScores4IntentandEntity}, đối với intent, không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể, Watson có F1-score thấp do Precision rất thấp.
@@ -283,12 +345,20 @@ Dữ liệu hình \ref{fig:combinedOverallScores} cho thấy điểm F-score tru
     \item[--] Để công bằng, phiên bản mới nhất của Rasa NLU cũng được sử dụng. Kết quả cho thấy Snips NLU xếp hạng cao thứ hai về tổng thể.
 \end{itemize}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/comparisonimg/benchmark2017and2018.png}
+
+\begin{table}[]
+\begin{tabular}{|l|l|l|l|l|}
+\hline
+corpus     & NLU provider                                                                                     & precision                                                                                      & recall                                                                                & F1-score                                                                              \\ \hline
+chatbot    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \textbf{\begin{tabular}[c]{@{}l@{}}0.970\\ 0.686\\ 0.936\\ 0.970\\ 0.933\\ 0.963\end{tabular}} & \begin{tabular}[c]{@{}l@{}}0.918\\ 0.8\\ 0.532\\ 0.918\\ 0.921\\ 0.899\end{tabular}   & \begin{tabular}[c]{@{}l@{}}0.943\\ 0.739\\ 0.678\\ 0.943\\ 0.927\\ 0.930\end{tabular} \\ \hline
+web apps   & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.828\\ 0.828\\ 0.810\\ 0.466\\ 0.593\\ 0.655\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.653\\ 0.585\\ 0.382\\ 0.724\\ 0.613\\ 0.655\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.73\\ 0.686\\ 0.519\\ 0.567\\ 0.603\\ 0.655\end{tabular}  \\ \hline
+ask ubuntu & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.885\\ 0.807\\ 0.815\\ 0.791\\ 0.796\\ 0.812\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.842\\ 0.825\\ 0.754\\ 0.823\\ 0.768\\ 0.828\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.863\\ 0.816\\ 0.783\\ 0.807\\ 0.782\\ 0.820\end{tabular} \\ \hline
+overall    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.945\\ 0.738\\ 0.871\\ 0.789\\ 0.866\\ 0.896\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.889\\ 0.767\\ 0.567\\ 0.855\\ 0.856\\ 0.858\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.916\\ 0.752\\ 0.687\\ 0.821\\ 0.861\\ 0.877\end{tabular} \\ \hline
+\end{tabular}
     \caption{Precision, recall và F1-score trên 3 bộ dữ liệu}
     \label{fig:benchmark2017and2018}
-\end{figure}
+\end{table}
+
 
 \begin{figure}[H]
     \centering

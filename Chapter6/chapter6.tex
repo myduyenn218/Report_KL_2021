@@ -41,12 +41,21 @@ Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự 
 
 Đem bộ dữ liệu để huấn luyện và đánh giá, ta đạt được Confusion matrix như hình \ref{fig:metrics-dict-end}:
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=15cm]{images/metrics-dict.png}
-    \caption{Các chỉ số của mô hình}
-    \label{fig:metrics-dict-end}
-\end{figure}
+\begin{table}[]
+    \begin{tabular}{|l|l|llllll}
+    \hline
+    \textbf{Intent Name} & \multicolumn{3}{l|}{\textbf{Intent Classification}}                                          & \multicolumn{4}{l|}{\textbf{Slot Filling}}                                                                                                                                                                                                                                                         \\ \hline
+    \textbf{}            & \textbf{Precision} & \multicolumn{1}{l|}{\textbf{Recall}} & \multicolumn{1}{l|}{\textbf{F1}} & \multicolumn{1}{l|}{\textbf{Slot}}                                                  & \multicolumn{1}{l|}{\textbf{Precision}}                            & \multicolumn{1}{l|}{\textbf{Recall}}                               & \multicolumn{1}{l|}{\textbf{F1}}                                   \\ \hline
+    askAddress           & 0.769              & \multicolumn{1}{l|}{1}               & \multicolumn{1}{l|}{0.870}       & \multicolumn{1}{l|}{location}                                                       & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             \\ \hline
+    askDistance          & 1                  & \multicolumn{1}{l|}{1}               & \multicolumn{1}{l|}{1}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}location\\ desLocation\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} \\ \hline
+    askLocation          & 1                  & \multicolumn{1}{l|}{0.7}             & \multicolumn{1}{l|}{0.824}       & \multicolumn{1}{l|}{}                                                               & \multicolumn{1}{l|}{}                                              & \multicolumn{1}{l|}{}                                              & \multicolumn{1}{l|}{}                                              \\ \hline
+    findRouteAB          & 1                  & \multicolumn{1}{l|}{1}               & \multicolumn{1}{l|}{1}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}location\\ desLocation\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} \\ \hline
+    Average metrics      & 0.942              & \multicolumn{1}{l|}{0.925}           & \multicolumn{1}{l|}{0.923}       & \multicolumn{1}{l|}{}                                                               & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             \\ \hline
+    Accuracy             & 0.925              &                                      &                                  &                                                                                     &                                                                    &                                                                    &                                                                    \\ \cline{1-2}
+    \end{tabular}
+     \caption{Các chỉ số của mô hình}
+        \label{fig:metrics-dict-end}
+\end{table}
 
 Các chỉ số được tính cho từng lớp riêng lẻ, ngoại trừ accuracy (độ chính xác); nó được tính toán trên tất cả các lớp để cung cấp độ chính xác phân loại cho mô hình này.
 
