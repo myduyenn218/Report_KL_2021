@@ -174,16 +174,31 @@ Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu
     \label{fig:data-train-en} 
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=10cm]{images/FlowTrainingData.png}
-    \caption{Hình ảnh minh họa dữ liệu sau khi dịch}
-    \label{fig:FlowTrainingData}
-\end{figure}
 
 Bài toán phân lớp (Classification) là quá trình phân lớp một đối tượng dữ liệu vào một hay nhiều lớp đã cho trước nhờ một mô hình phân lớp (model). Mô hình này được xây dựng dựa trên một tập dữ liệu được xây dựng trước đó có gán nhãn (hay còn gọi là tập huấn luyện). Quá trình phân lớp là quá trình gán nhãn cho đối tượng dữ liệu.
 
-Ứng dụng của bài toán này được sử dụng rất nhiều và rộng rãi  trong thực tế ví dụ như bài toán nhận dạng khuôn mặt, nhận diện giọng nói, phát hiện email spam,... Chúng em lựa chọn bài toán này để thực hiện trong phạm vi đề tài này.
 
-Chúng em đã tiến hành dịch toàn bộ dữ liệu huấn luyện từ tiếng Việt sang tiếng Anh với tổng cộng 80 câu và 40 câu kiểm thử. Trong đó, dữ liệu chi tiết cho mỗi intent là huấn luyện 20 câu và 10 câu kiểm thử.
+
+Để xây dựng mô hình phân lớp ý định và trích xuất các thực thể, nhóm em thực hiện quy trình như hình \ref{fig:FlowTrainingData}:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images/FlowTrainingData.png}
+    \caption{Quy trình huấn luyện mô hình}
+    \label{fig:FlowTrainingData}
+\end{figure}
+
+\begin{itemize}
+
+    \item[--]Tạo dữ liệu tiếng Việt: dữ liệu được tạo thủ công với các câu nói ngôn ngữ tiếng Việt được dùng trong lĩnh vực hỏi đường, các câu nói này thuộc 4 mục đích khác nhau bao gồm: hỏi vị trí hiện tại của bản thân, hỏi địa chỉ của một địa điểm nào đó, hỏi khoảng cách giữa 2 địa điểm và hỏi cách đi giữa 2 điểm A và B. Các câu nói này đều được gán nhãn với intent tương ứng. Các thực thể như "địa điểm" cũng được "đánh dấu" để cho mô hình có thể học. Dữ liệu sẽ được lưu trong file json.
+
+\item[--]Tiền xử lý dữ liệu: bao gồm chuẩn hóa Unicode tiếng Việt, chuẩn hóa kiểu gõ dấu.
+
+\item[--]Dịch: áp dụng chuyển hóa dữ liệu từ tiếng Việt sang tiếng Anh bằng phương pháp "Xây dựng bộ từ điển". Kết quả thu được là bộ dữ liệu huấn luyện bằng tiếng Anh lưu ở định dạng file json.
+
+\item[--]Huấn luyện mô hình: dữ liệu huấn luyện tiếng Anh đưa vào mô hình để học tập và trích xuất ra các luật, từ đó tạo ra mô hình phân lớp.
+\item[--]Mô hình phân lớp: được sử dụng để trích xuất ý định và cách thực thể từ những câu nói mà chưa được gán nhãn.
+\end{itemize}
+
+
 

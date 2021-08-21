@@ -121,15 +121,15 @@ Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn 
 \textbf{Snips NLU:}  là một công cụ hiểu ngôn ngữ tự nhiên cho phép phân tích cú pháp các câu được viết bằng ngôn ngữ tự nhiên và trích xuất thông tin có cấu trúc. Chỉ cần một ít dữ liệu đào tạo là có thể tạo ra một công cụ nhận dạng ý định mạnh mẽ. Snips NLU có thể được tùy chỉnh và hỗ trợ nhiều ngôn ngữ như tiếng Anh, tiếng Pháp, tiếng Đức, tiếng Ý, v.v...
 
 \subsection{Yêu cầu lựa chọn}
-Do sự tồn tại của nhiều dịch vụ \ac{nlu}, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em lựa chọn nền tảng \ac{nlu} có hiệu năng cao để có thể đem lại kết quả tốt.
-
-Nếu hiệu năng giữa các nền tảng thương mại và nền tảng mã nguồn mở không có sự chênh lệch nhiều, do đó, nhóm em ưu tiên lựa chọn nền tảng \ac{nlu} mã nguồn mở với các tiêu chí sau đây:
+Do sự tồn tại của nhiều dịch vụ \ac{nlu}, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em lựa chọn nền tảng \ac{nlu} dựa trên các tiêu chí sau đây:
 
 \begin{itemize}
-    \item[--] Chi phí:  tốn rất ít hoặc không có chi phí trả trước cho mã nguồn mở. Chúng ta chỉ cần tải mã xuống từ một nguồn hợp pháp và sử dụng.
-    \item[--] Độ tin cậy: Phần mềm nguồn mở có độ tin cậy cao. Thông thường, hàng nghìn chuyên gia phát triển làm việc để tạo ra và không ngừng cải tiến phần mềm nguồn mở. Điều này có nghĩa là có nhiều khả năng ai đó sẽ nhận ra một lỗ hổng hoặc một lỗi và sửa chữa nó ngay lập tức.
-    \item[--] Bảo mật: Những người ủng hộ mã nguồn mở khẳng định rằng phần mềm nguồn mở về tổng thể an toàn hơn so với phần mềm độc quyền. Các lỗi và các vấn đề khác có xu hướng được xử lý ngay khi các thành viên cộng đồng phát hiện ra chúng.
-    \item[--] Tính linh hoạt: Người dùng phần mềm nguồn mở được hưởng lợi từ quyền tự do sửa đổi phần mềm theo cách phù hợp với nhu cầu của họ. Không giống như phần mềm thương mại, nơi bạn phải tuân thủ các yêu cầu và giới hạn của nhà cung cấp, người dùng nguồn mở có toàn quyền kiểm soát phần mềm của họ. Phần mềm nguồn mở không bị giới hạn bởi thỏa thuận người dùng cứng nhắc liên quan đến phần mềm độc quyền.
+  \item[--] Độ chính xác: nền tảng có khả năng trích xuất ý định và các thực thể với độ chính xác lớn hơn 80%.
+  \item[--] Thời gian: thời gian dự đoán nhanh chóng.
+    \item[--] Chi phí:  tốn ít hoặc không tốn chi phí để sử dụng.
+    \item[--] Bảo mật: Những dữ liệu cá nhân bảo mật tốt, không được truy cập dữ liệu một cách trái phép.
+    \item[--] Độ tin cậy: Phần mềm có độ tin cậy cao, ít xảy ra lỗi.
+    \item[--] Tính linh hoạt: dễ dàng chỉnh sửa để phù hợp với nhu cầu sử dụng. 
 \end{itemize}
 
 \subsection{Tóm tắt các bài so sánh được sử dụng}
@@ -394,7 +394,7 @@ overall    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ 
 \subsection{Kết luận và lựa chọn nền tảng sử dụng}
 
 \begin{itemize}
-    \item[--] Dựa trên kết quả các bài báo mà nhóm tham khảo. Nhóm em rút ra được rằng giữa các nền tảng \ac{nlu} khác nhau cho kết quả không giống nhau.
-    \item[--] Các nền tảng nguồn mở vẫn có thể cạnh tranh được với các nền tảng thương mại. Mặc dù không có hiệu năng tốt nhất trên bảng so sánh, nhưng cả 2 nền tảng nguồn mở (Rasa và Snips) đều đứng ở vị trí thứ 2 và thứ 3 trong số 5 nền tảng được so sánh.
-    \item[--] Nhóm em xem xét 2 nền tảng mã nguồn mở đó là Rasa và Snips để sử dụng trong nghiên cứu này. Nhóm quyết định sẽ chọn Snips NLU do nó có hiệu năng tốt hơn.
+    \item[--] Dựa trên kết quả các bài báo mà nhóm tham khảo. Nhóm em rút ra được rằng: Các nền tảng nguồn mở vẫn có thể cạnh tranh được với các nền tảng thương mại. Mặc dù không có hiệu năng tốt nhất trên bảng so sánh, nhưng cả 2 nền tảng nguồn mở (Rasa và Snips) đều đứng ở vị trí thứ 2 và thứ 3 trong số 5 nền tảng được so sánh.
+    \item[--] Dựa trên các tiêu chí lựa chọn, nhóm em xem xét 2 nền tảng mã nguồn mở đó là Rasa và Snips để sử dụng trong nghiên cứu này. 
+    \item[--] Nhóm quyết định chọn Snips NLU do nó có hiệu năng tốt hơn, được cài đặt và sử dụng đơn giản, có nhiều tài liệu hướng dẫn và khả năng tùy chỉnh dễ dàng.
 \end{itemize}
