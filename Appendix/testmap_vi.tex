@@ -1,0 +1,674 @@
+\UseRawInputEncoding
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+   "intents":{
+      "findRouteAB":{
+         "utterances":[
+            {
+               "data":[
+                  {
+                     "text":"Đường đi từ"
+                  },
+                  {
+                     "text":"đại học nông lâm thành phố hồ chí minh",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"uỷ ban nhân dân thành phố Thủ Đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Từ"
+                  },
+                  {
+                     "text":"đây",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"Công An Thành Phố Thủ Đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Đại học Nông Lâm Thành phố hồ chí minh",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"ngã tư thủ đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Ngã tư thủ đức",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"công an thủ đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"đi như thế nào"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Làm sao đi từ"
+                  },
+                  {
+                     "text":"công an đi thủ đức",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"kho bạc thủ đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Đường nào đi từ"
+                  },
+                  {
+                     "text":"uỷ ban nhân dân thủ Đức",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"kho bạc thủ đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Kho bạc thủ Đức",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"uỷ ban nhân dân thủ đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"đi như thế nào"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Đại học Nông Lâm Thành phố hồ chí minh",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"ngã tư thủ đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"đi như thế nào"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Tìm đường từ"
+                  },
+                  {
+                     "text":"công an thủ đức",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"kho bạc thủ đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Đường từ"
+                  },
+                  {
+                     "text":"kho bạc thành phố hồ chí minh",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"kho bạc thủ Đức",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            }
+         ]
+      },
+      "askLocation":{
+         "utterances":[
+            {
+               "data":[
+                  {
+                     "text":"Đây là đâu?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Tôi đang ở đâu?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Đây là chỗ nào?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Địa chỉ ở đây là gì?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Chỗ này là chỗ nào?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Tôi đang ở địa chỉ nào?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Địa chỉ hiện tại của tôi là gì?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Hiện tại tôi đang ở đâu?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Hãy cho tôi biết địa chỉ ở đây là gì?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Hãy cho tôi biết tôi đang ở đâu?"
+                  }
+               ]
+            }
+         ]
+      },
+      "askAddress":{
+         "utterances":[
+            {
+               "data":[
+                  {
+                     "text":"địa chỉ của"
+                  },
+                  {
+                     "text":"Chợ Bến Thành Sài Gòn",
+                     "entity":"location",
+                     "slot_name":"location"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Nhà thờ Tân Định Sài Gòn",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"có địa chỉ là gì vậy?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"bạn có biết"
+                  },
+                  {
+                     "text":"Bảo tàng Thành phố Hồ Chí Minh",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"ở đâu không?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Hồ Con Rùa",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"là ở đâu?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Chợ Bà Chiểu",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"có địa chỉ là gì?"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"địa chỉ"
+                  },
+                  {
+                     "text":"Tu Viện Khánh An Sài Gòn",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"là gì"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"chỉ cho tôi địa chỉ của"
+                  },
+                  {
+                     "text":"Bảo tàng mỹ thuật TPHCM",
+                     "entity":"location",
+                     "slot_name":"location"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"không biết"
+                  },
+                  {
+                     "text":"Công viên Tao Đàn TPHCM",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"có địa chỉ là gì vậy"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"cho tôi biết địa chỉ của"
+                  },
+                  {
+                     "text":"Chợ Đêm Bến Thành Sài Gòn",
+                     "entity":"location",
+                     "slot_name":"location"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Chợ Đêm Hạnh Thông Tây",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"địa chỉ của nó"
+                  }
+               ]
+            }
+         ]
+      },
+      "askDistance":{
+         "utterances":[
+            {
+               "data":[
+                  {
+                     "text":"từ"
+                  },
+                  {
+                     "text":"Vincom Thủ Đức",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"đại học Kinh Tế",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"xa bao nhiêu"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"khoảng cách từ"
+                  },
+                  {
+                     "text":"đại học Nông Lâm",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"đại học Tôn Đức Thắng",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"khoảng cách đi từ"
+                  },
+                  {
+                     "text":"đại học Nguyễn Tất Thành",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"công viên Tao Đàn",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"là bao nhiêu"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"từ"
+                  },
+                  {
+                     "text":"đại học Kinh Tế",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"trung tâm anh ngữ Ms.Hoa",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"khoảng cách là bao nhiêu"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"từ"
+                  },
+                  {
+                     "text":"Đại học Văn Lang",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"Đại học Quốc tế Sài Gòn",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"xa nhau bao nhiêu"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Đại học Ngân hàng TP. HCM",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"Đại học Kiến trúc Thành phố Hồ Chí Minh",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"độ dài quãng đường"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"Đại học Hoa Sen",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"Đại học FPT Hồ Chí Minh",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"có quãng đường là bao nhiêu"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"khoảng cách"
+                  },
+                  {
+                     "text":"Đại học Công nghiệp Thành phố Hồ Chí Minh",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"Đại học Công nghệ Thông tin - ĐH Quốc gia TP.HCM",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"là bao nhiêu"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"từ"
+                  },
+                  {
+                     "text":"Công An quận 9",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"Ủy ban nhân dân quận 12",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"xa nhau bao nhiêu"
+                  }
+               ]
+            },
+            {
+               "data":[
+                  {
+                     "text":"khoảng cách"
+                  },
+                  {
+                     "text":"Cầu Ánh sao",
+                     "entity":"location",
+                     "slot_name":"location"
+                  },
+                  {
+                     "text":"đến"
+                  },
+                  {
+                     "text":"Đại học An ninh Nhân dân",
+                     "entity":"location",
+                     "slot_name":"desLocation"
+                  },
+                  {
+                     "text":"là bao nhiêu"
+                  }
+               ]
+            }
+         ]
+      }
+   },
+   "entities":{
+      "location":{
+         "data":[
+            
+         ],
+         "use_synonyms":true,
+         "automatically_extensible":true,
+         "matching_strictness":1.0
+      },
+      "snips/datetime":{
+         
+      },
+      "room":{
+         "data":[
+            {
+               "value":"basement",
+               "synonyms":[
+                  "cellar"
+               ]
+            },
+            {
+               "value":"living room",
+               "synonyms":[
+                  "lounge",
+                  "family room"
+               ]
+            }
+         ],
+         "use_synonyms":true,
+         "automatically_extensible":false,
+         "matching_strictness":1.0
+      }
+   },
+   "language":"en"
+}
+\end{lstlisting}

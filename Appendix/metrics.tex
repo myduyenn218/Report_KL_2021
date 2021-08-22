@@ -1,0 +1,161 @@
+\begin{lstlisting}[language=json,firstnumber=1]
+{
+  "average_metrics": {
+    "intent": {
+      "f1": 0.9232736572890026,
+      "precision": 0.9423076923076923,
+      "recall": 0.925
+    },
+    "slot": {
+      "f1": 1.0,
+      "precision": 1.0,
+      "recall": 1.0
+    }
+  },
+  "confusion_matrix": {
+    "intents": [
+      "askAddress",
+      "askDistance",
+      "askLocation",
+      "findRouteAB",
+      "null"
+    ],
+    "matrix": [
+      [
+        10,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        10,
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        7,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        10,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "metrics": {
+    "askAddress": {
+      "exact_parsings": 10,
+      "intent": {
+        "f1": 0.8695652173913044,
+        "false_negative": 0,
+        "false_positive": 3,
+        "precision": 0.7692307692307693,
+        "recall": 1.0,
+        "true_positive": 10
+      },
+      "intent_utterances": 22,
+      "slots": {
+        "location": {
+          "f1": 1.0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "true_positive": 10
+        }
+      }
+    },
+    "askDistance": {
+      "exact_parsings": 10,
+      "intent": {
+        "f1": 1.0,
+        "false_negative": 0,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positive": 10
+      },
+      "intent_utterances": 20,
+      "slots": {
+        "desLocation": {
+          "f1": 1.0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "true_positive": 10
+        },
+        "location": {
+          "f1": 1.0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "true_positive": 10
+        }
+      }
+    },
+    "askLocation": {
+      "exact_parsings": 7,
+      "intent": {
+        "f1": 0.8235294117647058,
+        "false_negative": 3,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 0.7,
+        "true_positive": 7
+      },
+      "intent_utterances": 20,
+      "slots": {}
+    },
+    "findRouteAB": {
+      "exact_parsings": 10,
+      "intent": {
+        "f1": 1.0,
+        "false_negative": 0,
+        "false_positive": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "true_positive": 10
+      },
+      "intent_utterances": 21,
+      "slots": {
+        "desLocation": {
+          "f1": 1.0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "true_positive": 10
+        },
+        "location": {
+          "f1": 1.0,
+          "false_negative": 0,
+          "false_positive": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "true_positive": 10
+        }
+      }
+    }
+  }
+}
+
+
+\end{lstlisting}
