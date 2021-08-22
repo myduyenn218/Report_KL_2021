@@ -89,7 +89,7 @@ Về vấn đề những thực thể bị dịch thành tiếng Anh làm cho n�
 
 Pos tagging là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
 
-Nhóm em sử dụng thư viện VNcoreNLP để tách từ và phân loại các từ trong câu. Sau đó dùng thư viện word2word để dịch những từ không thuộc từ loại  riêng. Những từ thuộc từ loại danh từ riêng được giữ nguyên tiếng Việt.
+Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Sau đó dùng thư viện word2word để dịch những từ không thuộc từ loại  riêng. Những từ thuộc từ loại danh từ riêng được giữ nguyên tiếng Việt.
 
 
 Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}, kết quả được minh họa như hình \ref{fig:trainingdata-wordsegment}
@@ -146,7 +146,7 @@ Kết quả đạt được sau khi dùng phương pháp dịch bằng cách xâ
 \section{Công nghệ}
 
 \subsection{Flutter}
-Để xây dựng giao diện web cho hệ thống nhóm đã tiến hành tìm hiểu nhiều công nghệ xây dựng mobile như React Native\footnote{Xem thêm về React Native tại đây: \url{https://reactnative.dev/}}, Xamarin\footnote{Xem thêm về Xamarin tại đây: \url{https://docs.microsoft.com/en-us/xamarin/}}, Flutter\footnote{Flutter là một bộ công cụ giao diện người dùng để xây dựng ứng dụng cho nhiều nền tảng khác nhau như web, thiết bị di động, máy tính cá nhân với cùng một mã nguồn. Xem thêm về Flutter tại đây: \url{https://flutter.dev/}}.
+Để xây dựng giao diện ứng dụng cho hệ thống nhóm đã tiến hành tìm hiểu nhiều công nghệ xây dựng mobile như React Native\footnote{Xem thêm về React Native tại đây: \url{https://reactnative.dev/}}, Xamarin\footnote{Xem thêm về Xamarin tại đây: \url{https://docs.microsoft.com/en-us/xamarin/}}, Flutter\footnote{Flutter là một bộ công cụ giao diện người dùng để xây dựng ứng dụng cho nhiều nền tảng khác nhau như web, thiết bị di động, máy tính cá nhân với cùng một mã nguồn. Xem thêm về Flutter tại đây: \url{https://flutter.dev/}}.
 
 Nhóm quyết định chọn Flutter vì các ưu điểm sau:
 \begin{itemize}
@@ -168,7 +168,7 @@ Snips NLU - bộ công cụ trích xuất thông tin có cấu trúc từ các c
 
 Có thể khái quát các luồng xử lý của snips-NLU \cite{snips-nlu} như sau:
 
-Hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) chứa một thành phần chính, NLU Engine, bản thân nó bao gồm một số thành phần sau:
+Trung tâm của hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) là NLU Engine, bản thân nó bao gồm một số thành phần sau:
 \begin{itemize}
     \item Deterministic intent parser: Mục tiêu của trình phân tích cú pháp xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
     \item Probabilistic intent parser: Trình phân tích cú pháp mục đích nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích cú pháp xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
