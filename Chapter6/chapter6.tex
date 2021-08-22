@@ -3,6 +3,18 @@
 
 \emph{Chương này trình bày kết quả đề tài, kết quả phát hiện intent, trích xuất thông tin và các chức năng đã cài đặt được.}
 
+
+Xây dựng thành công giải pháp trả lời tự động bằng tiếng Việt với các chức năng chi tiết như sau:.
+\begin{itemize}
+    \item[--] Xây dựng thành công ứng dụng chatbot trên hai nền tảng Android và iOS.
+    \item[--] Chatbot sử dụng ngôn ngữ trò chuyện chính là Tiếng Việt.
+    \item[--] Ứng dụng cho phép người dùng tương tác với chatbot bằng giọng nói và văn bản.
+\end{itemize}
+
+Tự tạo một bộ dữ liệu huấn luyện bao gồm 80 câu huấn luyện và 40 câu kiểm thử cho 4 loại ý định trong lĩnh vực tìm đường đi. Bộ dữ liệu được tạo ban đầu với ngôn ngữ tiếng Việt và sử dụng các phương pháp chuyển đổi ngôn ngữ và bộ dịch và sau cùng tạo được một bản dữ liệu tiếng Anh được chuyển đổi tự động từ bản tiếng Việt.  
+
+Sử dụng thư viện mã nguồn mở Snips-NLU\cite{Snipsnlu} để xây dựng mô hình phát hiện ý định và trích xuất thông tin từ văn bản. Sử dụng Google Map API\cite{ggmaps} để tìm kiếm câu trả lời phù hợp và trả về cho người dùng. Dưới đây là chi tiết của kết quả huấn luyện dữ liệu và ứng dụng.
+
 \section{Kết quả huấn luyện dữ liệu}
 
 Có rất nhiều cách đánh giá một mô hình phân lớp. Tuỳ vào những bài toán khác nhau mà chúng ta sử dụng các phương pháp khác nhau. Các phương pháp thường được sử dụng là: accuracy score, confusion matrix, ROC curve, Area Under the Curve, Precision and Recall, F1 score, Top R error,... Chúng em sử dụng đánh giá F1 Score để đánh giá phân lớp các mô hình. Sau đây là khái quát một số khái niệm để chúng ta hiểu rõ hơn về kết quả đánh giá.
