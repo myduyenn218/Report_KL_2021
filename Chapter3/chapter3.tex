@@ -7,7 +7,7 @@
 
 Hiểu ngôn ngữ tự nhiên là một chủ đề của xử lý ngôn ngữ tự nhiên trong lĩnh vực trí tuệ nhân tạo. Đây có thể nói là thành phần quan trong nhất của chatbot. Chatbot có thật sự thông minh hay không thì đây chính là thành phần quyết định. Mục tiêu của thành phần này là phân loại ý định và trích xuất thông tin.
 
-Bất cứ khi nào người dùng tương tác với AI bằng ngôn ngữ tự nhiên, các từ của họ cần phải được dịch thành một mô tả mà máy có thể đọc được về ý của họ.
+Bất cứ khi nào người dùng tương tác với \ac{ai} bằng ngôn ngữ tự nhiên, các từ của họ cần phải được dịch thành một mô tả mà máy có thể đọc được về ý của họ.
 Công cụ \ac{nlu} trước tiên phát hiện ý định của người dùng là gì (intent), sau đó trích xuất các tham số (slot) của truy vấn. Sau đó, nhà phát triển có thể sử dụng điều này để xác định hành động hoặc phản hồi thích hợp.
 
 Các khái niệm cơ bản:
@@ -54,7 +54,7 @@ Mô hình học máy cho bài toán phân lớp ý định người dùng:
 
 Khi đã có dữ liệu huấn luyện cho bài toán phân lớp intent, chúng ta sẽ mô hình bài toán thành bài toán phân lớp văn bản. Bài toán phân lớp văn bản (text categorization) là một bài toán kinh điển trong ngành NLP và khai phá văn bản (Text Mining). Mô hình phân lớp văn bản cho bài toán phân lớp intent được phát biểu một cách hình thức như sau:
 
-Chúng ta được cho trước một tập huấn luyện bao gồm các cặp (câu hội thoại, intent), D = {(x(1), y(1)),…, (x(n), y(n))}, trong đó x(i) là các câu hội thoại và y(i) là intent tương ứng cho x(i). Các intent y(i) nằm trong một tập hữu hạn .... các intent được định nghĩa trước. Chúng ta cần học từ tập huấn luyện này một mô hình phân lớp .... có chức năng phân lớp một câu hội thoại mới vào một trong các intent thuộc tập K. Kiến trúc của hệ thống phân lớp intent được minh hoạ như hình (Xem hình Kiến trúc của hệ thống phân lớp intent \ref{fig:system-class-intent}).
+Chúng ta được cho trước một tập huấn luyện bao gồm các cặp (câu hội thoại, intent), D = {(x(1), y(1)),…, (x(n), y(n))}, trong đó x(i) là các câu hội thoại và y(i) là intent tương ứng cho x(i). Các intent y(i) nằm trong một tập hữu hạn K các intent được định nghĩa trước. Chúng ta cần học từ tập huấn luyện này một mô hình phân lớp, có chức năng phân lớp một câu hội thoại mới vào một trong các intent thuộc tập K. Kiến trúc của hệ thống phân lớp intent được minh hoạ như hình (Xem hình Kiến trúc của hệ thống phân lớp intent \ref{fig:system-class-intent}).
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{images/structure-system-class-intent.png}
