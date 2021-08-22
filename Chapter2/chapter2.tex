@@ -38,7 +38,7 @@ Chatbot có thể được phân chia thành các loại sau đây:
           \begin{itemize}
               \item[--] Chatbot giúp bạn giữ chi phí kinh doanh thấp bởi số tiền bạn đầu tư vào chatbot ít hơn số tiền bạn phải trả cho nhân viên.
               \item[--] Bằng cách này, bạn thực sự tiết kiệm được rất nhiều tiền thay vì việc duy trì một trung tâm hỗ trợ khách hàng. Tính năng này sẽ giúp bạn tiết kiệm tài chính, tránh những rắc rối trong quản lý nhân sự, và tiết kiệm thời gian để làm những việc cần thiết khác.
-              \item[--] Làm việc 24/7. Đáp ứng cho giải pháp làm việc toàn cầu (gobal), khác múi giờ. 
+              \item[--] Làm việc 24/7. Đáp ứng cho giải pháp làm việc toàn cầu (golbal), khác múi giờ. 
           \end{itemize}
     \item Nhiều mục đích sử dụng:
           \begin{itemize}
@@ -55,21 +55,21 @@ Chatbot có thể được phân chia thành các loại sau đây:
 
 Các hệ thống chatbot giao tiếp với con người bằng giọng nói (như Siri \footnote{Xem thêm về Siri tại đây:\url{https://www.apple.com/siri/}}) hoặc bằng văn bản (như các chatbot phát triển trên nền Facebook Messenger \footnote{Xem thêm về Facebook Messenger tại đây:\url{https://www.apple.com/siri/}})). Dù giao tiếp bằng hình thức nào, chatbot cũng cần phải hiểu văn bản để có thể đưa ra những câu trả lời phù hợp cho khách hàng. Thành phần đảm nhiệm công việc này trong hệ thống chatbot được gọi là \ac{nlu}, trong đó có rất nhiều các kỹ thuật xử lý ngôn ngữ tự nhiên (\ac{nlp}) được áp dụng.
 \\
-Hai thành phần liên quan đến xử lý ngôn ngữ tự nhiên không thể thiếu của một \ac{nlu} module là bộ phân loại ý định và nhận diện thực thể (\ac{ner}). Phân loại ý định giúp chatbot hiểu ý định của người dùng. Về mặt bản chất phân loại ý định chính là một bài toán phân loại câu với tập nhãn là các ý định có thể có của người dùng (đã được định nghĩa từ trước). \ac{ner} giúp chatbot trích xuất các thông tin trong yêu cầu/câu trả lời của người dùng. Các thông tin đó có thể là tên sản phẩm, địa chỉ, số điện thoại, số tài khoản của người dùng,… \ac{ner} là một bài toán gán nhãn chuỗi cơ bản: cho vào một câu đầu vào, trích xuất tất cả các thực thể định danh trong câu và phân loại chúng vào một trong các nhãn đã được định nghĩa từ trước.
+Hai thành phần liên quan đến xử lý ngôn ngữ tự nhiên không thể thiếu của một \ac{nlu} module là bộ phân loại ý định và \ac{ner}. Phân loại ý định giúp chatbot hiểu ý định của người dùng. Về mặt bản chất phân loại ý định chính là một bài toán phân loại câu với tập nhãn là các ý định có thể có của người dùng (đã được định nghĩa từ trước). \ac{ner} giúp chatbot trích xuất các thông tin trong yêu cầu/câu trả lời của người dùng. Các thông tin đó có thể là tên sản phẩm, địa chỉ, số điện thoại, số tài khoản của người dùng,… \ac{ner} là một bài toán gán nhãn chuỗi cơ bản: cho vào một câu đầu vào, trích xuất tất cả các thực thể định danh trong câu và phân loại chúng vào một trong các nhãn đã được định nghĩa từ trước.
 \\
-Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được thêm vào chatbot là bộ quản lý hội thoại, bộ sinh ngôn ngữ (\ac{nlg}), và bộ phân tích cảm xúc. Một bộ quản lý hội thoại sẽ lưu trữ, phân tích và tận dụng ngữ cảnh cuộc hội thoại và giúp chatbot suy luận hành động tiếp theo trong khi \ac{nlg} giúp sinh câu trả lời đầy đủ, tự nhiên nhất bằng ngôn ngữ tự nhiên cho chatbot. Một bộ phân tích cảm xúc có thể cần bởi vì cùng một câu có thể mang nhiều nghĩa khác nhau trong các văn cảnh khác nhau, do đó có thể cần được trả lời theo các cách khác nhau phụ thuộc vào cảm xúc của người dùng.
+Một thành phần xử lý ngôn ngữ tự nhiên khác có thể được thêm vào chatbot là bộ quản lý hội thoại, \ac{nlg}, và bộ phân tích cảm xúc. Một bộ quản lý hội thoại sẽ lưu trữ, phân tích và tận dụng ngữ cảnh cuộc hội thoại và giúp chatbot suy luận hành động tiếp theo trong khi \ac{nlg} giúp sinh câu trả lời đầy đủ, tự nhiên nhất bằng ngôn ngữ tự nhiên cho chatbot. Một bộ phân tích cảm xúc có thể cần bởi vì cùng một câu có thể mang nhiều nghĩa khác nhau trong các văn cảnh khác nhau, do đó có thể cần được trả lời theo các cách khác nhau phụ thuộc vào cảm xúc của người dùng.
 \\
 Bài luận này chủ yếu nghiên cứu về phát hiện ý định và trích xuất thực thể trong \ac{nlu} module.
 
 \section{Các hệ thống tương tự}
 
-Hiện nay, việc xây dựng chatbot trong nhiều lĩnh vực như kinh doanh, y tế, giải trí,... khá là phát triển và đem lại được nhiều lợi ích lớn đối với người dùng. Trong lĩnh vực chỉ đường, chúng em nhận thấy rằng hiện chưa có chatbot nào được xây dựng, nhưng cũng có không ít các ứng dụng dùng để chỉ đường như Google Maps\cite{ggmaps},...
+Hiện nay, việc xây dựng chatbot trong nhiều lĩnh vực như kinh doanh, y tế, giải trí,... khá là phát triển và đem lại được nhiều lợi ích lớn đối với người dùng. Trong lĩnh vực chỉ đường, chúng em nhận thấy rằng hiện cũng có một số chatbot được xây dựng như Google Assistant, Seri và cũng có không ít các ứng dụng dùng để chỉ đường như Google Maps\cite{ggmaps},...
 
-Google Maps là một dịch vụ bản đồ web được phát triển bởi Google. Nó cung cấp hình ảnh vệ tinh, chụp ảnh trên không, bản đồ đường phố, chế độ xem toàn cảnh tương tác 360° của đường phố, điều kiện giao thông thời gian thực và lập kế hoạch tuyến đường để đi bộ, xe hơi, xe đạp và máy bay hoặc giao thông công cộng. Năm 2020, Google Maps được sử dụng bởi hơn 1 tỷ người mỗi tháng trên thế giới.
+Google Maps là một dịch vụ bản đồ web được phát triển bởi Google. Nó cung cấp hình ảnh vệ tinh, ảnh chụp trên không, bản đồ đường phố, chế độ xem toàn cảnh tương tác 360° của đường phố, điều kiện giao thông thời gian thực và lập kế hoạch tuyến đường để đi bộ, xe hơi, xe đạp và máy bay hoặc giao thông công cộng. Năm 2020, Google Maps được sử dụng bởi hơn 1 tỷ người mỗi tháng trên thế giới\cite{wiki-ggmaps}.
 
 Google Maps khởi đầu được thiết kế bởi hai anh em người Đan Mạch, tại công ty Where 2 Technologies có trụ sở tại Sydney. Lần đầu tiên nó được thiết kế để người dùng tải xuống riêng biệt, nhưng sau đó công ty đã trình bày ý tưởng về một sản phẩm hoàn toàn dựa trên Web cho ban quản lý của Google, thay đổi phương thức phân phối. Vào tháng 10 năm 2004, công ty được mua lại bởi Google - nơi nó chuyển thành ứng dụng web Google Maps. Sản phẩm hiện đã xuất hiện ở cả hai phiên bản web và mobile.
 
-Google Map hiện giờ rất phố biến đối với người dùng và nó có rất nhiều tính năng về vị trí, trong đó có thể nói tính năng chỉ dẫn đường đi là vô cùng phổ biến với người dùng.
+Google Map hiện giờ rất phổ biến đối với người dùng và nó có rất nhiều tính năng về vị trí, trong đó có thể nói tính năng chỉ dẫn đường đi là vô cùng phổ biến với người dùng.
 
 Tính năng chỉ đường của Google Maps cung cấp công cụ lập kế hoạch tuyến đường, cho phép người dùng tìm chỉ đường khả dụng thông qua lái xe, giao thông công cộng, đi bộ hoặc đi xe đạp.
 
@@ -91,7 +91,7 @@ Android Auto là một ứng dụng di động được phát triển bởi Goog
     \label{fig:homepage-android-auto}
 \end{figure}
 
-Kết nối điện thoại với màn hình ô tô — ứng dụng Android sẽ hiển thị trên màn hình hiển thị của xe. Nhấn để nhận chỉ đường lái xe hoặc nói chuyện để gửi tin nhắn. Thậm chí gọi điện thoại rảnh tay cho mẹ bạn. Android Auto được tạo ra để giúp bạn tập trung vào đường đi. Và vui vẻ trên đường đi. Chỉ cần cắm vào và đi.
+Kết nối điện thoại với màn hình ô tô — ứng dụng Android sẽ hiển thị trên màn hình hiển thị của xe. Nhấn để nhận chỉ đường lái xe hoặc nói chuyện để gửi tin nhắn; thậm chí bạn có thể dùng nó để gọi điện thoại khi rảnh tay. Android Auto được tạo ra để giúp bạn tập trung hơn trong quá trình lái xe.
 
 \begin{figure}[H]
     \centering
@@ -110,9 +110,9 @@ Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn 
 
 \subsection{Các nền tảng \ac{nlu} phổ biến}
 
-\textbf{Dialogflow (Google):} Trước đây được gọi là Api.ai, gần đây nó đã đổi tên thành Dialogflow và nó là một nền tảng phát triển trợ lý văn bản ảo và nhanh chóng bổ sung khả năng nói. Framework này tạo ra chatbot thông qua giao diện người dùng dựa trên web hoàn chỉnh hoặc đối với các dự án phức tạp, sử dụng số lượng lớn các API thông qua Rest (cũng có nhiều SDK cho các ngôn ngữ lập trình khác nhau). Các ý định và thực thể khác nhau có thể được tạo ra bằng cách đưa ra các ví dụ. Nó hỗ trợ nhiều ngôn ngữ khác nhau.
+\textbf{Dialogflow (Google):} Trước đây được gọi là Api.ai, gần đây nó đã được đổi tên thành Dialogflow. Đây là một nền tảng phát triển trợ lý văn bản và nhanh chóng bổ sung khả năng nói. Framework này tạo ra chatbot thông qua giao diện người dùng dựa trên web hoàn chỉnh hoặc đối với các dự án phức tạp, sử dụng số lượng lớn thông qua các Rest API (cũng có nhiều SDK cho các ngôn ngữ lập trình khác nhau). Các ý định và thực thể khác nhau có thể được tạo ra bằng cách đưa ra các ví dụ và nó hỗ trợ nhiều ngôn ngữ khác nhau.
 
-\textbf{Watson (IBM):} Nền tảng này trở nên nổi tiếng vào năm 2011 vì nó đã giành chiến thắng trong một cuộc thi chống lại các nhà vô địch của con người của trò chơi nguy hiểm. Watson là một \ac{nlu} framework hoàn chỉnh cho phép phát triển một chatbot bằng cách sử dụng một giao diện người dùng trên nền tảng web hoặc để khai thác các SDK khác nhau, để tạo một trợ lý ảo nhanh chóng và với các chương trình ngôn ngữ khác nhau. Nền tảng này dễ dàng tích hợp với nhiều dịch vụ truyền thông khác nhau và cung cấp hỗ trợ đầy đủ sang công nghệ Text-to-Speech và Speech-to-Text. Watson cho phép nhận ra ý định và thực thể, và một số mô hình liên quan đến chủ đề chung được cung cấp bởi nền tảng, trong khi đối với các miền cụ thể, người dùng phải tạo mô hình đưa ra một tập hợp các ví dụ khá nhỏ để đào tạo động cơ \ac{nlu}.
+\textbf{Watson (IBM):} Nền tảng này trở nên nổi tiếng vào năm 2011 vì nó đã giành chiến thắng trong một cuộc thi với các nhà vô địch của con người của trò chơi nguy hiểm. Watson là một NLU framework hoàn chỉnh cho phép phát triển một chatbot bằng cách sử dụng một giao diện người dùng trên nền tảng web hoặc để khai thác các SDK khác nhau, để tạo một trợ lý ảo nhanh chóng và với các chương trình ngôn ngữ khác nhau. Nền tảng này dễ dàng tích hợp với nhiều dịch vụ truyền thông khác nhau và cung cấp hỗ trợ đầy đủ sang công nghệ \ac{tts} và \ac{stt}. Watson cho phép phát hiện ý định và thực thể, và một số mô hình liên quan đến chủ đề chung được cung cấp bởi nền tảng, trong khi đối với các miền cụ thể, người dùng phải tạo mô hình đưa ra một tập hợp các ví dụ khá nhỏ để đào tạo Engine NLU.
 
 \textbf{Luis (Microsoft):} Tương tự như các nền tảng trước, Luis là một dịch vụ dựa trên đám mây có sẵn thông qua giao diện web hoặc các yêu cầu API. Luis cung cấp nhiều mô hình miền được tạo sẵn bao gồm ý định, lời nói và thực thể, hơn nữa, nó cho phép xác định các mô hình tùy chỉnh. Việc quản lý luồng đối thoại dẫn đến phức tạp hơn cho các sản phẩm khác. Tuy nhiên, có thể xây dựng một trợ lý ảo hoàn chỉnh với các khả năng tương tự được cung cấp bởi các dịch vụ khác. Các công cụ khác nhau tạo điều kiện phát triển trợ lý ảo được hỗ trợ (chẳng hạn như hỗ trợ kiểm tra, phân tích văn bản thành lời nói và cảm xúc).
 

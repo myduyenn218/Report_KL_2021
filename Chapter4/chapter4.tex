@@ -34,11 +34,11 @@ Trong hình dưới đây \ref{fig:benchmarks}, điểm F1 của cả phân lo�
 \begin{figure}[htp]
     \centering
     \includegraphics[width=10cm]{images/benchmarks.png}
-    \caption{Bảng so sánh}
+    \caption{Bảng so sánh F1-Score giữa các nhà cung cấp NLU}
     \label{fig:benchmarks}
 \end{figure}
 
-Snips NLU là công cụ giúp hiểu ngôn ngữ tự nhiên mạnh mẽ, nhưng hiện tại chưa hỗ trợ tiếng Việt, mục tiêu của chúng em là xây dựng một chatbot bằng tiếng Việt. Vì thế, để có thể sử dụng được Snips-nlu để trích xuất ý định và thực thể, chúng em tiến hành thực hiện các bước sau đây:
+Snips NLU là công cụ giúp hiểu ngôn ngữ tự nhiên mạnh mẽ, nhưng hiện tại chưa hỗ trợ tiếng Việt, mục tiêu của chúng em là xây dựng một chatbot bằng tiếng Việt. Vì thế, để có thể sử dụng được Snips NLU để trích xuất ý định và thực thể, chúng em tiến hành thực hiện các bước sau đây:
 \begin{itemize}
     \item[--] Bước 1: Tạo một bộ dữ liệu bằng tiếng Việt với các câu nói về chủ đề đường đi.
     \item[--] Bước 2: Chuyển hoá dữ liệu tiếng Việt sang tiếng Anh.
@@ -59,7 +59,7 @@ Về mặt dữ liệu:
 
 Với phương pháp đầu tiên, chúng em dịch bộ dữ liệu từng từ một bằng cách tách các từ theo khoảng trắng, sau đó sử dụng thư viện (word2word) để dịch từng từ này sang tiếng Anh. Ví dụ để dịch câu: "cách đi từ đại học Kinh Tế đến đại học Văn Lang".
 \begin{itemize}
-    \item[--] Tách câu thành từng từ riêng biệt theo khoảng trắng: ['cách', 'đi', 'từ', 'đại', 'học', 'Kinh' ,'Tế' ,'đến', 'đại', 'học', 'Văn', 'Lang']
+    \item[--] Tách câu thành từng từ riêng biệt theo khoảng trắng: ['cách', 'đi', 'từ', 'đại', 'học', 'Kinh', 'Tế', 'đến', 'đại', 'học', 'Văn', 'Lang']
     \item[--] Sử dụng thư viện word2word dịch từng từ sang tiếng Anh, ta được: ['ways', 'gone', 'word', 'Swordsman', 'learn', 'GrosDs', 'Monk', 'until', 'Swordsman', 'learn', 'Lam', 'Lang']
 \end{itemize}
 
@@ -72,7 +72,7 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
 \end{figure}
 
 
-Nhận xét kết quả đạt được:
+\textbf{Nhận xét kết quả đạt được:}
 \begin{itemize}
     \item[--] Phương pháp dịch từng từ này không khả thi bởi vì sẽ mà mất ý nghĩa của câu nói, ví dụ như câu sau: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word Swordsman learn department learn itself course until Swordsman learn centurion department" Các thực thể địa điểm như "Đại học Khoa học Tự nhiên" được dịch thành "Swordsman learn department learn itself course", "Đại học Bách khoa" dịch thành "Swordsman learn centurion department"
     \item[--] Các thực thể cần được trích xuất đã bị dịch ra và không còn ý nghĩa nữa, không thể dùng để tìm kiếm địa điểm này trên Google map được.
@@ -89,7 +89,7 @@ Về vấn đề những thực thể bị dịch thành tiếng Anh làm cho n�
 
 Pos tagging là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
 
-Nhóm em sử dụng thư viện VNcoreNLP để tách từ và phân loại các từ trong câu. Sau đó dùng thư viện word2word để dịch những từ không thuộc từ loại danh từ. Những từ thuộc từ loại danh từ được giữ nguyên tiếng Việt.
+Nhóm em sử dụng thư viện VNcoreNLP để tách từ và phân loại các từ trong câu. Sau đó dùng thư viện word2word để dịch những từ không thuộc từ loại  riêng. Những từ thuộc từ loại danh từ riêng được giữ nguyên tiếng Việt.
 
 
 Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}, kết quả được minh họa như hình \ref{fig:trainingdata-wordsegment}
@@ -101,7 +101,7 @@ Nhóm em sử dụng thư viện VNcoreNLP để tách từ và phân loại cá
     \label{fig:trainingdata-wordsegment}
 \end{figure}
 
-Nhận xét kết quả đạt được:
+\textbf{Nhận xét kết quả đạt được:}
 \begin{itemize}
     \item[--] Phương pháp này nhận được kết quả tốt hơn. Nhưng vẫn có trường hợp còn chưa chính xác. Vd: Công viên giải trí Đầm Sen => Công viên entertainment Đầm Sen.
    
@@ -156,13 +156,13 @@ Nhóm quyết định chọn Flutter vì các ưu điểm sau:
 \end{itemize}
 
 \subsection{Snips NLU}
-Snips-NLU - bộ công cụ trích xuất thông tin có cấu trúc từ các câu được viết bằng ngôn ngữ tự nhiên mã nguồn mở được viết bằng Python.
+Snips NLU - bộ công cụ trích xuất thông tin có cấu trúc từ các câu được viết bằng ngôn ngữ tự nhiên mã nguồn mở được viết bằng Python.
 Đây là một bộ công cụ được sử dụng rộng rãi để phục vụ những nhà nghiên cứu hiểu ngôn ngữ tự nhiên - NLU (Natural Language Understanding) nhằm xây dựng một hệ thống hiểu được ngôn ngữ mà con người sử dụng. Các bài báo liên quan mà nhóm tìm hiểu được sử dụng trong đề tài được thực hiện trên bộ công cụ này. Mô hình huấn luyện được nhóm tự xây dựng và sử dụng công cụ này để huấn luyện.
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/Snips-NLU.png}
-    \caption{Sơ đồ hệ thống Snips-NLU}
+    \caption{Sơ đồ hệ thống Snips NLU}
     \label{fig:snips-nlu}
 \end{figure}
 
