@@ -64,13 +64,22 @@ Với phương pháp đầu tiên, chúng em dịch bộ dữ liệu từng từ
 \end{itemize}
 
 Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1nfwUaNtGlk2c5oeK8b6v0lFKC2sb4uAa/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1Lo7Ec5CCPmH0nk3vz1LKXO1iZ2dDP9p1/view?usp=sharing}}, kết quả được minh họa như hình \ref{fig:trainingdata_dichtungtu}.
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=15cm]{images/trainingdata_dichtungtu.png}
-    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch}
-    \label{fig:trainingdata_dichtungtu}
-\end{figure}
 
+
+\begin{table}[]
+\begin{center}
+\scalebox{0.8}{
+\begin{tabular}{|l|l|}
+\hline
+\multicolumn{1}{|c|}{\textbf{Tiếng Việt}}                                                                & \multicolumn{1}{c|}{\textbf{Tiếng Anh}}                                                                                              \\ \hline
+\begin{tabular}[c]{@{}l@{}}Đường đi từ đại học Sài Gòn \\ đến Cao đẳng Sài Gòn\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Road gone word Swordsman learn Sài Gòn \\ until Higher order Sài Gòn\end{tabular}                         \\ \hline
+\begin{tabular}[c]{@{}l@{}}Hướng dẫn đi từ công an Long An \\ đến ủy ban xã Bắc Hòa\end{tabular} & \begin{tabular}[c]{@{}l@{}}Direction lead gone word peacock Homeland Dragon An \\ until committee band Nazis Korea Draw\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Cách đi từ đại học Kinh Tế \\ đến đại học Văn Lang\end{tabular}       & \begin{tabular}[c]{@{}l@{}}Ways gone word Swordsman learn Gross Monk \\ until Swordsman learn Lam Lang\end{tabular}                  \\ \hline
+\end{tabular}}
+\end{center}
+\caption{Minh họa dữ liệu trước khi dịch và sau khi dịch}
+    \label{fig:trainingdata_dichtungtu}
+\end{table}
 
 \textbf{Nhận xét kết quả đạt được:}
 \begin{itemize}
@@ -89,10 +98,22 @@ Về vấn đề những thực thể bị dịch thành tiếng Anh làm cho n�
 
 Pos tagging là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
 
-Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Sau đó dùng thư viện word2word để dịch những từ không thuộc từ loại  riêng. Những từ thuộc từ loại danh từ riêng được giữ nguyên tiếng Việt.
+Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Danh sách Pos Tags ở bảng \ref{fig:Part-Of-Speech (POS) tags} Sau đó dùng thư viện word2word để dịch những từ không thuộc từ loại  riêng. Những từ thuộc từ loại danh từ riêng được giữ nguyên tiếng Việt.
 
+\begin{table}[]
+\begin{center}
+\scalebox{1}{
+\begin{tabular}{|l|l|l|}
+\hline
+\multicolumn{3}{|c|}{\textbf{POS tags}}                                                                                                                                                                                                                                                                                                                                             \\ \hline
+\begin{tabular}[c]{@{}l@{}}N   Danh từ\\ Np Danh từ riêng\\ Nc Danh từ phân loại\\ Nu Danh từ đơn vị\\ Ny Danh từ viết tắt\\ Nb Danh từ mượn\end{tabular} & \begin{tabular}[c]{@{}l@{}}V Động từ\\ Vb Động từ mượn\\ A Tính từ\\ P Đại từ\\ L Từ hạn định\\ M Lượng từ\end{tabular} & \begin{tabular}[c]{@{}l@{}}E Giới từ\\ C Liên từ\\ I Thán từ\\ S Phụ tố\\ X Khác\end{tabular} \\ \hline
+\end{tabular}} 
+\end{center}
+\caption{Part-Of-Speech (POS) tags}
+    \label{fig:Part-Of-Speech (POS) tags}
+\end{table}
 
-Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}, kết quả được minh họa như hình \ref{fig:trainingdata-wordsegment}
+Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}, kết quả dịch được minh họa như hình \ref{fig:trainingdata-wordsegment}
 
 \begin{figure}[htp]
     \centering
@@ -128,7 +149,7 @@ Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước t
     \label{fig:longest-word}
 \end{figure}
 
-Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}} và bộ dữ liệu kiểm thử \footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}
+Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}} và bộ dữ liệu kiểm thử \footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}, kết quả dịch được minh họa như hình \ref{fig:trainingdata-tudien}
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/trainingdata-tudien.png}

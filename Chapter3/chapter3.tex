@@ -82,10 +82,8 @@ Sau khi có một mô hình phân lớp intent, chúng ta có thể sử dụng 
 Cách tiếp cận phổ biến cho bài toán trích xuất thông tin là mô hình hoá bài toán thành bài toán gán nhãn chuỗi (sequence labeling). Đầu vào của bài toán gán nhãn chuỗi là một dãy các từ, và đầu ra là một dãy các nhãn tương ứng các các từ trong đầu vào. Chúng ta sẽ sử dụng các mô hình học máy để học một mô hình gán nhãn từ một tập dữ liệu đầu vào bao gồm các cặp (x1…xn, y1…yn), trong đó x1…xn là dãy các từ, y1…yn là dãy các nhãn. Độ dài của các dãy từ trong tập dữ liệu có thể khác nhau.
 
 Trong bài toán trích xuất thông tin, tập nhãn cho các từ trong câu đầu vào thường được tạo ra theo  mô hình BIO, với B là viết tắt của “Beginning”, I là viết tắt của “Inside”, và O là viết tắt của “Outside”. Khi biết vị trí từ bắt đầu của một thực thể và các từ nằm trong thực thể đó, chúng ta có thể xác định vị trí của thực thể trong câu. Trong ví dụ ở trên, dãy các nhãn tương ứng với dãy của các từ trong câu hội thoại đầu vào được minh hoạ ở hình \ref{fig:model-BIO}.
-
-Thuật toán huấn luyện mô hình gán nhãn chuỗi phổ biến là mô hình Markov ẩn (HMM – Hidden Markov Models) \cite{2}, mô hình CRF (Conditional Random Fields) \cite{3}. Với dữ liệu văn bản, mô hình CRF thường cho kết quả tốt hơn mô hình HMM. Có khá nhiều các công cụ mã nguồn mở cài đặt mô hình CRF cho bài toán gán nhãn chuỗi như CRF++ \cite{4}, CRF Suite \cite{5}, Mallet \cite{6},…
-
 \begin{table}[]
+
 \begin{center}
 \scalebox{0.5}{
 \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
@@ -96,4 +94,8 @@ O   & O    & O   & O  & O       & O  & B-LOCATION & O       & B-LOCATION & O   &
     \caption{Gán nhãn từ theo mô hình B-I-O trong trích xuất thông tin}
     \label{fig:model-BIO}
     \end{center}
+ 
 \end{table}
+
+Thuật toán huấn luyện mô hình gán nhãn chuỗi phổ biến là mô hình Markov ẩn (HMM – Hidden Markov Models) \cite{2}, mô hình CRF (Conditional Random Fields) \cite{3}. Với dữ liệu văn bản, mô hình CRF thường cho kết quả tốt hơn mô hình HMM. Có khá nhiều các công cụ mã nguồn mở cài đặt mô hình CRF cho bài toán gán nhãn chuỗi như CRF++ \cite{4}, CRF Suite \cite{5}, Mallet \cite{6},…
+
