@@ -85,9 +85,15 @@ Trong bài toán trích xuất thông tin, tập nhãn cho các từ trong câu 
 
 Thuật toán huấn luyện mô hình gán nhãn chuỗi phổ biến là mô hình Markov ẩn (HMM – Hidden Markov Models) \cite{2}, mô hình CRF (Conditional Random Fields) \cite{3}. Với dữ liệu văn bản, mô hình CRF thường cho kết quả tốt hơn mô hình HMM. Có khá nhiều các công cụ mã nguồn mở cài đặt mô hình CRF cho bài toán gán nhãn chuỗi như CRF++ \cite{4}, CRF Suite \cite{5}, Mallet \cite{6},…
 
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=15cm]{images/Model-BIO.png}
+\begin{table}[]
+\begin{center}
+\scalebox{0.5}{
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\hline
+Tôi & muốn & đặt & vé & máy bay & đi & Phú Quốc   & sân bay & Nội Bài    & vào & 8      & giờ    & tối    & ngày   & mai    \\ \hline
+O   & O    & O   & O  & O       & O  & B-LOCATION & O       & B-LOCATION & O   & B-TIME & I-TIME & I-TIME & I-TIME & I-TIME \\ \hline
+\end{tabular}}
     \caption{Gán nhãn từ theo mô hình B-I-O trong trích xuất thông tin}
     \label{fig:model-BIO}
-\end{figure}
+    \end{center}
+\end{table}
