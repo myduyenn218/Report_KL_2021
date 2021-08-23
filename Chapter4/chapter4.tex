@@ -98,7 +98,7 @@ Về vấn đề những thực thể bị dịch thành tiếng Anh làm cho n�
 
 Pos tagging là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
 
-Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Danh sách Pos Tags ở bảng \ref{fig:Part-Of-Speech (POS) tags} Sau đó dùng thư viện word2word để dịch những từ không thuộc từ loại  riêng. Những từ thuộc từ loại danh từ riêng được giữ nguyên tiếng Việt.
+Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Bảng \ref{fig:Part-Of-Speech (POS) tags} liệt kê một số loại POS tags được sử dụng phổ biến. Sau đó khi hoàn thành quá trình tách từ, chúng em sử dụng thư viện word2word để dịch những từ không thuộc từ loại danh từ và danh từ riêng. Những từ thuộc từ loại trên được giữ nguyên tiếng Việt.
 
 \begin{table}[]
 \begin{center}
@@ -109,7 +109,7 @@ Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại cá
 \begin{tabular}[c]{@{}l@{}}N   Danh từ\\ Np Danh từ riêng\\ Nc Danh từ phân loại\\ Nu Danh từ đơn vị\\ Ny Danh từ viết tắt\\ Nb Danh từ mượn\end{tabular} & \begin{tabular}[c]{@{}l@{}}V Động từ\\ Vb Động từ mượn\\ A Tính từ\\ P Đại từ\\ L Từ hạn định\\ M Lượng từ\end{tabular} & \begin{tabular}[c]{@{}l@{}}E Giới từ\\ C Liên từ\\ I Thán từ\\ S Phụ tố\\ X Khác\end{tabular} \\ \hline
 \end{tabular}} 
 \end{center}
-\caption{Part-Of-Speech (POS) tags}
+\caption{Danh sách cách POS tags phổ biến}
     \label{fig:Part-Of-Speech (POS) tags}
 \end{table}
 
