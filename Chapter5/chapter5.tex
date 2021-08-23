@@ -90,7 +90,7 @@ Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng 
 
 Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text\cite{stt} và flutter\_tts\cite{tts} được cung cấp bởi bộ quản lý thư viện của Flutter.
 
-\section{Thiết kế Use Case}
+\section{Xây dựng Use Case}
 Hình dưới đây thể hiện các chức năng chính của ứng dụng (Xem hình \ref{fig:UC}). 
 \begin{figure}[H]
     \centering
@@ -139,6 +139,30 @@ Khi người dùng sử dụng ứng dụng và chọn chức năng trò chuyệ
     \end{itemize} 
     \item[--] Bước 10: Ứng dụng thực hiện chuyển đổi văn bản thành âm thanh. Hiển thị văn bản lên màn hình và phát lên nội dung văn bản đó.
 \end{itemize}
+
+\section{Class Diagram}
+\subsection{Class Diagram hệ thống}
+
+\subsection{Class Diagram trên thiết bị di động (mobile)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{images/classdiagram.png}
+    \caption{Hình Class Diagram trên thiết bị di động (mobile)}
+    \label{fig:classdiagram} 
+\end{figure}
+Hình \ref{fig:classdiagram} thể hiện Class Diagram được xây dựng trên thiết bị di động. Các Class Diagram được thể hiện như sau:
+
+\begin{itemize}
+    \item[--] App: Class chính để xây dựng (build) ứng dụng.
+    \item[--] Message: Thể hiện cấu trúc đối tượng Message (tin nhắn) được xây dựng. 
+    \item[--] ChatScreen: Xây dựng màn hình chat của ứng dụng.
+    \item[--] MapScreen: Xây dựng màn hình bản đồ của ứng dụng.
+    \item[--] HomeScreen: Màn hình chọn chức năng "Nói chuyện" và thoát khỏi ứng dụng.
+    \item[--] SpeechToText: Class thể hiện thư viện chuyển đổi giọng nói thành văn bản.  
+    \item[--] TTSpeech: Class thể hiện thư viện chuyển đổi văn bản thành giọng nói.  
+\end{itemize}
+
+
 \section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
 \subsection{Tạo dữ liệu tiếng Việt}
 Nhóm đã thực hiện tạo dữ liệu cho 4 intent thuộc lĩnh vực đường đi:
