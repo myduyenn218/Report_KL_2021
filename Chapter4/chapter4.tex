@@ -101,7 +101,7 @@ gán nhãn từ loại (POS tagging) là việc phân loại các từ trong m�
 Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Bảng \ref{fig:Part-Of-Speech (POS) tags} liệt kê một số loại POS tags được sử dụng phổ biến. Sau đó khi hoàn thành quá trình tách từ, chúng em sử dụng thư viện word2word để dịch những từ không thuộc từ loại danh từ và danh từ riêng. Những từ thuộc từ loại trên được giữ nguyên tiếng Việt.
 
 
-\begin{table}[]
+\begin{table}[H]
 \begin{center}
 \scalebox{1}{
 \begin{tabular}{|l|l|l|l|}
@@ -155,7 +155,7 @@ Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước t
     \item[--] Input: "Đường đi từ Đại học Nông Lâm đến Ngã tư Thủ Đức""
     \item[--] Output: ["Đường đi", "từ", "Đại học Nông Lâm", "đến", "Ngã tư Thủ Đức"]
 \end{itemize}
-\begin{figure}[htp]
+\begin{figure}[H]
     \centering
     \includegraphics[width=15cm]{images/Diagram-longest-word.png}
     \caption{Tìm từ dài nhất}
@@ -164,7 +164,7 @@ Trong quá trình nghiên cứu, chúng em nhận thấy bước 2 là bước t
 
 Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}} và bộ dữ liệu kiểm thử \footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}, kết quả dịch được minh họa như bảng \ref{fig:trainingdata-tudien}
 
-\begin{table}[]
+\begin{table}[H]
 \begin{center}
 \scalebox{1}{
 \begin{tabular}{|l|l|}
