@@ -140,16 +140,16 @@ Khi người dùng sử dụng ứng dụng và chọn chức năng trò chuyệ
     \item[--] Bước 10: Ứng dụng thực hiện chuyển đổi văn bản thành âm thanh. Hiển thị văn bản lên màn hình và phát lên nội dung văn bản đó.
 \end{itemize}
 
-\section{Class Diagram}
-\subsection{Class Diagram Backend}
+\section{Sơ đồ lớp}
+\subsection{Sơ đồ lớp Backend}
 \begin{figure}[H]
     \centering
     \includegraphics[width=15cm]{images/serverclassdiagram.png}
-    \caption{Class Diagram Backend}
+    \caption{Sơ đồ lớp Backend}
     \label{fig:serverclassdiagram} 
 \end{figure}
 
-Hình \ref{fig:serverclassdiagram} thể hiện Class Diagram được xây dựng ở Backend. Các Class Diagram được thể hiện như sau:
+Hình \ref{fig:serverclassdiagram} thể hiện sơ đồ lớp được xây dựng ở Backend. Các lớp được thể hiện như sau:
 
 \begin{itemize}
     \item[--] NLUModel: Class này gồm các phương thức để xây dựng mô hình phân lớp và dự đoán đầu vào mới.
@@ -161,14 +161,14 @@ Hình \ref{fig:serverclassdiagram} thể hiện Class Diagram được xây dự
 \end{itemize}
 
 
-\subsection{Class Diagram Frontend (mobile)}
+\subsection{Sơ đồ lớp Frontend (mobile)}
 \begin{figure}[H]
     \centering
     \includegraphics[width=15cm]{images/classdiagram.png}
-    \caption{Class Diagram Frontend}
+    \caption{Sơ đồ lớp Frontend}
     \label{fig:classdiagram} 
 \end{figure}
-Hình \ref{fig:classdiagram} thể hiện Class Diagram được xây dựng ở Frontend. Các Class Diagram được thể hiện như sau:
+Hình \ref{fig:classdiagram} thể hiện sơ đồ lớp được xây dựng ở Frontend. Các lớp được thể hiện như sau:
 
 \begin{itemize}
     \item[--] App: Class chính để xây dựng (build) ứng dụng.
@@ -192,28 +192,32 @@ Nhóm đã thực hiện tạo dữ liệu gồm 4 ý định (intent) thuộc l
     \item[--] Hỏi khoảng cách từ một địa điểm đến một địa điểm - "askDistance"
 \end{itemize}
 
-Trong đó, mỗi ý định (intent) gồm 20 câu huấn luyện và 10 câu để kiểm thử.
+Trong đó, mỗi ý định (intent) gồm 20 câu huấn luyện và 10 câu để kiểm thử. Để tiến hành tạo dữ liệu bằng tiếng Việt, chúng em thực hiện như sau:
 
 \begin{itemize}
-    \item[--] Tạo dữ liệu trên file txt. Với intent "findRouteAB" ta có câu ví dụ: "Đường đi từ đại học Sài Gòn đến Cao đẳng Sài Gòn"
-    \item[--] Chuyển dữ liệu sang dạng json để thuận tiện cho việc huấn luyện (Xem hình dữ liệu dưới dạng file json Hình \ref{fig:data-train-json} ). Dữ liệu tiếng Việt đầy đủ có thể xem tại đây \footnote{Dữ liệu huấn luyện tiếng Việt \url{https://drive.google.com/file/d/1tRmJwKgtK5jKoiN57r7oAukfUO-UN4Ip/view?usp=sharing}}
-    \footnote{Dữ liệu kiểm thử tiếng Việt \url{https://drive.google.com/file/d/1LUvQ7sz2JcdRYUkGVOgJBqqo10O6hhkP/view?usp=sharing}}
+    \item[--] Bước 1: Tạo dữ liệu trên file txt. 
+    \\Ví dụ: Với ý định "Hỏi đường đi (findRouteAB)" ta có: "Đường đi từ đại học Sài Gòn đến Cao đẳng Sài Gòn"
+    \item[--] Bước 2: Viết một chương trình nhỏ để tiến hành chuyển dữ liệu từ file txt sang dạng json để thuận tiện cho việc huấn luyện (Xem hình dữ liệu dưới dạng file json Hình \ref{fig:data-train-json} ). Dữ liệu tiếng Việt đầy đủ có thể xem tại đây \footnote{Dữ liệu huấn luyện tiếng Việt \url{https://drive.google.com/file/d/1tRmJwKgtK5jKoiN57r7oAukfUO-UN4Ip/view?usp=sharing}}\footnote{Dữ liệu kiểm thử tiếng Việt \url{https://drive.google.com/file/d/1LUvQ7sz2JcdRYUkGVOgJBqqo10O6hhkP/view?usp=sharing}}
 \end{itemize}
+Hình ảnh dưới đây minh hoạ một câu dữ liệu dưới dang json trước khi tiến hành dịch (Xem hình \ref{fig:data-train-json})
 \begin{figure}[H]
     \centering
-    \includegraphics[width=15cm]{images/Data-train-json.png}
+    \includegraphics[width=10cm]{images/Data-train-json.png}
     \caption{Hình ảnh minh họa dữ liệu trước khi dịch}
     \label{fig:data-train-json}
 \end{figure}
-
 \subsection{Huấn luyện dữ liệu}
+Chúng em đã tiến hành tạo bộ dữ liệu dùng để huấn luyện dưới đây để thực hiện chuyển hoá ngôn ngữ từ tiếng Việt sang tiếng Anh.
+\begin{itemize}
+    \item[--] Tập train: 80 câu bao gồm mỗi loại 20 câu\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}.
+    \item[--] Tập test: 40 câu bao gồm mỗi loại 10 câu\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
+\end{itemize}
 
-Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh để chuẩn bị dữ liệu cho quá trình huấn luyện mà chúng em đã tiến hành nghiên cứu, chúng em nhận thấy kết quả của việc "Xây dựng bộ từ điển" cho riêng ứng dụng theo các chủ đề, lĩnh vực cụ thể đem lại hiệu quả tốt trong quá trình dịch và không làm sai lệnh ngữ nghĩa của câu. Vì vậy chúng em chọn giải pháp "Xây dựng bộ từ điển" để thực hiện chuyển hoá dữ liệu sang tiếng Anh để tiến hành thực hiện huấn luyện dữ liệu. Hình \ref{fig:data-train-en} hiển thị dữ liệu tiếng Anh dưới dạng json để thực hiện tiếng hành huấn luyện dữ liệu. Bộ dữ liệu tiếng Anh đầy đủ có thể xem tại đây \footnote{Dữ liệu huấn luyện tiếng Anh \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}
-    \footnote{Dữ liệu kiểm thử tiếng Anh \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
+Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh để chuẩn bị dữ liệu cho quá trình huấn luyện mà chúng em đã tiến hành nghiên cứu, chúng em nhận thấy kết quả của việc "Xây dựng bộ từ điển" cho riêng ứng dụng theo các chủ đề, lĩnh vực cụ thể đem lại hiệu quả tốt trong quá trình dịch và không làm sai lệnh ngữ nghĩa của câu. Vì vậy chúng em chọn giải pháp "Xây dựng bộ từ điển" để thực hiện chuyển hoá dữ liệu sang tiếng Anh để tiến hành thực hiện huấn luyện dữ liệu. Hình \ref{fig:data-train-en} hiển thị dữ liệu tiếng Anh dưới dạng json để thực hiện tiến hành huấn luyện dữ liệu. Kết quả của việc tạo bộ dữ liệu tiếng Anh tự động được lưu trữ tại đây\footnote{Dữ liệu huấn luyện tiếng Anh \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}\footnote{Dữ liệu kiểm thử tiếng Anh \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=15cm]{images/Data-train-ex.png}
+    \includegraphics[width=10cm]{images/Data-train-ex.png}
     \caption{Hình ảnh minh họa dữ liệu sau khi dịch}
     \label{fig:data-train-en} 
 \end{figure}

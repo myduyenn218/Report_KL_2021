@@ -86,7 +86,7 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
     \item[--] Phương pháp dịch từng từ này không khả thi bởi vì sẽ mà mất ý nghĩa của câu nói, ví dụ như câu sau: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word Swordsman learn department learn itself course until Swordsman learn centurion department" Các thực thể địa điểm như "Đại học Khoa học Tự nhiên" được dịch thành "Swordsman learn department learn itself course", "Đại học Bách khoa" dịch thành "Swordsman learn centurion department"
     \item[--] Các thực thể (entity) cần được trích xuất đã bị dịch ra và không còn ý nghĩa nữa, không thể dùng để tìm kiếm địa điểm này trên Google map được.
 \end{itemize}
-\subsection{Kết hợp word segmentation, pos tagging với word2word}
+\subsection{Kết hợp tách từ (word segmentation), gán nhãn (pos tagging) với thư viện dịch (word2word)}
 
 Trong tiếng Anh, các từ được phân tách bởi dấu cách (space). Nhưng tiếng Việt thì không như thế, trong tiếng Việt có từ đơn và từ ghép, nên dấu cách không được sử dụng như một kí hiệu phân tách từ, nó chỉ có ý nghĩa phân tách các âm tiết với nhau. 
 
@@ -186,7 +186,7 @@ Kết quả đạt được sau khi dùng phương pháp dịch bằng cách xâ
 
 \section{Công nghệ}
 
-\subsection{Flutter}
+\subsection{Bộ công cụ xây dựng Fontend - Flutter}
 Để xây dựng giao diện ứng dụng cho hệ thống nhóm đã tiến hành tìm hiểu nhiều công nghệ xây dựng ứng dụng di động (mobile) như React Native\footnote{Xem thêm về React Native tại đây: \url{https://reactnative.dev/}}, Xamarin\footnote{Xem thêm về Xamarin tại đây: \url{https://docs.microsoft.com/en-us/xamarin/}}, Flutter\footnote{Flutter là một bộ công cụ giao diện người dùng để xây dựng ứng dụng cho nhiều nền tảng khác nhau như web, thiết bị di động, máy tính cá nhân với cùng một mã nguồn. Xem thêm về Flutter tại đây: \url{https://flutter.dev/}}.
 
 Nhóm quyết định chọn Flutter vì các ưu điểm sau:
@@ -196,7 +196,7 @@ Nhóm quyết định chọn Flutter vì các ưu điểm sau:
     \item[--] Flutter mang đến tính năng hot reload\footnote{Tính năng cho phép những thay đổi trong mã nguồn được hiển thị gần như lập tức trên giao diện}, kết hợp với bộ giao diện dựng sẵn và trình kiểm tra lỗi dễ sử dụng giúp quá trình phát triển nhanh chóng
 \end{itemize}
 
-\subsection{Snips NLU}
+\subsection{Bộ công cụ hiểu ngôn ngữ tự nhiên - Snips NLU}
 Snips NLU - bộ công cụ trích xuất thông tin có cấu trúc từ các câu được viết bằng ngôn ngữ tự nhiên, mã nguồn mở được viết bằng Python.
 Đây là một bộ công cụ được sử dụng rộng rãi để phục vụ những nhà nghiên cứu hiểu ngôn ngữ tự nhiên (\ac{nlu}) nhằm xây dựng một hệ thống hiểu được ngôn ngữ mà con người sử dụng. Các bài báo liên quan mà nhóm tìm hiểu được sử dụng trong đề tài được thực hiện trên bộ công cụ này. Mô hình huấn luyện được nhóm tự xây dựng và sử dụng công cụ này để huấn luyện.
 
@@ -216,7 +216,7 @@ Trung tâm của hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) là NLU Engi
     \item Entity resolution: Phân giải thực thể giúp biến đổi các giá trị thực thể (entity) thành định dạng chuẩn ISO. Ví dụ: giá trị thực thể là "tomorrow evening" sẽ được biến đổi thành "2018-04-19 19:00:00 +00:00". Những giá trị thực thể có thể được phân giải là những thực thể được dựng sẵn (built-in entities) (numbers, ordinals, amounts with unit, date and times, durations, v.v...)
 \end{itemize}
 
-\subsection{Flask Python}
+\subsection{Bộ công cụ xây dựng Backend - Flask Python}
 Python ngày càng chứng minh ưu thế của mình trong việc xây dựng và triển khai nhiều loại ứng dụng khác nhau như web application, desktop application, Machine Leaning, Deep Learning,...
 
 Để xây dựng \ac{api} cho hệ thống và thuận tiện cho việc nghiên cứu, nhóm chúng em đã tiến hành tìm hiểu nhiều framework để xây dựng trên Python như Flask\footnote{Xem thêm về Flask tại đây:\url{https://flask.palletsprojects.com}}, Django\footnote{Xem thêm về Django tại đây:\url{https://docs.djangoproject.com}}, Tornado \footnote{Xem thêm về Tornado tại đây: \url{https://www.tornadoweb.org}}, Pyramid\footnote{Xem thêm về Pyrmaid tại đây: \url{https://docs.pylonsproject.org/}}
