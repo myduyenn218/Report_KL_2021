@@ -143,69 +143,65 @@ Bài báo so sánh hiệu năng giữa các dịch vụ hiểu ngôn ngữ tự 
 
 Dựa trên 2 kho dữ liệu khác nhau:
 \begin{itemize}
-    \item[--] The Chatbot Corpus: Bộ dữ liệu các câu hỏi về kết nối giao thông công cộng.
-    \item[--] The StackExchange Corpus: dựa trên dữ liệu từ hai nền tảng StackExchange\footnote{\url{https://stackexchange.com/}}: ask ubuntu\footnote{\url{https://askubuntu.com/}} và Web Applications\footnote{\url{https://webapps.stackexchange.com/}}. Cả hai kho tài liệu đều có sẵn trên GitHub\footnote{\url{https://github.com/sebischair/NLU-Evaluation-Corpora}}.
+    \item[--] Kho ngữ liệu chatbot (The Chatbot Corpus): Bộ dữ liệu các câu hỏi về kết nối giao thông công cộng.
+    \item[--] Kho ngữ liệu StackExchange (The StackExchange Corpus): dựa trên dữ liệu từ hai nền tảng StackExchange\footnote{\url{https://stackexchange.com/}}: hỏi ubuntu (ask ubuntu\footnote{\url{https://askubuntu.com/}}) và ứng dụng web (Web Applications\footnote{\url{https://webapps.stackexchange.com/}}). Cả hai kho tài liệu đều có sẵn trên GitHub\footnote{\url{https://github.com/sebischair/NLU-Evaluation-Corpora}}.
 \end{itemize}
 
-Chatbot Corpus:
+Kho ngữ liệu chatbot (Chatbot Corpus):
 
 \begin{itemize}
-    \item[--] Bao gồm 206 câu hỏi được gán nhãn thủ công. Bao gồm 2 ý định (intent) (Departure Time, Find Connection) và 5 loại thực thể (entity) khác nhau (StationStart, StationDest, Criterion, Vehicle, Line). Ngôn ngữ chủ yếu là tiếng Anh, một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện 100 câu và dữ liệu kiểm thử 106 câu. Xem bảng \ref{fig:comparisonimg-1}.
+    \item[--] Bao gồm 206 câu hỏi được gán nhãn thủ công. Bao gồm 2 ý định (intent) "thời gian rời ga" (Departure Time), "tìm tuyến đi" (Find Connection) và 5 loại thực thể (entity) khác nhau "trạm bắt đầu" (StationStart), "trạm đích"  (StationDest), "tiêu chuẩn" (Criterion), "phương tiện" (Vehicle), "tuyến" (Line). Ngôn ngữ chủ yếu là tiếng Anh, một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện (training) 100 câu và dữ liệu kiểm thử (test) 106 câu. Chi tiết xem bảng \ref{fig:comparisonimg-1}.
 \end{itemize}
-
-
 
 
 \begin{table}[]
 \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-Entity type           & $\textbf{training}$ & $\textbf{test}$ & $\Sigma$   \\ \hline
-$\textbf{StationStart}$ & 91                & 102           & 193 \\ \hline
-$\textbf{StationDest}$  & 57                & 71            & 128 \\ \hline
-$\textbf{Criterion}$    & 48                & 34            & 82  \\ \hline
-$\textbf{Vehicle}$      & 50                & 35            & 85  \\ \hline
-$\textbf{Line}$         & 4                 & 2             & 6   \\ \hline
-$\Sigma$                    & 250               & 244           & 494 \\ \hline
-
+\textbf{\begin{tabular}[c]{@{}l@{}}Loại thực thể\\ (Entity type)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Huấn luyện\\ (Training)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Kiểm thử\\ (Test)\end{tabular}} & $\Sigma$ \\ \hline
+\begin{tabular}[c]{@{}l@{}}Trạm bắt đầu\\ (StationStart)\end{tabular}          & 91                                                                       & 102                                                                & 193                   \\ \hline
+\begin{tabular}[c]{@{}l@{}}Trạm đích\\ (StationDest)\end{tabular}              & 57                                                                       & 71                                                                 & 128                   \\ \hline
+\begin{tabular}[c]{@{}l@{}}Tiêu chuẩn\\ (Criterion)\end{tabular}               & 48                                                                       & 34                                                                 & 82                    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Phương tiện\\ (Vehicle)\end{tabular}                & 50                                                                       & 35                                                                 & 85                    \\ \hline
+\begin{tabular}[c]{@{}l@{}}Tuyến\\ (Line)\end{tabular}                         & 4                                                                        & 2                                                                  & 6                     \\ \hline
+$\Sigma$                                                          & 250                                                                      & 244                                                                & 494                   \\ \hline
 \end{tabular}
 \caption{Các loại thực thể (entity) trong kho ngữ liệu chatbot}
 \label{fig:comparisonimg-1}
 \end{center}
 \end{table}
 
-
-StackExchange Corpus
+Kho ngữ liệu StackExchange (StackExchange Corpus):
 
 \begin{itemize}
-    \item[--] Đối với bộ dữ liệu StackExchange, tác giả chọn ra những câu hỏi có đánh giá cao nhất và nhiều lượt xem nhất từ 2 nền tảng ask ubuntu và web applications.
-        \item[--]Bộ dữ liệu thu được tổng cộng là 290 câu hỏi, 100 câu từ web applications và 190 câu từ ask ubuntu.
+    \item[--] Đối với bộ dữ liệu StackExchange, tác giả chọn ra những câu hỏi có đánh giá cao nhất và nhiều lượt xem nhất từ 2 nền tảng hỏi ubuntu (ask ubuntu) và ứng dụng web (web applications).
+        \item[--]Bộ dữ liệu thu được tổng cộng là 290 câu hỏi, 100 câu từ ứng dung web (web applications) và 190 câu từ hỏi ubuntu (ask ubuntu).
         \item[--]Ý định (intent) và thực thể (entity) cũng được gán nhãn thủ công:
         \begin{itemize}
-            \item[+]Đối với ask ubuntu, bao gồm các ý định “Make Update”, “Setup Printer”, “Shutdown Computer”, và “Software Recommendation”. Những thực thể có thể có là : “SoftwareName”, “Printer”, and “UbuntuVersion”.
-            \item[+] Đối với web applications, bao gồm các ý định “Change Password”, “Delete Account”, “Download Video”, “Export Data”, “Filter Spam”, “Find Alternative”, và “Sync Accounts”. Những thực thể có thể có là “WebService”, “OperatingSystem” and “Browser”.
+            \item[+]Đối với ask ubuntu, bao gồm các ý định   "cập nhật" (Make Update), "cài đặt máy in" (Setup Printer), "tắt máy tính" (Shutdown Computer), và  "Khuyến nghị phần mềm" (Software Recommendation). Những thực thể có thể có là : "Tên phần mềm" (SoftwareName), "máy in" (Printer), và "phiên bản Ubuntu" (UbuntuVersion).
+            \item[+] Đối với ứng dụng web (web applications), bao gồm các ý định "đổi mật khẩu" (Change Password), "xóa tài khoản" (Delete Account), "tải video" (Download Video), "xuất dữ liệu" (Export Data), "lọc spam"  (Filter Spam), "Tìm thay thế" (Find Alternative), và "đồng bộ tài khoản" (Sync Accounts). Những thực thể có thể có là "dịch vụ web" (WebService), "Hệ điều hành" (OperatingSystem) và "trình duyệt" (Browser).
         \end{itemize}
-    \item[--] Sau khi gán nhãn và chọn lọc, bộ dữ liệu cuối cùng bao gồm 251 câu, trong đó 162 câu thuộc ask ubuntu và 89 câu thuộc web application.
-    \item[--] Dữ liệu web applications được chia thành dữ liệu huấn luyện và dữ liệu kiểm thử như bảng  \ref{fig:comparisonimg-webappdatasets}.
-     \item[--] Dữ liệu ask ubuntu được chia thành dữ liệu huấn luyện và dữ liệu kiểm thử như bảng \ref{fig:comparisonimg-askubuntudatasets}.
+    \item[--] Sau khi gán nhãn và chọn lọc, bộ dữ liệu cuối cùng bao gồm 251 câu, trong đó 162 câu thuộc hỏi ubuntu (ask ubuntu) và 89 câu thuộc ứng dụng web (web applications).
+    \item[--] Dữ liệu ứng dụng web (web applications) được chia thành dữ liệu huấn luyện (training) và dữ liệu kiểm thử (test) như bảng  \ref{fig:comparisonimg-webappdatasets}.
+     \item[--] Dữ liệu hỏi ubuntu (ask ubuntu) được chia thành dữ liệu huấn luyện (training) và dữ liệu kiểm thử (test) như bảng \ref{fig:comparisonimg-askubuntudatasets}.
       \item[--] Bảng \ref{fig:comparisonimg-entityTypesStackExchange} mô tả các thực thể (entity) có trong bộ ngữ liệu StackExchange.
 \end{itemize}
 
 
 \begin{table}[]
-\begin{center}
+ \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-Intent                   & \textbf{training} & \textbf{test} & $\Sigma$  \\ \hline
-\textbf{ChangePassword}  & 2                 & 6             & 8  \\ \hline
-\textbf{DeleteAccount}   & 7                 & 10            & 17 \\ \hline
-\textbf{DownloadVideo}   & 1                 & 0             & 1  \\ \hline
-\textbf{ExportData}      & 2                 & 3             & 5  \\ \hline
-\textbf{FilterSpam}      & 6                 & 14            & 20 \\ \hline
-\textbf{FindAlternative} & 7                 & 16            & 23 \\ \hline
-\textbf{SyncAccounts}    & 3                 & 6             & 9  \\ \hline
-\textbf{None}            & 2                 & 4             & 6  \\ \hline
-$\Sigma$                      & 30                & 54            & 84 \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Ý định\\ (Intent)\end{tabular}}         & \textbf{\begin{tabular}[c]{@{}l@{}}Huấn luyện\\ (training)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Kiểm thử\\ (test)\end{tabular}} & $\Sigma$ \\ \hline
+\begin{tabular}[c]{@{}l@{}}Đổi mật khẩu\\ (ChangePassword)\end{tabular}    & 2                                                                        & 6                                                                  & 8        \\ \hline
+\begin{tabular}[c]{@{}l@{}}Xóa tài khoản\\ (DeleteAccount)\end{tabular}    & 7                                                                        & 10                                                                 & 17       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Tải video\\ (DownloadVideo)\end{tabular}        & 1                                                                        & 0                                                                  & 1        \\ \hline
+\begin{tabular}[c]{@{}l@{}}Xuất dữ liệu\\ (ExportData)\end{tabular}        & 2                                                                        & 3                                                                  & 5        \\ \hline
+\begin{tabular}[c]{@{}l@{}}Lọc spam\\ (FilterSpam)\end{tabular}            & 6                                                                        & 14                                                                 & 20       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Tìm thay thế\\ (FindAlternative)\end{tabular}   & 7                                                                        & 16                                                                 & 23       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Đồng bộ tài khoản\\ (SyncAccounts)\end{tabular} & 3                                                                        & 6                                                                  & 9        \\ \hline
+None                                                                       & 2                                                                        & 4                                                                  & 6        \\ \hline
+$\Sigma$                                                                   & 30                                                                       & 54                                                                 & 84       \\ \hline
 \end{tabular}
 \caption{Bộ dữ liệu web applications}
     \label{fig:comparisonimg-webappdatasets}
@@ -213,40 +209,38 @@ $\Sigma$                      & 30                & 54            & 84 \\ \hline
 \end{table}
 
 
-
 \begin{table}[]
-\begin{center}
+    \begin{center}
 \begin{tabular}{|l|l|l|l|}
 \hline
-Intent                    & \textbf{training} & \textbf{test} & $\Sigma$   \\ \hline
-\textbf{MakeUpdate}       & 10                & 37            & 47  \\ \hline
-\textbf{SetupPrinter}     & 10                & 13            & 23  \\ \hline
-\textbf{ShutdownComputer} & 13                & 14            & 27  \\ \hline
-\textbf{S.Recommendation} & 17                & 40            & 57  \\ \hline
-\textbf{None}             & 3                 & 5             & 8   \\ \hline
-$\Sigma$                         & 53                & 109           & 162 \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Ý định\\ Intent\end{tabular}}         & \textbf{\begin{tabular}[c]{@{}l@{}}Huấn luyện\\ (training)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Kiểm thử\\ (test)\end{tabular}} & $\Sigma$ \\ \hline
+\begin{tabular}[c]{@{}l@{}}Cập nhật\\ (MakeUpdate)\end{tabular}          & 10                                                                       & 37                                                                 & 47       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Cài đặt máy in\\ (SetupPrinter)\end{tabular}  & 10                                                                       & 13                                                                 & 23       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Tắt máy tính\\ (ShutdownCompute)\end{tabular} & 13                                                                       & 14                                                                 & 27       \\ \hline
+\begin{tabular}[c]{@{}l@{}}Khuyến nghị\\ (Recommendation)\end{tabular}   & 17                                                                       & 40                                                                 & 57       \\ \hline
+None                                                                     & 3                                                                        & 5                                                                  & 8        \\ \hline
+$\Sigma$                                                                 & 53                                                                       & 109                                                                & 162      \\ \hline
 \end{tabular}
-  \caption{Bộ dữ liệu ask ubuntu}
+ \caption{Bộ dữ liệu ask ubuntu}
     \label{fig:comparisonimg-askubuntudatasets}
     \end{center}
 \end{table}
 
 
 
-
 \begin{table}[]
-\begin{center}
+    \begin{center}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-dataset                                         & Entity Type & \textbf{training} & \textbf{test} & $\Sigma$   \\ \hline
-\multicolumn{1}{|r|}{\multirow{4}{*}{web apps}} & WebService  & 33                & 64            & 97  \\ \cline{2-5} 
-\multicolumn{1}{|r|}{}                          & OS          & 1                 & 0             & 1   \\ \cline{2-5} 
-\multicolumn{1}{|r|}{}                          & Browser     & 1                 & 0             & 1   \\ \cline{2-5} 
-\multicolumn{1}{|r|}{}                          & $\Sigma$          & 35                & 64            & 99  \\ \hline
-\multirow{4}{*}{ubuntu}                         & Printer     & 8                 & 12            & 20  \\ \cline{2-5} 
-                                                & Software    & 3                 & 4             & 7   \\ \cline{2-5} 
-                                                & Version     & 24                & 78            & 102 \\ \cline{2-5} 
-                                                & $\Sigma$           & 35                & 94            & 129 \\ \hline
+\textbf{\begin{tabular}[c]{@{}l@{}}Bộ dữ liệu\\ (dataset)\end{tabular}}            & \textbf{\begin{tabular}[c]{@{}l@{}}Loại thực thể\\ (Entity Type)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Huấn luyện\\ (training)\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}Kiểm thử\\ (test)\end{tabular}} & $\Sigma$ \\ \hline
+\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Ứng dụng web\\ (Web apps)\end{tabular}} & \begin{tabular}[c]{@{}l@{}}Dịch vụ web\\ (WebService)\end{tabular}             & 33                                                                       & 64                                                                 & 97       \\ \cline{2-5} 
+                                                                                   & \begin{tabular}[c]{@{}l@{}}Hệ điều hành\\ (OS)\end{tabular}                    & 1                                                                        & 0                                                                  & 1        \\ \cline{2-5} 
+                                                                                   & \begin{tabular}[c]{@{}l@{}}Trình duyệt\\ (Browser)\end{tabular}                & 1                                                                        & 0                                                                  & 1        \\ \cline{2-5} 
+                                                                                   & $\Sigma$                                                                       & 35                                                                       & 64                                                                 & 99       \\ \hline
+\multirow{4}{*}{\begin{tabular}[c]{@{}l@{}}Hỏi Ubuntu\\ (Ask Ubuntu)\end{tabular}}                                                            & \begin{tabular}[c]{@{}l@{}}Máy in\\ (Printer)\end{tabular}                     & 8                                                                        & 12                                                                 & 20       \\ \cline{2-5} 
+                                                                                   & \begin{tabular}[c]{@{}l@{}}Phần mềm\\ (Software)\end{tabular}                  & 3                                                                        & 4                                                                  & 7        \\ \cline{2-5} 
+                                                                                   & \begin{tabular}[c]{@{}l@{}}Phiên bản \\ (Version)\end{tabular}                 & 24                                                                       & 78                                                                 & 102      \\ \cline{2-5} 
+                                                                                   & $\Sigma$                                                                       & 35                                                                       & 94                                                                 & 129      \\ \hline
 \end{tabular}
 \caption{Các loại thực thể (entity) trong bộ ngữ liệu StackExchange}
     \label{fig:comparisonimg-entityTypesStackExchange}
@@ -286,7 +280,7 @@ Tương tự như bài báo trên, bài này cũng so sánh hiệu năng giữa 
 \textbf{Dữ liệu: }
 
 \begin{itemize}
-    \item[--] Dữ liệu được thu từ người dùng thật thông qua Amazon Mechanical Turk (AMT). Các câu hỏi thuộc về cách mọi người tương tác với robot gia đình trong các tình huống được thiết kế trước, cụ thể là: alarm, audio, audiobook, calendar, cooking, datetime, email, game, general, IoT, lists, music, news, podcasts, general QA, radio, recommendations, social, food takeaway, transport, và weather.
+    \item[--] Dữ liệu được thu từ người dùng thật thông qua Amazon Mechanical Turk (AMT). Các câu hỏi thuộc về cách mọi người tương tác với robot gia đình trong các tình huống được thiết kế trước, cụ thể là: báo thức (alarm), âm thanh (audio), sách nói (audiobook), lịch (calendar), nấu nướng (cooking), ngày giờ (datetime), thư điện tử (email), trò chơi (game), tổng hợp (general), IoT, danh sách "lists", âm nhạc (music), tin tức (news), podcasts, general QA, đài (radio), khuyến nghị (recommendations), xã hội (social), thức ăn mua về (food takeaway), vận chuyển (transport), và thời tiết (weather).
     \item[--] Sau khi thu thập, gán nhãn và kiểm tra, dữ liệu cuối cùng thu được bao gồm 25716 câu nói, gồm 64 ý định (intent) và 54 loại thực thể (entity).
 \end{itemize}
 
@@ -305,23 +299,21 @@ Dữ liệu từ hình \ref{fig:overallScores4IntentandEntity} cho thấy điể
 
 Dữ liệu hình \ref{fig:combinedOverallScores} cho thấy điểm F-score trung bình cho mỗi nền tảng.
 
-
 \begin{table}[]
-\begin{center}
+ \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|l|}
 \hline
-\textbf{}  & \multicolumn{3}{l|}{Intent}    & \multicolumn{3}{l|}{Entity}    \\ \hline
-\textbf{}  & Prec  & Rec   & F1             & Prec  & Rec   & F1             \\ \hline
-Rasa       & 0.863 & 0.863 & 0.863          & 0.859 & 0.694 & 0.768          \\ \hline
-Dialogflow & 0.870 & 0.859 & 0.864          & 0.782 & 0.709 & 0.743          \\ \hline
-LUIS       & 0.855 & 0.855 & 0.855          & 0.837 & 0.725 & \textbf{0.777} \\ \hline
-Watson     & 0.884 & 0.881 & \textbf{0.882} & 0.354 & 0.787 & \textbf{0.488} \\ \hline
+\multirow{2}{*}{\textbf{}} & \multicolumn{3}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Ý định\\ (Intent)\end{tabular}}} & \multicolumn{3}{l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Thực thể\\ (Entity)\end{tabular}}} \\ \cline{2-7} 
+                           & \textbf{Prec}          & \textbf{Rec}         & \textbf{F1}                             & \textbf{Prec}          & \textbf{Rec}          & \textbf{F1}                              \\ \hline
+Rasa                       & 0.863                  & 0.863                & 0.863                                   & 0.859                  & 0.694                 & 0.768                                    \\ \hline
+Dialogflow                 & 0.870                  & 0.859                & 0.864                                   & 0.782                  & 0.709                 & 0.743                                    \\ \hline
+LUIS                       & 0.855                  & 0.855                & 0.855                                   & 0.837                  & 0.725                 & \textbackslash{}textbf\{0.777\}          \\ \hline
+Watson                     & 0.884                  & 0.881                & \textbackslash{}textbf\{0.882\}         & 0.354                  & 0.787                 & \textbackslash{}textbf\{0.488\}          \\ \hline
 \end{tabular}
  \caption{Các chỉ số của nhận diện ý định (intent) và thực thể (entity)}
     \label{fig:overallScores4IntentandEntity}
     \end{center}
 \end{table}
-
 
 
 \begin{table}[]
@@ -364,11 +356,11 @@ Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|}
 \hline
-corpus     & NLU provider                                                                                     & precision                                                                                      & recall                                                                                & F1-score                                                                              \\ \hline
-chatbot    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \textbf{\begin{tabular}[c]{@{}l@{}}0.970\\ 0.686\\ 0.936\\ 0.970\\ 0.933\\ 0.963\end{tabular}} & \begin{tabular}[c]{@{}l@{}}0.918\\ 0.8\\ 0.532\\ 0.918\\ 0.921\\ 0.899\end{tabular}   & \begin{tabular}[c]{@{}l@{}}0.943\\ 0.739\\ 0.678\\ 0.943\\ 0.927\\ 0.930\end{tabular} \\ \hline
-web apps   & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.828\\ 0.828\\ 0.810\\ 0.466\\ 0.593\\ 0.655\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.653\\ 0.585\\ 0.382\\ 0.724\\ 0.613\\ 0.655\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.73\\ 0.686\\ 0.519\\ 0.567\\ 0.603\\ 0.655\end{tabular}  \\ \hline
-ask ubuntu & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.885\\ 0.807\\ 0.815\\ 0.791\\ 0.796\\ 0.812\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.842\\ 0.825\\ 0.754\\ 0.823\\ 0.768\\ 0.828\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.863\\ 0.816\\ 0.783\\ 0.807\\ 0.782\\ 0.820\end{tabular} \\ \hline
-overall    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.945\\ 0.738\\ 0.871\\ 0.789\\ 0.866\\ 0.896\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.889\\ 0.767\\ 0.567\\ 0.855\\ 0.856\\ 0.858\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.916\\ 0.752\\ 0.687\\ 0.821\\ 0.861\\ 0.877\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Bộ dữ liệu\\ (Corpus)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Nhà cung cấp NLU\\ (NLU provider)\end{tabular} & Precision & Recall & F1-score \\ \hline
+Chatbot    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.970\\ 0.686\\ 0.936\\ 0.970\\ 0.933\\ 0.963\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.918\\ 0.8\\ 0.532\\ 0.918\\ 0.921\\ 0.899\end{tabular}   & \begin{tabular}[c]{@{}l@{}}0.943\\ 0.739\\ 0.678\\ 0.943\\ 0.927\\ 0.930\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Ứng dụng web\\ (Web apps)\end{tabular}   & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.828\\ 0.828\\ 0.810\\ 0.466\\ 0.593\\ 0.655\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.653\\ 0.585\\ 0.382\\ 0.724\\ 0.613\\ 0.655\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.73\\ 0.686\\ 0.519\\ 0.567\\ 0.603\\ 0.655\end{tabular}  \\ \hline
+\begin{tabular}[c]{@{}l@{}}Hỏi Ubuntu\\ (Ask Ubuntu)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.885\\ 0.807\\ 0.815\\ 0.791\\ 0.796\\ 0.812\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.842\\ 0.825\\ 0.754\\ 0.823\\ 0.768\\ 0.828\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.863\\ 0.816\\ 0.783\\ 0.807\\ 0.782\\ 0.820\end{tabular} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Tổng thể\\ (Overall)\end{tabular}    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ Rasa**\\ Snips**\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.945\\ 0.738\\ 0.871\\ 0.789\\ 0.866\\ 0.896\end{tabular}          & \begin{tabular}[c]{@{}l@{}}0.889\\ 0.767\\ 0.567\\ 0.855\\ 0.856\\ 0.858\end{tabular} & \begin{tabular}[c]{@{}l@{}}0.916\\ 0.752\\ 0.687\\ 0.821\\ 0.861\\ 0.877\end{tabular} \\ \hline
 \end{tabular}
     \caption{Precision, recall và F1-score trên 3 bộ dữ liệu}
     \label{fig:benchmark2017and2018}
