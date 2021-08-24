@@ -18,9 +18,9 @@ Yêu cầu chức năng chỉ đường từ một điểm đến một điểm 
 \end{itemize}
 Yêu cầu chức năng chỉ đường từ một điểm đến một điểm bằng âm thanh (audio):
 \begin{itemize}
-    \item[--] Dữ liệu vào: Yêu cầu của người dùng dưới dạng audio
-    \item[--] Xử lý: Thiết bị biến giọng nói vào thành văn bản để biết yêu cầu của người dùng. Nếu yêu cầu được hỗ trợ, hệ thống xử lý yêu cầu đó và phản hồi bằng giọng nói và văn bản cho người dùng. Nếu yêu cầu không được hỗ trợ, hệ thống phản hồi yêu cầu không được hỗ trợ bằng giọng nói và văn bản.
-    \item[--] Kết quả: Phản hồi bằng văn bản hiển thị lên màn hình ứng dụng và giọng nói của thiết bị.
+    \item[--] Dữ liệu vào: Yêu cầu của người dùng dưới dạng âm thanh (audio). 
+    \item[--] Xử lý: Thiết bị biến giọng nói vào thành văn bản (text) để biết yêu cầu của người dùng. Nếu yêu cầu được hỗ trợ, hệ thống xử lý yêu cầu đó và phản hồi bằng giọng nói và văn bản cho người dùng. Nếu yêu cầu không được hỗ trợ, hệ thống phản hồi yêu cầu không được hỗ trợ bằng giọng nói và văn bản.
+    \item[--] Kết quả: Phản hồi bằng văn bản (text) hiển thị lên màn hình ứng dụng và giọng nói (audio) của thiết bị.
 \end{itemize}
 
 \subsection{Yêu cầu giao diện phần mềm}
@@ -78,9 +78,9 @@ Phần mềm hệ thống gồm ba nhóm (xem hình Kiến trúc hệ thống \r
     \label{fig:kien-truc-he-thong}
 \end{figure}
 
-Máy chủ (Server) thực hiện chương trình xử lý và phân tích dữ liệu. Chương trình này chịu trách nhiệm xử lý dữ liệu gửi lên (Text) bao gồm thành phần: Phân tích ý định, trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi của người gửi. Khi ứng dụng điện thoại gửi Text lên, chương trình xử lý rồi trả về kết quả trên ứng dụng điện thoại. Máy chủ sẽ cung cấp các API tương ứng. Các API cung cấp giao diện cho phép app di động giao tiếp với chương trình xử lý ở máy chủ.
+Máy chủ (Server) thực hiện chương trình xử lý và phân tích dữ liệu. Chương trình này chịu trách nhiệm xử lý dữ liệu gửi lên (Text) bao gồm thành phần: Phân tích ý định (intent), trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi của người gửi. Khi ứng dụng điện thoại gửi Text lên, chương trình xử lý rồi trả về kết quả trên ứng dụng điện thoại. Máy chủ sẽ cung cấp các API tương ứng. Các API cung cấp giao diện cho phép app di động giao tiếp với chương trình xử lý ở máy chủ.
 
-Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định, trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map\cite{google-map}.
+Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định (intent), trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map\cite{google-map}.
 
 Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng dụng trên điện thoại di động. Giao diện này cho phép người dùng sử dụng để hỏi các câu hỏi về chỉ đường từ một địa chỉ này đến một địa chỉ khác cụ thể bằng giọng nói (ghi âm câu nói) hoặc là nhập văn bản trên ứng dụng và trả về cho người dùng kết quả phù hợp.
 \begin{itemize}
@@ -127,7 +127,7 @@ Khi người dùng sử dụng ứng dụng và chọn chức năng trò chuyệ
     \end{itemize} 
     \item[--] Bước 2: Nếu người dùng sử dụng giọng nói (1.1), ứng dụng thực hiện chuyển đổi giọng nói thành văn bản. Hiển thị văn bản lên màn hình cuộc hội thoại.
     \item[--] Bước 3: Ứng dụng gửi văn bản lên hệ thống. 
-    \item[--] Bước 4: Hệ thống thực hiện xác định ý định và trích xuất thông tin. 
+    \item[--] Bước 4: Hệ thống thực hiện xác định ý định (intent) và trích xuất thông tin. 
     \item[--] Bước 5: Dựa vào thông tin vừa phân tích được, tiến hành gọi (call) Google Map API.
     \item[--] Bước 6: GoogleMaps tiến hành tìm kiếm câu trả lời và trả về.
     \item[--] Bước 7: Gửi câu trả lời về hệ thống.
@@ -141,16 +141,34 @@ Khi người dùng sử dụng ứng dụng và chọn chức năng trò chuyệ
 \end{itemize}
 
 \section{Class Diagram}
-\subsection{Class Diagram hệ thống}
+\subsection{Class Diagram phía backend}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{images/serverclassdiagram.png}
+    \caption{Class Diagram phía backend}
+    \label{fig:serverclassdiagram} 
+\end{figure}
 
-\subsection{Class Diagram trên thiết bị di động (mobile)}
+Hình \ref{fig:serverclassdiagram} thể hiện Class Diagram được xây dựng bên phía. Các class được thể hiện như sau:
+
+\begin{itemize}
+    \item[--] NLUModel: Class này gồm các phương thức để xây dựng mô hình phân lớp và dự đoán đầu vào mới.
+    \item[--] Preprocesing: Gồm các phương thức cho việc tiền xử lý dữ liệu.
+    \item[--] Translate: Xây dựng thuật toán so khớp từ dài nhất (longest matching) áp dụng cho việc dịch bằng từ điển.
+    \item[--] DataTranslation: Gồm các phương thức để dịch tập dữ liệu từ tiếng Việt sang tiếng Anh.
+    \item[--] Response: Class này dùng để tạo ra câu trả lời với ý định tương ứng.
+    
+\end{itemize}
+
+
+\subsection{Class Diagram phía frontend (mobile)}
 \begin{figure}[H]
     \centering
     \includegraphics[width=15cm]{images/classdiagram.png}
-    \caption{Hình Class Diagram trên thiết bị di động (mobile)}
+    \caption{Class Diagram phía frontend}
     \label{fig:classdiagram} 
 \end{figure}
-Hình \ref{fig:classdiagram} thể hiện Class Diagram được xây dựng trên thiết bị di động. Các Class Diagram được thể hiện như sau:
+Hình \ref{fig:classdiagram} thể hiện Class Diagram được xây dựng bên phía frontend. Các Class Diagram được thể hiện như sau:
 
 \begin{itemize}
     \item[--] App: Class chính để xây dựng (build) ứng dụng.
@@ -165,7 +183,7 @@ Hình \ref{fig:classdiagram} thể hiện Class Diagram được xây dựng tr�
 
 \section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
 \subsection{Tạo dữ liệu tiếng Việt}
-Nhóm đã thực hiện tạo dữ liệu cho 4 intent thuộc lĩnh vực đường đi:
+Nhóm đã thực hiện tạo dữ liệu gồm 4 ý định (intent) thuộc lĩnh vực đường đi:
 
 \begin{itemize}
     \item[--] Đường đi từ một địa điểm đến một địa điểm - "findRouteAB"
@@ -174,7 +192,7 @@ Nhóm đã thực hiện tạo dữ liệu cho 4 intent thuộc lĩnh vực đư
     \item[--] Hỏi khoảng cách từ một địa điểm đến một địa điểm - "askDistance"
 \end{itemize}
 
-Trong đó, mỗi intent gồm 20 câu huấn luyện và 10 câu để kiểm thử.
+Trong đó, mỗi ý định (intent) gồm 20 câu huấn luyện và 10 câu để kiểm thử.
 
 \begin{itemize}
     \item[--] Tạo dữ liệu trên file txt. Với intent "findRouteAB" ta có câu ví dụ: "Đường đi từ đại học Sài gòn đến Cao đẳng sài gòn"
@@ -183,7 +201,7 @@ Trong đó, mỗi intent gồm 20 câu huấn luyện và 10 câu để kiểm t
 \begin{figure}[H]
     \centering
     \includegraphics[width=15cm]{images/Data-train-json.png}
-    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch}
+    \caption{Hình ảnh minh họa dữ liệu trước khi dịch}
     \label{fig:data-train-json}
 \end{figure}
 
@@ -214,14 +232,14 @@ Bài toán phân lớp (Classification) là quá trình phân lớp một đối
 
 \begin{itemize}
 
-    \item[--]Tạo dữ liệu tiếng Việt: dữ liệu được tạo thủ công với các câu nói ngôn ngữ tiếng Việt được dùng trong lĩnh vực hỏi đường, các câu nói này thuộc 4 mục đích khác nhau bao gồm: hỏi vị trí hiện tại của bản thân, hỏi địa chỉ của một địa điểm nào đó, hỏi khoảng cách giữa 2 địa điểm và hỏi cách đi giữa 2 điểm A và B. Các câu nói này đều được gán nhãn với intent tương ứng. Các thực thể như "địa điểm" cũng được "đánh dấu" để cho mô hình có thể học. Dữ liệu sẽ được lưu trong file json.
+    \item[--]Tạo dữ liệu tiếng Việt: dữ liệu được tạo thủ công với các câu nói ngôn ngữ tiếng Việt được dùng trong lĩnh vực hỏi đường, các câu nói này thuộc 4 mục đích khác nhau bao gồm: hỏi vị trí hiện tại của bản thân, hỏi địa chỉ của một địa điểm nào đó, hỏi khoảng cách giữa 2 địa điểm và hỏi cách đi giữa 2 điểm A và B. Các câu nói này đều được gán nhãn với ý định (intent) tương ứng. Các thực thể (entity) như "địa điểm" cũng được "đánh dấu" để cho mô hình có thể học. Dữ liệu sẽ được lưu trong file json.
 
 \item[--]Tiền xử lý dữ liệu: bao gồm chuẩn hóa Unicode tiếng Việt, chuẩn hóa kiểu gõ dấu.
 
-\item[--]Dịch: áp dụng chuyển hóa dữ liệu từ tiếng Việt sang tiếng Anh bằng phương pháp "Xây dựng bộ từ điển". Kết quả thu được là bộ dữ liệu huấn luyện bằng tiếng Anh lưu ở định dạng file json.
+\item[--]Dịch: áp dụng chuyển hóa dữ liệu từ tiếng Việt sang tiếng Anh bằng phương pháp "Xây dựng bộ từ điển". Kết quả thu được là bộ dữ liệu huấn luyện bằng tiếng Anh lưu ở định dạng file json \footnote{Bộ dữ liệu huấn luyện tiếng Anh \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}.
 
 \item[--]Huấn luyện mô hình: dữ liệu huấn luyện tiếng Anh đưa vào mô hình để học tập và trích xuất ra các luật, từ đó tạo ra mô hình phân lớp.
-\item[--]Mô hình phân lớp: được sử dụng để trích xuất ý định và cách thực thể từ những câu nói mà chưa được gán nhãn.
+\item[--]Mô hình phân lớp: được sử dụng để trích xuất ý định (intent) và cách thực thể (intent) từ những câu nói mới.
 \end{itemize}
 
 

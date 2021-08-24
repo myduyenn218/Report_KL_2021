@@ -16,35 +16,35 @@ Dưới đây là sơ đồ xây dựng ứng dụng chatbot:
 
 Sơ đồ này thể hiện các bước thực hiện để xây dựng ứng dụng chatbot từ dữ liêụ đầu vào đến kết quả nhận được. Các bước thực hiện được triển khai như sau:
 \begin{itemize}
-    \item[--] Bước 1: Khi người dùng sử dụng ứng dụng di động gửi một câu truy vấn bằng audio thì ứng dụng di động sẽ chuyển giọng nói đó thành văn bản (speech to text).
-    \item[--] Bước 2: Văn bản đó được gửi tới NLU engine để trích xuất ý định và các thực thể.
-    \item[--] Bước 3: Dựa trên ý định và thực thể nhận được, hệ thống sẽ tìm kiếm câu trả lời tương ứng và trả về cho người dùng bằng text và audio (text to speech để chuyển văn bản thành giọng nói).
+    \item[--] Bước 1: Khi người dùng sử dụng ứng dụng di động gửi một câu truy vấn bằng âm thanh (audio) thì ứng dụng di động sẽ chuyển giọng nói đó thành văn bản (speech to text).
+    \item[--] Bước 2: Văn bản đó được gửi tới NLU engine để trích xuất ý định (intent) và các thực thể (entity).
+    \item[--] Bước 3: Dựa trên ý định (intent) và thực thể (entity) nhận được, hệ thống sẽ tìm kiếm câu trả lời tương ứng và trả về cho người dùng bằng văn bản (text) và âm thanh (audio) (text to speech để chuyển văn bản thành giọng nói).
 \end{itemize}
-Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định,trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map.
+Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định (intent),trích xuất thực thể (entity) và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map.
 
-Nhóm chúng em quyết định sử dụng Snips \ac{nlu} cho việc xác định ý định và trích xuất thực thể vì:
+Nhóm chúng em quyết định sử dụng Snips \ac{nlu} cho việc xác định ý định (intent) và trích xuất thực thể (entity) vì:
 \begin{itemize}
     \item[--] Miễn phí vì nó là opensource
     \item[--] Gọn nhẹ và dễ dàng sử dụng vì có cộng đồng lớn
     \item[--] Hiệu suất cao.
 \end{itemize}
 
-Trong hình dưới đây \ref{fig:benchmarks}, điểm F1 của cả phân loại ý định và trích xuất slot đã được tính toán cho một số nhà cung cấp NLU.
+Trong hình dưới đây \ref{fig:benchmarks}, điểm F1 của cả phân loại ý định (intent) và trích xuất thực thể (entity) đã được tính toán cho một số nhà cung cấp hiểu ngôn ngữ tự nhiên (\ac{nlu}).
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/benchmarks.png}
-    \caption{Bảng so sánh F1-Score giữa các nhà cung cấp NLU}
+    \caption{Bảng so sánh F1-Score giữa các nhà cung cấp hiểu ngôn ngữ tự nhiên (\ac{nlu})}
     \label{fig:benchmarks}
 \end{figure}
 
-Snips NLU là công cụ giúp hiểu ngôn ngữ tự nhiên mạnh mẽ, nhưng hiện tại chưa hỗ trợ tiếng Việt, mục tiêu của chúng em là xây dựng một chatbot bằng tiếng Việt. Vì thế, để có thể sử dụng được Snips NLU để trích xuất ý định và thực thể, chúng em tiến hành thực hiện các bước sau đây:
+Snips NLU là công cụ giúp hiểu ngôn ngữ tự nhiên (\ac{nlu}) mạnh mẽ, nhưng hiện tại chưa hỗ trợ tiếng Việt, mục tiêu của chúng em là xây dựng một chatbot bằng tiếng Việt. Vì thế, để có thể sử dụng được Snips NLU để trích xuất ý định (intent) và thực thể (entity), chúng em tiến hành thực hiện các bước sau đây:
 \begin{itemize}
     \item[--] Bước 1: Tạo một bộ dữ liệu bằng tiếng Việt với các câu nói về chủ đề đường đi.
     \item[--] Bước 2: Chuyển hoá dữ liệu tiếng Việt sang tiếng Anh.
     \item[--] Bước 3: Dùng dữ liệu tiếng Anh được dịch sang để huấn luyện cho mô hình.
     \item[--] Bước 4: Chuyển hoá văn bản bằng tiếng Việt nhận vào sang tiếng Anh.
-    \item[--] Bước 5: Đưa câu nói bằng tiếng Anh vào mô hình để trích xuất ý định và các thực thể.
+    \item[--] Bước 5: Đưa câu nói bằng tiếng Anh vào mô hình để trích xuất ý định (intent) và các thực thể (entity).
 \end{itemize}
 
 Về mặt dữ liệu:
@@ -84,19 +84,19 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
 \textbf{Nhận xét kết quả đạt được:}
 \begin{itemize}
     \item[--] Phương pháp dịch từng từ này không khả thi bởi vì sẽ mà mất ý nghĩa của câu nói, ví dụ như câu sau: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word Swordsman learn department learn itself course until Swordsman learn centurion department" Các thực thể địa điểm như "Đại học Khoa học Tự nhiên" được dịch thành "Swordsman learn department learn itself course", "Đại học Bách khoa" dịch thành "Swordsman learn centurion department"
-    \item[--] Các thực thể cần được trích xuất đã bị dịch ra và không còn ý nghĩa nữa, không thể dùng để tìm kiếm địa điểm này trên Google map được.
+    \item[--] Các thực thể (entity) cần được trích xuất đã bị dịch ra và không còn ý nghĩa nữa, không thể dùng để tìm kiếm địa điểm này trên Google map được.
 \end{itemize}
 \subsection{Kết hợp word segmentation, pos tagging với word2word}
 
-Trong tiếng Anh, các từ được phân tách bởi dấu cách (space). Nhưng tiếng Việt thì không như thế, trong tiếng Việt có từ đơn và từ ghép, nên dấu cách không được sử dụng như 1 kí hiệu phân tách từ, nó chỉ có ý nghĩa phân tách các âm tiết với nhau. 
+Trong tiếng Anh, các từ được phân tách bởi dấu cách (space). Nhưng tiếng Việt thì không như thế, trong tiếng Việt có từ đơn và từ ghép, nên dấu cách không được sử dụng như một kí hiệu phân tách từ, nó chỉ có ý nghĩa phân tách các âm tiết với nhau. 
 
-Nhận thấy được vấn đề trên. Nhóm đã tìm hiểu thêm để có thể tách các từ một cách chính xác hơn. Từ đó biết đến khái niệm word segmentation (tách từ). 
+Nhận thấy được vấn đề trên. Nhóm đã tìm hiểu thêm để có thể tách các từ một cách chính xác hơn. Từ đó biết đến khái niệm tách từ (word segmentation). 
 
-Tách từ là một quát trình xử lý nhằm mục đích xác định ranh giới của các từ trong câu văn, cũng có thể hiểu đơn giản hơn là tách từ là quá trình xác định các từ đơn, từ ghép,... có trong câu.
+Tách từ (word segmentation) là một quát trình xử lý nhằm mục đích xác định ranh giới của các từ trong câu văn, cũng có thể hiểu đơn giản hơn là tách từ là quá trình xác định các từ đơn, từ ghép,... có trong câu.
 
-Về vấn đề những thực thể bị dịch thành tiếng Anh làm cho nó không còn ý nghĩa nữa, nhóm em nhận thấy rằng những thực thể này chủ yếu là danh từ riêng. Nhóm em đã tìm hiểu  cách để xác định một từ thuộc từ loại nào. Từ đó chúng em biết đến khái niệm về pos tagging.
+Về vấn đề những thực thể bị dịch thành tiếng Anh làm cho nó không còn ý nghĩa nữa, nhóm em nhận thấy rằng những thực thể (entity) này chủ yếu là danh từ riêng. Nhóm em đã tìm hiểu  cách để xác định một từ thuộc từ loại nào. Từ đó chúng em biết đến khái niệm về gán nhãn từ loại (POS tagging).
 
-Pos tagging là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
+gán nhãn từ loại (POS tagging) là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
 
 Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Bảng \ref{fig:Part-Of-Speech (POS) tags} liệt kê một số loại POS tags được sử dụng phổ biến. Sau đó khi hoàn thành quá trình tách từ, chúng em sử dụng thư viện word2word để dịch những từ không thuộc từ loại danh từ và danh từ riêng. Những từ thuộc từ loại trên được giữ nguyên tiếng Việt.
 
@@ -187,7 +187,7 @@ Kết quả đạt được sau khi dùng phương pháp dịch bằng cách xâ
 \section{Công nghệ}
 
 \subsection{Flutter}
-Để xây dựng giao diện ứng dụng cho hệ thống nhóm đã tiến hành tìm hiểu nhiều công nghệ xây dựng mobile như React Native\footnote{Xem thêm về React Native tại đây: \url{https://reactnative.dev/}}, Xamarin\footnote{Xem thêm về Xamarin tại đây: \url{https://docs.microsoft.com/en-us/xamarin/}}, Flutter\footnote{Flutter là một bộ công cụ giao diện người dùng để xây dựng ứng dụng cho nhiều nền tảng khác nhau như web, thiết bị di động, máy tính cá nhân với cùng một mã nguồn. Xem thêm về Flutter tại đây: \url{https://flutter.dev/}}.
+Để xây dựng giao diện ứng dụng cho hệ thống nhóm đã tiến hành tìm hiểu nhiều công nghệ xây dựng ứng dụng di động (mobile) như React Native\footnote{Xem thêm về React Native tại đây: \url{https://reactnative.dev/}}, Xamarin\footnote{Xem thêm về Xamarin tại đây: \url{https://docs.microsoft.com/en-us/xamarin/}}, Flutter\footnote{Flutter là một bộ công cụ giao diện người dùng để xây dựng ứng dụng cho nhiều nền tảng khác nhau như web, thiết bị di động, máy tính cá nhân với cùng một mã nguồn. Xem thêm về Flutter tại đây: \url{https://flutter.dev/}}.
 
 Nhóm quyết định chọn Flutter vì các ưu điểm sau:
 \begin{itemize}
@@ -197,8 +197,8 @@ Nhóm quyết định chọn Flutter vì các ưu điểm sau:
 \end{itemize}
 
 \subsection{Snips NLU}
-Snips NLU - bộ công cụ trích xuất thông tin có cấu trúc từ các câu được viết bằng ngôn ngữ tự nhiên mã nguồn mở được viết bằng Python.
-Đây là một bộ công cụ được sử dụng rộng rãi để phục vụ những nhà nghiên cứu hiểu ngôn ngữ tự nhiên - NLU (Natural Language Understanding) nhằm xây dựng một hệ thống hiểu được ngôn ngữ mà con người sử dụng. Các bài báo liên quan mà nhóm tìm hiểu được sử dụng trong đề tài được thực hiện trên bộ công cụ này. Mô hình huấn luyện được nhóm tự xây dựng và sử dụng công cụ này để huấn luyện.
+Snips NLU - bộ công cụ trích xuất thông tin có cấu trúc từ các câu được viết bằng ngôn ngữ tự nhiên, mã nguồn mở được viết bằng Python.
+Đây là một bộ công cụ được sử dụng rộng rãi để phục vụ những nhà nghiên cứu hiểu ngôn ngữ tự nhiên (\ac{nlu}) nhằm xây dựng một hệ thống hiểu được ngôn ngữ mà con người sử dụng. Các bài báo liên quan mà nhóm tìm hiểu được sử dụng trong đề tài được thực hiện trên bộ công cụ này. Mô hình huấn luyện được nhóm tự xây dựng và sử dụng công cụ này để huấn luyện.
 
 \begin{figure}[htp]
     \centering
@@ -211,9 +211,9 @@ Có thể khái quát các luồng xử lý của snips-NLU \cite{snips-nlu} nh�
 
 Trung tâm của hệ thống Snips-NLU (hình \ref{fig:snips-nlu}) là NLU Engine, bản thân nó bao gồm một số thành phần sau:
 \begin{itemize}
-    \item Deterministic intent parser: Mục tiêu của trình phân tích cú pháp xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
-    \item Probabilistic intent parser: Trình phân tích cú pháp mục đích nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích cú pháp xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
-    \item Entity resolution: Phân giải thực thể giúp biến đổi các giá trị thực thể thành định dạng chuẩn ISO. Ví dụ: giá trị thực thể là "tomorrow evening" sẽ được biến đổi thành "2018-04-19 19:00:00 +00:00". Những giá trị thực thể có thể được phân giải là những built-in entities (numbers, ordinals, amounts with unit, date and times, durations, v.v...)
+    \item Trình phân tích ý định xác định (Deterministic intent parser): Mục tiêu của trình phân tích ý định xác định là cung cấp độ mạnh mẽ và trải nghiệm có thể dự đoán được cho người dùng vì nó được đảm bảo đạt được 1.0 F1-Score trên các ví dụ đào tạo. Các truy vấn có trong dữ liệu huấn luyện được sử dụng để xây dựng các mẫu bao gồm tất cả các tổ hợp giá trị thực thể.
+    \item Trình phân tích ý định xác suất (Probabilistic intent parser): Trình phân tích ý định xác suất nhằm mục đích mở rộng phân tích cú pháp vượt ra ngoài các ví dụ đào tạo và nhận ra các biến thể không xuất hiện trong dữ liệu đào tạo. Nó cung cấp sức mạnh tổng quát hóa mà trình phân tích định xác định thiếu. Thông qua hai bước intent classification (xác định ý định) and slot filling (trích xuất thực thể).
+    \item Entity resolution: Phân giải thực thể giúp biến đổi các giá trị thực thể (entity) thành định dạng chuẩn ISO. Ví dụ: giá trị thực thể là "tomorrow evening" sẽ được biến đổi thành "2018-04-19 19:00:00 +00:00". Những giá trị thực thể có thể được phân giải là những thực thể được dựng sẵn (built-in entities) (numbers, ordinals, amounts with unit, date and times, durations, v.v...)
 \end{itemize}
 
 \subsection{Flask Python}
@@ -225,13 +225,13 @@ Nhóm quyết định chọn Flask Python vì các ưu điểm sau:
 \begin{itemize}
     \item[--] Đơn giản và dễ dàng sử dụng
     \item[--] Flask Python là micro web framework, không cần công cụ hoặc thư viện cụ thể, nó mang đến các chức năng tối giản nhưng có thể mở rộng cho các ứng dụng web.
-    \item[--] Hỗ trợ xây dựng các API, web services, các ứng dụng web application cỡ vừa và nhỏ.
+    \item[--] Hỗ trợ xây dựng các \ac{api}, web services, các ứng dụng web application cỡ vừa và nhỏ.
     \item[--] Flask cung cấp rất nhiều tài liệu từ cài đặt đến thực hiện và triển khai, từ hướng dẫn nhanh đến hướng dẫn chi tiết. Nguồn tài liệu tham khảo về Flask rất phong phú giúp dễ dàng tham khảo và tìm hiểu.
 \end{itemize}
 
 Theo đánh giá năm 2020 của JetBrains Python Developers Survey\footnote{Xem thêm tại đây: \url{https://www.jetbrains.com/lp/python-developers-survey-2020/}} thì Flask hiện là framework được sử dụng rộng rãi nhất, chiếm tới 46\% thị phần.
 \subsection{Google Maps API}
-Google Maps API \footnote{Xem thêm về React Native tại đây: \url{https://developers.google.com/maps/documentation}} là một phương pháp cho phép một website, ứng dụng B có thể sử dụng dịch vụ hoặc hiển thị nội dung của một trang web khác, ở đây là website A – Google Maps (thông qua Map API), dịch vụ bản đồ của website A (Map) sẽ được nhúng vào website B (Website cá nhân), tại trang web B có thể sử dụng những dịch vụ mà Google Maps cung cấp thông qua Google Maps API như: đường đi, đánh dấu trên bản đồ, danh sách các địa điểm muốn tìm,...
+Google Maps API \footnote{Xem thêm về Google Maps API tại đây: \url{https://developers.google.com/maps/documentation}} là một phương pháp cho phép một website, ứng dụng B có thể sử dụng dịch vụ hoặc hiển thị nội dung của một trang web khác, ở đây là website A – Google Maps (thông qua Map API), dịch vụ bản đồ của website A (Map) sẽ được nhúng vào website B (Website cá nhân), tại trang web B có thể sử dụng những dịch vụ mà Google Maps cung cấp thông qua Google Maps API như: đường đi, đánh dấu trên bản đồ, danh sách các địa điểm muốn tìm,...
 
 Hiện nay, các ứng dụng xây dựng trên nền tảng Google Maps như Grab, AndroidAuto,... thường sử dụng Google Maps API để nhúng bản đồ vào trang web hoặc ứng dụng thông qua nhiều cách khác nhau, chính vì vậy mà việc sử dụng API từ Google cũng khá dễ dàng. Đồng thời Map API cũng không chỉ hỗ trợ cho máy tính và website mà còn cả thiết bị di động, giúp ứng dụng hoạt động nhanh hơn và hiệu quả hơn.
 

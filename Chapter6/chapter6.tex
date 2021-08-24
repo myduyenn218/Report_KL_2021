@@ -11,9 +11,9 @@ Xây dựng thành công giải pháp trả lời tự động bằng tiếng Vi
     \item[--] Ứng dụng cho phép người dùng tương tác với chatbot bằng giọng nói và văn bản.
 \end{itemize}
 
-Tự tạo một bộ dữ liệu huấn luyện bao gồm 80 câu huấn luyện và 40 câu kiểm thử cho 4 loại ý định trong lĩnh vực tìm đường đi. Bộ dữ liệu được tạo ban đầu với ngôn ngữ tiếng Việt và sử dụng các phương pháp chuyển đổi ngôn ngữ và bộ dịch và sau cùng tạo được một bản dữ liệu tiếng Anh được chuyển đổi tự động từ bản tiếng Việt.  
+Tự tạo một bộ dữ liệu huấn luyện bao gồm 80 câu huấn luyện và 40 câu kiểm thử cho 4 loại ý định (intent) trong lĩnh vực tìm đường đi. Bộ dữ liệu được tạo ban đầu với ngôn ngữ tiếng Việt và sử dụng các phương pháp chuyển đổi ngôn ngữ và bộ dịch và sau cùng tạo được một bản dữ liệu tiếng Anh được chuyển đổi tự động từ bản tiếng Việt.  
 
-Sử dụng thư viện mã nguồn mở Snips NLU\cite{Snipsnlu} để xây dựng mô hình phát hiện ý định và trích xuất thông tin từ văn bản. Sử dụng Google Map API\cite{ggmaps} để tìm kiếm câu trả lời phù hợp và trả về cho người dùng. Dưới đây là chi tiết của kết quả huấn luyện dữ liệu và ứng dụng.
+Sử dụng thư viện mã nguồn mở Snips NLU\cite{Snipsnlu} để xây dựng mô hình phát hiện ý định (intent) và trích xuất thông tin từ văn bản. Sử dụng Google Map API\cite{ggmaps} để tìm kiếm câu trả lời phù hợp và trả về cho người dùng. Dưới đây là chi tiết của kết quả huấn luyện dữ liệu và ứng dụng.
 
 \section{Kết quả huấn luyện dữ liệu}
 
@@ -81,9 +81,9 @@ Các chỉ số được tính cho từng lớp riêng lẻ, ngoại trừ accur
 
 Đánh giá chi tiết từng phân loại: Dựa trên kết quả F1-Score cho từng phân loại, dễ dàng nhìn thấy độ chính xác của từng loại sẽ được sắp xếp theo thứ tự sau đây: findRouteAB, askDistance, askLocation, askAddress.
 
-Như vậy, dựa trên kết quả kiểm thử cho thấy độ chính xác khi phát hiện các intent và slot là cao, điều này giúp cho việc phân loại câu hỏi chính xác giúp ứng dụng có thể đưa ra những câu trả lời phù hợp với từng nhu cầu của người dùng.
+Như vậy, dựa trên kết quả kiểm thử cho thấy độ chính xác khi phát hiện các ý định (intent) và các thực thể (entity) là cao, điều này giúp cho việc phân loại câu hỏi chính xác giúp ứng dụng có thể đưa ra những câu trả lời phù hợp với từng nhu cầu của người dùng.
 
-Dưới đây là kết quả ví dụ với intput: "Đường đi từ Đại học Nông lâm Thành phố Hồ Chí Minh đến Đại học Kinh tế Luật" (xem hình \ref{fig:detect-intent}).
+Dưới đây là kết quả ví dụ với câu đầu vào: "Đường đi từ Đại học Nông lâm Thành phố Hồ Chí Minh đến Đại học Kinh tế Luật" (xem hình \ref{fig:detect-intent}).
 
 \begin{figure}[htp]
     \centering
@@ -92,7 +92,7 @@ Dưới đây là kết quả ví dụ với intput: "Đường đi từ Đại 
     \label{fig:detect-intent}
 \end{figure}
 
-Với input như trên, hệ thống sẽ chuyển hoá từ ngữ từ tiếng Việt sang tiếng Anh (ngoại trừ các địa danh), sau đó hệ thống sẽ tiến hành phân tích intent và trích xuất slot thu được kết quả như hình \ref{fig:detect-intent}.
+Với câu đầu vào như trên, hệ thống sẽ chuyển hoá từ ngữ từ tiếng Việt sang tiếng Anh (ngoại trừ các địa danh), sau đó hệ thống sẽ tiến hành dự đoán ý định (intent) và trích xuất các thực thể (entity) thu được kết quả như hình \ref{fig:detect-intent}.
 \begin{itemize}
     \item[--] Phân loại intent: "findRouteAB"
     \item[--] Địa điểm bắt đầu: "Đại học Nông lâm Thành phố Hồ Chí Minh"

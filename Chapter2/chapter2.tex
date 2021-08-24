@@ -52,18 +52,18 @@ Chatbot có thể được phân chia thành các loại sau đây:
     \caption{Các thành phần cơ bản của chatbot}
     \label{fig:Kiến trúc cơ bản của hệ thống giao tiếp tự động}
 \end{figure}
-Một hệ thống chatbot bao gồm các thành phần sau: Input Decoder, Natural Language Understanding (\ac{nlu}), Dialogue Manager, Natural Language Generation (\ac{nlg}) và Output Renderer. Xem hình \ref{fig:Kiến trúc cơ bản của hệ thống giao tiếp tự động}.
+Một hệ thống chatbot bao gồm các thành phần sau: Bộ giải mã đầu vào (Input Decoder), hiểu ngôn ngữ tự nhiên (Natural Language Understanding \ac{nlu}), trình quản lý hội thoại (Dialogue Manager), sinh ngôn ngữ tự nhiên (Natural Language Generation \ac{nlg}) và trình kết xuất đầu ra (Output Renderer). Xem hình \ref{fig:Kiến trúc cơ bản của hệ thống giao tiếp tự động}.
 
 \begin{itemize}
-  \item[--] Input Decoder: thành phần này dùng để chuyển đổi input thành văn bản. Input ở đây có thể là giọng nói, cử chỉ hoặc chữ viết tay. 
-    \item[--] Natural Language Understanding (\ac{nlu}): Thành phần này đóng vai trò rất quan trọng trong hệ thống chatbot. Nó trích ra các thông tin cần thiết từ input để thành phần Dialogue Manager sử dụng. Hai thành phần không thể thiếu của \ac{nlu} là bộ phân loại ý định và \ac{ner}. 
-        \item[--] Dialogue Manager: thành phần này giúp quản lý luồng hội thoại. Dựa vào ngữ cảnh và dữ liệu từ \ac{nlu}, thành phần Dialogue Manager sẽ thực hiện truy vấn xuống cơ sở dữ liệu, hiển thị thông báo lỗi nếu có lỗi, hoặc trong trường hợp chưa hiểu ý rõ ý định của người dùng nó có thể tạo câu hỏi để biết thêm thông tin.
-        \item[--] Natural Language Generation (\ac{nlg}): thành phần này giúp tạo câu trả lời để trả về cho người dùng. Đối với hệ thống đơn giản chúng ta có thể định nghĩa trước những câu trả lời thay vì sử dụng \ac{nlg}.
-         \item[--] Output Renderer: thành phần này giúp biểu diễn câu trả lời cho người dùng. Câu trả lời có thể hiển thị dưới nhiều dạng như văn bản, âm thanh,...
+  \item[--] Bộ giải mã đầu vào (Input Decoder): thành phần này dùng để chuyển đổi input thành văn bản. Input ở đây có thể là giọng nói, cử chỉ hoặc chữ viết tay. 
+    \item[--] Hiểu ngôn ngữ tự nhiên (Natural Language Understanding \ac{nlu}): Thành phần này đóng vai trò rất quan trọng trong hệ thống chatbot. Nó trích ra các thông tin cần thiết từ input để thành phần Dialogue Manager sử dụng. Hai thành phần không thể thiếu của \ac{nlu} là bộ phân loại ý định và \ac{ner}. 
+        \item[--] Trình quản lý hội thoại (Dialogue Manager): thành phần này giúp quản lý luồng hội thoại. Dựa vào ngữ cảnh và dữ liệu từ \ac{nlu}, thành phần Dialogue Manager sẽ thực hiện truy vấn xuống cơ sở dữ liệu, hiển thị thông báo lỗi nếu có lỗi, hoặc trong trường hợp chưa hiểu ý rõ ý định của người dùng nó có thể tạo câu hỏi để biết thêm thông tin.
+        \item[--] Sinh ngôn ngữ tự nhiên (Natural Language Generation \ac{nlg}): thành phần này giúp tạo câu trả lời để trả về cho người dùng. Đối với hệ thống đơn giản chúng ta có thể định nghĩa trước những câu trả lời thay vì sử dụng \ac{nlg}.
+         \item[--] Trình kết xuất đầu ra (Output Renderer): thành phần này giúp biểu diễn câu trả lời cho người dùng. Câu trả lời có thể hiển thị dưới nhiều dạng như văn bản, âm thanh,...
 
 \end{itemize}
 
-Bài luận này sẽ nghiên cứu về thành phần \ac{nlu} cho việc phát hiện ý định và trích xuất thực thể.
+Bài luận này sẽ nghiên cứu về thành phần hiểu ngôn ngữ tự nhiên (\ac{nlu}) cho việc phát hiện ý định (intent) và trích xuất thực thể (entity).
 
 \section{Các hệ thống tương tự}
 
@@ -108,13 +108,13 @@ Với mong muốn xây dựng một ứng dụng chatbot sử dụng trong lĩnh
 
 \section{Các nền tảng hiểu ngôn ngữ tự nhiên}
 
-Hiểu ngôn ngữ tự nhiên là thành phần rất quan trọng và không thể thiếu trong chatbot cũng như trợ lý ảo. Nó giúp chúng ta nhận diện ý định và các thực thể từ câu nói của người dùng.
+Hiểu ngôn ngữ tự nhiên (\ac{nlu}) là thành phần rất quan trọng và không thể thiếu trong chatbot cũng như trợ lý ảo. Nó giúp chúng ta nhận diện ý định (intent) và các thực thể (entity) từ câu nói của người dùng.
 
-Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn ngữ tự nhiên, trong số đó những dịch vụ \ac{nlu} phổ biến nhất là: LUIS\footnote{\url{https://www.luis.ai/}}, Watson\footnote{\url{https://www.ibm.com/watson}}, DialogFlow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, Rasa\footnote{\url{https://rasa.com/}} và Snips\footnote{\url{https://snips.ai/}}.
+Hiện nay có rất nhiều nền tảng cung cấp thành phần hiểu ngôn ngữ tự nhiên (\ac{nlu}), trong số đó những dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) phổ biến nhất là: LUIS\footnote{\url{https://www.luis.ai/}}, Watson\footnote{\url{https://www.ibm.com/watson}}, DialogFlow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, Rasa\footnote{\url{https://rasa.com/}} và Snips\footnote{\url{https://snips.ai/}}.
 
 
 \subsection{Yêu cầu lựa chọn}
-Do sự tồn tại của nhiều dịch vụ \ac{nlu}, việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em lựa chọn nền tảng \ac{nlu} dựa trên các tiêu chí sau đây:
+Do sự tồn tại của nhiều dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}), việc lựa chọn ra một nền tảng để sử dụng cũng rất khó khăn. Nhóm em lựa chọn nền tảng hiểu ngôn ngữ tự nhiên (\ac{nlu}) dựa trên các tiêu chí sau đây:
 
 \begin{itemize}
   \item[--] Độ chính xác: nền tảng có khả năng trích xuất ý định và các thực thể với độ chính xác lớn hơn 80\%.
@@ -127,17 +127,17 @@ Do sự tồn tại của nhiều dịch vụ \ac{nlu}, việc lựa chọn ra m
 
 \subsection{Tóm tắt các bài so sánh được sử dụng}
 
-Do thời gian thực hiện nghiên cứu có giới hạn, nhóm em đã sử dụng kết quả của các bài báo so sánh hiệu năng của các nền tảng \ac{nlu} bao gồm:
+Do thời gian thực hiện nghiên cứu có giới hạn, nhóm em đã sử dụng kết quả của các bài báo so sánh hiệu năng của các nền tảng hiểu ngôn ngữ tự nhiên (\ac{nlu}) bao gồm:
 
 \begin{enumerate}
     \item Evaluating Natural Language Understanding Services for Conversational Question Answering Systems \cite{EvaluatingNLU}.
-    \item Benchmarking Natural Language Understanding Services for building Conversational Agents của Xingkun Liu, Arash Eshghi, Pawel Swietojanski and Verena Rieser\cite{BenchmarkingNLU}.
+    \item Benchmarking Natural Language Understanding Services for building Conversational Agents \cite{BenchmarkingNLU}.
     \item Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces\cite{snips-nlu}.
 \end{enumerate}
 
 \textbf{I. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems}
 
-Bài báo so sánh hiệu năng giữa các dịch vụ NLU khác nhau bao gồm: LUIS, Watson, API.ai và RASA
+Bài báo so sánh hiệu năng giữa các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) khác nhau bao gồm: LUIS, Watson, API.ai và RASA.
 
 \textbf{Dữ liệu:}
 
@@ -150,7 +150,7 @@ Dựa trên 2 kho dữ liệu khác nhau:
 Chatbot Corpus:
 
 \begin{itemize}
-    \item[--] Bao gồm 206 câu hỏi được gán nhãn thủ công. Bao gồm 2 intent (Departure Time, Find Connection) và 5 loại entity khác nhau (StationStart, StationDest, Criterion, Vehicle, Line). Ngôn ngữ chủ yếu là tiếng Anh, một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện 100 câu và dữ liệu kiểm thử 106 câu. Xem bảng \ref{fig:comparisonimg-1}.
+    \item[--] Bao gồm 206 câu hỏi được gán nhãn thủ công. Bao gồm 2 ý định (intent) (Departure Time, Find Connection) và 5 loại thực thể (entity) khác nhau (StationStart, StationDest, Criterion, Vehicle, Line). Ngôn ngữ chủ yếu là tiếng Anh, một số tên trạm và tên đường bằng tiếng Đức. Dữ liệu được chia thành làm 2 phần, dữ liệu huấn luyện 100 câu và dữ liệu kiểm thử 106 câu. Xem bảng \ref{fig:comparisonimg-1}.
 \end{itemize}
 
 
@@ -169,7 +169,7 @@ $\textbf{Line}$         & 4                 & 2             & 6   \\ \hline
 $\Sigma$                    & 250               & 244           & 494 \\ \hline
 
 \end{tabular}
-\caption{Các loại thực thể trong kho ngữ liệu chatbot}
+\caption{Các loại thực thể (entity) trong kho ngữ liệu chatbot}
 \label{fig:comparisonimg-1}
 \end{center}
 \end{table}
@@ -180,15 +180,15 @@ StackExchange Corpus
 \begin{itemize}
     \item[--] Đối với bộ dữ liệu StackExchange, tác giả chọn ra những câu hỏi có đánh giá cao nhất và nhiều lượt xem nhất từ 2 nền tảng ask ubuntu và web applications.
         \item[--]Bộ dữ liệu thu được tổng cộng là 290 câu hỏi, 100 câu từ web applications và 190 câu từ ask ubuntu.
-        \item[--]Ý định và thực thể cũng được gán nhãn thủ công:
+        \item[--]Ý định (intent) và thực thể (entity) cũng được gán nhãn thủ công:
         \begin{itemize}
-            \item[+]Đối với ask ubuntu, bao gồm các ý định “Make Update”, “Setup Printer”, “Shutdown Computer”, và “Software Recommendation”. Những entity có thể có là : “SoftwareName”, “Printer”, and “UbuntuVersion”.
-            \item[+] Đối với web applications, bao gồm các ý định “Change Password”, “Delete Account”, “Download Video”, “Export Data”, “Filter Spam”, “Find Alternative”, và “Sync Accounts”. Những entity có thể có là “WebService”, “OperatingSystem” and “Browser”.
+            \item[+]Đối với ask ubuntu, bao gồm các ý định “Make Update”, “Setup Printer”, “Shutdown Computer”, và “Software Recommendation”. Những thực thể có thể có là : “SoftwareName”, “Printer”, and “UbuntuVersion”.
+            \item[+] Đối với web applications, bao gồm các ý định “Change Password”, “Delete Account”, “Download Video”, “Export Data”, “Filter Spam”, “Find Alternative”, và “Sync Accounts”. Những thực thể có thể có là “WebService”, “OperatingSystem” and “Browser”.
         \end{itemize}
     \item[--] Sau khi gán nhãn và chọn lọc, bộ dữ liệu cuối cùng bao gồm 251 câu, trong đó 162 câu thuộc ask ubuntu và 89 câu thuộc web application.
     \item[--] Dữ liệu web applications được chia thành dữ liệu huấn luyện và dữ liệu kiểm thử như bảng  \ref{fig:comparisonimg-webappdatasets}.
      \item[--] Dữ liệu ask ubuntu được chia thành dữ liệu huấn luyện và dữ liệu kiểm thử như bảng \ref{fig:comparisonimg-askubuntudatasets}.
-      \item[--] Bảng \ref{fig:comparisonimg-entityTypesStackExchange} mô tả các thực thể có trong bộ ngữ liệu StackExchange.
+      \item[--] Bảng \ref{fig:comparisonimg-entityTypesStackExchange} mô tả các thực thể (entity) có trong bộ ngữ liệu StackExchange.
 \end{itemize}
 
 
@@ -248,7 +248,7 @@ dataset                                         & Entity Type & \textbf{training
                                                 & Version     & 24                & 78            & 102 \\ \cline{2-5} 
                                                 & $\Sigma$           & 35                & 94            & 129 \\ \hline
 \end{tabular}
-\caption{Các loại thực thể trong bộ ngữ liệu StackExchange}
+\caption{Các loại thực thể (entity) trong bộ ngữ liệu StackExchange}
     \label{fig:comparisonimg-entityTypesStackExchange}
     \end{center}
 \end{table}
@@ -258,8 +258,8 @@ dataset                                         & Entity Type & \textbf{training
 
 \begin{itemize}
     \item[--] Tác giả huấn luyện mô hình trên các nền tảng LUIS, Watson Conversation, API.ai, và RASA. Tất cả đều dùng trên cùng một bộ dữ liệu.
-        \item[--]Sau đó bộ dữ liệu kiểm thử đã được gửi đến các dịch vụ \ac{nlu} để gán nhãn, so sánh gán nhãn dự đoán bởi dịch vụ \ac{nlu} với nhãn thực tế.
-        \item[--]Để mà đánh giá kết quả, tác giả đã tính toán các độ đo precision và recall cũng như F-score cho từng intents, entity types, từng bộ dữ liệu, cũng như kết quả tổng quát. Một dịch vụ tốt hơn dịch vụ kia nếu F-score của nó cao hơn.
+        \item[--]Sau đó bộ dữ liệu kiểm thử đã được gửi đến các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) để gán nhãn, so sánh gán nhãn dự đoán bởi dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) với nhãn thực tế.
+        \item[--]Để mà đánh giá kết quả, tác giả đã tính toán các độ đo precision và recall cũng như F-score cho từng ý định (intent), thực thể (entity), từng bộ dữ liệu, cũng như kết quả tổng quát. Một dịch vụ tốt hơn dịch vụ kia nếu F-score của nó cao hơn.
 \end{itemize}
 
 \textbf{Đánh giá}
@@ -269,7 +269,7 @@ Kết quả thu được được mô tả dưới hình sau \ref{fig:comparison
 \begin{figure}[H]
     \centering
     \includegraphics[width=10cm]{images/comparisonimg/FscoresNLUServices.png}
-    \caption{F1-score của các dịch vụ NLU theo bộ ngữ liệu}
+    \caption{F1-score của các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) theo bộ ngữ liệu}
     \label{fig:comparisonimg-FscoresNLUServices}
 \end{figure}
 
@@ -280,28 +280,28 @@ Kết quả thu được được mô tả dưới hình sau \ref{fig:comparison
 
 \textbf{II. Benchmarking Natural Language Understanding Services for building Conversational Agents}
 
-Tương tự như bài báo trên, bài này cũng so sánh hiệu năng giữa các dịch vụ NLU bao gồm các sản phẩm thương mại: Dialogflow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, LUIS\footnote{\url{https://www.luis.ai/}} và Watson\footnote{\url{https://www.ibm.com/watson}}, mã nguồn mở gồm Rasa\footnote{\url{https://rasa.com/}}.
+Tương tự như bài báo trên, bài này cũng so sánh hiệu năng giữa các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) bao gồm các sản phẩm thương mại: Dialogflow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, LUIS\footnote{\url{https://www.luis.ai/}} và Watson\footnote{\url{https://www.ibm.com/watson}}, mã nguồn mở gồm Rasa\footnote{\url{https://rasa.com/}}.
 
 
 \textbf{Dữ liệu: }
 
 \begin{itemize}
     \item[--] Dữ liệu được thu từ người dùng thật thông qua Amazon Mechanical Turk (AMT). Các câu hỏi thuộc về cách mọi người tương tác với robot gia đình trong các tình huống được thiết kế trước, cụ thể là: alarm, audio, audiobook, calendar, cooking, datetime, email, game, general, IoT, lists, music, news, podcasts, general QA, radio, recommendations, social, food takeaway, transport, và weather.
-    \item[--] Sau khi thu thập, gán nhãn và kiểm tra, dữ liệu cuối cùng thu được bao gồm 25716 câu nói, gồm 64 ý định và 54 loại thực thể.
+    \item[--] Sau khi thu thập, gán nhãn và kiểm tra, dữ liệu cuối cùng thu được bao gồm 25716 câu nói, gồm 64 ý định (intent) và 54 loại thực thể (entity).
 \end{itemize}
 
 \textbf{Thí nghiệm đánh giá}
 
 Dữ liệu huấn luyện và kiểm thử
 \begin{itemize}
-    \item[--] Vì LUIS giới hạn kích thước dữ liệu huấn luyện, nên mỗi intent chọn ra ngẫu nhiên 190 câu nói. Một số intent có ít hơn 190 câu nói một chút.
-    \item[--] Dữ liệu thu được là 11036 câu nói thuộc 64 ý định và 54 loại thực thể.
-    \item[--] Đối với thử nghiệm đánh giá, tác giả sử dụng 10 fold cross-validation với 90\% dữ liệu huấn luyện và 10\% dữ liệu kiểm thử.
+    \item[--] Vì LUIS giới hạn kích thước dữ liệu huấn luyện, nên mỗi ý định (intent) chọn ra ngẫu nhiên 190 câu nói. Một số ý định (intent) có ít hơn 190 câu nói một chút.
+    \item[--] Dữ liệu thu được là 11036 câu nói thuộc 64 ý định (intent) và 54 loại thực thể (entity).
+    \item[--] Đối với thử nghiệm đánh giá, tác giả sử dụng 10 fold cross-validation \footnote{\url{https://en.wikipedia.org/wiki/Cross-validation_(statistics)}} với 90\% dữ liệu huấn luyện và 10\% dữ liệu kiểm thử.
 \end{itemize}
 
 \textbf{Kết quả}
 
-Dữ liệu từ hình \ref{fig:overallScores4IntentandEntity} cho thấy điểm trung bình cho phân lớp ý định và thực thể thông qua 10-fold cross validation.
+Dữ liệu từ hình \ref{fig:overallScores4IntentandEntity} cho thấy điểm trung bình cho phân lớp ý định (intent) và thực thể (entity) thông qua 10-fold cross validation.
 
 Dữ liệu hình \ref{fig:combinedOverallScores} cho thấy điểm F-score trung bình cho mỗi nền tảng.
 
@@ -317,7 +317,7 @@ Dialogflow & 0.870 & 0.859 & 0.864          & 0.782 & 0.709 & 0.743          \\ 
 LUIS       & 0.855 & 0.855 & 0.855          & 0.837 & 0.725 & \textbf{0.777} \\ \hline
 Watson     & 0.884 & 0.881 & \textbf{0.882} & 0.354 & 0.787 & \textbf{0.488} \\ \hline
 \end{tabular}
- \caption{Các chỉ số của Intent và Entity}
+ \caption{Các chỉ số của nhận diện ý định (intent) và thực thể (entity)}
     \label{fig:overallScores4IntentandEntity}
     \end{center}
 \end{table}
@@ -334,13 +334,13 @@ Dialogflow & 0.832 & 0.791 & 0.811          \\ \hline
 LUIS       & 0.848 & 0.796 & 0.821          \\ \hline
 Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
 \end{tabular}
-    \caption{Điểm trung bình của cả Intent và Entity}
+    \caption{Điểm trung bình của cả nhận diện ý định (intent) và thực thể (entity)}
     \label{fig:combinedOverallScores}
     \end{center}
 \end{table}
 
 \begin{itemize}
-    \item[--] Dựa vào hình \ref{fig:overallScores4IntentandEntity}, đối với intent, không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể, Watson có F1-score thấp do Precision rất thấp.
+    \item[--] Dựa vào hình \ref{fig:overallScores4IntentandEntity}, đối với ý định (intent), không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể (entity), Watson có F1-score thấp do Precision rất thấp.
     \item[--] Hình \ref{fig:combinedOverallScores} chỉ ra rằng tất cả các dịch vụ có F1-score tương đương nhau ngoại trừ Watson có điểm thấp hơn đáng kể.
     \item[--] Trong bài so sánh này, ta thấy hiệu năng của Watson thấp nhất với F1-score là 0.657. Những nền tảng còn lại là Dialogflow, LUIS và RASA có hiệu năng tương đối cao, trong đó nền tảng mã nguồn mở Rasa có hiệu năng tốt nhất (0.822)
 \end{itemize}
@@ -348,8 +348,8 @@ Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
 \textbf{III. Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces}
 
 \begin{itemize}
-    \item[--] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems \cite{EvaluatingNLU}. So sánh hiệu năng giữa các dịch vụ \ac{nlu} khác nhau: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google), nền tảng mã nguồn mở Rasa NLU và Snips NLU.
-    \item[--] Chỉ số chính được sử dụng trong điểm chuẩn này là F1-score trung bình của phân loại ý định và các thực thể. Xem kết quả thô\footnote{\url{https://github.com/sonos/nlu-benchmark}}. 
+    \item[--] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems \cite{EvaluatingNLU}. So sánh hiệu năng giữa các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) khác nhau: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google), nền tảng mã nguồn mở Rasa NLU và Snips NLU.
+    \item[--] Chỉ số chính được sử dụng trong điểm chuẩn này là F1-score trung bình của phân loại ý định (intent) và các thực thể (entity). Xem kết quả thô\footnote{\url{https://github.com/sonos/nlu-benchmark}}. 
 \end{itemize}
 
 \textbf{Dữ liệu}
@@ -379,7 +379,7 @@ overall    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ 
 \begin{figure}[H]
     \centering
     \includegraphics[width=10cm]{images/comparisonimg/averageF1-scores.png}
-    \caption{Trung bình F1-score của Intent và Entity trên 3 bộ dữ liệu}
+    \caption{Trung bình F1-score của phân loại ý định (intent) và thực thể (entity) trên 3 bộ dữ liệu}
     \label{fig:averageF1-scores}
 \end{figure}
 
