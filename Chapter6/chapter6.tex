@@ -11,7 +11,7 @@ Xây dựng thành công giải pháp trả lời tự động bằng tiếng Vi
     \item[--] Ứng dụng cho phép người dùng tương tác với chatbot bằng giọng nói và văn bản.
 \end{itemize}
 
-Tự tạo một bộ dữ liệu huấn luyện bao gồm 80 câu huấn luyện và 40 câu kiểm thử cho 4 loại ý định (intent) trong lĩnh vực tìm đường đi. Bộ dữ liệu được tạo ban đầu với ngôn ngữ tiếng Việt và sử dụng các phương pháp chuyển đổi ngôn ngữ và bộ dịch và sau cùng tạo được một bản dữ liệu tiếng Anh được chuyển đổi tự động từ bản tiếng Việt.  
+Bộ dữ liệu huấn luyện bao gồm 3200 câu huấn luyện và 120 câu kiểm thử cho 4 loại ý định (intent) trong lĩnh vực tìm đường đi. Bộ dữ liệu được tạo ban đầu với ngôn ngữ tiếng Việt và sử dụng các phương pháp chuyển đổi ngôn ngữ và bộ dịch và sau cùng tạo được một bản dữ liệu tiếng Anh được chuyển đổi tự động từ bản tiếng Việt.  
 
 Sử dụng thư viện mã nguồn mở Snips NLU\cite{Snipsnlu} để xây dựng mô hình phát hiện ý định (intent) và trích xuất thông tin từ văn bản. Sử dụng Google Map API\cite{ggmaps} để tìm kiếm câu trả lời phù hợp và trả về cho người dùng. Dưới đây là chi tiết của kết quả huấn luyện dữ liệu và ứng dụng.
 
@@ -46,8 +46,8 @@ $F_{1}$-score có giá trị nằm trong nửa khoảng (0,1]. F1 càng cao, b�
 
 Chúng em xây dựng mô hình phân loại các câu hỏi chỉ đường. Nhãn dán của của các quan sát sẽ bao gồm: câu hỏi chỉ đường (findRouteAB), câu hỏi khoảng cách (askDistance), câu hỏi vị trí hiện tại (askLocation), câu hỏi địa chỉ của một địa danh (askAddress). Kích thước của tập dữ liệu như sau:
 \begin{itemize}
-    \item[--] Tập train: 80 câu bao gồm mỗi loại 20 câu.
-    \item[--] Tập test: 40 câu bao gồm mỗi loại 10 câu.
+    \item[--] Tập train: 3200 câu bao gồm mỗi loại 800 câu.
+    \item[--] Tập test: 120 câu bao gồm mỗi loại khoảng 30 câu.
 \end{itemize}
 
 Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự liệu để huấn luyện và tiến hành kiểm thử cho từng intent.
@@ -60,20 +60,18 @@ Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự 
 \scalebox{0.8}{
 \begin{tabular}{|l|l|llllll}
 \hline
-\textbf{Tên ý định} & \multicolumn{3}{l|}{\textbf{Phân lớp ý định}}                                          & \multicolumn{4}{l|}{\textbf{Trích xuất thực thể}}                                                                                                                                                                                                                                                         \\ \hline
-\textbf{}            & \textbf{Precision} & \multicolumn{1}{l|}{\textbf{Recall}} & \multicolumn{1}{l|}{\textbf{F1}} & \multicolumn{1}{l|}{\textbf{Thực thể}}                                                  & \multicolumn{1}{l|}{\textbf{Precision}}                            & \multicolumn{1}{l|}{\textbf{Recall}}                               & \multicolumn{1}{l|}{\textbf{F1}}                                   \\ \hline
-Hỏi địa chỉ           & 0.769              & \multicolumn{1}{l|}{1}               & \multicolumn{1}{l|}{0.870}       & \multicolumn{1}{l|}{vị trí}                                                       & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             \\ \hline
-Hỏi khoảng cách          & 1                  & \multicolumn{1}{l|}{1}               & \multicolumn{1}{l|}{1}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}điểm bắt đầu\\ điểm kết thúc\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} \\ \hline
-Hỏi vị trí          & 1                  & \multicolumn{1}{l|}{0.7}             & \multicolumn{1}{l|}{0.824}       & \multicolumn{1}{l|}{}                                                               & \multicolumn{1}{l|}{}                                              & \multicolumn{1}{l|}{}                                              & \multicolumn{1}{l|}{}                                              \\ \hline
-Hỏi đường đi          & 1                  & \multicolumn{1}{l|}{1}               & \multicolumn{1}{l|}{1}           & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}điểm bắt đầu\\ điểm kết thúc\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1\\ 1\end{tabular}} \\ \hline
-\begin{tabular}[c]{@{}l@{}}Số liệu trung bình\\ (Average metrics)\end{tabular}      & 0.942              & \multicolumn{1}{l|}{0.925}           & \multicolumn{1}{l|}{0.923}       & \multicolumn{1}{l|}{}                                                               & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             & \multicolumn{1}{l|}{1}                                             \\ \hline
-\begin{tabular}[c]{@{}l@{}}Độ chính xác\\ (Accuracy)\end{tabular}            & 0.925              &                                      &                                  &                                                                                     &                                                                    &                                                                    &                                                                    \\ \cline{1-2}
+\multicolumn{1}{|c|}{\textbf{Tên ý định}}                                      & \multicolumn{3}{c|}{\textbf{Phân lớp ý định}}                                                & \multicolumn{4}{c|}{\textbf{Trích xuất thực thể}}                                                                                                                                                                                                                                                                          \\ \hline
+\textbf{}                                                                      & \textbf{Precision} & \multicolumn{1}{l|}{\textbf{Recall}} & \multicolumn{1}{l|}{\textbf{F1}} & \multicolumn{1}{l|}{\textbf{Thực thể}}                                                    & \multicolumn{1}{l|}{\textbf{Precision}}                                  & \multicolumn{1}{l|}{\textbf{Recall}}                                     & \multicolumn{1}{l|}{\textbf{F1}}                                         \\ \hline
+Hỏi địa chỉ                                                                    & 1.0                & \multicolumn{1}{l|}{0.939}           & \multicolumn{1}{l|}{0.969}       & \multicolumn{1}{l|}{Vị trí}                                                               & \multicolumn{1}{l|}{0.968}                                               & \multicolumn{1}{l|}{0.968}                                               & \multicolumn{1}{l|}{0.968}                                               \\ \hline
+Hỏi khoảng cách                                                                & 1.0                & \multicolumn{1}{l|}{1.0}             & \multicolumn{1}{l|}{1.0}         & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Điểm bắt đầu\\ Điểm kết thúc\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1.0\\ 1.0\end{tabular}}   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1.0\\ 1.0\end{tabular}}   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}1.0\\ 1.0\end{tabular}}   \\ \hline
+Hỏi vị trí                                                                     & 0.97               & \multicolumn{1}{l|}{1.0}             & \multicolumn{1}{l|}{0.985}       & \multicolumn{1}{l|}{}                                                                     & \multicolumn{1}{l|}{}                                                    & \multicolumn{1}{l|}{}                                                    & \multicolumn{1}{l|}{}                                                    \\ \hline
+Hỏi đường đi                                                                   & 1.0                & \multicolumn{1}{l|}{0.861}           & \multicolumn{1}{l|}{0.925}       & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Điểm bắt đầu\\ Điểm kết thúc\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}0.968\\ 1.0\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}0.968\\ 1.0\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}0.968\\ 1.0\end{tabular}} \\ \hline
+\begin{tabular}[c]{@{}l@{}}Số liệu trung bình\\ (Average metrics)\end{tabular} & 0.992              & \multicolumn{1}{l|}{0.950}           & \multicolumn{1}{l|}{0.970}       & \multicolumn{1}{l|}{}                                                                     & \multicolumn{1}{l|}{0.987}                                               & \multicolumn{1}{l|}{0.987}                                               & \multicolumn{1}{l|}{0.987}                                               \\ \hline
+\begin{tabular}[c]{@{}l@{}}Độ chính xác\\ (Accuracy)\end{tabular}              & 0.947              &                                      &                                  &                                                                                           &                                                                          &                                                                          &                                                                          \\ \cline{1-2}
 \end{tabular}}
  \caption{Các chỉ số của mô hình}
     \label{fig:metrics-dict-end}
-
 \end{center}
-
 \end{table}
 
 Các chỉ số được tính cho từng lớp riêng lẻ, ngoại trừ accuracy (độ chính xác); nó được tính toán trên tất cả các lớp để cung cấp độ chính xác phân loại cho mô hình này.
@@ -95,7 +93,7 @@ Dưới đây là kết quả ví dụ với câu đầu vào: "Đường đi t�
 
 Với câu đầu vào như trên, hệ thống sẽ chuyển hoá từ ngữ từ tiếng Việt sang tiếng Anh (ngoại trừ các địa danh), sau đó hệ thống sẽ tiến hành dự đoán ý định (intent) và trích xuất các thực thể (entity) thu được kết quả như hình \ref{fig:detect-intent}.
 \begin{itemize}
-    \item[--] Phân loại intent: "findRouteAB"
+    \item[--] Phân loại ý định (intent): "findRouteAB"
     \item[--] Địa điểm bắt đầu: "Đại học Nông lâm Thành phố Hồ Chí Minh"
     \item[--] Địa điểm kết thúc: "Đại học Kinh tế Luật"
 \end{itemize}

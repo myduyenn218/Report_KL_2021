@@ -86,7 +86,7 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
     \item[--] Phương pháp dịch từng từ này không khả thi bởi vì sẽ mà mất ý nghĩa của câu nói, ví dụ như câu sau: "từ Đại học Khoa học Tự nhiên đến Đại học Bách khoa đi như thế nào" được dịch thành "word Swordsman learn department learn itself course until Swordsman learn centurion department" Các thực thể địa điểm như "Đại học Khoa học Tự nhiên" được dịch thành "Swordsman learn department learn itself course", "Đại học Bách khoa" dịch thành "Swordsman learn centurion department"
     \item[--] Các thực thể (entity) cần được trích xuất đã bị dịch ra và không còn ý nghĩa nữa, không thể dùng để tìm kiếm địa điểm này trên Google map được.
 \end{itemize}
-\subsection{Kết hợp tách từ (word segmentation), gán nhãn (pos tagging) với thư viện dịch (word2word)}
+\subsection{Kết hợp tách từ (word segmentation), gán nhãn (POS tagging) với thư viện dịch (word2word)}
 
 Trong tiếng Anh, các từ được phân tách bởi dấu cách (space). Nhưng tiếng Việt thì không như thế, trong tiếng Việt có từ đơn và từ ghép, nên dấu cách không được sử dụng như một kí hiệu phân tách từ, nó chỉ có ý nghĩa phân tách các âm tiết với nhau. 
 
@@ -96,7 +96,7 @@ Tách từ (word segmentation) là một quát trình xử lý nhằm mục đí
 
 Về vấn đề những thực thể bị dịch thành tiếng Anh làm cho nó không còn ý nghĩa nữa, nhóm em nhận thấy rằng những thực thể (entity) này chủ yếu là danh từ riêng. Nhóm em đã tìm hiểu  cách để xác định một từ thuộc từ loại nào. Từ đó chúng em biết đến khái niệm về gán nhãn từ loại (POS tagging).
 
-gán nhãn từ loại (POS tagging) là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
+Gán nhãn từ loại (POS tagging) là việc phân loại các từ trong một câu (danh từ, trạng từ, tính từ hay động từ, v.v..).
 
 Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại các từ trong câu. Bảng \ref{fig:Part-Of-Speech (POS) tags} liệt kê một số loại POS tags được sử dụng phổ biến. Sau đó khi hoàn thành quá trình tách từ, chúng em sử dụng thư viện word2word để dịch những từ không thuộc từ loại danh từ và danh từ riêng. Những từ thuộc từ loại trên được giữ nguyên tiếng Việt.
 
@@ -126,12 +126,12 @@ Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại cá
     \label{fig:Part-Of-Speech (POS) tags}
 \end{table}
 
-Áp dụng word segmentation và pos tagging lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}, kết quả dịch được minh họa như hình \ref{fig:trainingdata-wordsegment}
+Áp dụng tách từ (word segmentation) và gán nhãn từ loại (POS tagging) lên bộ dữ liệu và sử dụng thư viện word2word để dịch thì đạt được bộ dữ liệu huấn luyện\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1KE6IMt7KTVu5LRQWI9b57EUgWuqBRgp_/view?usp=sharing}} và bộ dữ liệu kiểm thử\footnote{Xem thêm về bộ kiểm thử\url{https://drive.google.com/file/d/1YHs3dFAT0br8RbctmWYQtdIKQmv6j1su/view?usp=sharing}}, kết quả dịch được minh họa như hình \ref{fig:trainingdata-wordsegment}
 
 \begin{figure}[htp]
     \centering
     \includegraphics[width=15cm]{images/trainingdata-wordsegment.png}
-    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp dùng word segmentation và pos tagging}
+    \caption{Hình ảnh minh họa dữ liệu trước khi dịch và sau khi dịch bằng phương pháp dùng word segmentation và POS tagging}
     \label{fig:trainingdata-wordsegment}
 \end{figure}
 
@@ -144,7 +144,7 @@ Nhóm em sử dụng thư viện VNCoreNLP để tách từ và phân loại cá
 \subsection{Xây dựng bộ từ điển}
 Để có thể xử lý tốt hơn về vấn đề ý nghĩa trong câu được dịch sang một cách chính xác hơn. Nhóm chúng em đã quyết định xây dựng mô hình so khớp dài nhất (longest matching), bằng cách xây dựng một bộ từ điển, và tìm từ dài nhất có trong bộ từ điển đó để tiến hành dịch. Bộ từ điển này nằm trong phạm vi hỏi đường nên có thể xây dựng với các từ ngữ cụ thể có trong chủ đề, từ đó việc dịch sẽ đạt hiệu quả hơn.
 
-Trong phạm vi các câu hỏi về đường đi, chúng em đã lựa chọn dịch khoảng 50 từ và các cụm từ. Các bước để dịch được dữ liệu như sau:
+Trong phạm vi các câu hỏi về đường đi, chúng em đã lựa chọn dịch khoảng 100 từ và các cụm từ. Các bước để dịch được dữ liệu như sau:
 \begin{itemize}
     \item[--] Bước 1: Xây dựng bộ từ điển riêng biệt về chủ đề hỏi đường đi và chuyển hoá từ ngôn ngữ tiếng Việt sang tiếng Anh.
     \item[--] Bước 2: Tìm từ dài nhất trong câu có trong bộ từ điển.
@@ -181,7 +181,7 @@ Sau khi dịch ta được bộ dữ liệu huấn luyện\footnote{Xem thêm v�
 
 Kết quả đạt được sau khi dùng phương pháp dịch bằng cách xây dựng bộ từ điển:
 \begin{itemize}
-    \item[--] Do xây dựng bộ từ điển những từ vựng trong phạm vi nhỏ - hỏi đường nên bộ dịch cho ra kết quả khá tốt, cải thiện hơn so với 2 phương pháp trước là phương pháp dịch từng từ và phương pháp dịch dùng word segmentation và pos tagging
+    \item[--] Do xây dựng bộ từ điển những từ vựng trong phạm vi nhỏ - hỏi đường nên bộ dịch cho ra kết quả khá tốt, cải thiện hơn so với 2 phương pháp trước là phương pháp dịch từng từ và phương pháp dịch dùng word segmentation và POS tagging
 \end{itemize}
 
 \section{Công nghệ}
