@@ -6,6 +6,7 @@
 % Font tiếng Việt
 \usepackage[T5]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
 
 \DeclareTextSymbolDefault{\DH}{T1}
 
@@ -55,9 +56,9 @@
 
 % Canh lề
 \usepackage[
-  top=20mm,
+  top=30mm,
   bottom=20mm,
-  left=35mm,
+  left=30mm,
   right=20mm,
   includefoot]{geometry}
   
@@ -110,10 +111,15 @@
 \addcontentsline{toc}{chapter}{Lời cảm ơn}
 \include{Appendix/thanks}
 
+% \phantomsection
+% \addcontentsline{toc}{chapter}{Đề cương chi tiết}
+% % \include{Appendix/decuong}
+% \includepdf[page=-]{Appendix/decuong}
+
+% tomtat
 \phantomsection
-\addcontentsline{toc}{chapter}{Đề cương chi tiết}
-% \include{Appendix/decuong}
-\includepdf[page=-]{Appendix/decuong}
+\addcontentsline{toc}{chapter}{Tóm tắt}
+\include{Appendix/tomtat}
 
 % Mục lục, danh sách hình, danh sách bảng
 \phantomsection
@@ -125,9 +131,7 @@
 \begin{acronym}[AAAAAAAAA]
   \input{Acronym/acros.tex}
 \end{acronym}
-\phantomsection
-\addcontentsline{toc}{chapter}{Tóm tắt}
-\include{Appendix/tomtat}
+
 
 \clearpage
 
