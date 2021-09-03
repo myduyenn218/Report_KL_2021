@@ -295,9 +295,9 @@ Dữ liệu huấn luyện và kiểm thử
 
 \textbf{Kết quả}
 
-Dữ liệu từ hình \ref{fig:overallScores4IntentandEntity} cho thấy điểm trung bình cho phân lớp ý định (intent) và thực thể (entity) thông qua 10-fold cross validation.
+Dữ liệu từ bảng \ref{fig:overallScores4IntentandEntity} cho thấy điểm trung bình cho phân lớp ý định (intent) và thực thể (entity) thông qua 10-fold cross validation.
 
-Dữ liệu hình \ref{fig:combinedOverallScores} cho thấy điểm F-score trung bình cho mỗi nền tảng.
+Dữ liệu bảng \ref{fig:combinedOverallScores} cho thấy điểm F-score trung bình cho mỗi nền tảng.
 
 \begin{table}[]
  \begin{center}
@@ -332,8 +332,8 @@ Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
 \end{table}
 
 \begin{itemize}
-    \item[--] Dựa vào hình \ref{fig:overallScores4IntentandEntity}, đối với ý định (intent), không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể (entity), Watson có F1-score thấp do Precision rất thấp.
-    \item[--] Hình \ref{fig:combinedOverallScores} chỉ ra rằng tất cả các dịch vụ có F1-score tương đương nhau ngoại trừ Watson có điểm thấp hơn đáng kể.
+    \item[--] Dựa vào bảng \ref{fig:overallScores4IntentandEntity}, đối với ý định (intent), không có sự khác biệt lớn nào giữa Dialogflow, LUIS và Rasa. F1-score của Watson (0.882) tương đối cao hơn so với các nền tảng khác. Tuy nhiên đối với nhận diện thực thể (entity), Watson có F1-score thấp do Precision rất thấp.
+    \item[--] Bảng \ref{fig:combinedOverallScores} chỉ ra rằng tất cả các dịch vụ có F1-score tương đương nhau ngoại trừ Watson có điểm thấp hơn đáng kể.
     \item[--] Trong bài so sánh này, ta thấy hiệu năng của Watson thấp nhất với F1-score là 0.657. Những nền tảng còn lại là Dialogflow, LUIS và RASA có hiệu năng tương đối cao, trong đó nền tảng mã nguồn mở Rasa có hiệu năng tốt nhất (0.822)
 \end{itemize}
 
@@ -377,7 +377,7 @@ Chatbot    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ 
 
 \textbf{Kết quả}
 \begin{itemize}
-    \item[--] Dựa trên dữ liệu hình \ref{fig:benchmark2017and2018}, hiệu suất tốt nhất thuộc về sản phẩm thương mại LUIS (F1-score 0.916), trong khi đó cả vị trí thứ 2 và thứ 3 đều thuộc về sản phẩm nguồn mở Snips (F1-score 0.877) và Rasa  (F1-score 0.861).
+    \item[--] Dựa trên dữ liệu bảng \ref{fig:benchmark2017and2018}, hiệu suất tốt nhất thuộc về sản phẩm thương mại LUIS (F1-score 0.916), trong khi đó cả vị trí thứ 2 và thứ 3 đều thuộc về sản phẩm nguồn mở Snips (F1-score 0.877) và Rasa  (F1-score 0.861).
     \item[--] Trong bài này nhóm em quan tâm đến kết quả so sánh giữa Rasa với Snips (đều là 2 nền tảng nguồn mở). Khi cả 2 đều sử dụng phiên bản mới nhất và được đánh giá trên cùng một bộ dữ liệu, cả Rasa và Snips đều thể hiện hiệu năng tốt và không chênh lệch nhau nhiều. Tuy nhiên F1-score của Snips nhỉnh hơn một chút so với Rasa (F1-score của Snips là 0.877 và của Rasa là 0.861)
 \end{itemize}
 

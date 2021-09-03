@@ -215,11 +215,20 @@ Chúng em đã tiến hành tạo bộ dữ liệu dùng để huấn luyện d�
     \item[--] Tập test: 120 câu bao gồm mỗi loại khoảng 30 câu\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
 \end{itemize}
 
-Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh để chuẩn bị dữ liệu cho quá trình huấn luyện mà chúng em đã tiến hành nghiên cứu, chúng em nhận thấy kết quả của việc "Xây dựng bộ từ điển" cho riêng ứng dụng theo các chủ đề, lĩnh vực cụ thể đem lại hiệu quả tốt trong quá trình dịch và không làm sai lệnh ngữ nghĩa của câu. Vì vậy chúng em chọn giải pháp "Xây dựng bộ từ điển" để thực hiện chuyển hoá dữ liệu sang tiếng Anh để tiến hành thực hiện huấn luyện dữ liệu. Hình \ref{fig:data-train-en} hiển thị dữ liệu tiếng Anh dưới dạng json để thực hiện tiến hành huấn luyện dữ liệu. Kết quả của việc tạo bộ dữ liệu tiếng Anh tự động được lưu trữ tại đây\footnote{Dữ liệu huấn luyện tiếng Anh \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}\footnote{Dữ liệu kiểm thử tiếng Anh \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
+Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh để chuẩn bị dữ liệu cho quá trình huấn luyện mà chúng em đã tiến hành nghiên cứu, chúng em nhận thấy kết quả của việc "Xây dựng bộ từ điển" cho riêng ứng dụng theo các chủ đề, lĩnh vực cụ thể đem lại hiệu quả tốt trong quá trình dịch và không làm sai lệnh ngữ nghĩa của câu. Vì vậy chúng em chọn giải pháp "Xây dựng bộ từ điển" để thực hiện chuyển hoá dữ liệu sang tiếng Anh để tiến hành thực hiện huấn luyện dữ liệu. Hình \ref{fig:dictonary} là hình ảnh minh họa của bộ từ điển mà nhóm em sử dụng. Hình \ref{fig:data-train-en} hiển thị dữ liệu tiếng Anh dưới dạng json để thực hiện tiến hành huấn luyện dữ liệu. Kết quả của việc tạo bộ dữ liệu tiếng Anh tự động được lưu trữ tại đây\footnote{Dữ liệu huấn luyện tiếng Anh \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}\footnote{Dữ liệu kiểm thử tiếng Anh \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/Data-train-ex.png}
+    \includegraphics[width=10cm]{images/dictionary.png}
+    \caption{Hình ảnh minh họa của từ điển}
+    \label{fig:dictonary} 
+\end{figure}
+
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=15cm]{images/Data-train-ex.png}
     \caption{Hình ảnh minh họa dữ liệu sau khi dịch}
     \label{fig:data-train-en} 
 \end{figure}
