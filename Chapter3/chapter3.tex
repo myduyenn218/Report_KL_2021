@@ -17,7 +17,7 @@ Các khái niệm cơ bản:
           Thông thường, người dùng thường truy cập hệ thống chatbot với mong muốn hệ thống sẽ đưa ra những hành động trợ giúp mình về một vấn đề nào đó. Ví dụ, người dùng của hệ thống chatbot hỗ trợ đặt vé máy bay có thể đưa ra yêu cầu đặt vé của mình khi bắt đầu cuộc hội thoại. Để đưa ra hỗ trợ được chính xác, chatbot cần xác định được ý định (intent) đó của người dùng. Việc xác định ý định (intent) của người dùng sẽ quyết định hội thoại tiếp theo giữa người và chatbot sẽ diễn ra như thế nào. Vì thế, nếu xác định sai ý định (intent) người dùng, chatbot sẽ đưa ra những phản hồi không đúng, không hợp ngữ cảnh. Khi đó, người dùng có thể thấy chán ghét và không quay lại sử dụng hệ thống. Bài toán xác định ý định (intent) người dùng vì thế đóng vai trò rất quan trọng trong hệ thống chatbot.
           \\
           Đối với miền ứng dụng đóng, chúng ta có thể giới hạn rằng số lượng ý định (intent) của người dùng nằm trong một tập hữu hạn những intent đã được định nghĩa sẵn, có liên quan đến những nghiệp vụ doanh nghiệp mà chatbot có thể hỗ trợ. Với giới hạn này, bài toán xác định ý định (intent) người dùng có thể quy về bài toán phân lớp văn bản. Với đầu vào là một câu giao tiếp của người dùng, hệ thống phân lớp sẽ xác định ý định (intent) tương ứng với câu đó trong tập các ý định (intent) đã được định nghĩa.
-    \item Trích xuất thông tin
+	    \item Trích xuất thông tin
           \\
           Bên cạnh việc xác định ý định (intent) trong câu hội thoại của người dùng, chúng ta cần trích xuất các thông tin cần thiết trong đó. Các thông tin cần trích xuất trong một câu hội thoại thường là các thực thể (entity) thuộc về một loại nào đó. Ví dụ, khi một khách hàng muốn đặt vé máy bay, hệ thống cần biết địa điểm xuất phát và địa điểm khách muốn đến, ngày giờ khách hàng muốn bay,…Thành phần hiểu ngôn ngữ tự nhiên (\ac{nlu}) của các hệ thống chatbot thường hỗ trợ các loại thực thể sau (tham khảo tài liệu \cite{1}):
 
@@ -83,19 +83,19 @@ Cách tiếp cận phổ biến cho bài toán trích xuất thông tin là mô 
 
 Trong bài toán trích xuất thông tin, tập nhãn cho các từ trong câu đầu vào thường được tạo ra theo  mô hình BIO, với B là viết tắt của “Beginning”, I là viết tắt của “Inside”, và O là viết tắt của “Outside”. Khi biết vị trí từ bắt đầu của một thực thể và các từ nằm trong thực thể đó, chúng ta có thể xác định vị trí của thực thể trong câu. Trong ví dụ ở trên, dãy các nhãn tương ứng với dãy của các từ trong câu hội thoại đầu vào được minh hoạ ở bảng \ref{fig:model-BIO}.
 
-\begin{table}[]
 
+
+\begin{table}[]
 \begin{center}
-\scalebox{0.5}{
-\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|}
+\scalebox{0.7}{
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|l|}
 \hline
-Tôi & muốn & đặt & vé & máy bay & đi & Phú Quốc   & sân bay & Nội Bài    & vào & 8      & giờ    & tối    & ngày   & mai    \\ \hline
-O   & O    & O   & O  & O       & O  & B-LOCATION & O       & B-LOCATION & O   & B-TIME & I-TIME & I-TIME & I-TIME & I-TIME \\ \hline
+Địa & chỉ & của & Trường     & Đại        & học        & Nông       & Lâm        & là & gì & ? \\ \hline
+O   & O   & O   & B-LOCATION & I-LOCATION & I-LOCATION & I-LOCATION & I-LOCATION & O  & O  & O \\ \hline
 \end{tabular}}
     \caption{Gán nhãn từ theo mô hình B-I-O trong trích xuất thông tin}
     \label{fig:model-BIO}
     \end{center}
- 
 \end{table}
 
 Thuật toán huấn luyện mô hình gán nhãn chuỗi phổ biến là mô hình Markov ẩn (HMM – Hidden Markov Models) \cite{2}, mô hình CRF (Conditional Random Fields) \cite{3}. Với dữ liệu văn bản, mô hình CRF thường cho kết quả tốt hơn mô hình HMM. Có khá nhiều các công cụ mã nguồn mở cài đặt mô hình CRF cho bài toán gán nhãn chuỗi như CRF++ \cite{4}, CRF Suite \cite{5}, Mallet \cite{6},…
