@@ -130,12 +130,12 @@ Do sự tồn tại của nhiều dịch vụ hiểu ngôn ngữ tự nhiên (\a
 Do thời gian thực hiện nghiên cứu có giới hạn, nhóm em đã sử dụng kết quả của các bài báo so sánh hiệu năng của các nền tảng hiểu ngôn ngữ tự nhiên (\ac{nlu}) bao gồm:
 
 \begin{enumerate}
-    \item Evaluating Natural Language Understanding Services for Conversational Question Answering Systems \cite{EvaluatingNLU}.
-    \item Benchmarking Natural Language Understanding Services for building Conversational Agents \cite{BenchmarkingNLU}.
-    \item Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces\cite{snips-nlu}.
+    \item Đánh giá các dịch vụ hiểu ngôn ngữ tự nhiên cho các hệ thống trả lời câu hỏi hội thoại (Evaluating Natural Language Understanding Services for Conversational Question Answering Systems). \cite{EvaluatingNLU}.
+    \item Đo điểm chuẩn các dịch vụ hiểu ngôn ngữ tự nhiên cho việc xây dựng hệ thống hội thoại (Benchmarking Natural Language Understanding Services for building Conversational Agents). \cite{BenchmarkingNLU}.
+    \item Nền tảng giọng nói Snips: một hệ thống hiểu ngôn ngữ tự nhiên nhúng cho các giao diện giọng nói riêng tư theo thiết kế (Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces).\cite{snips-nlu}.
 \end{enumerate}
 
-\textbf{I. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems}
+\textbf{I. Đánh giá các dịch vụ hiểu ngôn ngữ tự nhiên cho các hệ thống trả lời câu hỏi hội thoại.}
 
 Bài báo so sánh hiệu năng giữa các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) khác nhau bao gồm: LUIS, Watson, API.ai và RASA.
 
@@ -262,7 +262,7 @@ Kết quả thu được được mô tả dưới hình sau \ref{fig:comparison
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/comparisonimg/FscoresNLUServices.png}
+    \includegraphics[width=15cm]{images/comparisonimg/FscoresNLUServices.png}
     \caption{F1-score của các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) theo bộ ngữ liệu}
     \label{fig:comparisonimg-FscoresNLUServices}
 \end{figure}
@@ -272,7 +272,7 @@ Kết quả thu được được mô tả dưới hình sau \ref{fig:comparison
     \item[--] Dựa trên dữ liệu này, hiệu suất tốt nhất thuộc về sản phẩm thương mại LUIS, tuy nhiên phần mềm nguồn mở Rasa hiệu năng cao hơn các sản phẩm thương mại còn lại.
 \end{itemize}
 
-\textbf{II. Benchmarking Natural Language Understanding Services for building Conversational Agents}
+\textbf{II. Đo điểm chuẩn các dịch vụ hiểu ngôn ngữ tự nhiên cho việc xây dựng hệ thống hội thoại.}
 
 Tương tự như bài báo trên, bài này cũng so sánh hiệu năng giữa các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) bao gồm các sản phẩm thương mại: Dialogflow\footnote{\url{https://cloud.google.com/dialogflow/docs/}}, LUIS\footnote{\url{https://www.luis.ai/}} và Watson\footnote{\url{https://www.ibm.com/watson}}, mã nguồn mở gồm Rasa\footnote{\url{https://rasa.com/}}.
 
@@ -307,8 +307,8 @@ Dữ liệu bảng \ref{fig:combinedOverallScores} cho thấy điểm F-score tr
                            & \textbf{Prec}          & \textbf{Rec}         & \textbf{F1}                             & \textbf{Prec}          & \textbf{Rec}          & \textbf{F1}                              \\ \hline
 Rasa                       & 0.863                  & 0.863                & 0.863                                   & 0.859                  & 0.694                 & 0.768                                    \\ \hline
 Dialogflow                 & 0.870                  & 0.859                & 0.864                                   & 0.782                  & 0.709                 & 0.743                                    \\ \hline
-LUIS                       & 0.855                  & 0.855                & 0.855                                   & 0.837                  & 0.725                 & \textbackslash{}textbf\{0.777\}          \\ \hline
-Watson                     & 0.884                  & 0.881                & \textbackslash{}textbf\{0.882\}         & 0.354                  & 0.787                 & \textbackslash{}textbf\{0.488\}          \\ \hline
+LUIS                       & 0.855                  & 0.855                & 0.855                                   & 0.837                  & 0.725                 & 0.777          \\ \hline
+Watson                     & 0.884                  & 0.881                & 0.882        & 0.354                  & 0.787                 & 0.488         \\ \hline
 \end{tabular}
  \caption{Các chỉ số của nhận diện ý định (intent) và thực thể (entity)}
     \label{fig:overallScores4IntentandEntity}
@@ -324,7 +324,7 @@ Watson                     & 0.884                  & 0.881                & \te
 Rasa       & 0.862 & 0.787 & 0.822          \\ \hline
 Dialogflow & 0.832 & 0.791 & 0.811          \\ \hline
 LUIS       & 0.848 & 0.796 & 0.821          \\ \hline
-Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
+Watson     & 0.540 & 0.838 & 0.657 \\ \hline
 \end{tabular}
     \caption{Điểm trung bình của cả nhận diện ý định (intent) và thực thể (entity)}
     \label{fig:combinedOverallScores}
@@ -337,7 +337,7 @@ Watson     & 0.540 & 0.838 & \textbf{0.657} \\ \hline
     \item[--] Trong bài so sánh này, ta thấy hiệu năng của Watson thấp nhất với F1-score là 0.657. Những nền tảng còn lại là Dialogflow, LUIS và RASA có hiệu năng tương đối cao, trong đó nền tảng mã nguồn mở Rasa có hiệu năng tốt nhất (0.822)
 \end{itemize}
 
-\textbf{III. Snips Voice Platform: an embedded Spoken Language Understanding system for private-by-design voice interfaces}
+\textbf{III. Nền tảng giọng nói Snips: một hệ thống hiểu ngôn ngữ tự nhiên nhúng cho các giao diện giọng nói riêng tư theo thiết kế.}
 
 \begin{itemize}
     \item[--] Thử nghiệm này được thực hiện giống với phương pháp của bài báo đã được xuất bản trước đó. Evaluating Natural Language Understanding Services for Conversational Question Answering Systems \cite{EvaluatingNLU}. So sánh hiệu năng giữa các dịch vụ hiểu ngôn ngữ tự nhiên (\ac{nlu}) khác nhau: một số giải pháp dựa trên đám mây phổ biến (Microsoft’s Luis, IBM Watson, API.AI nay là Dialogflow của Google), nền tảng mã nguồn mở Rasa NLU và Snips NLU.
@@ -370,7 +370,7 @@ Chatbot    & \begin{tabular}[c]{@{}l@{}}Luis*\\ IBM Watson*\\ API.ai*\\ Rasa*\\ 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=10cm]{images/comparisonimg/averageF1-scores.png}
+    \includegraphics[width=15cm]{images/comparisonimg/averageF1-scores.png}
     \caption{Trung bình F1-score của phân loại ý định (intent) và thực thể (entity) trên 3 bộ dữ liệu}
     \label{fig:averageF1-scores}
 \end{figure}
