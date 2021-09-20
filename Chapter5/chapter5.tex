@@ -211,8 +211,8 @@ Hình ảnh dưới đây minh hoạ một câu dữ liệu dưới dang json tr
 \subsection{Huấn luyện dữ liệu}
 Chúng em đã tiến hành tạo bộ dữ liệu dùng để huấn luyện dưới đây để thực hiện chuyển hoá ngôn ngữ từ tiếng Việt sang tiếng Anh.
 \begin{itemize}
-    \item[--] Tập train: 3200 câu bao gồm mỗi loại 800 câu\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}.
-    \item[--] Tập test: 160 câu bao gồm mỗi loại khoảng 30 câu\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
+    \item[--] Tập train: 3200 câu bao gồm mỗi loại 800 câu\footnote{Xem thêm về bộ huấn luyện \url{https://drive.google.com/file/d/1tRmJwKgtK5jKoiN57r7oAukfUO-UN4Ip/view?usp=sharing}}.
+    \item[--] Tập test: 160 câu bao gồm mỗi loại khoảng 30 câu\footnote{Xem thêm về bộ kiểm thử \url{https://drive.google.com/file/d/1LUvQ7sz2JcdRYUkGVOgJBqqo10O6hhkP/view?usp=sharing}}.
 \end{itemize}
 
 Thông qua kết quả của quá trình thực hiện chuyển hoá dữ liệu từ tiếng Việt sang tiếng Anh để chuẩn bị dữ liệu cho quá trình huấn luyện mà chúng em đã tiến hành nghiên cứu, chúng em nhận thấy kết quả của việc "Xây dựng bộ từ điển" cho riêng ứng dụng theo các chủ đề, lĩnh vực cụ thể đem lại hiệu quả tốt trong quá trình dịch và không làm sai lệnh ngữ nghĩa của câu. Vì vậy chúng em chọn giải pháp "Xây dựng bộ từ điển" để thực hiện chuyển hoá dữ liệu sang tiếng Anh để tiến hành thực hiện huấn luyện dữ liệu. Hình \ref{fig:dictonary} là hình ảnh minh họa của bộ từ điển mà nhóm em sử dụng. Hình \ref{fig:data-train-en} hiển thị dữ liệu tiếng Anh dưới dạng json để thực hiện tiến hành huấn luyện dữ liệu. Kết quả của việc tạo bộ dữ liệu tiếng Anh tự động được lưu trữ tại đây\footnote{Dữ liệu huấn luyện tiếng Anh \url{https://drive.google.com/file/d/1VSDhjrSghKtHmQxhWfC_x-qyOKDm3YuM/view?usp=sharing}}\footnote{Dữ liệu kiểm thử tiếng Anh \url{https://drive.google.com/file/d/1S631oRroP67z6LRwGSNwkrx-22c10baJ/view?usp=sharing}}.
