@@ -11,7 +11,7 @@ Xây dựng thành công giải pháp trả lời tự động bằng tiếng Vi
     \item[--] Ứng dụng cho phép người dùng tương tác với chatbot bằng giọng nói và văn bản.
 \end{itemize}
 
-Bộ dữ liệu huấn luyện bao gồm 3200 câu huấn luyện và 120 câu kiểm thử cho 4 loại ý định (intent) trong lĩnh vực tìm đường đi. Bộ dữ liệu được tạo ban đầu với ngôn ngữ tiếng Việt và sử dụng các phương pháp chuyển đổi ngôn ngữ và bộ dịch và sau cùng tạo được một bản dữ liệu tiếng Anh được chuyển đổi tự động từ bản tiếng Việt.  
+Bộ dữ liệu huấn luyện bao gồm 3200 câu huấn luyện và 160 câu kiểm thử cho 4 loại ý định (intent) trong lĩnh vực tìm đường đi. Bộ dữ liệu được tạo ban đầu với ngôn ngữ tiếng Việt và sử dụng các phương pháp chuyển đổi ngôn ngữ và bộ dịch và sau cùng tạo được một bản dữ liệu tiếng Anh được chuyển đổi tự động từ bản tiếng Việt.  
 
 Sử dụng thư viện mã nguồn mở Snips NLU\cite{Snipsnlu} để xây dựng mô hình phát hiện ý định (intent) và trích xuất thông tin từ văn bản. Sử dụng Google Map API\cite{ggmaps} để tìm kiếm câu trả lời phù hợp và trả về cho người dùng. Dưới đây là chi tiết của kết quả huấn luyện dữ liệu và ứng dụng.
 
@@ -47,7 +47,7 @@ $F_{1}$-score có giá trị nằm trong nửa khoảng (0,1]. F1 càng cao, b�
 Chúng em xây dựng mô hình phân loại các câu hỏi chỉ đường. Nhãn dán của của các quan sát sẽ bao gồm: câu hỏi chỉ đường (findRouteAB), câu hỏi khoảng cách (askDistance), câu hỏi vị trí hiện tại (askLocation), câu hỏi địa chỉ của một địa danh (askAddress). Kích thước của tập dữ liệu như sau:
 \begin{itemize}
     \item[--] Tập train: 3200 câu bao gồm mỗi loại 800 câu.
-    \item[--] Tập test: 120 câu bao gồm mỗi loại khoảng 30 câu.
+    \item[--] Tập test: 160 câu bao gồm mỗi loại khoảng 30 câu.
 \end{itemize}
 
 Sau khi lựa chọn các loại intent để thực hiện và đã tạo dự liệu để huấn luyện và tiến hành kiểm thử cho từng intent.
@@ -77,9 +77,9 @@ Hỏi đường đi                                                             
 
 Các chỉ số được tính cho từng lớp riêng lẻ, ngoại trừ accuracy (độ chính xác); nó được tính toán trên tất cả các lớp để cung cấp độ chính xác phân loại cho mô hình này.
 
-Đánh giá tổng quan: Accuracy (Độ chính xác của toàn bộ dữ liệu) là 0.947.
+Đánh giá tổng quan: Accuracy (Độ chính xác của toàn bộ dữ liệu) là 0.870.
 
-Đánh giá chi tiết từng phân loại: Dựa trên kết quả F1-Score cho từng phân loại, dễ dàng nhìn thấy độ chính xác của từng loại sẽ được sắp xếp theo thứ tự sau đây: Hỏi khoảng cách (askDistance), Hỏi vị trí (askLocation), Hỏi địa chỉ (askAddress), Hỏi đường đi (findRouteAB).
+Đánh giá chi tiết từng phân loại: Dựa trên kết quả F1-Score cho từng phân loại, dễ dàng nhìn thấy độ chính xác của từng loại sẽ được sắp xếp theo thứ tự sau đây: Hỏi vị trí (askLocation), Hỏi địa chỉ (askAddress), Hỏi khoảng cách (askDistance), Hỏi đường đi (findRouteAB).
 
 Như vậy, dựa trên kết quả kiểm thử cho thấy độ chính xác khi phát hiện các ý định (intent) và các thực thể (entity) là cao, điều này giúp cho việc phân loại câu hỏi chính xác giúp ứng dụng có thể đưa ra những câu trả lời phù hợp với từng nhu cầu của người dùng.
 
