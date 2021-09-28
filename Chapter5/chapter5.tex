@@ -64,32 +64,6 @@ Yêu cầu giao diện cho chức năng Chat chỉ đường bằng giọng nói
     \item[--] Việc cập nhật phần mềm phải nhanh chóng và không gây ra mất mát dữ liệu
 \end{itemize}
 
-\section{Thiết kế kiến trúc hệ thống}
-Phần mềm hệ thống gồm ba nhóm (xem hình Kiến trúc hệ thống \ref{fig:kien-truc-he-thong}):
-\begin{itemize}
-    \item[--] Phần mềm chạy trên thiết bị di động
-    \item[--] Máy chủ
-    \item[--] External services
-\end{itemize}
-\begin{figure}[htp]
-    \centering
-    \includegraphics[width=15cm]{images/Structure-System.png}
-    \caption{Kiến trúc hệ thống}
-    \label{fig:kien-truc-he-thong}
-\end{figure}
-
-Máy chủ (Server) thực hiện chương trình xử lý và phân tích dữ liệu. Chương trình này chịu trách nhiệm xử lý dữ liệu gửi lên (Text) bao gồm thành phần: Phân tích ý định (intent), trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi của người gửi. Khi ứng dụng điện thoại gửi Text lên, chương trình xử lý rồi trả về kết quả trên ứng dụng điện thoại. Máy chủ sẽ cung cấp các API tương ứng. Các API cung cấp giao diện cho phép app di động giao tiếp với chương trình xử lý ở máy chủ.
-
-Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định (intent), trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map\cite{google-map}.
-
-Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng dụng trên điện thoại di động. Giao diện này cho phép người dùng sử dụng để hỏi các câu hỏi về chỉ đường từ một địa chỉ này đến một địa chỉ khác cụ thể bằng giọng nói (ghi âm câu nói) hoặc là nhập văn bản trên ứng dụng và trả về cho người dùng kết quả phù hợp.
-\begin{itemize}
-    \item[--] Chuyển giọng nói thành văn bản: Chuyển câu lệnh bằng giọng nói của người dùng thành văn bản để hiển thị lên ứng dụng và gửi lên hệ thống.
-    \item[--] Chuyển văn bản thành giọng nói: Chuyển phản hồi của hệ thống thành dạng âm thanh để phát ra qua điện thoại.
-\end{itemize}
-
-Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text\cite{stt} và flutter\_tts\cite{tts} được cung cấp bởi bộ quản lý thư viện của Flutter.
-
 \section{Xây dựng Use Case}
 Hình dưới đây thể hiện các chức năng chính của ứng dụng (Xem hình \ref{fig:UC}). 
 \begin{figure}[H]
@@ -179,6 +153,33 @@ Hình \ref{fig:classdiagram} thể hiện sơ đồ lớp được xây dựng �
     \item[--] SpeechToText: Class thể hiện thư viện chuyển đổi giọng nói thành văn bản.  
     \item[--] TTSpeech: Class thể hiện thư viện chuyển đổi văn bản thành giọng nói.  
 \end{itemize}
+
+
+\section{Thiết kế kiến trúc hệ thống}
+Phần mềm hệ thống gồm ba nhóm (xem hình Kiến trúc hệ thống \ref{fig:kien-truc-he-thong}):
+\begin{itemize}
+    \item[--] Phần mềm chạy trên thiết bị di động
+    \item[--] Máy chủ
+    \item[--] External services
+\end{itemize}
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=15cm]{images/Structure-System.png}
+    \caption{Kiến trúc hệ thống}
+    \label{fig:kien-truc-he-thong}
+\end{figure}
+
+Máy chủ (Server) thực hiện chương trình xử lý và phân tích dữ liệu. Chương trình này chịu trách nhiệm xử lý dữ liệu gửi lên (Text) bao gồm thành phần: Phân tích ý định (intent), trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi của người gửi. Khi ứng dụng điện thoại gửi Text lên, chương trình xử lý rồi trả về kết quả trên ứng dụng điện thoại. Máy chủ sẽ cung cấp các API tương ứng. Các API cung cấp giao diện cho phép app di động giao tiếp với chương trình xử lý ở máy chủ.
+
+Trong phạm vi đề tài, nhóm sẽ xây dựng thành phần xác định ý định (intent), trích xuất dữ liệu và tìm kiếm kết quả trả lời câu hỏi sẽ sử dụng API của Google Map\cite{google-map}.
+
+Phầm mềm ứng dụng cung cấp một giao diện người dùng qua ứng dụng trên điện thoại di động. Giao diện này cho phép người dùng sử dụng để hỏi các câu hỏi về chỉ đường từ một địa chỉ này đến một địa chỉ khác cụ thể bằng giọng nói (ghi âm câu nói) hoặc là nhập văn bản trên ứng dụng và trả về cho người dùng kết quả phù hợp.
+\begin{itemize}
+    \item[--] Chuyển giọng nói thành văn bản: Chuyển câu lệnh bằng giọng nói của người dùng thành văn bản để hiển thị lên ứng dụng và gửi lên hệ thống.
+    \item[--] Chuyển văn bản thành giọng nói: Chuyển phản hồi của hệ thống thành dạng âm thanh để phát ra qua điện thoại.
+\end{itemize}
+
+Hai thành phần chuyển giọng nói thành văn bản và chuyển văn bản thành giọng nói được thực hiện ở ứng dụng di động bằng cách sử dụng package speech\_to\_text\cite{stt} và flutter\_tts\cite{tts} được cung cấp bởi bộ quản lý thư viện của Flutter.
 
 
 \section{Xây dựng thành phần xác định ý định và trích xuất thực thể}
